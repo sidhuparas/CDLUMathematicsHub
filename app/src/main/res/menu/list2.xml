@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/Unpin"
+        android:orderInCategory="100"
+        android:icon="@drawable/unpin"
+        android:title="Unpin" />
+    <item
+        android:id="@+id/shar"
+        android:orderInCategory="100"
+        android:icon="@drawable/ashare"
+        android:title="Share" />
+    <item
+        android:id="@+id/addtohome"
+        android:orderInCategory="100"
+        android:icon="@drawable/apin"
+        android:title="Add To Home Screen" />
+    <item
+        android:id="@+id/delete1"
+        android:orderInCategory="100"
+        android:icon="@drawable/adele"
+        android:title="Delete" />
+</menu>

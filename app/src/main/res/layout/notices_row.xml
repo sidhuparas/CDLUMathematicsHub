@@ -1,0 +1,45 @@
+<android.support.v7.widget.CardView
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="5dp"
+    android:layout_marginLeft="2dp"
+    android:layout_marginTop="2dp"
+    android:layout_marginRight="2dp"
+    card_view:cardCornerRadius="5dp"
+    android:background="@drawable/custom_bg"
+    android:clickable="true"
+    android:translationZ="3dp"
+    android:elevation="3dp"
+    android:focusable="true">
+
+    <RelativeLayout
+        android:layout_marginLeft="0dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/custom_bg"
+        android:layout_marginBottom="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:id="@+id/img_android"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginRight="9dp"
+            android:src="@drawable/news"
+            android:layout_marginLeft="7dp"/>
+
+        <TextView
+            android:textSize="18sp"
+            android:layout_marginRight="7dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tv_name"
+            android:textStyle="normal"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/img_android" />
+    </RelativeLayout>
+</android.support.v7.widget.CardView>

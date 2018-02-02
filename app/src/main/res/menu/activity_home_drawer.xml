@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:title="Primary">
+        <menu>
+            <group
+                android:id="@+id/primary"
+                android:checkableBehavior="single">
+                <item
+                    android:id="@+id/home"
+                    android:icon="@drawable/hom"
+                    android:title="Question Papers" />
+                <item
+                    android:id="@+id/offline"
+                    android:icon="@drawable/off"
+                    android:title="Offline" />
+                <item
+                    android:id="@+id/studymaterial"
+                    android:icon="@drawable/sm"
+                    android:title="Study Material" />
+                <item
+                    android:id="@+id/notices"
+                    android:icon="@drawable/not"
+                    android:title="Notices" />
+                <item
+                    android:id="@+id/results"
+                    android:icon="@drawable/results"
+                    android:title="Results" />
+                <item
+                    android:id="@+id/syll"
+                    android:icon="@drawable/syl"
+                    android:title="Syllabus" />
+                <item
+                    android:id="@+id/timeicon"
+                    android:icon="@drawable/timetable"
+                    android:title="Digital TimeTable" />
+            </group>
+        </menu>
+    </item>
+
+    <item android:title="Miscellaneous">
+        <menu>
+            <group
+                android:id="@+id/others"
+                android:checkableBehavior="single">
+
+                <item
+                    android:id="@+id/donate"
+                    android:icon="@drawable/don"
+                    android:title="Support" />
+                <item
+                    android:id="@+id/Tools"
+                    android:icon="@drawable/tools"
+                    android:title="Extras" />
+                <item
+                    android:id="@+id/about"
+                    android:icon="@drawable/abo"
+                    android:title="About" />
+            </group>
+        </menu>
+    </item>
+
+</menu>

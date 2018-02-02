@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#4caf50</color>
+    <color name="rip">#e53935</color>
+    <color name="colorPrimaryDark">#388E3C</color>
+    <color name="colorAccent">#4CAF50</color>
+    <color name="blue">#f426a0da</color>
+    <color name="white">#ffffff</color>
+    <color name="white1">#e4dfdf</color>
+    <color name="black">#000000</color>
+    <color name="grey">#979797</color>
+    <color name="light">#ff9497</color>
+    <color name="Orange">#ff9800</color>
+    <color name="back">#f2faff</color>
+
+    <integer-array name="mycolors">
+        <item>@color/holo_blue_dark</item>
+        <item>@color/holo_yellow_dark</item>
+        <item>@color/holo_green_dark</item>
+        <item>@color/holo_purple_dark</item>
+        <item>@color/holo_red_dark</item>
+    </integer-array>
+
+    <color name="holo_blue_dark">#0099cc</color>
+    <color name="holo_yellow_dark">#ff8800</color>
+    <color name="holo_green_dark">#669900</color>
+    <color name="holo_purple_dark">#9933cc</color>
+    <color name="holo_red_dark">#cc0000</color>
+
+</resources>

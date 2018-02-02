@@ -1,0 +1,138 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/white"
+    tools:context="com.parassidhu.cdlumaths.Summary">
+<android.support.v4.widget.NestedScrollView
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/intro"
+        android:layout_marginTop="10dp"
+        android:textSize="16sp"
+        android:textColor="@color/black"
+        android:layout_marginLeft="15dp"
+        android:text="This feature shows you the result of a whole class or a specific range."/>
+
+    <RadioButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="5-Years"
+        android:layout_below="@id/intro"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="6dp"
+        android:checked="true"
+        android:id="@+id/five"/>
+
+    <RadioButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="2-Years"
+        android:layout_marginTop="6dp"
+        android:layout_below="@id/intro"
+        android:layout_toRightOf="@id/five"
+        android:layout_marginLeft="40dp"
+        android:id="@+id/two"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/txtSem"
+        android:layout_marginTop="10dp"
+        android:textSize="16sp"
+        android:layout_below="@id/five"
+        android:paddingTop="10dp"
+        android:textColor="@color/black"
+        android:layout_marginLeft="15dp"
+        android:text="Semester:"/>
+    <com.jaredrummler.materialspinner.MaterialSpinner
+        android:id="@+id/spinner"
+        android:layout_width="120dp"
+        android:textSize="16sp"
+        android:elevation="3dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="10dp"
+        app:ms_text_color="@color/grey"
+        android:layout_toRightOf="@id/txtSem"
+        android:layout_below="@id/five"
+        android:layout_height="wrap_content" />
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/txtSem2"
+        android:layout_below="@id/txtSem"
+        android:layout_marginTop="15dp"
+        android:textSize="16sp"
+        android:textColor="@color/black"
+        android:textColorHint="@color/grey"
+        android:inputType="number"
+        android:layout_marginLeft="15dp"
+        android:hint="Starting Roll No.    " />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/txtSem3"
+        android:layout_below="@id/txtSem2"
+        android:layout_marginTop="10dp"
+        android:inputType="number"
+        android:textSize="16sp"
+        android:textColor="@color/black"
+        android:layout_marginLeft="15dp"
+        android:textColorHint="@color/grey"
+        android:hint="Final Roll No.          "/>
+
+        <com.jaredrummler.materialspinner.MaterialSpinner
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/total"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="10dp"
+            android:elevation="3dp"
+            android:layout_below="@id/txtSem3"/>
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/code"
+            android:layout_below="@id/total"
+            android:layout_marginTop="10dp"
+            android:textSize="16sp"
+            android:textColor="@color/black"
+            android:visibility="gone"
+            android:layout_marginLeft="15dp"
+            android:textColorHint="@color/grey"
+            android:hint="Enter Subject Code"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/code"
+            android:layout_marginTop="10dp"
+            android:id="@+id/codehint"
+            android:layout_marginLeft="10dp"
+            android:text="For example,"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="20dp"
+        android:background="@color/colorPrimary"
+        android:textColor="@color/white"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:elevation="6dp"
+        android:translationZ="6dp"
+        android:layout_below="@id/txtSem3"
+        android:layout_toRightOf="@id/total"
+        android:text="Find Result"
+        android:id="@+id/show"/>
+</RelativeLayout>
+</android.support.v4.widget.NestedScrollView>
+
+</RelativeLayout>

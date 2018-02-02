@@ -1,0 +1,86 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/tt_nested"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp"
+    tools:context="com.parassidhu.cdlumaths.timetable">
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <com.jaredrummler.materialspinner.MaterialSpinner
+                android:id="@+id/ttSem"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_marginTop="10dp"
+                android:elevation="5dp"
+                android:fontFamily="sans-serif-semilight"
+                android:textSize="17sp"
+                android:translationZ="5dp"
+                app:ms_arrow_tint="@color/white"
+                app:ms_background_color="@color/wallet_holo_blue_light"
+                app:ms_text_color="@color/white" />
+
+            <com.jaredrummler.materialspinner.MaterialSpinner
+                android:id="@+id/ttSpinner"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_toRightOf="@id/ttSem"
+                android:layout_marginTop="10dp"
+                android:elevation="5dp"
+                android:fontFamily="sans-serif-semilight"
+                android:textSize="17sp"
+                android:translationZ="5dp"
+                app:ms_arrow_tint="@color/white"
+                app:ms_background_color="@color/wallet_holo_blue_light"
+                app:ms_text_color="@color/white" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/orange"
+                android:layout_toRightOf="@id/ttSpinner"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_alignParentRight="true"
+                android:text="Next"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:translationZ="6dp"
+                android:elevation="3dp"
+                android:id="@+id/next"
+                android:paddingRight="7dp"
+                android:paddingLeft="7dp"/>
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/ttList"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/ttSpinner"
+                android:layout_marginTop="10dp" />
+
+            <TextView
+                android:id="@+id/disableText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/ttSpinner"
+                android:layout_marginTop="20dp"
+                android:text="TimeTable is disabled for now. \nPlease check back later"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:visibility="visible" />
+        </RelativeLayout>
+    </android.support.v4.widget.NestedScrollView>
+
+</RelativeLayout>

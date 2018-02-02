@@ -1,0 +1,42 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.parassidhu.cdlumaths.MainActivity">
+    <item
+        android:id="@+id/sort"
+        android:orderInCategory="100"
+        app:showAsAction="ifRoom"
+        android:icon="@drawable/sort"
+        android:title="Sort Offline Files" />
+    <item
+        android:id="@+id/theme"
+        android:orderInCategory="100"
+        android:title="Theme Options" />
+    <item
+        android:id="@+id/Share"
+        android:orderInCategory="100"
+        app:showAsAction="never"
+        android:icon="@drawable/share"
+        android:title="Share"
+        android:actionProviderClass=
+            "android.widget.ShareActionProvider"/>
+    <item
+        android:id="@+id/rate"
+        android:orderInCategory="100"
+        android:title="Rate &amp; Review" />
+    <item
+        android:id="@+id/sendfeedback"
+        android:orderInCategory="100"
+        android:title="Send Feedback" />
+
+    <item android:id="@+id/defaultView"
+        android:orderInCategory="99"
+        app:showAsAction="always"
+        android:icon="@drawable/defaultv"
+        android:title="Default Start View"/>
+
+    <item android:id="@+id/releasenotes"
+        android:orderInCategory="100"
+        app:showAsAction="never"
+        android:title="What's New"/>
+</menu>

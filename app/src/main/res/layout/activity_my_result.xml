@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:id="@+id/coordi"
+    tools:context="com.parassidhu.cdlumaths.MyResult">
+
+    <RelativeLayout android:orientation="vertical" android:layout_height="wrap_content" android:layout_width="wrap_content"
+        tools:layout_editor_absoluteY="0dp"
+        android:id="@+id/av"
+        tools:layout_editor_absoluteX="0dp">
+        <EditText
+            android:id="@+id/txtrollno"
+            android:visibility="visible"
+            android:layout_width="170dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:hint="Enter Roll No"
+            android:textColorHint="@color/grey"
+            android:inputType="number" />
+        <Button
+            android:layout_toRightOf="@id/txtrollno"
+            android:id="@+id/submit"
+            android:visibility="visible"
+            android:layout_width="wrap_content"
+            android:background="@color/colorAccent"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:layout_marginRight="10dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="Go" />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="+1"
+            android:id="@+id/plusone"
+            android:textSize="20sp"
+            android:background="@color/colorAccent"
+            android:textColor="@color/white"
+            android:layout_toRightOf="@id/submit"
+            android:layout_marginTop="10dp"/>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:background="@drawable/aqua"
+            android:id="@+id/screenLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:textSize="18sp"
+                android:textColor="@color/white"
+                android:id="@+id/txtresultname"
+                android:visibility="visible"
+                android:fontFamily="sans-serif-light"
+                android:layout_marginTop="6dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:text="" />
+
+            <TextView
+                android:textSize="18sp"
+                android:textColor="@color/white"
+                android:id="@+id/txtresultroll"
+                android:fontFamily="sans-serif-light"
+                android:visibility="visible"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="6dp"
+                android:layout_marginRight="10dp"
+                android:text="" />
+
+            <android.support.v7.widget.RecyclerView
+                android:layout_marginTop="7dp"
+                android:id="@+id/resultdatalv"
+                android:layout_width="wrap_content"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"  />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/extra"
+                android:orientation="horizontal">
+
+                <Button
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:text="Next Result"
+                    android:id="@+id/nextresult"
+                    android:background="@color/blue"
+                    android:textColor="@color/white"
+                    android:textSize="16sp" />
+                <Button
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:id="@+id/findanother"
+                    android:background="@color/blue"
+                    android:textColor="@color/white"
+                    android:textSize="16sp"
+                    android:layout_height="wrap_content"
+                    android:text="Find Another"/>
+            </LinearLayout>
+        </LinearLayout>
+    </RelativeLayout>
+
+</android.support.design.widget.CoordinatorLayout>

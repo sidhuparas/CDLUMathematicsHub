@@ -1,0 +1,66 @@
+package com.parassidhu.cdlumaths;
+import android.content.Intent;
+import android.graphics.Color;
+import android.os.Bundle;
+import android.support.design.widget.TabLayout;
+import android.support.v4.app.Fragment;
+import android.support.v4.view.ViewPager;
+import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewGroup;
+
+import com.parassidhu.cdlumaths.R;
+
+public class Results extends Fragment {
+
+    public Results() {}
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        return inflater.inflate(R.layout.fragment_results, container, false);
+    }
+
+    @Override
+    public void onPrepareOptionsMenu(Menu menu) {
+        MenuItem item = menu.findItem(R.id.sort);
+        sidhu.setOptVisibility(menu,false,true);
+    }
+
+    @Override
+    public void onViewCreated(View v,Bundle savedInstanceState) {
+        getActivity().setTitle("Results");
+        setHasOptionsMenu(true);
+        setup();
+    }
+    public void setup(){
+        try {
+            TabLayout tabLayout = (TabLayout) getActivity().findViewById(R.id.tab_layout);
+            tabLayout.addTab(tabLayout.newTab().setText("5-Years"));
+            tabLayout.addTab(tabLayout.newTab().setText("2-Years"));
+            tabLayout.addTab(tabLayout.newTab().setText("Summary"));
+            int r,g,b;
+            r = Home.r;
+            g = Home.g;
+            b = Home.b;
+            tabLayout.setBackgroundColor(Color.rgb(r,g,b));
+            tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
+            tabLayout.setSelectedTabIndicatorColor(Color.rgb(r,g,b));
+            final ViewPager viewPager = (ViewPager) getActivity().findViewById(R.id.pager);
+            final PagerAdapter adapter = new PagerAdapter
+                    (getActivity().getSupportFragmentManager(), tabLayout.getTabCount(),"Result");
+            viewPager.setAdapter(adapter);
+            viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
+            tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+                @Override
+                public void onTabSelected(TabLayout.Tab tab) {
+                    viewPager.setCurrentItem(tab.getPosition());
+                }
+                public void onTabUnselected(TabLayout.Tab tab) {}
+                public void onTabReselected(TabLayout.Tab tab) {}
+            });
+        }catch (Exception ex){}
+    }
+}
