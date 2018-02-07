@@ -51,7 +51,7 @@ public class Tools extends Fragment{
         super.onViewCreated(view, savedInstanceState);
         getActivity().setTitle("Extras");
         setHasOptionsMenu(true);
-        RecyclerView rcl =(RecyclerView)view.findViewById(R.id.crd);
+        RecyclerView rcl = view.findViewById(R.id.crd);
         rcl.setHasFixedSize(true);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
         rcl.setLayoutManager(layoutManager);

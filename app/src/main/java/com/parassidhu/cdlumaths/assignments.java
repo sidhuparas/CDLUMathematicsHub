@@ -74,8 +74,8 @@ public class assignments extends Fragment {
     public void onViewCreated(View v, Bundle savedInstanceState) {
         setHasOptionsMenu(true);
         getActivity().setTitle("Assignments");
-        rcl = (RecyclerView) getActivity().findViewById(R.id.recycle_assignments);
-        loading = (ProgressBar) getActivity().findViewById(R.id.loading);
+        rcl = getActivity().findViewById(R.id.recycle_assignments);
+        loading = getActivity().findViewById(R.id.loading);
         sharedPreferences = getActivity().getSharedPreferences("Assignments", Context.MODE_PRIVATE);
         loading.setVisibility(View.VISIBLE);
         rcl.setLayoutManager(new LinearLayoutManager(getActivity()));

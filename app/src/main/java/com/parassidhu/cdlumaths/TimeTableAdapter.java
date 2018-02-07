@@ -67,10 +67,10 @@ public class TimeTableAdapter extends RecyclerView.Adapter<TimeTableAdapter.View
 
         public ViewHolder(View view) {
             super(view);
-            now = (TextView) view.findViewById(R.id.now);
-            tttime = (TextView) view.findViewById(R.id.tttime);
-            subName = (TextView) view.findViewById(R.id.subjectName);
-            teacherName = (TextView) view.findViewById(R.id.teacherName);
+            now = view.findViewById(R.id.now);
+            tttime = view.findViewById(R.id.tttime);
+            subName = view.findViewById(R.id.subjectName);
+            teacherName = view.findViewById(R.id.teacherName);
 
         }
     }

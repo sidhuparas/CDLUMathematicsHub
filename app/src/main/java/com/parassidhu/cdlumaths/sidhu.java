@@ -40,10 +40,7 @@ public class sidhu {
     }
 
     public static boolean isLollipop(){
-        if(Build.VERSION.SDK_INT>=21)
-            return true;
-        else
-            return false;
+        return Build.VERSION.SDK_INT >= 21;
     }
     public static void setFastScrolling(RecyclerView rcl){
         if(Build.VERSION.SDK_INT>=Build.VERSION_CODES.LOLLIPOP)

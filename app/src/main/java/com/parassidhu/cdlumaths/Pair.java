@@ -15,4 +15,4 @@ public class Pair implements Comparable {
         long u = ((Pair) o).t;
         return t < u ? -1 : t == u ? 0 : 1;
     }
-};
+}

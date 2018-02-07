@@ -36,13 +36,13 @@ public class WeightOnOtherPlanets extends AppCompatActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.woop);
-        final RecyclerView rcl =(RecyclerView)findViewById(R.id.card_rc);
+        final RecyclerView rcl = findViewById(R.id.card_rc);
         rcl.setHasFixedSize(true);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
         rcl.setLayoutManager(layoutManager);
-        EditText editText = (EditText)findViewById(R.id.editText);
+        EditText editText = findViewById(R.id.editText);
         editText.clearFocus();
-        final Button btn =(Button)findViewById(R.id.buttoncal);
+        final Button btn = findViewById(R.id.buttoncal);
         android.support.v7.app.ActionBar acb = getSupportActionBar();
         acb.setTitle("Weight On Other Planets");
         editText.setOnEditorActionListener(new TextView.OnEditorActionListener() {
@@ -78,7 +78,7 @@ public class WeightOnOtherPlanets extends AppCompatActivity {
         Thread start = new Thread(new Runnable() {
             @Override
             public void run() {
-                EditText editText = (EditText)findViewById(R.id.editText);
+                EditText editText = findViewById(R.id.editText);
                 if ((editText.getText().toString().equalsIgnoreCase(""))) {
                     //Snackbar.make(getBaseContext(),"Please enter the value!",Snackbar.LENGTH_SHORT).show();
                 } else {
@@ -96,7 +96,7 @@ public class WeightOnOtherPlanets extends AppCompatActivity {
                     uranus = Math.round(x * 10.67);
                     neptune = Math.round(x * 14.07);
                     pluto = Math.round(x * 0.42);
-                    final RecyclerView rcl = (RecyclerView)findViewById(R.id.card_rc);
+                    final RecyclerView rcl = findViewById(R.id.card_rc);
                     ArrayList androidVersions;
                     androidVersions = new ArrayList<>(prepareDataforPlanets());
                     adapter = new WOOPAdapter(getApplicationContext(), androidVersions);

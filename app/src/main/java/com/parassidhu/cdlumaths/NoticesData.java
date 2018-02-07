@@ -32,8 +32,10 @@ public class NoticesData extends RecyclerView.Adapter<NoticesData.ViewHolder> {
         ItemClickSupport.addTo(recyclerView).setOnItemClickListener(new ItemClickSupport.OnItemClickListener() {
             @Override
             public void onItemClicked(RecyclerView recyclerView, int position, View v) {
+                try{
                 frag.loadNotice(mAndroidList.get(position).getContent(),mAndroidList.get(position).getSubName()+".pdf",
                         mAndroidList.get(position).getParam());
+                }catch (Exception e){}
             }
         });
     }
@@ -48,7 +50,7 @@ public class NoticesData extends RecyclerView.Adapter<NoticesData.ViewHolder> {
         private TextView mTvName;
         public ViewHolder(View view) {
             super(view);
-            mTvName = (TextView)view.findViewById(R.id.tv_name);
+            mTvName = view.findViewById(R.id.tv_name);
         }
     }
 }

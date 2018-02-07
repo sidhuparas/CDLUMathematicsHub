@@ -48,7 +48,7 @@ public class QuestionPap extends Fragment {
 
   public void setup(){
         setHasOptionsMenu(true);
-        TabLayout tabLayout = (TabLayout) getActivity().findViewById(R.id.tab_layout1);
+        TabLayout tabLayout = getActivity().findViewById(R.id.tab_layout1);
         tabLayout.addTab(tabLayout.newTab().setText("5-Years"));
         tabLayout.addTab(tabLayout.newTab().setText("2-Years"));
         tabLayout.addTab(tabLayout.newTab().setText("Misc"));
@@ -60,7 +60,7 @@ public class QuestionPap extends Fragment {
         tabLayout.setSelectedTabIndicatorColor(Color.rgb(r,g,b));
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
 
-        final ViewPager viewPager = (ViewPager) getActivity().findViewById(R.id.pager1);
+        final ViewPager viewPager = getActivity().findViewById(R.id.pager1);
         final PagerAdapter adapter = new PagerAdapter
                 (getActivity().getSupportFragmentManager(), tabLayout.getTabCount(),"QuestionPap");
         viewPager.setAdapter(adapter);

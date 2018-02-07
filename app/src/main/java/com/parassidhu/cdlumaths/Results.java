@@ -37,7 +37,7 @@ public class Results extends Fragment {
     }
     public void setup(){
         try {
-            TabLayout tabLayout = (TabLayout) getActivity().findViewById(R.id.tab_layout);
+            TabLayout tabLayout = getActivity().findViewById(R.id.tab_layout);
             tabLayout.addTab(tabLayout.newTab().setText("5-Years"));
             tabLayout.addTab(tabLayout.newTab().setText("2-Years"));
             tabLayout.addTab(tabLayout.newTab().setText("Summary"));
@@ -48,7 +48,7 @@ public class Results extends Fragment {
             tabLayout.setBackgroundColor(Color.rgb(r,g,b));
             tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
             tabLayout.setSelectedTabIndicatorColor(Color.rgb(r,g,b));
-            final ViewPager viewPager = (ViewPager) getActivity().findViewById(R.id.pager);
+            final ViewPager viewPager = getActivity().findViewById(R.id.pager);
             final PagerAdapter adapter = new PagerAdapter
                     (getActivity().getSupportFragmentManager(), tabLayout.getTabCount(),"Result");
             viewPager.setAdapter(adapter);

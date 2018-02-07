@@ -54,8 +54,8 @@ public class enquiryadapter extends RecyclerView.Adapter<enquiryadapter.ViewHold
         TextView subname;
         public ViewHolder(View view) {
             super(view);
-            tv_android = (TextView)view.findViewById(R.id.tv_android);
-            subname = (TextView)view.findViewById(R.id.subname);
+            tv_android = view.findViewById(R.id.tv_android);
+            subname = view.findViewById(R.id.subname);
         }
     }
 }

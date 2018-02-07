@@ -183,16 +183,16 @@ public class timetable extends Fragment {
         calendar = Calendar.getInstance();
         sharedPreferences = getActivity().getSharedPreferences("Values", Context.MODE_PRIVATE);
 
-        spinner = (MaterialSpinner) getActivity().findViewById(R.id.ttSpinner);
+        spinner = getActivity().findViewById(R.id.ttSpinner);
         spinner.setItems("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday");
         listItems = new ArrayList<>();
         setHasOptionsMenu(true);
-        ttList = (RecyclerView) getActivity().findViewById(R.id.ttList);
-        next = (Button) getActivity().findViewById(R.id.next);
+        ttList = getActivity().findViewById(R.id.ttList);
+        next = getActivity().findViewById(R.id.next);
         ttList.setLayoutManager(new LinearLayoutManager(getActivity()));
         ttList.setFocusable(false);
-        disableText = (TextView) getActivity().findViewById(R.id.disableText);
-        ttSem = (MaterialSpinner) getActivity().findViewById(R.id.ttSem);
+        disableText = getActivity().findViewById(R.id.disableText);
+        ttSem = getActivity().findViewById(R.id.ttSem);
         sidhu.setFastScrolling(ttList);
         getActivity().setTitle("TimeTable");
         next.setOnClickListener(new View.OnClickListener() {
@@ -247,10 +247,8 @@ public class timetable extends Fragment {
 
     //Check if Now, Next kind of Text would be shown
     private boolean isCurrent() {
-        if (spinner.getText().toString().equals(getDay()) && Integer.valueOf(clockHour()) <= 14 &&
-                Integer.valueOf(clockHour()) >= 9 && calendar.get(Calendar.DAY_OF_WEEK) != Calendar.SUNDAY)
-            return true;
-        return false;
+        return spinner.getText().toString().equals(getDay()) && Integer.valueOf(clockHour()) <= 14 &&
+                Integer.valueOf(clockHour()) >= 9 && calendar.get(Calendar.DAY_OF_WEEK) != Calendar.SUNDAY;
     }
 
     //Hour passed on to Adapter. Not full time just exact hour

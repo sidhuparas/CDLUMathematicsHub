@@ -64,13 +64,13 @@ public class Syllabus2Year extends Fragment {
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        RecyclerView rcl =(RecyclerView)view.findViewById(R.id.card_recycler_view1);
+        RecyclerView rcl = view.findViewById(R.id.card_recycler_view1);
         rcl.setHasFixedSize(true);
         RecyclerView.LayoutManager layoutManager = new GridLayoutManager(getActivity(),2);
         rcl.setLayoutManager(layoutManager);
 
-        finalsch = (Button) getActivity().findViewById(R.id.finalsch);
-        DA2 = (Button) getActivity().findViewById(R.id.DownloadAll2);
+        finalsch = getActivity().findViewById(R.id.finalsch);
+        DA2 = getActivity().findViewById(R.id.DownloadAll2);
         final String add="CDLU/syllabus/2year/";
         finalsch.setOnClickListener(new View.OnClickListener() {
             @Override

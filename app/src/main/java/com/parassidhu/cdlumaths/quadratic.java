@@ -22,15 +22,15 @@ public class quadratic extends AppCompatActivity {
         acb.setHomeButtonEnabled(true);
         acb.setDisplayHomeAsUpEnabled(true);
         acb.setTitle("Quadratic Equation Solver");
-        final EditText edt1 = (EditText)findViewById(R.id.a);
-        final EditText edt2 = (EditText)findViewById(R.id.b);
-        final EditText edt3 = (EditText)findViewById(R.id.c);
-        final TextView root = (TextView) findViewById(R.id.roots);
+        final EditText edt1 = findViewById(R.id.a);
+        final EditText edt2 = findViewById(R.id.b);
+        final EditText edt3 = findViewById(R.id.c);
+        final TextView root = findViewById(R.id.roots);
         int a;
         int b;
         int c;
-        TextView txt = (TextView)findViewById(R.id.equation);
-        final Button btn = (Button)findViewById(R.id.button);
+        TextView txt = findViewById(R.id.equation);
+        final Button btn = findViewById(R.id.button);
         txt.setText(Html.fromHtml("From equation ax<sup><small>2</small></sup>+bx+c:"));
         edt3.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override

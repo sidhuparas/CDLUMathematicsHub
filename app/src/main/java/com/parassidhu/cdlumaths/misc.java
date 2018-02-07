@@ -52,7 +52,7 @@ public class misc extends Fragment {
         initViews();
         final String add="CDLU/misc/";
 
-        RecyclerView rcl =(RecyclerView) getActivity().findViewById(R.id.card_recycler_viewee);
+        RecyclerView rcl = getActivity().findViewById(R.id.card_recycler_viewee);
         ItemClickSupport.addTo(rcl).setOnItemClickListener(new ItemClickSupport.OnItemClickListener() {
        @Override
        public void onItemClicked(RecyclerView recyclerView, int position, View v) {
@@ -72,7 +72,7 @@ public class misc extends Fragment {
 
     private void initViews(){
         try {
-            RecyclerView recyclerView = (RecyclerView) getActivity().findViewById(R.id.card_recycler_viewee);
+            RecyclerView recyclerView = getActivity().findViewById(R.id.card_recycler_viewee);
             recyclerView.setHasFixedSize(true);
             RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
             recyclerView.setLayoutManager(layoutManager);

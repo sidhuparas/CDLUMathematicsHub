@@ -107,14 +107,14 @@ public class SummaryResult extends AppCompatActivity {
         }
         setTitle("Results (" + seme + " Sem)");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        resultdata = (RecyclerView) findViewById(R.id.resultdatalv);
+        resultdata = findViewById(R.id.resultdatalv);
         val = getIntent().getLongExtra("start", 10);
         val2 = getIntent().getLongExtra("end", 10);
         which = getIntent().getStringExtra("which");
-        processing = (LinearLayout) findViewById(R.id.processing);
-        processtext = (TextView) findViewById(R.id.processtext);
+        processing = findViewById(R.id.processing);
+        processtext = findViewById(R.id.processtext);
         processing.setVisibility(View.VISIBLE);
-        progressBar = (ProgressBar) findViewById(R.id.progressShow);
+        progressBar = findViewById(R.id.progressShow);
 
 
         resultlist = new ArrayList();
@@ -148,7 +148,6 @@ public class SummaryResult extends AppCompatActivity {
                 }else{
                     Toast.makeText(SummaryResult.this, "Please wait until all the results are fetched...", Toast.LENGTH_SHORT).show();
                 }
-                    ;
             }
         });
     }

@@ -55,7 +55,7 @@ public class tsem4 extends AppCompatActivity {
         initViews();
         registerReceiver();
         sidhu.renderTheme(this);
-        final AdView adView = (AdView) this.findViewById(R.id.adView);
+        final AdView adView = this.findViewById(R.id.adView);
         if (showAds()){
             MobileAds.initialize(getApplicationContext(),"ca-app-pub-6089158898128407/9919503008");
             AdRequest adRequest = new AdRequest.Builder()
@@ -83,7 +83,7 @@ public class tsem4 extends AppCompatActivity {
             adView.setVisibility(View.GONE);
         }
 
-        final RecyclerView rcl = (RecyclerView) findViewById(R.id.card_recycler_view);
+        final RecyclerView rcl = findViewById(R.id.card_recycler_view);
         ItemClickSupport.addTo(rcl).setOnItemClickListener(new ItemClickSupport.OnItemClickListener() {
             @Override
             public void onItemClicked(RecyclerView recyclerView, int position, View v) {
@@ -184,7 +184,7 @@ public class tsem4 extends AppCompatActivity {
         acb.setTitle("Choose Subject");
     }
     private void initViews(){
-        RecyclerView recyclerView = (RecyclerView)findViewById(R.id.card_recycler_view);
+        RecyclerView recyclerView = findViewById(R.id.card_recycler_view);
         recyclerView.setHasFixedSize(true);
         RecyclerView.LayoutManager layoutManager = new GridLayoutManager(getApplicationContext(),2);
         recyclerView.setLayoutManager(layoutManager);

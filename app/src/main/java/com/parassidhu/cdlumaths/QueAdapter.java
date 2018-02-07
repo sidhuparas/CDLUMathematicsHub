@@ -53,7 +53,7 @@ public class QueAdapter extends RecyclerView.Adapter<QueAdapter.ViewHolder> {
         TextView tv_android;
         public ViewHolder(View view) {
             super(view);
-            tv_android = (TextView)view.findViewById(R.id.tv_android);
+            tv_android = view.findViewById(R.id.tv_android);
         }
     }
 }

@@ -134,10 +134,10 @@ public class AssignmentAdapter extends RecyclerView.Adapter<AssignmentAdapter.Vi
         ImageView dot;
         public ViewHolder(View view) {
             super(view);
-            tv_android = (TextView)view.findViewById(R.id.tv_android);
-            contentLayout = (TextView) view.findViewById(R.id.content);
-            expandit = (RelativeLayout)view.findViewById(R.id.expandit);
-            dot = (ImageView)view.findViewById(R.id.dot);
+            tv_android = view.findViewById(R.id.tv_android);
+            contentLayout = view.findViewById(R.id.content);
+            expandit = view.findViewById(R.id.expandit);
+            dot = view.findViewById(R.id.dot);
         }
     }
 }

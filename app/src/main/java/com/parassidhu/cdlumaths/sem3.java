@@ -53,7 +53,7 @@ public class sem3 extends AppCompatActivity {
         setupView();
         initViews();
         sidhu.renderTheme(this);
-        final AdView adView = (AdView) this.findViewById(R.id.adView);
+        final AdView adView = this.findViewById(R.id.adView);
         if (showAds()){
             MobileAds.initialize(getApplicationContext(),"ca-app-pub-6089158898128407/9919503008");
             AdRequest adRequest = new AdRequest.Builder()
@@ -81,7 +81,7 @@ public class sem3 extends AppCompatActivity {
             adView.setVisibility(View.GONE);
         }
 
-        final RecyclerView rcl = (RecyclerView) findViewById(R.id.card_recycler_view);
+        final RecyclerView rcl = findViewById(R.id.card_recycler_view);
         ItemClickSupport.addTo(rcl).setOnItemClickListener(new ItemClickSupport.OnItemClickListener() {
             @Override
             public void onItemClicked(RecyclerView recyclerView, int position, View v) {
@@ -245,8 +245,8 @@ public class sem3 extends AppCompatActivity {
     }
 
     private void initViews(){
-        RecyclerView recyclerView = (RecyclerView)findViewById(R.id.card_recycler_view);
-        Button download = (Button)findViewById(R.id.downloadLiveHTML);
+        RecyclerView recyclerView = findViewById(R.id.card_recycler_view);
+        Button download = findViewById(R.id.downloadLiveHTML);
         download.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

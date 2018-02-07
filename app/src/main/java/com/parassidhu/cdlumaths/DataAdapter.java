@@ -87,9 +87,9 @@ public class DataAdapter extends RecyclerView.Adapter<DataAdapter.ViewHolder> {
         TextView imageButton;
         public ViewHolder(View view) {
             super(view);
-            tv_android = (TextView)view.findViewById(R.id.tv_android);
-            img_android = (ImageView)view.findViewById(R.id.img_android);
-            imageButton = (TextView) view.findViewById(R.id.imgButton);
+            tv_android = view.findViewById(R.id.tv_android);
+            img_android = view.findViewById(R.id.img_android);
+            imageButton = view.findViewById(R.id.imgButton);
         }
     }
 }

@@ -48,7 +48,7 @@ public class WOOPAdapter extends RecyclerView.Adapter<WOOPAdapter.ViewHolder> {
 
         public ViewHolder(View view) {
             super(view);
-            tv_android = (TextView)view.findViewById(R.id.tv_android);
+            tv_android = view.findViewById(R.id.tv_android);
         }
     }
 }

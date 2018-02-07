@@ -194,17 +194,21 @@ public class feedback extends AppCompatActivity {
                     .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                         @Override
                         public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                            pDialog.dismiss();
-                            Toast.makeText(feedback.this, "Thank you! Your feedback has been successfully sent.", Toast.LENGTH_LONG).show();
-                            deleteFeed(filename);
+                          try {
+                              pDialog.dismiss();
+                              Toast.makeText(feedback.this, "Thank you! Your feedback has been successfully sent.", Toast.LENGTH_LONG).show();
+                              deleteFeed(filename);
+                          }catch (Exception e){}
                         }
                     })
                     .addOnFailureListener(new OnFailureListener() {
                         @Override
                         public void onFailure(@NonNull Exception exception) {
+                            try{
                             pDialog.dismiss();
                             Toast.makeText(feedback.this, exception.getMessage(), Toast.LENGTH_SHORT).show();
                             deleteFeed(filename);
+                            }catch (Exception e){}
                         }
                     });
         }catch (Exception e){

@@ -67,7 +67,7 @@ public class donate extends Fragment {
     @Override
     public void onViewCreated(View v, Bundle savedInstanceState){
         setHasOptionsMenu(true);
-        paytm2=(Button)getActivity().findViewById(R.id.paytm2);
+        paytm2= getActivity().findViewById(R.id.paytm2);
         paytm2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

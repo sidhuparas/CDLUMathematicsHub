@@ -20,9 +20,9 @@ public class sendPapers extends AppCompatActivity {
         acb.setHomeButtonEnabled(true);
         acb.setDisplayHomeAsUpEnabled(true);
         acb.setTitle("Send Question Papers");
-        Button btn = (Button)findViewById(R.id.btn);
-        final EditText name = (EditText)findViewById(R.id.name);
-        final EditText detail = (EditText)findViewById(R.id.detail);
+        Button btn = findViewById(R.id.btn);
+        final EditText name = findViewById(R.id.name);
+        final EditText detail = findViewById(R.id.detail);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

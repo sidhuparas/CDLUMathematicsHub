@@ -40,7 +40,7 @@ public class Result1 extends Fragment {
 
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        RecyclerView rcl = (RecyclerView) view.findViewById(R.id.card_recycler_view1);
+        RecyclerView rcl = view.findViewById(R.id.card_recycler_view1);
         rcl.setHasFixedSize(true);
         RecyclerView.LayoutManager layoutManager = new GridLayoutManager(getActivity(), 2);
         rcl.setLayoutManager(layoutManager);

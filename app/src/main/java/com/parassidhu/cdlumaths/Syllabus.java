@@ -44,7 +44,7 @@ public class Syllabus extends Fragment {
 
     public void setup(){
        try {
-           TabLayout tabLayout = (TabLayout) getActivity().findViewById(R.id.tab_layout);
+           TabLayout tabLayout = getActivity().findViewById(R.id.tab_layout);
            tabLayout.addTab(tabLayout.newTab().setText("5-Years"));
            tabLayout.addTab(tabLayout.newTab().setText("2-Years"));
            tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
@@ -55,7 +55,7 @@ public class Syllabus extends Fragment {
            tabLayout.setBackgroundColor(Color.rgb(r,g,b));
            tabLayout.setSelectedTabIndicatorColor(Color.rgb(r,g,b));
 
-           final ViewPager viewPager = (ViewPager) getActivity().findViewById(R.id.pager);
+           final ViewPager viewPager = getActivity().findViewById(R.id.pager);
            final PagerAdapter adapter = new PagerAdapter
                    (getActivity().getSupportFragmentManager(), tabLayout.getTabCount(),"Syllabus");
            viewPager.setAdapter(adapter);

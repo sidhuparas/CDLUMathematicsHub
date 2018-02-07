@@ -26,6 +26,7 @@ import java.util.ArrayList;
 public class Q2Year extends Fragment {
 
     private TextView choose2year;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -37,7 +38,7 @@ public class Q2Year extends Fragment {
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         initViews();
-        RecyclerView rcl =(RecyclerView) getActivity().findViewById(R.id.card_recycler_view1);
+        RecyclerView rcl = getActivity().findViewById(R.id.card_recycler_view1);
         ImageView apppromo = getActivity().findViewById(R.id.apppromo);
         apppromo.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -74,7 +75,7 @@ public class Q2Year extends Fragment {
 
     private void initViews(){
         try {
-            RecyclerView recyclerView = (RecyclerView) getActivity().findViewById(R.id.card_recycler_view1);
+            RecyclerView recyclerView = getActivity().findViewById(R.id.card_recycler_view1);
             recyclerView.setHasFixedSize(true);
             RecyclerView.LayoutManager layoutManager = new GridLayoutManager(getActivity().getApplicationContext(),2);
             recyclerView.setLayoutManager(layoutManager);

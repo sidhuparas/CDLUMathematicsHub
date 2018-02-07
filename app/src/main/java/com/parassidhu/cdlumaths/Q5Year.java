@@ -48,7 +48,7 @@ public class Q5Year extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         initViews();
         try {
-            RecyclerView rcl = (RecyclerView) getActivity().findViewById(R.id.card_recycler_vie);
+            RecyclerView rcl = getActivity().findViewById(R.id.card_recycler_vie);
             ItemClickSupport.addTo(rcl).setOnItemClickListener(new ItemClickSupport.OnItemClickListener() {
                 @Override
                 public void onItemClicked(RecyclerView recyclerView, int position, View v) {
@@ -101,7 +101,7 @@ public class Q5Year extends Fragment {
 
     private void initViews(){
       try {
-          RecyclerView recyclerView = (RecyclerView) getActivity().findViewById(R.id.card_recycler_vie);
+          RecyclerView recyclerView = getActivity().findViewById(R.id.card_recycler_vie);
           ImageView apppromo = getActivity().findViewById(R.id.apppromo);
           apppromo.setOnClickListener(new View.OnClickListener() {
               @Override

@@ -51,11 +51,11 @@ public class notices extends Fragment {
         try {
             setHasOptionsMenu(true);
             getActivity().setTitle("Notices");
-            progressBar = (ProgressBar) getActivity().findViewById(R.id.progressBar);
+            progressBar = getActivity().findViewById(R.id.progressBar);
             progressBar.setVisibility(View.VISIBLE);
             initViews();
 
-            swipeRefreshLayout = (SwipeRefreshLayout) getActivity().findViewById(R.id.swipeRefreshLayout);
+            swipeRefreshLayout = getActivity().findViewById(R.id.swipeRefreshLayout);
 
             swipeRefreshLayout.setNestedScrollingEnabled(true);
             swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
@@ -72,7 +72,7 @@ public class notices extends Fragment {
     }
 
     private void initViews(){
-        recyclerView = (RecyclerView) getActivity().findViewById(R.id.recycler_view);
+        recyclerView = getActivity().findViewById(R.id.recycler_view);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity().getApplicationContext());
         recyclerView.setLayoutManager(layoutManager);
         loadJSON();
@@ -131,8 +131,10 @@ public class notices extends Fragment {
         }, new com.android.volley.Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                progressBar.setVisibility(View.GONE);
-                Toast.makeText(getActivity(), "Error: Internet connection isn't buttery smooth!", Toast.LENGTH_SHORT).show();
+                try {
+                    progressBar.setVisibility(View.GONE);
+                    Toast.makeText(getActivity(), "Error: Internet connection isn't buttery smooth!", Toast.LENGTH_SHORT).show();
+                }catch (Exception e){}
             }
         });
 

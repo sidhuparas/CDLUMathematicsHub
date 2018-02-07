@@ -67,7 +67,7 @@ public class Summary extends Fragment {
     }
 
     public void onViewCreated(View view, Bundle savedInstance){
-        show = (Button) getActivity().findViewById(R.id.show);
+        show = getActivity().findViewById(R.id.show);
         show.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -88,10 +88,10 @@ public class Summary extends Fragment {
                 }
             }
         });
-        spinner = (MaterialSpinner) getActivity().findViewById(R.id.spinner);
-        total = (MaterialSpinner) getActivity().findViewById(R.id.total);
-        code = (EditText)getActivity().findViewById(R.id.code);
-        codehint = (TextView)getActivity().findViewById(R.id.codehint);
+        spinner = getActivity().findViewById(R.id.spinner);
+        total = getActivity().findViewById(R.id.total);
+        code = getActivity().findViewById(R.id.code);
+        codehint = getActivity().findViewById(R.id.codehint);
         codehint.setVisibility(View.GONE);
         codehint.setText("For example, "+"\"MH54\","+"\"MH24\".");
         spinner.setItems("1","2","3","4","5","6","7","8","9","10");
@@ -109,10 +109,10 @@ public class Summary extends Fragment {
 
             }
         });
-        start = (EditText)getActivity().findViewById(R.id.txtSem2);
-        end = (EditText)getActivity().findViewById(R.id.txtSem3);
-        five=(RadioButton)getActivity().findViewById(R.id.five);
-        two=(RadioButton)getActivity().findViewById(R.id.two);
+        start = getActivity().findViewById(R.id.txtSem2);
+        end = getActivity().findViewById(R.id.txtSem3);
+        five= getActivity().findViewById(R.id.five);
+        two= getActivity().findViewById(R.id.two);
         five.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

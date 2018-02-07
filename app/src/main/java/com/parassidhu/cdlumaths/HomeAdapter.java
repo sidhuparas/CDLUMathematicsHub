@@ -60,7 +60,7 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
         ImageView img_android;
         public ViewHolder(View view) {
             super(view);
-            img_android = (ImageView)view.findViewById(R.id.img_android);
+            img_android = view.findViewById(R.id.img_android);
         }
     }
 }

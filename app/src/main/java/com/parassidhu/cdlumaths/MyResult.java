@@ -145,17 +145,17 @@ public class MyResult extends AppCompatActivity {
         else getSupportActionBar().setDisplayHomeAsUpEnabled(false);
 
         setContentView(R.layout.activity_my_result);
-        plusone = (Button)findViewById(R.id.plusone);
-        next = (Button) findViewById(R.id.nextresult);
-        rroll = (TextView) findViewById(R.id.txtresultroll);
-        rollno = (EditText) findViewById(R.id.txtrollno);
-        resultdata = (RecyclerView) findViewById(R.id.resultdatalv);
-        fabsubmit = (Button) findViewById(R.id.submit);
-        screenLayout = (LinearLayout) findViewById(R.id.screenLayout);
-        extra = (LinearLayout)findViewById(R.id.extra);
-        findanother = (Button)findViewById(R.id.findanother);
+        plusone = findViewById(R.id.plusone);
+        next = findViewById(R.id.nextresult);
+        rroll = findViewById(R.id.txtresultroll);
+        rollno = findViewById(R.id.txtrollno);
+        resultdata = findViewById(R.id.resultdatalv);
+        fabsubmit = findViewById(R.id.submit);
+        screenLayout = findViewById(R.id.screenLayout);
+        extra = findViewById(R.id.extra);
+        findanother = findViewById(R.id.findanother);
 
-        rname = (TextView)findViewById(R.id.txtresultname);
+        rname = findViewById(R.id.txtresultname);
         hideit();
         resultlist = new ArrayList();
         enquiry = new ArrayList();
@@ -263,7 +263,7 @@ public class MyResult extends AppCompatActivity {
 
 
     public void show(){
-        CoordinatorLayout co = (CoordinatorLayout)findViewById(R.id.coordi);
+        CoordinatorLayout co = findViewById(R.id.coordi);
         co.setBackgroundColor(Color.parseColor("#ffffff"));
     }
     public class getresult extends AsyncTask<String, Void, String> {
