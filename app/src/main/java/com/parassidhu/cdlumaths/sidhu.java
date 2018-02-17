@@ -1,6 +1,7 @@
 package com.parassidhu.cdlumaths;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.AssetManager;
 import android.graphics.Color;
@@ -8,7 +9,9 @@ import android.graphics.Typeface;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Build;
+import android.os.Environment;
 import android.support.v4.view.ViewCompat;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
@@ -17,9 +20,13 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.yarolegovich.lovelydialog.LovelyInfoDialog;
 import com.yarolegovich.lovelydialog.LovelyStandardDialog;
+
+import java.io.File;
+import java.util.ArrayList;
 
 public class sidhu {
 
@@ -90,14 +97,56 @@ public class sidhu {
                 .show();
     }
 
-    public static void startDownload(String filename, String url,int i, Context context, Context appContext){
-        MyApp x =  (MyApp)appContext;
+    public static void startDownload(String filename, String url, Context context){
+        MyApp x =  (MyApp)context.getApplicationContext();
         x.getUrl(url);
         x.getFilename(filename);
-        x.getID(i);
+        x.getID(getTimeStamp());
+        String newName = filename.substring(0,filename.lastIndexOf("."));
 
-        Intent intent = new Intent(context,DownloadService.class);
-        context.startService(intent);
+        matchFileName(newName,context);
+    }
+
+    public static void matchFileName(String filename, Context context){
+        String path = Environment.getExternalStorageDirectory().toString()+"/CDLU Mathematics Hub";
+
+        File f = new File(path);
+        File file[] = f.listFiles();
+        ArrayList arrayFiles = new ArrayList<String>();
+        if (file.length != 0){
+            for (int i = 0; i < file.length; i++) {
+                String fileName = file[i].getName();
+                //arrayFiles.add(file[i].getName().split("\\.")[count-1]);
+                String newName = fileName.substring(0,fileName.lastIndexOf("."));
+                arrayFiles.add(newName);
+            }
+        }
+
+        if (arrayFiles.contains(filename))
+            showAlertDialog(context,"Redownload?","It seems that you have already downloaded this file. Do you want to download it again?");
+        else {
+            Intent intent = new Intent(context,DownloadService.class);
+            context.startService(intent);
+        }
+    }
+
+    public static void showAlertDialog(final Context context, String title, String msg){
+        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+        builder.setTitle(title)
+                .setMessage(msg)
+                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        Intent intent = new Intent(context,DownloadService.class);
+                        context.startService(intent);
+                    }
+                })
+                .setNegativeButton("No",null)
+                .setIcon(R.drawable.icon)
+                .show();
+    }
+
+    public static int getTimeStamp(){
+        return (int)System.currentTimeMillis();
     }
 
     public static void ActionBarClr(int r, int g, int b, AppCompatActivity activity){

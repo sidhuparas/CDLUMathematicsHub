@@ -116,7 +116,18 @@ public class DownloadService extends Service {
     private Notification.Builder notificationBuilder;
     private NotificationManager notificationManager;
 
+    public void starting() {
+        Toast.makeText(this, "Starting download...Please check notifications panel for progress", Toast.LENGTH_SHORT).show();
+    }
+
     private void initDownload(String filename, String url, int id) {
+        Handler handler = new Handler(Looper.getMainLooper());
+        handler.post(new Runnable() {
+            @Override
+            public void run() {
+                starting();
+            }
+        });
         mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("http://www.downloadinformer.com/")
@@ -202,7 +213,8 @@ public class DownloadService extends Service {
         output.flush();
         output.close();
         bis.close();
-        increaseDownloads();
+        //TODO: Uncomment increaseDownloads()
+        //increaseDownloads();
     }
 
     private void sendNotification(Download download, int id,String filename) {

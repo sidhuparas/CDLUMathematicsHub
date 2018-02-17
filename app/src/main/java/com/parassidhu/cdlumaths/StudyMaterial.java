@@ -206,8 +206,8 @@ public class StudyMaterial extends Fragment {
                     .onPositive(new BottomDialog.ButtonCallback() {
                         @Override
                         public void onClick(@NonNull BottomDialog bottomDialog) {
-                            sidhu.startDownload(title + " (" + listItems.get(pos).getSubject() + ").pdf", listItems.get(pos).getLink(),
-                                    (int) System.currentTimeMillis(), getActivity(), getActivity().getApplicationContext());
+                            sidhu.startDownload(title + " (" + listItems.get(pos).getSubject() + ").pdf",
+                                    listItems.get(pos).getLink(), getActivity());
                             increaseDownloads();
                         }
                     })
@@ -272,9 +272,11 @@ public class StudyMaterial extends Fragment {
                         rcl.setVisibility(View.VISIBLE);
                         suggestMaterial.setVisibility(View.VISIBLE);
                     } catch (Exception e) {
-                        progressBar.setVisibility(View.GONE);
-                        rcl.setVisibility(View.VISIBLE);
-                        Toast.makeText(getActivity(), "Error loading study material! Please check your internet connection.", Toast.LENGTH_LONG).show();
+                        try {
+                            progressBar.setVisibility(View.GONE);
+                            rcl.setVisibility(View.VISIBLE);
+                            Toast.makeText(getActivity(), "Error loading study material! Please check your internet connection.", Toast.LENGTH_LONG).show();
+                        }catch (Exception ex){}
                     }
                 }
             }, new com.android.volley.Response.ErrorListener() {

@@ -1,4 +1,5 @@
 package com.parassidhu.cdlumaths;
+
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
@@ -38,16 +39,31 @@ public class Q2Year extends Fragment {
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         initViews();
-        RecyclerView rcl = getActivity().findViewById(R.id.card_recycler_view1);
-        ImageView apppromo = getActivity().findViewById(R.id.apppromo);
-        apppromo.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                sidhu.openWebPage((AppCompatActivity) getActivity(),"https://play.google.com/store/apps/details?id=com.parassidhu.pdfpinner");
-            }
-        });
+    }
+
+    private void initViews() {
         try {
-            ItemClickSupport.addTo(rcl).setOnItemClickListener(new ItemClickSupport.OnItemClickListener() {
+            RecyclerView recyclerView = getActivity().findViewById(R.id.card_recycler_view1);
+            recyclerView.setHasFixedSize(true);
+            RecyclerView.LayoutManager layoutManager = new GridLayoutManager(getActivity().getApplicationContext(), 2);
+            recyclerView.setLayoutManager(layoutManager);
+
+            ArrayList androidVersions = prepareData();
+            HomeAdapter adapter = new HomeAdapter(getActivity(), androidVersions);
+            recyclerView.setAdapter(adapter);
+
+            //Theme for Choose
+            choose2year = getActivity().findViewById(R.id.choose2year);
+            choose2year.setTextColor(Color.rgb(Home.r, Home.g, Home.b));
+
+            ImageView apppromo = getActivity().findViewById(R.id.apppromo);
+            apppromo.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    sidhu.openWebPage((AppCompatActivity) getActivity(), "https://play.google.com/store/apps/details?id=com.parassidhu.pdfpinner");
+                }
+            });
+            ItemClickSupport.addTo(recyclerView).setOnItemClickListener(new ItemClickSupport.OnItemClickListener() {
                 @Override
                 public void onItemClicked(RecyclerView recyclerView, int position, View v) {
                     switch (position) {
@@ -70,33 +86,16 @@ public class Q2Year extends Fragment {
                     }
                 }
             });
-        }catch (Exception e){}
-    }
-
-    private void initViews(){
-        try {
-            RecyclerView recyclerView = getActivity().findViewById(R.id.card_recycler_view1);
-            recyclerView.setHasFixedSize(true);
-            RecyclerView.LayoutManager layoutManager = new GridLayoutManager(getActivity().getApplicationContext(),2);
-            recyclerView.setLayoutManager(layoutManager);
-
-            ArrayList androidVersions = prepareData();
-            HomeAdapter adapter = new HomeAdapter(getActivity(), androidVersions);
-            recyclerView.setAdapter(adapter);
-
-            //Theme for Choose
-            choose2year = getActivity().findViewById(R.id.choose2year);
-            choose2year.setTextColor(Color.rgb(Home.r,Home.g,Home.b));
-        }catch (Exception ex){
+        } catch (Exception ex) {
 
         }
     }
 
-    private ArrayList prepareData(){
+    private ArrayList prepareData() {
         ArrayList android_version = new ArrayList<>();
-        for(int i=0;i<4;i++){
+        for (int i = 0; i < 4; i++) {
             AndroidVersion androidVersion = new AndroidVersion();
-            switch (i){
+            switch (i) {
                 case 0:
                     androidVersion.setAndroid_image_url(R.drawable.a1);
                     android_version.add(androidVersion);
@@ -113,7 +112,7 @@ public class Q2Year extends Fragment {
                     androidVersion.setAndroid_image_url(R.drawable.a4);
                     android_version.add(androidVersion);
                     break;
-             }
+            }
         }
         return android_version;
     }
