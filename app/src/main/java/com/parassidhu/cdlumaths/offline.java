@@ -361,11 +361,10 @@ public class offline extends Fragment {
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(rcl.getContext(),DividerItemDecoration.VERTICAL);
         rcl.addItemDecoration(dividerItemDecoration);
         rcl.setAdapter(adapter);
-        sidhu.setFastScrolling(rcl);
         ItemClickSupport.addTo(rcl).setOnItemClickListener(new ItemClickSupport.OnItemClickListener() {
             @Override
             public void onItemClicked(RecyclerView recyclerView, int position, View v) {
-                openFile(names.get(position)+".pdf");
+                sidhu.openFile(getActivity(),names.get(position) +".pdf");
             }
         });
 
@@ -533,26 +532,6 @@ public class offline extends Fragment {
 
     private boolean isOreo() {
         return Build.VERSION.SDK_INT > 25;
-    }
-
-    public void openFile(String filename){
-        File file = new File(Environment.getExternalStorageDirectory()+"/CDLU Mathematics Hub",
-                filename);
-        Uri path;
-        if(Build.VERSION.SDK_INT>=Build.VERSION_CODES.N) {
-            path = FileProvider.getUriForFile(getActivity(), getActivity().getApplicationContext().getPackageName() + ".provider", file);
-        }else {
-            path = Uri.fromFile(file);
-        }
-        Intent pdfOpenintent = new Intent(Intent.ACTION_VIEW,path);
-        pdfOpenintent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
-        pdfOpenintent.setDataAndType(path, "application/pdf");
-        try {
-            startActivity(pdfOpenintent);
-        }
-        catch (ActivityNotFoundException e) {
-            Toast.makeText(getActivity(), "No PDF reader installed. Please download from Play Store.", Toast.LENGTH_SHORT).show();
-        }
     }
 
     private ArrayList prepareData(){

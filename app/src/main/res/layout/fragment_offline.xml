@@ -1,71 +1,68 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/offlinelayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:paddingBottom="@dimen/activity_vertical_margin"
-    android:id="@+id/offlinelayout"
     android:paddingLeft="8dp"
     android:paddingRight="8dp"
     android:paddingTop="8dp">
 
-    <android.support.v4.widget.NestedScrollView
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:focusableInTouchMode="true">
 
-        <RelativeLayout
+        <Button
+            android:id="@+id/sortBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="20dp"
+            android:background="@drawable/nred"
+            android:drawableLeft="@drawable/sort"
+            android:elevation="3dp"
+            android:padding="10dp"
+            android:text="Sort"
+            android:textColor="@color/white"
+            android:textSize="16sp" />
+
+        <Button
+            android:id="@+id/theme"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginBottom="5dp"
+            android:layout_marginRight="20dp"
+            android:background="@drawable/nred"
+            android:drawableLeft="@drawable/theme"
+            android:elevation="3dp"
+            android:padding="10dp"
+            android:text="Themes"
+            android:textColor="@color/white"
+            android:textSize="16sp" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/offlinerecycle"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:focusableInTouchMode="true">
+            android:layout_height="wrap_content"
+            android:layout_below="@id/sortBtn"
+            android:descendantFocusability="blocksDescendants"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"
+            android:scrollbars="none" />
 
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/sortBtn"
-                android:layout_marginBottom="5dp"
-                android:text="Sort"
-                android:background="@color/blue"
-                android:layout_alignParentLeft="true"
-                android:layout_marginLeft="20dp"
-                android:textColor="@color/white"
-                android:drawableLeft="@drawable/sort"
-                android:textSize="16sp"
-                android:elevation="3dp"
-                android:padding="10dp" />
-
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/theme"
-                android:layout_marginBottom="5dp"
-                android:text="Theme Options"
-                android:background="@color/blue"
-                android:layout_alignParentRight="true"
-                android:layout_marginRight="20dp"
-                android:textColor="@color/white"
-                android:drawableLeft="@drawable/theme"
-                android:textSize="16sp"
-                android:elevation="3dp"
-                android:padding="10dp" />
-
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/offlinerecycle"
-                android:scrollbars="none"
-                android:layout_width="match_parent"
-                android:descendantFocusability="blocksDescendants"
-                android:layout_below="@id/sortBtn"
-                android:layout_height="wrap_content" />
-
-        </RelativeLayout>
-    </android.support.v4.widget.NestedScrollView>
+    </RelativeLayout>
 
     <TextView
+        android:id="@+id/nofile"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:visibility="gone"
-        android:id="@+id/nofile"
-        android:text="No content to show. Download files to get started."
         android:paddingLeft="20dp"
-        android:paddingRight="20dp"/>
+        android:paddingRight="20dp"
+        android:text="No content to show. Download files to get started."
+        android:visibility="gone" />
 </RelativeLayout>

@@ -323,13 +323,6 @@ public class Home extends AppCompatActivity
                 .show();
     }
 
-    public boolean showAds() {
-        SharedPreferences getPrefs = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
-        boolean showAd = getPrefs.getBoolean("showAd", true);
-        return showAd;
-    }
-
-
     public int getPosition(){
         sharedPreferences = getSharedPreferences("offlinesorting", Context.MODE_PRIVATE);
         int sort = sharedPreferences.getInt("offlinesorting",0);
@@ -434,7 +427,6 @@ public class Home extends AppCompatActivity
             }
         });
         fab.setBackgroundTintList(ColorStateList.valueOf(Color.rgb(r,g,b)));
-        //fab.setBackgroundColor(Color.rgb(r,g,b));
         navigationView.setItemIconTintList(null);
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -465,6 +457,7 @@ public class Home extends AppCompatActivity
             ActivityCompat.requestPermissions(this, PERMISSIONS, PERMISSION_ALL);
         }
     }
+
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = findViewById(R.id.drawer_layout);

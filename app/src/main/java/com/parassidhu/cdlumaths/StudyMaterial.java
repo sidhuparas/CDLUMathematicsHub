@@ -282,9 +282,11 @@ public class StudyMaterial extends Fragment {
             }, new com.android.volley.Response.ErrorListener() {
                 @Override
                 public void onErrorResponse(VolleyError error) {
-                    progressBar.setVisibility(View.GONE);
-                    rcl.setVisibility(View.VISIBLE);
-                    Toast.makeText(getActivity(), "Error loading study material! Please check your internet connection.", Toast.LENGTH_LONG).show();
+                    try {
+                        progressBar.setVisibility(View.GONE);
+                        rcl.setVisibility(View.VISIBLE);
+                        Toast.makeText(getActivity(), "Error loading study material! Please check your internet connection.", Toast.LENGTH_LONG).show();
+                    }catch (Exception e){}
 
                 }
             });

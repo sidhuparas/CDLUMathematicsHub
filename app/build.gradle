@@ -9,8 +9,8 @@ android {
         applicationId "com.parassidhu.cdlumaths"
         minSdkVersion 16
         targetSdkVersion 27
-        versionCode 40
-        versionName "4.0"
+        versionCode 411
+        versionName "4.1"
         multiDexEnabled true
     }
     signingConfigs {

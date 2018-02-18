@@ -75,33 +75,63 @@ public class sem10 extends AppCompatActivity {
     @Override
     public boolean onContextItemSelected(MenuItem item) {
         MyApp m = (MyApp) getApplicationContext();
-        String add="CDLU/sem10/2016/";
+        String add[]={
+                "CDLU/sem10/2016/",
+                "CDLU/sem10/2017/"};
         switch (item.getItemId()) {
             case R.id.download:
                 switch (m.getit10()) {
                     case 0:
                         sidhu.startDownload("Functional Analysis (May 16).pdf",
-                                add+"FA%28May16%29.pdf",this);
+                                add[0]+"FA%28May16%29.pdf",this);
                         break;
                     case 1:
                         sidhu.startDownload("Partial Differential Equations-10 (May 16).pdf",
-                                add+"PDE%28May16%29.pdf",this);
+                                add[0]+"PDE%28May16%29.pdf",this);
                         break;
                     case 2:
                         sidhu.startDownload("Mechanics of Solids-II (May 16).pdf",
-                                add+"MoS%28May16%29.pdf",this);
+                                add[0]+"MoS%28May16%29.pdf",this);
                         break;
                     case 3:
                         sidhu.startDownload("Boundary Value Problem (May 16).pdf",
-                                add+"BVP%28May16%29.pdf",this);
+                                add[0]+"BVP%28May16%29.pdf",this);
                         break;
                     case 4:
                         sidhu.startDownload("Mathematical Aspect of Seismology (May 16).pdf",
-                                add+"MaOS%28May16%29.pdf",this);
+                                add[0]+"MaOS%28May16%29.pdf",this);
                         break;
                     case 5:
                         sidhu.startDownload("MSc Maths 5-Year 10th Sem (May 16).pdf",
-                                add+"MSc%20Maths%2010th%20Sem%20%28May%2016%29.pdf",this);
+                                add[0]+"MSc%20Maths%2010th%20Sem%20%28May%2016%29.pdf",this);
+                        break;
+                }
+                return true;
+            case R.id.may17:
+                switch (m.getit10()) {
+                    case 0:
+                        sidhu.startDownload("Functional Analysis (May 17).pdf",
+                                add[1]+"FA.pdf",this);
+                        break;
+                    case 1:
+                        sidhu.startDownload("Partial Differential Equations-10 (May 17).pdf",
+                                add[1]+"PDE.pdf",this);
+                        break;
+                    case 2:
+                        sidhu.startDownload("Mechanics of Solids-II (May 17).pdf",
+                                add[1]+"MoS.pdf",this);
+                        break;
+                    case 3:
+                        sidhu.startDownload("Boundary Value Problem (May 17).pdf",
+                                add[1]+"BVP.pdf",this);
+                        break;
+                    case 4:
+                        sidhu.startDownload("Mathematical Aspect of Seismology (May 17).pdf",
+                                add[1]+"MaOS.pdf",this);
+                        break;
+                    case 5:
+                        sidhu.startDownload("MSc Maths 5-Year 10th Sem (May 17).pdf",
+                                add[1]+"ALL.pdf",this);
                         break;
                 }
                 return true;

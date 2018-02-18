@@ -20,7 +20,6 @@ public class Syllabus2Year extends Fragment {
     HomeAdapter adapter;
     private Button finalsch;
     private Button DA2;
-    
     final String add="CDLU/syllabus/2year/";
 
     public void x(final String pos){
@@ -32,20 +31,16 @@ public class Syllabus2Year extends Fragment {
                     public void onClick(DialogInterface dialogInterface, int i) {
                         switch (pos){
                             case "1":
-                                startDownload("Semester "+pos +" (2-Year).pdf",add+"Semester%20-%20I.pdf",10001);
-                                ;
+                                sidhu.startDownload("Semester "+pos +" (2-Year).pdf",add+"Semester%20-%20I.pdf",getActivity());
                                 break;
                             case "2":
-                                startDownload("Semester "+pos +" (2-Year).pdf",add+"Semester%20-%20II.pdf",10002);
-                                ;
+                                sidhu.startDownload("Semester "+pos +" (2-Year).pdf",add+"Semester%20-%20II.pdf",getActivity());
                                 break;
                             case "3":
-                                startDownload("Semester "+pos +" (2-Year).pdf",add+"Semester%20-%20III.pdf",10003);
-                                ;
+                                sidhu.startDownload("Semester "+pos +" (2-Year).pdf",add+"Semester%20-%20III.pdf",getActivity());
                                 break;
                             default:
-                                startDownload("Semester "+pos +" (2-Year).pdf",add+"Semester%20-%20IV.pdf",10004);
-                                ;
+                                sidhu.startDownload("Semester "+pos +" (2-Year).pdf",add+"Semester%20-%20IV.pdf",getActivity());
                                 break;
                         }
                     }
@@ -71,13 +66,13 @@ public class Syllabus2Year extends Fragment {
         finalsch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startDownload("Final Scheme (2-Year).pdf",add+"FINAL-Scheme.pdf",10005);
+                sidhu.startDownload("Final Scheme (2-Year).pdf",add+"FINAL-Scheme.pdf",getActivity());
             }
         });
         DA2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startDownload("MSc Maths 2-Year.pdf",add+"MSc%20Maths%202-Year.pdf",10006);
+                sidhu.startDownload("MSc Maths 2-Year.pdf",add+"MSc%20Maths%202-Year.pdf",getActivity());
             }
         });
         ArrayList androidVersions;
@@ -93,46 +88,12 @@ public class Syllabus2Year extends Fragment {
         });
     }
 
-    public void startDownload(String filename, String url,int i){
-        MyApp x =  (MyApp)getActivity().getApplicationContext();
-        x.getUrl(url);
-        x.getFilename(filename);
-        x.getID(i);
-        switch (x.ID){
-            case 10001:
-                Intent intent1 = new Intent(getActivity(),DownloadService.class);
-                getActivity().startService(intent1);
-                break;
-            case 10002:
-                Intent intent2 = new Intent(getActivity(),DownloadService.class);
-                getActivity().startService(intent2);
-                break;
-            case 10003:
-                Intent intent3 = new Intent(getActivity(),DownloadService.class);
-                getActivity().startService(intent3);
-                break;
-            case 10004:
-                Intent intent4 = new Intent(getActivity(),DownloadService.class);
-                getActivity().startService(intent4);
-                break;
-            case 10005:
-                Intent intent5 = new Intent(getActivity(),DownloadService.class);
-                getActivity().startService(intent5);
-                break;
-            case 10006:
-                Intent intent6 = new Intent(getActivity(),DownloadService.class);
-                getActivity().startService(intent6);
-                break;
-        }
-    }
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         return inflater.inflate(R.layout.syllabus2year, container, false);
     }
 
     private ArrayList prepareData(){
-
         ArrayList android_version = new ArrayList<>();
         for(int i=0;i<4;i++){
             AndroidVersion androidVersion = new AndroidVersion();

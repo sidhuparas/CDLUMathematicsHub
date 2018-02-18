@@ -108,7 +108,6 @@ public class DownloadService extends Service {
     @Nullable
     @Override
     public IBinder onBind(Intent intent) {
-
         return null;
     }
 
@@ -117,7 +116,9 @@ public class DownloadService extends Service {
     private NotificationManager notificationManager;
 
     public void starting() {
-        Toast.makeText(this, "Starting download...Please check notifications panel for progress", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "The download is going to start...\n" +
+                "1. Please check notifications panel for progress.\n" +
+                "2. Access the file from Offline section present in top-left Navigation Drawer.", Toast.LENGTH_LONG).show();
     }
 
     private void initDownload(String filename, String url, int id) {
@@ -125,9 +126,11 @@ public class DownloadService extends Service {
         handler.post(new Runnable() {
             @Override
             public void run() {
-                starting();
+                if(sidhu.checkPerm(DownloadService.this))
+                    starting();
             }
         });
+
         mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("http://www.downloadinformer.com/")
@@ -156,12 +159,7 @@ public class DownloadService extends Service {
                 @Override
                 public void onResponse(String response) {
                 }
-            }, new com.android.volley.Response.ErrorListener() {
-                @Override
-                public void onErrorResponse(VolleyError error) {
-
-                }
-            });
+            }, null);
 
             RequestQueue requestQueue = Volley.newRequestQueue(this);
             requestQueue.add(stringRequest);
@@ -213,8 +211,7 @@ public class DownloadService extends Service {
         output.flush();
         output.close();
         bis.close();
-        //TODO: Uncomment increaseDownloads()
-        //increaseDownloads();
+        increaseDownloads();
     }
 
     private void sendNotification(Download download, int id,String filename) {

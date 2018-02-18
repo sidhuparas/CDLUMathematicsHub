@@ -1,9 +1,12 @@
 package com.parassidhu.cdlumaths;
 
+import android.*;
+import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.content.res.AssetManager;
 import android.graphics.Color;
 import android.graphics.Typeface;
@@ -12,6 +15,8 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Environment;
 import android.preference.PreferenceManager;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.FileProvider;
 import android.support.v4.view.ViewCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -119,7 +124,7 @@ public class sidhu {
         File f = new File(path);
         File file[] = f.listFiles();
         ArrayList arrayFiles = new ArrayList<String>();
-        if (file.length != 0){
+        if (file != null){
             for (int i = 0; i < file.length; i++) {
                 String fileName = file[i].getName();
                 //arrayFiles.add(file[i].getName().split("\\.")[count-1]);
@@ -129,24 +134,31 @@ public class sidhu {
         }
 
         if (arrayFiles.contains(filename))
-            showAlertDialog(context,"Redownload?","It seems that you have already downloaded this file. Do you want to download it again?");
+            showAlertDialog(context,"Redownload?",
+                    "It seems that you have already downloaded this file. Do you want to download it again?", filename);
         else {
             Intent intent = new Intent(context,DownloadService.class);
             context.startService(intent);
         }
     }
 
-    public static void showAlertDialog(final Context context, String title, String msg){
+    public static void showAlertDialog(final Context context, String title, String msg, final String filename){
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
         builder.setTitle(title)
                 .setMessage(msg)
-                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                .setNeutralButton("Yes", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
                         Intent intent = new Intent(context,DownloadService.class);
                         context.startService(intent);
                     }
                 })
                 .setNegativeButton("No",null)
+                .setPositiveButton("Open File", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        openFile(context, filename + ".pdf");
+                    }
+                })
                 .setIcon(R.drawable.icon)
                 .show();
     }
@@ -215,6 +227,48 @@ public class sidhu {
         } else {
             adView.setVisibility(View.GONE);
         }
+    }
 
+    public static boolean checkPerm(Context context){
+        hasPermissions(context, android.Manifest.permission.WRITE_EXTERNAL_STORAGE);
+        String[] PERMISSIONS = {android.Manifest.permission.WRITE_EXTERNAL_STORAGE};
+        if (!hasPermissions(context, PERMISSIONS)) {
+            Toast.makeText(context, "You haven't enabled Storage permission. Please go to Settings->Apps and enable the permission so that question paper can be" +
+                            "downloaded and stored on the device."
+                    , Toast.LENGTH_LONG).show();
+            return false;
+        }
+        return true;
+    }
+
+    public static boolean hasPermissions(Context context, String... permissions) {
+        if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && context != null && permissions != null) {
+            for (String permission : permissions) {
+                if (ActivityCompat.checkSelfPermission(context, permission) != PackageManager.PERMISSION_GRANTED) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+
+    public static void openFile(Context context,String filename){
+        File file = new File(Environment.getExternalStorageDirectory()+"/CDLU Mathematics Hub",
+                filename);
+        Uri path;
+        if(Build.VERSION.SDK_INT>=Build.VERSION_CODES.N) {
+            path = FileProvider.getUriForFile(context, context.getApplicationContext().getPackageName() + ".provider", file);
+        }else {
+            path = Uri.fromFile(file);
+        }
+        Intent pdfOpenintent = new Intent(Intent.ACTION_VIEW,path);
+        pdfOpenintent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+        pdfOpenintent.setDataAndType(path, "application/pdf");
+        try {
+            context.startActivity(pdfOpenintent);
+        }
+        catch (ActivityNotFoundException e) {
+            Toast.makeText(context, "No PDF reader installed. Please download from Play Store.", Toast.LENGTH_SHORT).show();
+        }
     }
 }

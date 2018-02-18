@@ -75,45 +75,90 @@ public class sem4 extends AppCompatActivity {
     @Override
     public boolean onContextItemSelected(MenuItem item) {
         MyApp m = (MyApp) getApplicationContext();
-        String add="CDLU/sem4/2016/";
+        String add[]={
+                "CDLU/sem4/2016/",
+                "CDLU/sem4/2017/"
+        };
+
         switch (item.getItemId()) {
             case R.id.download:    //December 2015
                 switch (m.getit4()) {
                     case 0:
                         sidhu.startDownload("Sequences and Series (May 16).pdf",
-                                add+"Sequence%20And%20Series%20(Dec%2014).pdf",this);
+                                add[0]+"Sequence%20And%20Series%20(Dec%2014).pdf",this);
                         break;
                     case 1:
                         sidhu.startDownload("Special Functions and Integral Transforms (May 16).pdf",
-                                add+"Special%20Functions%20And%20Integral%20Transforms%20(Dec%2014).pdf",this);
+                                add[0]+"Special%20Functions%20And%20Integral%20Transforms%20(Dec%2014).pdf",this);
                         break;
                     case 2:
                         sidhu.startDownload("Numerical Analysis (May 16).pdf",
-                                add+"Numerical%20Analysis%20(Dec%2014).pdf",this);
+                                add[0]+"Numerical%20Analysis%20(Dec%2014).pdf",this);
                         break;
                     case 3:
                         sidhu.startDownload("Hydrostatics (May 16).pdf",
-                                add+"Hydrostatics%20(Dec%2014).pdf",this);
+                                add[0]+"Hydrostatics%20(Dec%2014).pdf",this);
                         break;
                     case 4:
                         sidhu.startDownload("Elementary Inference (May 16).pdf",
-                                add+"Elementary%20Inference%20(Dec%2014).pdf",this);
+                                add[0]+"Elementary%20Inference%20(Dec%2014).pdf",this);
                         break;
                     case 5:
                         sidhu.startDownload("Operating Systems (May 16).pdf",
-                                add+"Operating%20System%20(Dec%2014).pdf",this);
+                                add[0]+"Operating%20System%20(Dec%2014).pdf",this);
                         break;
                     case 6:
                         sidhu.startDownload("Data Structures Using C (May 16).pdf",
-                                add+"Data%20Structure%20Using%20C%20(Dec%2014).pdf",this);
+                                add[0]+"Data%20Structure%20Using%20C%20(Dec%2014).pdf",this);
                         break;
                     case 7:
                         sidhu.startDownload("Hindi-II (May 16).pdf",
-                                add+"Hindi-II%20(Dec%2014).pdf",this);
+                                add[0]+"Hindi-II%20(Dec%2014).pdf",this);
                         break;
                     case 8:
                         sidhu.startDownload("Complete Sem 4 (May 16).pdf",
-                                add+"Complete%20Sem%204%20(Dec%2014).pdf",this);
+                                add[0]+"Complete%20Sem%204%20(Dec%2014).pdf",this);
+                        break;
+                }
+                return true;
+
+            case R.id.may17:
+                switch (m.getit4()) {
+                    case 0:
+                        sidhu.startDownload("Sequences and Series (May 17).pdf",
+                                add[1]+"SaS.pdf",this);
+                        break;
+                    case 1:
+                        sidhu.startDownload("Special Functions and Integral Transforms (May 17).pdf",
+                                add[1]+"SFaIT.pdf",this);
+                        break;
+                    case 2:
+                        sidhu.startDownload("Numerical Analysis (May 17).pdf",
+                                add[1]+"NA.pdf",this);
+                        break;
+                    case 3:
+                        sidhu.startDownload("Hydrostatics (May 17).pdf",
+                                add[1]+"H.pdf",this);
+                        break;
+                    case 4:
+                        sidhu.startDownload("Elementary Inference (May 17).pdf",
+                                add[1]+"EI.pdf",this);
+                        break;
+                    case 5:
+                        sidhu.startDownload("Operating Systems (May 17).pdf",
+                                add[1]+"OS.pdf",this);
+                        break;
+                    case 6:
+                        sidhu.startDownload("Data Structures Using C (May 17).pdf",
+                                add[1]+"DSUC.pdf",this);
+                        break;
+                    case 7:
+                        sidhu.startDownload("Hindi-II (May 17).pdf",
+                                add[1]+"Hin.pdf",this);
+                        break;
+                    case 8:
+                        sidhu.startDownload("Complete Sem 4 (May 17).pdf",
+                                add[1]+"ALL.pdf",this);
                         break;
                 }
                 return true;
@@ -128,6 +173,7 @@ public class sem4 extends AppCompatActivity {
         acb.setDisplayHomeAsUpEnabled(true);
         acb.setTitle("Choose Subject");
     }
+
     private void initViews(){
         RecyclerView recyclerView = findViewById(R.id.card_recycler_view);
         recyclerView.setHasFixedSize(true);
@@ -138,6 +184,7 @@ public class sem4 extends AppCompatActivity {
         QueAdapter adapter = new QueAdapter(getApplicationContext(),androidVersions);
         recyclerView.setAdapter(adapter);
     }
+
     private ArrayList prepareData(){
         ArrayList android_version = new ArrayList<>();
         for(int i=0;i<subject_names.length;i++){

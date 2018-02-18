@@ -33,17 +33,16 @@ public class QueAdapter extends RecyclerView.Adapter<QueAdapter.ViewHolder> {
     }
 
     public int getRandomColor(int a){
-        int colors[] = {R.drawable.orange,R.drawable.blue,R.drawable.blue,R.drawable.orange};
+        int colors[] = {R.drawable.nred,R.drawable.blue};
         return colors[a];
     }
 
     @Override
     public void onBindViewHolder(final ViewHolder viewHolder, int i) {
         viewHolder.tv_android.setText(android_versions.get(i).getAndroid_version_name());
-       viewHolder.itemView.setBackgroundResource(getRandomColor(i%2));
-
-
+        viewHolder.itemView.setBackgroundResource(getRandomColor(i%2));
     }
+
     @Override
     public int getItemCount() {
         return android_versions.size();

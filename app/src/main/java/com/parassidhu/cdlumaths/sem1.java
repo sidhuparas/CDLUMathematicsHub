@@ -69,6 +69,7 @@ public class sem1 extends AppCompatActivity {
         String add="CDLU/sem1/2014/";
         String asd="CDLU/sem1/2015/";
         String n="CDLU/sem1/2016/";
+
         switch (item.getItemId()) {
             case R.id.download:     //December 2014
                 switch (m.getit1()) {
