@@ -42,14 +42,7 @@ public class sem6 extends AppCompatActivity {
             "Programming In Java",
             "Download All"
     };
-
-    public boolean showAds() {
-        SharedPreferences getPrefs = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
-
-        boolean showAd = getPrefs.getBoolean("showAd", true);
-
-        return showAd;
-    }
+    
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,33 +52,7 @@ public class sem6 extends AppCompatActivity {
 
         sidhu.renderTheme(this);
         final AdView adView = this.findViewById(R.id.adView);
-        if (showAds()){
-            MobileAds.initialize(getApplicationContext(),"ca-app-pub-6089158898128407/9919503008");
-            AdRequest adRequest = new AdRequest.Builder()
-
-                    .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
-                    .addTestDevice("73CC8EA0F398EEC21B718FF0F9EB507A")
-                    .addTestDevice("39C695F82AC6C82B1C9874FBBDCC2D46")
-                    .build();
-
-            adView.setAdListener(new AdListener() {
-                @Override
-                public void onAdFailedToLoad(int i) {
-                    super.onAdFailedToLoad(i);
-                    adView.setVisibility(View.GONE);
-                }
-
-                @Override
-                public void onAdLoaded() {
-                    super.onAdLoaded();
-                    adView.setVisibility(View.VISIBLE);
-                }
-            });
-
-            adView.loadAd(adRequest);
-        } else {
-            adView.setVisibility(View.GONE);
-        }
+        sidhu.displayAds(this,adView);
 
         final RecyclerView rcl = findViewById(R.id.card_recycler_view);
         ItemClickSupport.addTo(rcl).setOnItemClickListener(new ItemClickSupport.OnItemClickListener() {
@@ -93,54 +60,14 @@ public class sem6 extends AppCompatActivity {
             public void onItemClicked(RecyclerView recyclerView, int position, View v) {
                 try {
                     MyApp m = (MyApp) getApplicationContext();
-                    switch (position) {
-                        case 0:     //Subject 1
-                            m.getClickSem6(0);
-                            registerForContextMenu(rcl.findFocus());
-                            openContextMenu(v);
-                            break;
-                        case 1:     //Subject 2
-                            m.getClickSem6(1);
-                            registerForContextMenu(rcl.findFocus());
-                            openContextMenu(v);
-                            break;
-                        case 2:
-                            m.getClickSem6(2);
-                            registerForContextMenu(rcl.findFocus());
-                            openContextMenu(v);
-                            break;
-                        case 3:
-                            m.getClickSem6(3);
-                            registerForContextMenu(rcl.findFocus());
-                            openContextMenu(v);
-                            break;
-                        case 4:
-                            m.getClickSem6(4);
-                            registerForContextMenu(rcl.findFocus());
-                            openContextMenu(v);
-                            break;
-                        case 5:
-                            m.getClickSem6(5);
-                            registerForContextMenu(rcl.findFocus());
-                            openContextMenu(v);
-                            break;
-                        case 6:
-                            m.getClickSem6(6);
-                            registerForContextMenu(rcl.findFocus());
-                            openContextMenu(v);
-                            break;
-                        case 7:
-                            m.getClickSem6(7);
-                            registerForContextMenu(rcl.findFocus());
-                            openContextMenu(v);
-                            break;
-                    }
-                }catch (Exception ex){
-
-                }
+                    m.getClickSem6(position);
+                    registerForContextMenu(rcl.findFocus());
+                    openContextMenu(v);
+                }catch (Exception ex){}
             }
         });
     }
+
     @Override
     public void onCreateContextMenu(ContextMenu menu, View v,
                                     ContextMenu.ContextMenuInfo menuInfo) {
@@ -154,80 +81,75 @@ public class sem6 extends AppCompatActivity {
         MyApp m = (MyApp) getApplicationContext();
         String add="CDLU/sem6/2016/";
         String n="CDLU/sem6/2017/";
-        int timeStamp = (int) System.currentTimeMillis();
         switch (item.getItemId()) {
             case R.id.download:
                 switch (m.getit6()) {
                     case 0:
-                        startDownload("Real and Complex Analysis (May 16).pdf",add+"RACA%28May16%29.pdf",1661);
-                        starting();
+                        sidhu.startDownload("Real and Complex Analysis (May 16).pdf",
+                                add+"RACA%28May16%29.pdf",this);
                         break;
                     case 1:
-                        startDownload("Linear Algebra (May 16).pdf",add+"LA%28May16%29.pdf",1662);
-                        starting();
+                        sidhu.startDownload("Linear Algebra (May 16).pdf",
+                                add+"LA%28May16%29.pdf",this);
                         break;
                     case 2:
-                        startDownload("Dynamics (May 16).pdf",add+"D%28May16%29.pdf",1663);
-                        starting();
+                        sidhu.startDownload("Dynamics (May 16).pdf",
+                                add+"D%28May16%29.pdf",this);
                         break;
                     case 3:
-                        startDownload("Mathematical Modelling (May 16).pdf",add+"MM%28May16%29.pdf",1664);
-                        starting();
+                        sidhu.startDownload("Mathematical Modelling (May 16).pdf",
+                                add+"MM%28May16%29.pdf",this);
                         break;
                     case 4:
-                        startDownload("Mechanics (May 16).pdf",add+"Mech%28May16%29.pdf",1665);
-                        starting();
+                        sidhu.startDownload("Mechanics (May 16).pdf",
+                                add+"Mech%28May16%29.pdf",this);
                         break;
                     case 5:
-                        startDownload("Computer Graphics (May 16).pdf",add+"CG%28May16%29.pdf",1666);
-                        starting();
+                        sidhu.startDownload("Computer Graphics (May 16).pdf",
+                                add+"CG%28May16%29.pdf",this);
                         break;
                     case 6:
-                        startDownload("Programming In Java (May 16).pdf",add+"PiJ%28May16%29.pdf",1667);
-                        starting();
+                        sidhu.startDownload("Programming In Java (May 16).pdf",
+                                add+"PiJ%28May16%29.pdf",this);
                         break;
                     case 7:
-                        startDownload("MSc Maths 5-Year 6th Sem (May 16).pdf",add+"MSc%20Maths%206th%20Sem%20%28May%2016%29.pdf",1668);
-                        starting();
+                        sidhu.startDownload("MSc Maths 5-Year 6th Sem (May 16).pdf",
+                                add+"MSc%20Maths%206th%20Sem%20%28May%2016%29.pdf",this);
                         break;
                 }
                 return true;
+
             case R.id.download2:
-                starting();
                 switch (m.getit6()){
                     case 0:
-                        startDownload("Real and Complex Analysis (May 17).pdf",n+"RCA.pdf",timeStamp);
+                        sidhu.startDownload("Real and Complex Analysis (May 17).pdf",n+"RCA.pdf",this);
                         break;
                     case 1:
-                        startDownload("Linear Algebra (May 17).pdf",n+"LA.pdf",timeStamp);
+                        sidhu.startDownload("Linear Algebra (May 17).pdf",n+"LA.pdf",this);
                         break;
                     case 2:
-                        startDownload("Dynamics (May 17).pdf",n+"D.pdf",timeStamp);
+                        sidhu.startDownload("Dynamics (May 17).pdf",n+"D.pdf",this);
                         break;
                     case 3:
-                        startDownload("Mathematical Modelling (May 17).pdf",n+"MM.pdf",timeStamp);
+                        sidhu.startDownload("Mathematical Modelling (May 17).pdf",n+"MM.pdf",this);
                         break;
                     case 4:
-                        startDownload("Mechanics (May 17).pdf",n+"Mech.pdf",timeStamp);
+                        sidhu.startDownload("Mechanics (May 17).pdf",n+"Mech.pdf",this);
                         break;
                     case 5:
-                        startDownload("Computer Graphics (May 17).pdf",n+"CG.pdf",timeStamp);
+                        sidhu.startDownload("Computer Graphics (May 17).pdf",n+"CG.pdf",this);
                         break;
                     case 6:
-                        startDownload("Programming In Java (May 17).pdf",n+"PJ.pdf",timeStamp);
+                        sidhu.startDownload("Programming In Java (May 17).pdf",n+"PJ.pdf",this);
                         break;
                     case 7:
-                        startDownload("MSc Maths 5-Year 6th Sem (May 17).pdf",n+"ALL.pdf",timeStamp);
+                        sidhu.startDownload("MSc Maths 5-Year 6th Sem (May 17).pdf",n+"ALL.pdf",this);
                         break;
                 }
                 return true;
             default:
                 return super.onContextItemSelected(item);
         }
-    }
-
-    public void starting() {
-        Toast.makeText(this, "Starting download...Please check notifications panel for progress", Toast.LENGTH_SHORT).show();
     }
 
     public void setupView() {
@@ -255,14 +177,5 @@ public class sem6 extends AppCompatActivity {
             android_version.add(androidVersion);
         }
         return android_version;
-    }
-
-    public void startDownload(String filename, String url,int i){
-        MyApp x =  (MyApp)getApplicationContext();
-        x.getUrl(url);
-        x.getFilename(filename);
-        x.getID(i);
-        Intent intent = new Intent(this,DownloadService.class);
-        startService(intent);
     }
 }

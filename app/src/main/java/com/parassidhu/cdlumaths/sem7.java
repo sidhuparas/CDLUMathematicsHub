@@ -35,51 +35,17 @@ public class sem7 extends AppCompatActivity {
             "Ordinary Differential Equations",
             "Download All"
     };
-
-    public boolean showAds() {
-
-        SharedPreferences getPrefs = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
-
-        boolean showAd = getPrefs.getBoolean("showAd", true);
-
-        return showAd;
-    }
-
+    
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sem7);
         setupView();
         initViews();
-        registerReceiver();
+        
         sidhu.renderTheme(this);
         final AdView adView = this.findViewById(R.id.adView);
-        if (showAds()){
-            MobileAds.initialize(getApplicationContext(),"ca-app-pub-6089158898128407/9919503008");
-            AdRequest adRequest = new AdRequest.Builder()
-                    .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
-                    .addTestDevice("73CC8EA0F398EEC21B718FF0F9EB507A")
-                    .addTestDevice("39C695F82AC6C82B1C9874FBBDCC2D46")
-                    .build();
-
-            adView.setAdListener(new AdListener() {
-                @Override
-                public void onAdFailedToLoad(int i) {
-                    super.onAdFailedToLoad(i);
-                    adView.setVisibility(View.GONE);
-                }
-
-                @Override
-                public void onAdLoaded() {
-                    super.onAdLoaded();
-                    adView.setVisibility(View.VISIBLE);
-                }
-            });
-
-            adView.loadAd(adRequest);
-        } else {
-            adView.setVisibility(View.GONE);
-        }
+        sidhu.displayAds(this,adView);
 
         final RecyclerView rcl = findViewById(R.id.card_recycler_view);
         ItemClickSupport.addTo(rcl).setOnItemClickListener(new ItemClickSupport.OnItemClickListener() {
@@ -87,41 +53,10 @@ public class sem7 extends AppCompatActivity {
             public void onItemClicked(RecyclerView recyclerView, int position, View v) {
                 try {
                     MyApp m = (MyApp) getApplicationContext();
-                    switch (position) {
-                        case 0:     //Subject 1
-                            m.getClickSem7(0);
-                            registerForContextMenu(rcl.findFocus());
-                            openContextMenu(v);
-                            break;
-                        case 1:     //Subject 2
-                            m.getClickSem7(1);
-                            registerForContextMenu(rcl.findFocus());
-                            openContextMenu(v);
-                            break;
-                        case 2:
-                            m.getClickSem7(2);
-                            registerForContextMenu(rcl.findFocus());
-                            openContextMenu(v);
-                            break;
-                        case 3:
-                            m.getClickSem7(3);
-                            registerForContextMenu(rcl.findFocus());
-                            openContextMenu(v);
-                            break;
-                        case 4:
-                            m.getClickSem7(4);
-                            registerForContextMenu(rcl.findFocus());
-                            openContextMenu(v);
-                            break;
-                        case 5:
-                            m.getClickSem7(5);
-                            registerForContextMenu(rcl.findFocus());
-                            openContextMenu(v);
-                            break;
-                    }
-                }catch (Exception ex){
-
-                }
+                    m.getClickSem7(position);
+                    registerForContextMenu(rcl.findFocus());
+                    openContextMenu(v);
+                }catch (Exception ex){}
             }
         });
     }
@@ -142,28 +77,28 @@ public class sem7 extends AppCompatActivity {
             case R.id.download:    //December 2015
                 switch (m.getit7()) {
                     case 0:
-                        startDownload("Advanced Abstract Algebra (Dec 15).pdf",add+"1AAA%28Dec15%29.pdf",1571);
-                        starting();
+                        sidhu.startDownload("Advanced Abstract Algebra (Dec 15).pdf",
+                                add+"1AAA%28Dec15%29.pdf",this);
                         break;
                     case 1:
-                        startDownload("Real Analysis 5 (Dec 15).pdf",add+"2RA5%28Dec15%29.pdf",1572);
-                        starting();
+                        sidhu.startDownload("Real Analysis 5 (Dec 15).pdf",
+                                add+"2RA5%28Dec15%29.pdf",this);
                         break;
                     case 2:
-                        startDownload("Mechanics (Dec 15).pdf",add+"3Mech%28Dec15%29.pdf",1573);
-                        starting();
+                        sidhu.startDownload("Mechanics (Dec 15).pdf",
+                                add+"3Mech%28Dec15%29.pdf",this);
                         break;
                     case 3:
-                        startDownload("Complex Analysis-I (Dec 15).pdf",add+"4CA1%28Dec15%29.pdf",1574);
-                        starting();
+                        sidhu.startDownload("Complex Analysis-I (Dec 15).pdf",
+                                add+"4CA1%28Dec15%29.pdf",this);
                         break;
                     case 4:
-                        startDownload("Ordinary Differential Equations (Dec 15).pdf",add+"5ODE5%28Dec15%29.pdf",1575);
-                        starting();
+                        sidhu.startDownload("Ordinary Differential Equations (Dec 15).pdf",
+                                add+"5ODE5%28Dec15%29.pdf",this);
                         break;
                     case 5:
-                        startDownload("Complete Sem 7th (Dec 15).pdf",add+"Complete%20Sem%207%20%28Dec15%29.pdf",1576);
-                        starting();
+                        sidhu.startDownload("Complete Sem 7th (Dec 15).pdf",
+                                add+"Complete%20Sem%207%20%28Dec15%29.pdf",this);
                         break;
                 }
                 return true;
@@ -171,17 +106,14 @@ public class sem7 extends AppCompatActivity {
                 return super.onContextItemSelected(item);
         }
     }
-
-    public void starting() {
-        Toast.makeText(this, "Starting download...Please check notifications panel for progress", Toast.LENGTH_SHORT).show();
-    }
-
+    
     public void setupView() {
         android.support.v7.app.ActionBar acb = getSupportActionBar();
         acb.setHomeButtonEnabled(true);
         acb.setDisplayHomeAsUpEnabled(true);
         acb.setTitle("Choose Subject");
     }
+    
     private void initViews(){
         RecyclerView recyclerView = findViewById(R.id.card_recycler_view);
         recyclerView.setHasFixedSize(true);
@@ -202,34 +134,4 @@ public class sem7 extends AppCompatActivity {
         }
         return android_version;
     }
-
-    public void startDownload(String filename, String url,int i){
-        MyApp x =  (MyApp)getApplicationContext();
-        x.getUrl(url);
-        x.getFilename(filename);
-        x.getID(i);
-        Intent intent = new Intent(this,DownloadService.class);
-        startService(intent);
-    }
-
-    private void registerReceiver(){
-        LocalBroadcastManager bManager = LocalBroadcastManager.getInstance(this);
-        IntentFilter intentFilter = new IntentFilter();
-        intentFilter.addAction("message_progress");
-        bManager.registerReceiver(broadcastReceiver, intentFilter);
-    }
-
-    private BroadcastReceiver broadcastReceiver = new BroadcastReceiver() {
-        @Override
-        public void onReceive(Context context, Intent intent) {
-            if(intent.getAction().equals("message_progress")){
-                Download download = intent.getParcelableExtra("download");
-                if(download.getProgress() == 100){
-
-                } else {
-
-                }
-            }
-        }
-    };
 }

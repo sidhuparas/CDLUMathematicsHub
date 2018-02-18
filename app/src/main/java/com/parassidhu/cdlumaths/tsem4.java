@@ -39,49 +39,17 @@ public class tsem4 extends AppCompatActivity {
             "Methods Of Applied Mathematics",
             "Download All"
     };
-    public boolean showAds() {
 
-        SharedPreferences getPrefs = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
-
-        boolean showAd = getPrefs.getBoolean("showAd", true);
-
-        return showAd;
-    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tsem4);
         setupView();
         initViews();
-        registerReceiver();
+
         sidhu.renderTheme(this);
         final AdView adView = this.findViewById(R.id.adView);
-        if (showAds()){
-            MobileAds.initialize(getApplicationContext(),"ca-app-pub-6089158898128407/9919503008");
-            AdRequest adRequest = new AdRequest.Builder()
-                    .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
-                    .addTestDevice("73CC8EA0F398EEC21B718FF0F9EB507A")
-                    .addTestDevice("39C695F82AC6C82B1C9874FBBDCC2D46")
-                    .build();
-
-            adView.setAdListener(new AdListener() {
-                @Override
-                public void onAdFailedToLoad(int i) {
-                    super.onAdFailedToLoad(i);
-                    adView.setVisibility(View.GONE);
-                }
-
-                @Override
-                public void onAdLoaded() {
-                    super.onAdLoaded();
-                    adView.setVisibility(View.VISIBLE);
-                }
-            });
-
-            adView.loadAd(adRequest);
-        } else {
-            adView.setVisibility(View.GONE);
-        }
+        sidhu.displayAds(this,adView);
 
         final RecyclerView rcl = findViewById(R.id.card_recycler_view);
         ItemClickSupport.addTo(rcl).setOnItemClickListener(new ItemClickSupport.OnItemClickListener() {
@@ -89,44 +57,14 @@ public class tsem4 extends AppCompatActivity {
             public void onItemClicked(RecyclerView recyclerView, int position, View v) {
                 try {
                     MyApp m = (MyApp) getApplicationContext();
-                    switch (position) {
-                        case 0:     //Subject 1
-                            m.getHitSem4(0);
-                            registerForContextMenu(rcl.findFocus());
-                            openContextMenu(v);
-                            break;
-                        case 1:     //Subject 2
-                            m.getHitSem4(1);
-                            registerForContextMenu(rcl.findFocus());
-                            openContextMenu(v);
-                            break;
-                        case 2:
-                            m.getHitSem4(2);
-                            registerForContextMenu(rcl.findFocus());
-                            openContextMenu(v);
-                            break;
-                        case 3:
-                            m.getHitSem4(3);
-                            registerForContextMenu(rcl.findFocus());
-                            openContextMenu(v);
-                            break;
-                        case 4:
-                            m.getHitSem4(4);
-                            registerForContextMenu(rcl.findFocus());
-                            openContextMenu(v);
-                            break;
-                        case 5:
-                            m.getHitSem4(5);
-                            registerForContextMenu(rcl.findFocus());
-                            openContextMenu(v);
-                            break;
-                    }
-                }catch (Exception ex){
-
-                }
+                    m.getHitSem4(position);
+                    registerForContextMenu(rcl.findFocus());
+                    openContextMenu(v);
+                }catch (Exception ex){}
             }
         });
     }
+
     @Override
     public void onCreateContextMenu(ContextMenu menu, View v,
                                     ContextMenu.ContextMenuInfo menuInfo) {
@@ -143,28 +81,24 @@ public class tsem4 extends AppCompatActivity {
             case R.id.download:
                 switch (m.hitit4()) {
                     case 0:
-                        startDownload("Functional Analysis (May 16).pdf",add+"Functional%20Analysis.pdf",21641);
-                        starting();
+                        sidhu.startDownload("Functional Analysis (May 16).pdf",add+"Functional%20Analysis.pdf",this);
                         break;
                     case 1:
-                        startDownload("Partial Differential Equations (May 16).pdf",add+"PDE.pdf",21642);
-                        starting();
+                        sidhu.startDownload("Partial Differential Equations (May 16).pdf",add+"PDE.pdf",this);
                         break;
                     case 2:
-                        startDownload("Mechanics Of Solids-II (May 16).pdf",add+"Mechanics%20of%20Solids-II.pdf",21643);
-                        starting();
+                        sidhu.startDownload("Mechanics Of Solids-II (May 16).pdf",add+"Mechanics%20of%20Solids-II.pdf",this);
                         break;
                     case 3:
-                        startDownload("Operations Research (May 16).pdf",add+"Operations%20Research.pdf",21644);
-                        starting();
+                        sidhu.startDownload("Operations Research (May 16).pdf",add+"Operations%20Research.pdf",this);
                         break;
                     case 4:
-                        startDownload("Methods Of Applied Mathematics (May 16).pdf",add+"Methods%20of%20Applied%20Maths.pdf",21645);
-                        starting();
+                        sidhu.startDownload("Methods Of Applied Mathematics (May 16).pdf",
+                                add+"Methods%20of%20Applied%20Maths.pdf",this);
                         break;
                     case 5:
-                        startDownload("MSc Maths 2-Year 4th Sem (May 16).pdf",add+"msc%20maths%202%20years%204th%20sem%2005%202016.pdf",21646);
-                        starting();
+                        sidhu.startDownload("MSc Maths 2-Year 4th Sem (May 16).pdf",
+                                add+"msc%20maths%202%20years%204th%20sem%2005%202016.pdf",this);
                         break;
                 }
                 return true;
@@ -173,16 +107,13 @@ public class tsem4 extends AppCompatActivity {
         }
     }
 
-    public void starting() {
-        Toast.makeText(this, "Starting download...Please check notifications panel for progress", Toast.LENGTH_SHORT).show();
-    }
-
     public void setupView() {
         android.support.v7.app.ActionBar acb = getSupportActionBar();
         acb.setHomeButtonEnabled(true);
         acb.setDisplayHomeAsUpEnabled(true);
         acb.setTitle("Choose Subject");
     }
+
     private void initViews(){
         RecyclerView recyclerView = findViewById(R.id.card_recycler_view);
         recyclerView.setHasFixedSize(true);
@@ -193,6 +124,7 @@ public class tsem4 extends AppCompatActivity {
         QueAdapter adapter = new QueAdapter(getApplicationContext(),androidVersions);
         recyclerView.setAdapter(adapter);
     }
+
     private ArrayList prepareData(){
         ArrayList android_version = new ArrayList<>();
         for(int i=0;i<subject_names.length;i++){
@@ -203,34 +135,4 @@ public class tsem4 extends AppCompatActivity {
         }
         return android_version;
     }
-
-    public void startDownload(String filename, String url,int i){
-        MyApp x =  (MyApp)getApplicationContext();
-        x.getUrl(url);
-        x.getFilename(filename);
-        x.getID(i);
-        Intent intent = new Intent(this,DownloadService.class);
-        startService(intent);
-    }
-
-    private void registerReceiver(){
-        LocalBroadcastManager bManager = LocalBroadcastManager.getInstance(this);
-        IntentFilter intentFilter = new IntentFilter();
-        intentFilter.addAction("message_progress");
-        bManager.registerReceiver(broadcastReceiver, intentFilter);
-    }
-
-    private BroadcastReceiver broadcastReceiver = new BroadcastReceiver() {
-        @Override
-        public void onReceive(Context context, Intent intent) {
-            if(intent.getAction().equals("message_progress")){
-                Download download = intent.getParcelableExtra("download");
-                if(download.getProgress() == 100){
-
-                } else {
-
-                }
-            }
-        }
-    };
 }

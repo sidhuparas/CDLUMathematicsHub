@@ -23,10 +23,6 @@ public class Syllabus5Year extends Fragment {
     HomeAdapter adapter;
     Button DownloadAll;
 
-    public void Start(){
-        Snackbar.make(getActivity().findViewById(R.id.SyllabusLay),"Download has started. Please check notification for progress.",4000).show();
-    }
-
     final String add="CDLU/syllabus/5year/";
 
     public void x(final String pos){
@@ -39,15 +35,15 @@ public class Syllabus5Year extends Fragment {
                         switch (pos){
                             case "1":
                                 startDownload("Semester "+pos +".pdf",add+"1st%20Semester.pdf",1);
-                                Start();
+                                ;
                                 break;
                             case "2":
                                 startDownload("Semester "+pos +".pdf",add+"2nd%20Semester.pdf",2);
-                                Start();
+                                ;
                                 break;
                             case "3":
                                 startDownload("Semester "+pos +".pdf",add+"3rd%20Semester.pdf",3);
-                                Start();
+                                ;
                                 break;
                             case "7":
                                 Sem7();
@@ -63,7 +59,7 @@ public class Syllabus5Year extends Fragment {
                                 break;
                             default:
                                 startDownload("Semester "+pos +".pdf",add+pos+"th%20Semester.pdf",Integer.parseInt(pos));
-                                Start();
+                                ;
                                 break;
                         }
                     }
@@ -81,13 +77,13 @@ public class Syllabus5Year extends Fragment {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 startDownload("Semester 7th.pdf",add+"7th%20Semester.pdf",(int)System.currentTimeMillis());
-                Start();
+                ;
             }
         }, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 startDownload("Semester 7th Old.pdf",add+"7th%20SemesterO.pdf",(int)System.currentTimeMillis());
-                Start();
+                ;
             }
         });
     }
@@ -97,13 +93,13 @@ public class Syllabus5Year extends Fragment {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 startDownload("Semester 8th.pdf",add+"8th%20Semester.pdf",(int)System.currentTimeMillis());
-                Start();
+                ;
             }
         }, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 startDownload("Semester 8th Old.pdf",add+"8th%20SemesterO.pdf",(int)System.currentTimeMillis());
-                Start();
+                ;
             }
         });
     }
@@ -113,13 +109,13 @@ public class Syllabus5Year extends Fragment {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 startDownload("Semester 9th.pdf",add+"9th%20Semester.pdf",(int)System.currentTimeMillis());
-                Start();
+                ;
             }
         }, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 startDownload("Semester 9th Old.pdf",add+"9th%20SemesterO.pdf",(int)System.currentTimeMillis());
-                Start();
+                ;
             }
         });
     }
@@ -129,13 +125,13 @@ public class Syllabus5Year extends Fragment {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 startDownload("Semester 10th.pdf",add+"10th%20Semester.pdf",(int)System.currentTimeMillis());
-                Start();
+                ;
             }
         }, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 startDownload("Semester 10th Old.pdf",add+"10th%20SemesterO.pdf",(int)System.currentTimeMillis());
-                Start();
+                ;
             }
         });
     }

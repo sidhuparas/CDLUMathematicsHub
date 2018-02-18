@@ -3,6 +3,7 @@ package com.parassidhu.cdlumaths;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.AssetManager;
 import android.graphics.Color;
 import android.graphics.Typeface;
@@ -10,6 +11,7 @@ import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Environment;
+import android.preference.PreferenceManager;
 import android.support.v4.view.ViewCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -22,6 +24,10 @@ import android.view.WindowManager;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.ads.AdListener;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
 import com.yarolegovich.lovelydialog.LovelyInfoDialog;
 import com.yarolegovich.lovelydialog.LovelyStandardDialog;
 
@@ -175,5 +181,40 @@ public class sidhu {
 
         ActionBarClr(r,g,b,activity);
         StatusBarClr(e,f,v,activity);
+    }
+
+    private static boolean showAds(Context context) {
+        SharedPreferences getPrefs = PreferenceManager.getDefaultSharedPreferences(context);
+        boolean showAd = getPrefs.getBoolean("showAd", true);
+        return showAd;
+    }
+
+    public static void displayAds(Context context, final AdView adView){
+        if (showAds(context)){
+            MobileAds.initialize(context.getApplicationContext(),"ca-app-pub-6089158898128407/9919503008");
+            AdRequest adRequest = new AdRequest.Builder()
+
+                    .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
+                    .addTestDevice("73CC8EA0F398EEC21B718FF0F9EB507A")
+                    .addTestDevice("39C695F82AC6C82B1C9874FBBDCC2D46")
+                    .build();
+            adView.setAdListener(new AdListener() {
+                @Override
+                public void onAdFailedToLoad(int i) {
+                    super.onAdFailedToLoad(i);
+                    adView.setVisibility(View.GONE);
+                }
+                @Override
+                public void onAdLoaded() {
+                    super.onAdLoaded();
+                    adView.setVisibility(View.VISIBLE);
+                }
+            });
+
+            adView.loadAd(adRequest);
+        } else {
+            adView.setVisibility(View.GONE);
+        }
+
     }
 }

@@ -20,11 +20,7 @@ public class Syllabus2Year extends Fragment {
     HomeAdapter adapter;
     private Button finalsch;
     private Button DA2;
-
-    public void Start(){
-        Snackbar.make(getActivity().findViewById(R.id.syllabi2year),"Download has started. Please check notification for progress.",4000).show();
-    }
-
+    
     final String add="CDLU/syllabus/2year/";
 
     public void x(final String pos){
@@ -37,19 +33,19 @@ public class Syllabus2Year extends Fragment {
                         switch (pos){
                             case "1":
                                 startDownload("Semester "+pos +" (2-Year).pdf",add+"Semester%20-%20I.pdf",10001);
-                                Start();
+                                ;
                                 break;
                             case "2":
                                 startDownload("Semester "+pos +" (2-Year).pdf",add+"Semester%20-%20II.pdf",10002);
-                                Start();
+                                ;
                                 break;
                             case "3":
                                 startDownload("Semester "+pos +" (2-Year).pdf",add+"Semester%20-%20III.pdf",10003);
-                                Start();
+                                ;
                                 break;
                             default:
                                 startDownload("Semester "+pos +" (2-Year).pdf",add+"Semester%20-%20IV.pdf",10004);
-                                Start();
+                                ;
                                 break;
                         }
                     }

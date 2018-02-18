@@ -46,6 +46,7 @@ public class notices extends Fragment {
         MenuItem item = menu.findItem(R.id.sort);
         sidhu.setOptVisibility(menu,false,true);
     }
+
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState){
         try {
@@ -78,15 +79,6 @@ public class notices extends Fragment {
         loadJSON();
     }
 
-    public void startDownload(String filename, String url,int i){
-        MyApp x =  (MyApp)getActivity().getApplicationContext();
-        x.getUrl(url);
-        x.getFilename(filename);
-        x.getID(i);
-        Intent intent = new Intent(getActivity(),DownloadService.class);
-        getActivity().startService(intent);
-    }
-
     public void loadNotice(String url, String name, String param) {
         switch (param){
             case "0":
@@ -96,8 +88,7 @@ public class notices extends Fragment {
                 sidhu.openWebPage((AppCompatActivity) getActivity(),url);
                 break;
             default:
-                startDownload(name,url, ((int) System.currentTimeMillis()));
-                Toast.makeText(getActivity(), "Starting download... You can view it from Offline section", Toast.LENGTH_SHORT).show();
+                sidhu.startDownload(name,url, getActivity());
                 break;
         }
     }
