@@ -17,6 +17,7 @@ import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -50,7 +51,7 @@ public class timetable extends Fragment {
     private SharedPreferences sharedPreferences;
     private SharedPreferences.Editor editor;
     private TextView disableText;
-    private Button next;
+    private ImageView next;
     private int tt;
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container,

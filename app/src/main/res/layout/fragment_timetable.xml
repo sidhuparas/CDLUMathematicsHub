@@ -35,8 +35,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
-                android:layout_toRightOf="@id/ttSem"
                 android:layout_marginTop="10dp"
+                android:layout_toRightOf="@id/ttSem"
                 android:elevation="5dp"
                 android:fontFamily="sans-serif-semilight"
                 android:textSize="17sp"
@@ -45,22 +45,29 @@
                 app:ms_background_color="@color/wallet_holo_blue_light"
                 app:ms_text_color="@color/white" />
 
-            <Button
+            <FrameLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/orange"
-                android:layout_toRightOf="@id/ttSpinner"
-                android:layout_marginTop="10dp"
                 android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/orange"
                 android:layout_alignParentRight="true"
-                android:text="Next"
-                android:textColor="@color/white"
-                android:textSize="16sp"
-                android:translationZ="6dp"
-                android:elevation="3dp"
-                android:id="@+id/next"
+                android:paddingLeft="7dp"
                 android:paddingRight="7dp"
-                android:paddingLeft="7dp"/>
+                android:elevation="3dp"
+                android:translationZ="6dp">
+
+                <ImageView
+                    android:id="@+id/next"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:background="@drawable/ttnext"
+                    android:paddingLeft="7dp"
+                    android:paddingRight="7dp"
+                    android:textColor="@color/white"
+                    android:textSize="16sp" />
+            </FrameLayout>
 
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/ttList"

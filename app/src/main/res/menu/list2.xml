@@ -17,6 +17,11 @@
         android:icon="@drawable/apin"
         android:title="Add To Home Screen" />
     <item
+        android:id="@+id/rename"
+        android:orderInCategory="100"
+        android:icon="@drawable/rename"
+        android:title="Rename" />
+    <item
         android:id="@+id/delete1"
         android:orderInCategory="100"
         android:icon="@drawable/adele"

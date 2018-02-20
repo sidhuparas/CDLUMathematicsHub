@@ -197,15 +197,13 @@ public class sidhu {
 
     private static boolean showAds(Context context) {
         SharedPreferences getPrefs = PreferenceManager.getDefaultSharedPreferences(context);
-        boolean showAd = getPrefs.getBoolean("showAd", true);
-        return showAd;
+        return getPrefs.getBoolean("showAd", true);
     }
 
     public static void displayAds(Context context, final AdView adView){
         if (showAds(context)){
             MobileAds.initialize(context.getApplicationContext(),"ca-app-pub-6089158898128407/9919503008");
             AdRequest adRequest = new AdRequest.Builder()
-
                     .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
                     .addTestDevice("73CC8EA0F398EEC21B718FF0F9EB507A")
                     .addTestDevice("39C695F82AC6C82B1C9874FBBDCC2D46")
@@ -257,7 +255,8 @@ public class sidhu {
                 filename);
         Uri path;
         if(Build.VERSION.SDK_INT>=Build.VERSION_CODES.N) {
-            path = FileProvider.getUriForFile(context, context.getApplicationContext().getPackageName() + ".provider", file);
+            path = FileProvider.getUriForFile(context,
+                    context.getApplicationContext().getPackageName() + ".provider", file);
         }else {
             path = Uri.fromFile(file);
         }

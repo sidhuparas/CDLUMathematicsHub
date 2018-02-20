@@ -35,6 +35,7 @@ import android.widget.Toast;
 
 import com.cocosw.bottomsheet.BottomSheet;
 import com.yarolegovich.lovelydialog.LovelyChoiceDialog;
+import com.yarolegovich.lovelydialog.LovelyTextInputDialog;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -343,9 +344,42 @@ public class offline extends Fragment {
                         addShortcut(textView.getText().toString());
                         else addShortcutInOreo(textView.getText().toString());
                         break;
+                    case R.id.rename:
+                        if (sidhu.checkPerm(getActivity()))
+                        renFile(textView.getText().toString(), position, androidVersions);
+                        break;
                 }
             }
         }).show();
+    }
+
+    private void renFile(final String name, final int position, final ArrayList<AndroidVersion> list) {
+        final File file = new File(Environment.getExternalStorageDirectory()+"/CDLU Mathematics Hub",
+                name+".pdf");
+
+        new LovelyTextInputDialog(getActivity())
+                .setTopColorRes(R.color.blue)
+                .setIcon(R.drawable.renameicon)
+                .setInitialInput(name)
+                .setTopTitle("Rename File")
+                .setTopTitleColor(R.color.white)
+                .setConfirmButton(android.R.string.ok, new LovelyTextInputDialog.OnTextInputConfirmListener() {
+                    @Override
+                    public void onTextInputConfirmed(String text) {
+                        if (!text.isEmpty()) {
+                            File renamed = new File(Environment.getExternalStorageDirectory() + "/CDLU Mathematics Hub",
+                                    text + ".pdf");
+                            if (file.renameTo(renamed)) {
+                                list.get(position).setAndroid_version_name(text);
+                                names.set(position, text);
+                                adapter.notifyItemChanged(position);
+                                Toast.makeText(getActivity(),
+                                        "File renamed Successfully!", Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    }
+                })
+                .show();
     }
 
     public void setup(){
