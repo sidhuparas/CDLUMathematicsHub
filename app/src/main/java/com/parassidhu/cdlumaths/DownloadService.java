@@ -25,6 +25,7 @@ import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
+import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
@@ -46,9 +47,19 @@ public class DownloadService extends Service {
     public DownloadService() {
         super();
     }
+
     private Looper mServiceLooper;
     private ServiceHandler mServiceHandler;
-    private FirebaseAnalytics mFirebaseAnalytics;
+
+    @Nullable
+    @Override
+    public IBinder onBind(Intent intent) {
+        return null;
+    }
+
+    private int totalFileSize;
+    private Notification.Builder notificationBuilder;
+    private NotificationManager notificationManager;
 
     private final class ServiceHandler extends Handler {
         public ServiceHandler(Looper looper) {
@@ -82,9 +93,7 @@ public class DownloadService extends Service {
                 notificationManager.notify(x.ID, notificationBuilder.build());
                 Log.i("Paras", "onHandleIntent: " + x.filename + x.url + "  " + x.ID);
                 initDownload(x.filename, x.url, x.ID);
-            }catch (Exception ex){
-
-            }
+            }catch (Exception ex){}
         }
     }
 
@@ -105,16 +114,6 @@ public class DownloadService extends Service {
         return START_STICKY;
     }
 
-    @Nullable
-    @Override
-    public IBinder onBind(Intent intent) {
-        return null;
-    }
-
-    private int totalFileSize;
-    private Notification.Builder notificationBuilder;
-    private NotificationManager notificationManager;
-
     public void starting() {
         Toast.makeText(this, "The download is going to start...\n" +
                 "1. Please check notifications panel for progress.\n" +
@@ -131,7 +130,6 @@ public class DownloadService extends Service {
             }
         });
 
-        mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("http://www.downloadinformer.com/")
                 .build();
@@ -139,15 +137,18 @@ public class DownloadService extends Service {
         RequestInterface.RetrofitInterface retrofitInterface = retrofit.create(RequestInterface.RetrofitInterface.class);
 
         Call<ResponseBody> request = retrofitInterface.downloadFile(url);
-        try {
 
+        try {
             downloadFile(request.execute().body(),filename,id);
         } catch (Exception e) {
             Toast.makeText(getApplicationContext(),"Error: " + e.getMessage(), Toast.LENGTH_SHORT).show();
-            notificationBuilder.setContentTitle("We're Sorry!");
-            notificationBuilder.setProgress(0,0,false);
-            notificationBuilder.setContentText("Download failed unexpectedly :(");
-            notificationBuilder.setOngoing(false);
+            String error = "There's some issue with Internet Connection. Please try again";
+            notificationBuilder.setContentTitle("Download Failed!")
+                        .setProgress(0,0,false)
+                        .setContentText(error)
+                        .setStyle(new Notification.BigTextStyle().bigText(error))
+                        .setOngoing(false);
+
             notificationManager.notify(id, notificationBuilder.build());
         }
     }
@@ -155,31 +156,33 @@ public class DownloadService extends Service {
     private void increaseDownloads(){
         try {
             StringRequest stringRequest = new StringRequest(Request.Method.GET,
-                    getResources().getString(R.string.downloads), new com.android.volley.Response.Listener<String>() {
-                @Override
-                public void onResponse(String response) {
-                }
-            }, null);
+                    getResources().getString(R.string.downloads),
+                    new Response.Listener<String>() {
+                        @Override
+                        public void onResponse(String response) {
+
+                        }
+                    }, null);
 
             RequestQueue requestQueue = Volley.newRequestQueue(this);
             requestQueue.add(stringRequest);
         }catch (Exception e){}
     }
 
-    static File mediaStorageDir ;
-
     private void downloadFile(ResponseBody body, String filename,int id) throws IOException {
-
         int count;
         byte data[] = new byte[1024 * 4];
         long fileSize = body.contentLength();
         InputStream bis = new BufferedInputStream(body.byteStream(), 1024 * 8);
-        mediaStorageDir = new File(
+        File mediaStorageDir = new File(
                 Environment.getExternalStorageDirectory(), "/CDLU Mathematics Hub");
+
         try{mediaStorageDir.mkdirs();}catch (Exception e){}
+
         File outputFile = new File(Environment.getExternalStorageDirectory() +
                 File.separator + "CDLU Mathematics Hub", filename);
         OutputStream output = new FileOutputStream(outputFile);
+
         long total = 0;
         long startTime = System.currentTimeMillis();
         int timeCount = 1;
@@ -198,7 +201,6 @@ public class DownloadService extends Service {
             download.setTotalFileSize(totalFileSize);
 
             if (currentTime > 1000 * timeCount) {
-
                 download.setCurrentFileSize((int) current);
                 download.setProgress(progress);
                 sendNotification(download,id,filename);
@@ -207,6 +209,7 @@ public class DownloadService extends Service {
 
             output.write(data, 0, count);
         }
+
         onDownloadComplete(filename,id);
         output.flush();
         output.close();
@@ -216,14 +219,17 @@ public class DownloadService extends Service {
 
     private void sendNotification(Download download, int id,String filename) {
         sendIntent(download,id);
+
+        String progress = "Downloading " + download.getCurrentFileSize() + "/" + totalFileSize + " KB";
+
         notificationBuilder.setProgress(100, download.getProgress(), false)
-                            .setContentTitle(filename);
-        notificationBuilder.setContentText("Downloading " + download.getCurrentFileSize() + "/" + totalFileSize + " KB");
+                            .setContentTitle(filename)
+                            .setContentText(progress)
+                            .setStyle(new Notification.BigTextStyle().bigText(progress));
         notificationManager.notify(id, notificationBuilder.build());
     }
 
     private void sendIntent(Download download, int id) {
-
         Intent intent = new Intent(sem1.MESSAGE_PROGRESS);
         intent.putExtra("download", download);
         LocalBroadcastManager.getInstance(DownloadService.this).sendBroadcast(intent);
@@ -237,9 +243,11 @@ public class DownloadService extends Service {
             sendIntent(download,id);
 
             notificationManager.cancel(id);
-            notificationBuilder.setProgress(0, 0, false);
-            notificationBuilder.setContentText("Tap to open");
-            notificationBuilder.setOngoing(false);
+            notificationBuilder.setProgress(0, 0, false)
+                                .setContentText("Tap to open")
+                                .setOngoing(false)
+                                .setStyle(new Notification.BigTextStyle().bigText("File Downloaded"));
+
             notificationManager.notify(id, notificationBuilder.build());
 
             String path1 =Environment.getExternalStorageDirectory() +
@@ -247,28 +255,33 @@ public class DownloadService extends Service {
 
             File file = new File(path1);
             Uri sharePath;
-            if(Build.VERSION.SDK_INT>=Build.VERSION_CODES.N) {
-                sharePath = FileProvider.getUriForFile(this, getApplicationContext().getPackageName() + ".provider", file);
-            }else {
-                sharePath = Uri.fromFile(file);
-            }
+
+            if(Build.VERSION.SDK_INT>=Build.VERSION_CODES.N)
+                sharePath = FileProvider.getUriForFile(this,
+                        getApplicationContext().getPackageName() + ".provider", file);
+            else sharePath = Uri.fromFile(file);
+
             String mimeType = MimeTypeMap.getSingleton().getMimeTypeFromExtension
                     (MimeTypeMap.getFileExtensionFromUrl(path1));
 
-            Intent intent = new Intent(android.content.Intent.ACTION_VIEW);
-            intent.setType(mimeType);
-            intent.setDataAndType(sharePath, mimeType);
-            intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
-            PendingIntent pIntent = PendingIntent.getActivity(this,(int) System.currentTimeMillis(), intent, 0);
+            Intent intent = new Intent(android.content.Intent.ACTION_VIEW)
+                        .setType(mimeType)
+                        .setDataAndType(sharePath, mimeType)
+                        .addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+
+            PendingIntent pIntent = PendingIntent.getActivity(this,(int) System.currentTimeMillis(),
+                    intent, 0);
+
             notificationBuilder
                     .setContentIntent(pIntent)
                     .setAutoCancel(true)
                     .setContentTitle(filename + " Downloaded")
                     .setOngoing(false);
-            Log.i("Paras", "onDownloadComplete: " + filename);
-            notificationManager.notify(id, notificationBuilder.build());
-        }catch (Exception ex){
 
-        }
+            Log.i("Paras", "onDownloadComplete: " + filename);
+
+            notificationManager.notify(id, notificationBuilder.build());
+
+        }catch (Exception ex){}
     }
 }

@@ -124,10 +124,10 @@ public class sidhu {
         File f = new File(path);
         File file[] = f.listFiles();
         ArrayList arrayFiles = new ArrayList<String>();
+
         if (file != null){
             for (int i = 0; i < file.length; i++) {
                 String fileName = file[i].getName();
-                //arrayFiles.add(file[i].getName().split("\\.")[count-1]);
                 String newName = fileName.substring(0,fileName.lastIndexOf("."));
                 arrayFiles.add(newName);
             }
