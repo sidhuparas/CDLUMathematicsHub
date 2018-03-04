@@ -159,10 +159,11 @@ public class DownloadService extends Service {
                     getResources().getString(R.string.downloads),
                     new Response.Listener<String>() {
                         @Override
-                        public void onResponse(String response) {
-
-                        }
-                    }, null);
+                        public void onResponse(String response) {}
+                    }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {}
+            });
 
             RequestQueue requestQueue = Volley.newRequestQueue(this);
             requestQueue.add(stringRequest);
@@ -214,6 +215,10 @@ public class DownloadService extends Service {
         output.flush();
         output.close();
         bis.close();
+
+        //TODO: Modify and test it
+
+        if (!BuildConfig.DEBUG)
         increaseDownloads();
     }
 
