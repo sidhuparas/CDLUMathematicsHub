@@ -72,41 +72,80 @@ public class sem7 extends AppCompatActivity {
     @Override
     public boolean onContextItemSelected(MenuItem item) {
         MyApp m = (MyApp) getApplicationContext();
-        String add="CDLU/sem7/2015/";
         switch (item.getItemId()) {
             case R.id.download:    //December 2015
-                switch (m.getit7()) {
-                    case 0:
-                        sidhu.startDownload("Advanced Abstract Algebra (Dec 15).pdf",
-                                add+"1AAA%28Dec15%29.pdf",this);
-                        break;
-                    case 1:
-                        sidhu.startDownload("Real Analysis 5 (Dec 15).pdf",
-                                add+"2RA5%28Dec15%29.pdf",this);
-                        break;
-                    case 2:
-                        sidhu.startDownload("Mechanics (Dec 15).pdf",
-                                add+"3Mech%28Dec15%29.pdf",this);
-                        break;
-                    case 3:
-                        sidhu.startDownload("Complex Analysis-I (Dec 15).pdf",
-                                add+"4CA1%28Dec15%29.pdf",this);
-                        break;
-                    case 4:
-                        sidhu.startDownload("Ordinary Differential Equations (Dec 15).pdf",
-                                add+"5ODE5%28Dec15%29.pdf",this);
-                        break;
-                    case 5:
-                        sidhu.startDownload("Complete Sem 7th (Dec 15).pdf",
-                                add+"Complete%20Sem%207%20%28Dec15%29.pdf",this);
-                        break;
-                }
+                downloadOldPaper("5");
+                return true;
+            case R.id.dec17:
+                downloadPaper("7");
                 return true;
             default:
                 return super.onContextItemSelected(item);
         }
     }
-    
+
+    private void downloadPaper(String year){
+        MyApp m = (MyApp) getApplicationContext();
+        String add= "CDLU/sem7/201".concat(year).concat("/");
+        switch (m.getit7()) {
+            case 0:
+                sidhu.startDownload("Abstract Algebra (Dec 1".concat(").pdf"),
+                        add+"AAA.pdf",this);
+                break;
+            case 1:
+                sidhu.startDownload("Real Analysis 5 (Dec 1".concat(").pdf"),
+                        add+"RA.pdf",this);
+                break;
+            case 2:
+                sidhu.startDownload("Mechanics (Dec 1".concat(").pdf"),
+                        add+"M.pdf",this);
+                break;
+            case 3:
+                sidhu.startDownload("Complex Analysis-I (Dec 1".concat(").pdf"),
+                        add+"CA.pdf",this);
+                break;
+            case 4:
+                sidhu.startDownload("Ordinary Differential Equations (Dec 1".concat(").pdf"),
+                        add+"ODE.pdf",this);
+                break;
+            case 5:
+                sidhu.startDownload("Complete Sem 7th (Dec 1".concat(").pdf"),
+                        add+"ALL.pdf",this);
+                break;
+        }
+    }
+
+    private void downloadOldPaper(String year){
+        MyApp m = (MyApp) getApplicationContext();
+        String add= "CDLU/sem7/201".concat(year).concat("/");
+        switch (m.getit7()) {
+            case 0:
+                sidhu.startDownload("Advanced Abstract Algebra (Dec 1".concat(").pdf"),
+                        add+"1AAA%28Dec15%29.pdf",this);
+                break;
+            case 1:
+                sidhu.startDownload("Real Analysis 5 (Dec 1".concat(").pdf"),
+                        add+"2RA5%28Dec15%29.pdf",this);
+                break;
+            case 2:
+                sidhu.startDownload("Mechanics (Dec 1".concat(").pdf"),
+                        add+"3Mech%28Dec15%29.pdf",this);
+                break;
+            case 3:
+                sidhu.startDownload("Complex Analysis-I (Dec 1".concat(").pdf"),
+                        add+"4CA1%28Dec15%29.pdf",this);
+                break;
+            case 4:
+                sidhu.startDownload("Ordinary Differential Equations (Dec 1".concat(").pdf"),
+                        add+"5ODE5%28Dec15%29.pdf",this);
+                break;
+            case 5:
+                sidhu.startDownload("Complete Sem 7th (Dec 1".concat(").pdf"),
+                        add+"Complete%20Sem%207%20%28Dec15%29.pdf",this);
+                break;
+        }
+    }
+
     public void setupView() {
         android.support.v7.app.ActionBar acb = getSupportActionBar();
         acb.setHomeButtonEnabled(true);
