@@ -37,7 +37,10 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.concurrent.TimeUnit;
 
+import okhttp3.Interceptor;
+import okhttp3.OkHttpClient;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Retrofit;
@@ -130,8 +133,33 @@ public class DownloadService extends Service {
             }
         });
 
+        OkHttpClient.Builder okHttpClient = new OkHttpClient.Builder()
+                .readTimeout(60, TimeUnit.SECONDS)
+                .connectTimeout(60,TimeUnit.SECONDS);
+
+        okHttpClient.addInterceptor(new Interceptor() {
+            @Override
+            public okhttp3.Response intercept(Chain chain) throws IOException {
+                //okhttp3.Request original = chain.request();
+
+                okhttp3.Response original = chain.proceed(chain.request());
+                okhttp3.Response.Builder builder = original.newBuilder();
+
+
+                okhttp3.Response.Builder requestBuilder = original.newBuilder()
+                        .addHeader("Connection", "keep-alive")
+                        .header("User-Agent","downloader");
+
+                okhttp3.Response request = requestBuilder.build();
+
+                return request;
+            }
+        });
+
+
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("http://www.downloadinformer.com/")
+                .client(okHttpClient.build())
                 .build();
 
         RequestInterface.RetrofitInterface retrofitInterface = retrofit.create(RequestInterface.RetrofitInterface.class);

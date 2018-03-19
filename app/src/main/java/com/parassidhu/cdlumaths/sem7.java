@@ -87,29 +87,30 @@ public class sem7 extends AppCompatActivity {
     private void downloadPaper(String year){
         MyApp m = (MyApp) getApplicationContext();
         String add= "CDLU/sem7/201".concat(year).concat("/");
+        String yr = year.concat(").pdf");
         switch (m.getit7()) {
             case 0:
-                sidhu.startDownload("Abstract Algebra (Dec 1".concat(").pdf"),
-                        add+"AAA.pdf",this);
+                sidhu.startDownload("Abstract Algebra (Dec 1".concat(yr),
+                        add+"AA.pdf",this);
                 break;
             case 1:
-                sidhu.startDownload("Real Analysis 5 (Dec 1".concat(").pdf"),
+                sidhu.startDownload("Real Analysis 5 (Dec 1".concat(yr),
                         add+"RA.pdf",this);
                 break;
             case 2:
-                sidhu.startDownload("Mechanics (Dec 1".concat(").pdf"),
+                sidhu.startDownload("Mechanics (Dec 1".concat(yr),
                         add+"M.pdf",this);
                 break;
             case 3:
-                sidhu.startDownload("Complex Analysis-I (Dec 1".concat(").pdf"),
+                sidhu.startDownload("Complex Analysis-I (Dec 1".concat(yr),
                         add+"CA.pdf",this);
                 break;
             case 4:
-                sidhu.startDownload("Ordinary Differential Equations (Dec 1".concat(").pdf"),
+                sidhu.startDownload("Ordinary Differential Equations (Dec 1".concat(yr),
                         add+"ODE.pdf",this);
                 break;
             case 5:
-                sidhu.startDownload("Complete Sem 7th (Dec 1".concat(").pdf"),
+                sidhu.startDownload("Complete Sem 7th (Dec 1".concat(yr),
                         add+"ALL.pdf",this);
                 break;
         }
