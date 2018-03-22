@@ -58,6 +58,7 @@ import com.yarolegovich.lovelydialog.LovelyStandardDialog;
 
 import hotchemi.android.rate.AppRate;
 
+import static com.parassidhu.cdlumaths.R.id.fab;
 import static com.parassidhu.cdlumaths.R.id.nav_view;
 
 import android.support.v7.widget.ShareActionProvider;
@@ -84,6 +85,8 @@ public class Home extends AppCompatActivity
     private NavigationView navigationView;
     private String change = "New update comes with various new features and enhancements";
     private List<String> defaultList;
+    private FloatingActionButton fab;
+
     public static int r,g,b,e,f,v;
 
     @Override
@@ -101,6 +104,7 @@ public class Home extends AppCompatActivity
             f = (sp.getInt("f", 136));
             v = (sp.getInt("v", 209));
 
+            initializeView();
             ActionBarClr(r,g,b);
             StatusBarClr(e,f,v);
 
@@ -120,6 +124,10 @@ public class Home extends AppCompatActivity
         }catch (Exception ex){
             Toast.makeText(this, ex.getMessage(), Toast.LENGTH_LONG).show();
         }
+    }
+
+    private void initializeView() {
+        fab = findViewById(R.id.fab);
     }
 
     public void StatusBarClr(int r, int g, int b){
@@ -627,6 +635,19 @@ public class Home extends AppCompatActivity
         .show();
     }
 
+    private void setNavProps(boolean showOrNot, int translation){
+        AppBarLayout appbar = findViewById(R.id.appbar);
+
+        if (showOrNot)
+            fab.setVisibility(View.VISIBLE);
+        else
+            fab.setVisibility(View.GONE);
+
+        if (sidhu.isLollipop()) {
+            appbar.setTranslationZ(translation);
+        }
+    }
+
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     @NonNull
@@ -634,89 +655,59 @@ public class Home extends AppCompatActivity
         try {
             int id = item.getItemId();
             navigationView.setCheckedItem(id);
-            AppBarLayout appbar = findViewById(R.id.appbar);
-            FloatingActionButton fab = findViewById(R.id.fab);
 
             if (id == R.id.home && fragment!=getSupportFragmentManager().findFragmentByTag("Question Papers")) {
                 TAG="Question Papers";
                 fragment = new QuestionPap();
-                fab.setVisibility(View.VISIBLE);
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP ) {
-                    appbar.setTranslationZ(0);
-                }
+                setNavProps(true, 0);
             } else if (id == R.id.offline && fragment!=getSupportFragmentManager().findFragmentByTag("Offline")) {
                 TAG="Offline";
                 fragment = new offline();
-                fab.setVisibility(View.GONE);
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP ) {
-                    appbar.setTranslationZ(4);
-                }
+                setNavProps(false,4);
             }  else if (id == R.id.results && fragment!=getSupportFragmentManager().findFragmentByTag("Results")) {
                 TAG = "Results";
                 fragment = new Results();
-                fab.setVisibility(View.GONE);
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                    appbar.setTranslationZ(0);
-                }
+                setNavProps(false,0);
             } else if (id == R.id.syll && fragment!=getSupportFragmentManager().findFragmentByTag("Syllabus")) {
                 TAG="Syllabus";
                 fragment = new Syllabus();
-                fab.setVisibility(View.VISIBLE);
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP ) {
-                    appbar.setTranslationZ(0);
-                }
+                setNavProps(true,0);
             } else if (id == R.id.Tools && fragment!=getSupportFragmentManager().findFragmentByTag("Tools")) {
                 TAG="Tools";
                 fragment = new Tools();
-                fab.setVisibility(View.GONE);
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP ) {
-                    appbar.setTranslationZ(4);
-                }
-
+                setNavProps(false,4);
             } else if (id == R.id.about && fragment!=getSupportFragmentManager().findFragmentByTag("About")) {
                 TAG="About";
                 fragment = new about();
-                fab.setVisibility(View.GONE);
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP ) {
-                    appbar.setTranslationZ(4);
-                }
+                setNavProps(false,4);
             } else if (id==R.id.notices && fragment!=getSupportFragmentManager().findFragmentByTag("Notices")) {
                 TAG="Notices";
                 fragment = new notices();
-                fab.setVisibility(View.VISIBLE);
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP ) {
-                    appbar.setTranslationZ(4);
-                }
+                setNavProps(true,4);
             } else if (id==R.id.donate && fragment!=getSupportFragmentManager().findFragmentByTag("Donate")) {
                 TAG="Donate";
                 fragment = new donate();
-                fab.setVisibility(View.GONE);
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                    appbar.setTranslationZ(4);
-                }
+                setNavProps(false,4);
             }  else if (id==R.id.timeicon && fragment!=getSupportFragmentManager().findFragmentByTag("Timetable")) {
                 TAG = "Timetable";
                 fragment = new timetable();
-                fab.setVisibility(View.GONE);
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                    appbar.setTranslationZ(4);
-                }
+                setNavProps(false,4);
             }  else if (id==R.id.studymaterial && fragment!=getSupportFragmentManager().findFragmentByTag("Study Material")) {
                 TAG = "Study Material";
                 fragment = new StudyMaterial();
-                fab.setVisibility(View.GONE);
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                    appbar.setTranslationZ(4);
-                }
+                setNavProps(true,4);
             }
+
             getWindow().getDecorView().setSystemUiVisibility(
                     View.SYSTEM_UI_FLAG_LAYOUT_STABLE
                             | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
+
             if (fragment != null ) {
                 FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
                 ft.replace(R.id.content_frame, fragment,TAG);
                 ft.commit();
             }
+
             DrawerLayout drawer = findViewById(R.id.drawer_layout);
             drawer.closeDrawer(GravityCompat.START);
         }
