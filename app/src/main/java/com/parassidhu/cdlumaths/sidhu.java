@@ -41,13 +41,10 @@ import java.util.ArrayList;
 
 public class sidhu {
 
-    public static String releaseNotes ="- More Question Papers\n" +
-            "- Study Material feature will provide important study contents\n"+
-            "- New design for Offline feature\n" +
-            "- Digital Timetable for Sem 6th and 8th\n" +
-            "- New theme options in menu to customize the look and feel of the app\n"+
-            "- New and old syllabus for semesters 6th to 10th\n"+
-            "- New App Icon and lots of bug fixes";
+    public static String releaseNotes ="- Added Question Papers for 1st, 4th, 7th and 10th Semesters.\n" +
+            "- Added Rename option in Offline.\n" +
+            "- Notifications can be expanded on Android 7.0+.\n" +
+            "- Some visual change in TimeTable.";
 
     public static void setOptVisibility(Menu menu, boolean sorted,boolean defaultview){
         MenuItem sort = menu.findItem(R.id.sort);

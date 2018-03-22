@@ -39,11 +39,13 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.concurrent.TimeUnit;
 
+import okhttp3.EventListener;
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Retrofit;
+import retrofit2.http.Streaming;
 
 public class DownloadService extends Service {
 
@@ -123,7 +125,8 @@ public class DownloadService extends Service {
                 "2. Access the file from Offline section present in top-left Navigation Drawer.", Toast.LENGTH_LONG).show();
     }
 
-    private void initDownload(String filename, String url, int id) {
+    @Streaming
+    private void initDownload(final String filename, String url, int id) {
         Handler handler = new Handler(Looper.getMainLooper());
         handler.post(new Runnable() {
             @Override
@@ -133,33 +136,35 @@ public class DownloadService extends Service {
             }
         });
 
-        OkHttpClient.Builder okHttpClient = new OkHttpClient.Builder()
-                .readTimeout(60, TimeUnit.SECONDS)
-                .connectTimeout(60,TimeUnit.SECONDS);
-
-        okHttpClient.addInterceptor(new Interceptor() {
-            @Override
-            public okhttp3.Response intercept(Chain chain) throws IOException {
-                //okhttp3.Request original = chain.request();
-
-                okhttp3.Response original = chain.proceed(chain.request());
-                okhttp3.Response.Builder builder = original.newBuilder();
-
-
-                okhttp3.Response.Builder requestBuilder = original.newBuilder()
-                        .addHeader("Connection", "keep-alive")
-                        .header("User-Agent","downloader");
-
-                okhttp3.Response request = requestBuilder.build();
-
-                return request;
-            }
-        });
-
+      //  OkHttpClient.Builder okHttpClient = new OkHttpClient.Builder()
+      //          .readTimeout(10, TimeUnit.SECONDS)
+      //          .connectTimeout(10,TimeUnit.SECONDS)
+      //          .retryOnConnectionFailure(true)
+      //          .writeTimeout(10,TimeUnit.SECONDS);
+//
+      //  okHttpClient.addNetworkInterceptor(new Interceptor() {
+      //      @Override
+      //      public okhttp3.Response intercept(Chain chain) throws IOException {
+      //          //okhttp3.Request original = chain.request();
+      //          try {
+      //              okhttp3.Response original = chain.proceed(chain.request());
+      //              okhttp3.Response.Builder builder = original.newBuilder();
+//
+      //              okhttp3.Response.Builder requestBuilder = original.newBuilder()
+      //                      .addHeader("Connection", "keep-alive")
+      //                      .header("User-Agent", "downloader");
+//
+      //              okhttp3.Response request = requestBuilder.build();
+//
+      //              return request;
+      //          }catch (Exception e){
+      //              return chain.proceed(chain.request());
+      //          }
+      //      }
+      //  });
 
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("http://www.downloadinformer.com/")
-                .client(okHttpClient.build())
                 .build();
 
         RequestInterface.RetrofitInterface retrofitInterface = retrofit.create(RequestInterface.RetrofitInterface.class);
@@ -198,6 +203,7 @@ public class DownloadService extends Service {
         }catch (Exception e){}
     }
 
+    @Streaming
     private void downloadFile(ResponseBody body, String filename,int id) throws IOException {
         int count;
         byte data[] = new byte[1024 * 4];
