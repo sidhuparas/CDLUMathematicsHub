@@ -27,7 +27,7 @@
                 android:textSize="17sp"
                 android:translationZ="5dp"
                 app:ms_arrow_tint="@color/white"
-                app:ms_background_color="@color/wallet_holo_blue_light"
+                app:ms_background_color="@color/blue"
                 app:ms_text_color="@color/white" />
 
             <com.jaredrummler.materialspinner.MaterialSpinner
@@ -42,7 +42,7 @@
                 android:textSize="17sp"
                 android:translationZ="5dp"
                 app:ms_arrow_tint="@color/white"
-                app:ms_background_color="@color/wallet_holo_blue_light"
+                app:ms_background_color="@color/blue"
                 app:ms_text_color="@color/white" />
 
             <FrameLayout

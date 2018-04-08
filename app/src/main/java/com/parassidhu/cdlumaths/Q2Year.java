@@ -60,7 +60,7 @@ public class Q2Year extends Fragment {
             apppromo.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    sidhu.openWebPage((AppCompatActivity) getActivity(), "https://play.google.com/store/apps/details?id=com.parassidhu.pdfpinner");
+                    sidhu.openWebPage((AppCompatActivity) getActivity(), "https://play.google.com/store/apps/details?id=com.parassidhu.pdfpin");
                 }
             });
             ItemClickSupport.addTo(recyclerView).setOnItemClickListener(new ItemClickSupport.OnItemClickListener() {
