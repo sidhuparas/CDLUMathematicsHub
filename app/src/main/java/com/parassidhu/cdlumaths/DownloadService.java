@@ -17,6 +17,7 @@ import android.os.Looper;
 import android.os.Message;
 import android.os.Process;
 import android.support.annotation.Nullable;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.content.FileProvider;
 import android.support.v4.content.LocalBroadcastManager;
 import android.util.Log;
@@ -88,6 +89,9 @@ public class DownloadService extends Service {
                             , "Download Service", NotificationManager.IMPORTANCE_LOW);
                     notificationChannel.enableLights(false);
                     notificationChannel.enableVibration(false);
+                    notificationBuilder.setColorized(true);
+                    notificationBuilder.setColor(ContextCompat.getColor(DownloadService.this,R.color.blue));
+
                     notificationManager.createNotificationChannel(notificationChannel);
                     notificationBuilder.setChannelId("download");
                 }

@@ -104,14 +104,6 @@ public class Home extends AppCompatActivity
             f = (sp.getInt("f", 136));
             v = (sp.getInt("v", 209));
 
-            //TODO: Remove these custom fields
-            //Pink
-            r=255; g=128; b=171;
-            e=201;f=79;v=124;
-            //Dark Blue
-            r=1;g=87;b=155;
-            e=0;f=47;v=108;
-
             initializeView();
             ActionBarClr(r,g,b);
             StatusBarClr(e,f,v);
@@ -576,7 +568,7 @@ public class Home extends AppCompatActivity
 
     private void changeThemeOptions(){
         defaultList = new ArrayList<>();
-        String[] list = {"Green","Red","Orange","Blue","Black","Pink"};
+        String[] list = {"Green","Red","Orange","Blue","Pink","Dark Blue"};
         defaultList.addAll(Arrays.asList(list));
 
         new LovelyChoiceDialog(this)
@@ -601,6 +593,16 @@ public class Home extends AppCompatActivity
                             case 3:
                                 a = 3; b = 169; c = 244;
                                 d = 2; e = 136; f = 209;
+                                break;
+                            case 4:
+                                //Pink
+                                r=255; g=128; b=171;
+                                e=201;f=79;v=124;
+                                break;
+                            case 5:
+                                //Dark Blue
+                                r=1;g=87;b=155;
+                                e=0;f=47;v=108;
                                 break;
                         }
                         ed = sp.edit();
