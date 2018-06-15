@@ -47,13 +47,10 @@
             android:name=".WeightOnOtherPlanets"
             android:parentActivityName=".Home" />
         <activity
-            android:name=".feedback"
+            android:name=".Feedback"
             android:parentActivityName=".Home" />
         <activity
             android:name=".quadratic"
-            android:parentActivityName=".Home" />
-        <activity
-            android:name=".sendPapers"
             android:parentActivityName=".Home" />
 
         <meta-data
@@ -123,7 +120,7 @@
             android:resource="@color/colorPrimaryDark" />
 
         <service
-            android:name=".FirbaseService"
+            android:name=".FirebaseService"
             android:exported="false">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT"/>

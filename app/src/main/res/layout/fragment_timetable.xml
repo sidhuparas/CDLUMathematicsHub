@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:paddingLeft="16dp"
     android:paddingRight="16dp"
-    tools:context="com.parassidhu.cdlumaths.timetable">
+    tools:context="com.parassidhu.cdlumaths.Timetable">
 
     <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"

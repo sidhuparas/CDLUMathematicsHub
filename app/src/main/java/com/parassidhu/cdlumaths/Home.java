@@ -156,7 +156,7 @@ public class Home extends AppCompatActivity
     private void setView(){
         sharedPreferences = getSharedPreferences("Startup",MODE_PRIVATE);
         int pos = sharedPreferences.getInt("pos",0);
-        fragment = new Q5Year();
+        fragment = new QuestionPapers();
         switch (pos){
             case 0:
                chooseDrawerItem(0,0);
@@ -358,7 +358,7 @@ public class Home extends AppCompatActivity
                 editor.apply();
                 try {
                     if (getTag().equals("Offline")) {
-                        fragment = new offline();
+                        fragment = new Offline();
                         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
                         ft.replace(R.id.content_frame, fragment, "Offline");
                         ft.commit();
@@ -547,7 +547,7 @@ public class Home extends AppCompatActivity
                         Uri.parse("http://play.google.com/store/apps/details?id=" + getApplicationContext().getPackageName())));
             }
         } else if(id==R.id.sendfeedback){
-            Intent i = new Intent(this,feedback.class);
+            Intent i = new Intent(this,Feedback.class);
             startActivity(i);
         } else if(id==R.id.defaultView){
             setDefaultView();
@@ -662,11 +662,11 @@ public class Home extends AppCompatActivity
 
             if (id == R.id.home && fragment!=getSupportFragmentManager().findFragmentByTag("Question Papers")) {
                 TAG="Question Papers";
-                fragment = new Q5Year();
-                setNavProps(true, 0);
+                fragment = new QuestionPapers();
+                setNavProps(true, 4);
             } else if (id == R.id.offline && fragment!=getSupportFragmentManager().findFragmentByTag("Offline")) {
                 TAG="Offline";
-                fragment = new offline();
+                fragment = new Offline();
                 setNavProps(false,4);
             }  else if (id == R.id.results && fragment!=getSupportFragmentManager().findFragmentByTag("Results")) {
                 TAG = "Results";
@@ -682,19 +682,19 @@ public class Home extends AppCompatActivity
                 setNavProps(false,4);
             } else if (id == R.id.about && fragment!=getSupportFragmentManager().findFragmentByTag("About")) {
                 TAG="About";
-                fragment = new about();
+                fragment = new About();
                 setNavProps(false,4);
             } else if (id==R.id.notices && fragment!=getSupportFragmentManager().findFragmentByTag("Notices")) {
                 TAG="Notices";
-                fragment = new notices();
+                fragment = new Notices();
                 setNavProps(true,4);
             } else if (id==R.id.donate && fragment!=getSupportFragmentManager().findFragmentByTag("Donate")) {
                 TAG="Donate";
-                fragment = new donate();
+                fragment = new Support();
                 setNavProps(false,4);
             }  else if (id==R.id.timeicon && fragment!=getSupportFragmentManager().findFragmentByTag("Timetable")) {
                 TAG = "Timetable";
-                fragment = new timetable();
+                fragment = new Timetable();
                 setNavProps(false,4);
             }  else if (id==R.id.studymaterial && fragment!=getSupportFragmentManager().findFragmentByTag("Study Material")) {
                 TAG = "Study Material";

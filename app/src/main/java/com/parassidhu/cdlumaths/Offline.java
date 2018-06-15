@@ -47,7 +47,7 @@ import java.util.Collections;
 
 import static android.content.Context.MODE_PRIVATE;
 
-public class offline extends Fragment {
+public class Offline extends Fragment {
     DataAdapter adapter;
     SharedPreferences sharedPreferences;
     private String[] code = {"Name", "Date Created"};
@@ -58,7 +58,7 @@ public class offline extends Fragment {
     String one,two,three;
     String nothing = "nothing";
     final String root = Environment.getExternalStorageDirectory().toString();
-    public offline() {}
+    public Offline() {}
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -508,7 +508,7 @@ public class offline extends Fragment {
                 editor.apply();
                 try {
                     if (getTag().equals("Offline")) {
-                        Fragment fragment = new offline();
+                        Fragment fragment = new Offline();
                         FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
                         ft.replace(R.id.content_frame, fragment, "Offline");
                         ft.commit();

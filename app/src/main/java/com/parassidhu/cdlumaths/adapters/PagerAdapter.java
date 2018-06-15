@@ -4,14 +4,12 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
-import com.parassidhu.cdlumaths.Q2Year;
-import com.parassidhu.cdlumaths.Q5Year;
+import com.parassidhu.cdlumaths.QuestionPapers;
 import com.parassidhu.cdlumaths.Result1;
 import com.parassidhu.cdlumaths.Result2;
 import com.parassidhu.cdlumaths.Summary;
 import com.parassidhu.cdlumaths.Syllabus2Year;
 import com.parassidhu.cdlumaths.Syllabus5Year;
-import com.parassidhu.cdlumaths.misc;
 
 public class PagerAdapter extends FragmentStatePagerAdapter {
 
@@ -28,26 +26,13 @@ public class PagerAdapter extends FragmentStatePagerAdapter {
     public Fragment getItem(int position) {
         switch (activity){
             case "QuestionPap":
-                return QuestionPap(position);
+                return new QuestionPapers();
             case "Syllabus":
                 return Syllabus(position);
             case "Result":
                 return Result(position);
         }
       return null;
-    }
-
-    private Fragment QuestionPap(int position){
-        switch (position) {
-            case 0:
-                return new Q5Year();
-            case 1:
-                return new Q2Year();
-            case 2:
-                return new misc();
-            default:
-                return null;
-        }
     }
 
     private Fragment Syllabus(int position){

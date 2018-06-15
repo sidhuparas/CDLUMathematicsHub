@@ -31,7 +31,7 @@ import com.parassidhu.cdlumaths.utils.sidhu;
 import java.io.File;
 import java.io.FileWriter;
 
-public class feedback extends AppCompatActivity {
+public class Feedback extends AppCompatActivity {
 
     private StorageReference mStorageRef;
     private ProgressDialog pDialog;
@@ -63,7 +63,7 @@ public class feedback extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (name.getText().length()==0 || feedback.getText().length()==0){
-                    Toast.makeText(feedback.this, "Please fill the given fields.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Feedback.this, "Please fill the given fields.", Toast.LENGTH_SHORT).show();
                 }else{
                       if (checkPermissions())
                           processFeedback();
@@ -122,7 +122,7 @@ public class feedback extends AppCompatActivity {
             sidhu.permBox(this, "We need storage permissions to send feedback.", new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    ActivityCompat.requestPermissions(feedback.this,
+                    ActivityCompat.requestPermissions(Feedback.this,
                             new String[]{android.Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE},
                             MY_PERMISSIONS_REQUEST_EXTERNAL_STORAGE);
                 }
@@ -197,7 +197,7 @@ public class feedback extends AppCompatActivity {
                         public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                           try {
                               pDialog.dismiss();
-                              Toast.makeText(feedback.this, "Thank you! Your feedback has been successfully sent.", Toast.LENGTH_LONG).show();
+                              Toast.makeText(Feedback.this, "Thank you! Your feedback has been successfully sent.", Toast.LENGTH_LONG).show();
                               deleteFeed(filename);
                           }catch (Exception e){}
                         }
@@ -207,7 +207,7 @@ public class feedback extends AppCompatActivity {
                         public void onFailure(@NonNull Exception exception) {
                             try{
                             pDialog.dismiss();
-                            Toast.makeText(feedback.this, exception.getMessage(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(Feedback.this, exception.getMessage(), Toast.LENGTH_SHORT).show();
                             deleteFeed(filename);
                             }catch (Exception e){}
                         }

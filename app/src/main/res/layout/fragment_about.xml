@@ -10,7 +10,7 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     android:id="@+id/AboutLayout"
     android:background="@color/white"
-    tools:context="com.parassidhu.cdlumaths.about">
+    tools:context="com.parassidhu.cdlumaths.About">
    <android.support.v4.widget.NestedScrollView
        android:layout_width="match_parent"
        android:layout_height="match_parent"

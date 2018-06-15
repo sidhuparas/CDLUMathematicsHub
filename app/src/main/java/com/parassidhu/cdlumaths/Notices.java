@@ -28,14 +28,14 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-public class notices extends Fragment {
+public class Notices extends Fragment {
 
     private RecyclerView recyclerView;
     private ArrayList<ListItem> listItems = new ArrayList<>();
     private NoticesData adapter;
     private ProgressBar progressBar;
     private SwipeRefreshLayout swipeRefreshLayout;
-    public notices() {}
+    public Notices() {}
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -111,7 +111,7 @@ public class notices extends Fragment {
                         listItems.add(item);
                     }
 
-                    adapter = new NoticesData(listItems,recyclerView,notices.this);
+                    adapter = new NoticesData(listItems,recyclerView,Notices.this);
                     recyclerView.setAdapter(adapter);
                     progressBar.setVisibility(View.GONE);
                     swipeRefreshLayout.setRefreshing(false);

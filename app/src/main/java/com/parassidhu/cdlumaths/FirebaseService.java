@@ -16,7 +16,7 @@ import android.util.Patterns;
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
 
-public class FirbaseService extends FirebaseMessagingService {
+public class FirebaseService extends FirebaseMessagingService {
 
     @Override
     public void onMessageReceived(RemoteMessage remoteMessage){

@@ -10,7 +10,7 @@ import android.widget.TextView;
 
 import com.parassidhu.cdlumaths.R;
 import com.parassidhu.cdlumaths.models.AndroidVersion;
-import com.parassidhu.cdlumaths.offline;
+import com.parassidhu.cdlumaths.Offline;
 import com.parassidhu.cdlumaths.utils.sidhu;
 import com.parassidhu.cdlumaths.utils.AnimationUtil;
 import com.squareup.picasso.Picasso;
@@ -23,7 +23,7 @@ public class DataAdapter extends RecyclerView.Adapter<DataAdapter.ViewHolder> {
     int previousPosition = 0;
     boolean create=false;
     Boolean isOffline=false;
-    offline fragment;
+    Offline fragment;
     int i =0;
 
     public DataAdapter(Context context,ArrayList<AndroidVersion> android_versions) {
@@ -31,7 +31,7 @@ public class DataAdapter extends RecyclerView.Adapter<DataAdapter.ViewHolder> {
         this.android_versions = android_versions;
     }
 
-    public DataAdapter(Context context, ArrayList<AndroidVersion> android_versions, Boolean isOffline, offline fragment) {
+    public DataAdapter(Context context, ArrayList<AndroidVersion> android_versions, Boolean isOffline, Offline fragment) {
         this.context = context;
         this.android_versions = android_versions;
         this.isOffline = isOffline;

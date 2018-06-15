@@ -57,7 +57,7 @@ public class Tools extends Fragment{
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
         rcl.setLayoutManager(layoutManager);
         final Intent i = new Intent(getContext(), WeightOnOtherPlanets.class);
-        final Intent a = new Intent(getContext(),feedback.class);
+        final Intent a = new Intent(getContext(),Feedback.class);
         final Intent b = new Intent(getContext(),quadratic.class);
         a.putExtra("radio",3);
         ArrayList androidVersions;

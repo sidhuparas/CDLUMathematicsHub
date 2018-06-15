@@ -139,7 +139,7 @@ public class StudyMaterial extends Fragment {
         suggest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(getActivity(),feedback.class);
+                Intent i = new Intent(getActivity(),Feedback.class);
                 startActivity(i);
             }
         });

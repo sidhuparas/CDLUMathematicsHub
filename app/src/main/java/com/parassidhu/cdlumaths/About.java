@@ -16,7 +16,7 @@ import android.widget.TextView;
 
 import com.parassidhu.cdlumaths.utils.sidhu;
 
-public class about extends Fragment {
+public class About extends Fragment {
     TextView appversion;
 
     @Override

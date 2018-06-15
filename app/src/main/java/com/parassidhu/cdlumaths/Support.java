@@ -14,10 +14,10 @@ import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.InterstitialAd;
 import com.parassidhu.cdlumaths.utils.sidhu;
 
-public class donate extends Fragment {
+public class Support extends Fragment {
     private Button paytm2;
     InterstitialAd mInterstitialAd;
-    public donate() {}
+    public Support() {}
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,

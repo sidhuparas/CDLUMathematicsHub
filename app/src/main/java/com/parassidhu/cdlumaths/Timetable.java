@@ -30,7 +30,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.Calendar;
 
-public class timetable extends Fragment {
+public class Timetable extends Fragment {
 
     private MaterialSpinner spinner, ttSem;
     private Calendar calendar;

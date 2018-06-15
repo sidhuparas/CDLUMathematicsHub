@@ -6,9 +6,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.parassidhu.cdlumaths.Notices;
 import com.parassidhu.cdlumaths.R;
 import com.parassidhu.cdlumaths.models.ListItem;
-import com.parassidhu.cdlumaths.notices;
 import com.parassidhu.cdlumaths.utils.ItemClickSupport;
 
 import java.util.ArrayList;
@@ -17,9 +17,9 @@ public class NoticesData extends RecyclerView.Adapter<NoticesData.ViewHolder> {
 
     private ArrayList<ListItem> mAndroidList;
     private RecyclerView recyclerView;
-    private notices frag;
+    private Notices frag;
 
-    public NoticesData(ArrayList<ListItem> androidList, RecyclerView rcl, notices fragment) {
+    public NoticesData(ArrayList<ListItem> androidList, RecyclerView rcl, Notices fragment) {
         mAndroidList = androidList;
         recyclerView=rcl;
         frag=fragment;

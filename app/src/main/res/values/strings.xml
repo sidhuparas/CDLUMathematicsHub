@@ -9,7 +9,7 @@
     <string name="timetable2">http://downloadinformer.com/CDLU/4/t1</string>
     <string name="downloads">http://downloadinformer.com/CDLU/downloads.php</string>
     <string name="study">http://downloadinformer.com/CDLU/studycount.php</string>
-
+    
     <string name="f1">http://downloadinformer.com/CDLU/StudyMaterial/51</string>
     <string name="f2">http://downloadinformer.com/CDLU/StudyMaterial/52</string>
     <string name="f3">http://downloadinformer.com/CDLU/StudyMaterial/53</string>
@@ -24,5 +24,8 @@
     <string name="p2">http://downloadinformer.com/CDLU/StudyMaterial/22</string>
     <string name="p3">http://downloadinformer.com/CDLU/StudyMaterial/23</string>
     <string name="p4">http://downloadinformer.com/CDLU/StudyMaterial/24</string>
+    
+    <string name="fyear">5-Years Course ></string>
+    <string name="tyear">2-Years Course ></string>
 
 </resources>
