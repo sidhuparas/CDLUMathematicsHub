@@ -1,34 +1,22 @@
 package com.parassidhu.cdlumaths;
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.annotation.TargetApi;
-import android.content.ClipData;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.graphics.Color;
-import android.os.Build;
-import android.preference.PreferenceManager;
-import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.AccelerateInterpolator;
-import android.view.animation.DecelerateInterpolator;
-import android.view.animation.LinearInterpolator;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 
-import com.google.android.gms.ads.AdListener;
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdView;
-import com.google.android.gms.ads.MobileAds;
+import com.parassidhu.cdlumaths.adapters.HomeAdapter;
+import com.parassidhu.cdlumaths.models.AndroidVersion;
+import com.parassidhu.cdlumaths.utils.ItemClickSupport;
+import com.parassidhu.cdlumaths.utils.sidhu;
 
 import java.util.ArrayList;
 
@@ -106,11 +94,12 @@ public class Q5Year extends Fragment {
           apppromo.setOnClickListener(new View.OnClickListener() {
               @Override
               public void onClick(View v) {
-                  sidhu.openWebPage((AppCompatActivity) getActivity(),"https://play.google.com/store/apps/details?id=com.parassidhu.pdfpin");
+                  sidhu.openWebPage((AppCompatActivity) getActivity(),
+                          "https://play.google.com/store/apps/details?id=com.parassidhu.pdfpin");
               }
           });
           recyclerView.setHasFixedSize(true);
-          RecyclerView.LayoutManager layoutManager = new GridLayoutManager(getActivity().getApplicationContext(),2);
+          RecyclerView.LayoutManager layoutManager = new GridLayoutManager(getActivity().getApplicationContext(),4);
           recyclerView.setLayoutManager(layoutManager);
           ArrayList androidVersions = prepareData();
           HomeAdapter adapter = new HomeAdapter(getActivity(), androidVersions);

@@ -1,8 +1,17 @@
-package com.parassidhu.cdlumaths;
+package com.parassidhu.cdlumaths.adapters;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
+
+import com.parassidhu.cdlumaths.Q2Year;
+import com.parassidhu.cdlumaths.Q5Year;
+import com.parassidhu.cdlumaths.Result1;
+import com.parassidhu.cdlumaths.Result2;
+import com.parassidhu.cdlumaths.Summary;
+import com.parassidhu.cdlumaths.Syllabus2Year;
+import com.parassidhu.cdlumaths.Syllabus5Year;
+import com.parassidhu.cdlumaths.misc;
 
 public class PagerAdapter extends FragmentStatePagerAdapter {
 

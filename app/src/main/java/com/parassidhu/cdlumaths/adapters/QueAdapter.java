@@ -1,21 +1,16 @@
-package com.parassidhu.cdlumaths;
+package com.parassidhu.cdlumaths.adapters;
 
 import android.content.Context;
-import android.content.SharedPreferences;
-import android.graphics.drawable.Drawable;
-import android.support.design.widget.TabLayout;
-import android.support.v4.app.Fragment;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.TextView;
-import com.squareup.picasso.Picasso;
+
+import com.parassidhu.cdlumaths.R;
+import com.parassidhu.cdlumaths.models.AndroidVersion;
 
 import java.util.ArrayList;
-import java.util.Random;
 
 public class QueAdapter extends RecyclerView.Adapter<QueAdapter.ViewHolder> {
     private ArrayList<AndroidVersion> android_versions;

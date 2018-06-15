@@ -1,4 +1,4 @@
-package com.parassidhu.cdlumaths;
+package com.parassidhu.cdlumaths.models;
 
 public class AndroidVersion {
 

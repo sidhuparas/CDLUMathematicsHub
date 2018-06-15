@@ -1,6 +1,5 @@
 package com.parassidhu.cdlumaths;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -20,6 +19,9 @@ import com.android.volley.RequestQueue;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.parassidhu.cdlumaths.adapters.NoticesData;
+import com.parassidhu.cdlumaths.models.ListItem;
+import com.parassidhu.cdlumaths.utils.sidhu;
 
 import org.json.JSONArray;
 import org.json.JSONObject;

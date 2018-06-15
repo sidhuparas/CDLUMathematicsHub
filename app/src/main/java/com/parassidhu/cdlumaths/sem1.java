@@ -10,6 +10,10 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.google.android.gms.ads.AdView;
+import com.parassidhu.cdlumaths.adapters.QueAdapter;
+import com.parassidhu.cdlumaths.models.AndroidVersion;
+import com.parassidhu.cdlumaths.utils.ItemClickSupport;
+import com.parassidhu.cdlumaths.utils.sidhu;
 
 import java.util.ArrayList;
 public class sem1 extends AppCompatActivity {

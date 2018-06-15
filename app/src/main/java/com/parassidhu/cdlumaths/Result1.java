@@ -1,7 +1,5 @@
 package com.parassidhu.cdlumaths;
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
@@ -9,12 +7,13 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
-import org.w3c.dom.Text;
+import com.parassidhu.cdlumaths.adapters.HomeAdapter;
+import com.parassidhu.cdlumaths.models.AndroidVersion;
+import com.parassidhu.cdlumaths.utils.ItemClickSupport;
+import com.parassidhu.cdlumaths.utils.sidhu;
 
 import java.util.ArrayList;
-import java.util.StringTokenizer;
 
 public class Result1 extends Fragment {
     HomeAdapter adapter;

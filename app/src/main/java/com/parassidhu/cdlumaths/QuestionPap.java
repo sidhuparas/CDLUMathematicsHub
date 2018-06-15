@@ -1,8 +1,6 @@
 package com.parassidhu.cdlumaths;
 
-import android.content.SharedPreferences;
 import android.graphics.Color;
-import android.preference.PreferenceManager;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
@@ -13,12 +11,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.google.android.gms.ads.AdListener;
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdView;
-import com.google.android.gms.ads.MobileAds;
-
-import static android.content.Context.MODE_PRIVATE;
+import com.parassidhu.cdlumaths.adapters.PagerAdapter;
+import com.parassidhu.cdlumaths.utils.sidhu;
 
 public class QuestionPap extends Fragment {
 

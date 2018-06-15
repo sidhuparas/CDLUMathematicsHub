@@ -1,5 +1,4 @@
 package com.parassidhu.cdlumaths;
-import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
@@ -11,7 +10,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.parassidhu.cdlumaths.R;
+import com.parassidhu.cdlumaths.adapters.PagerAdapter;
+import com.parassidhu.cdlumaths.utils.sidhu;
 
 public class Results extends Fragment {
 

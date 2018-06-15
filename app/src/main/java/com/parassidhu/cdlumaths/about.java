@@ -14,6 +14,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.parassidhu.cdlumaths.utils.sidhu;
+
 public class about extends Fragment {
     TextView appversion;
 

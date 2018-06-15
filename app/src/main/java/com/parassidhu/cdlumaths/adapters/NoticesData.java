@@ -1,10 +1,15 @@
-package com.parassidhu.cdlumaths;
+package com.parassidhu.cdlumaths.adapters;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
+import com.parassidhu.cdlumaths.R;
+import com.parassidhu.cdlumaths.models.ListItem;
+import com.parassidhu.cdlumaths.notices;
+import com.parassidhu.cdlumaths.utils.ItemClickSupport;
 
 import java.util.ArrayList;
 

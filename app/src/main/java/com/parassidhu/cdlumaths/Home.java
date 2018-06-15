@@ -15,7 +15,6 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
-import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.FloatingActionButton;
@@ -26,7 +25,6 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v4.widget.NestedScrollView;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -38,7 +36,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -49,16 +46,13 @@ import com.android.volley.toolbox.Volley;
 import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.InterstitialAd;
-import com.google.android.gms.ads.reward.RewardItem;
-import com.google.android.gms.ads.reward.RewardedVideoAdListener;
-import com.google.firebase.crash.FirebaseCrash;
+import com.parassidhu.cdlumaths.utils.sidhu;
 import com.yarolegovich.lovelydialog.LovelyChoiceDialog;
 import com.yarolegovich.lovelydialog.LovelyInfoDialog;
 import com.yarolegovich.lovelydialog.LovelyStandardDialog;
 
 import hotchemi.android.rate.AppRate;
 
-import static com.parassidhu.cdlumaths.R.id.fab;
 import static com.parassidhu.cdlumaths.R.id.nav_view;
 
 import android.support.v7.widget.ShareActionProvider;
@@ -120,7 +114,7 @@ public class Home extends AppCompatActivity
 
             setView();
             checkBack();
-            welcomeReleaseNotes("What's New In This Update?",sidhu.releaseNotes,111);
+            welcomeReleaseNotes("What's New In This Update?", sidhu.releaseNotes,111);
         }catch (Exception ex){
             Toast.makeText(this, ex.getMessage(), Toast.LENGTH_LONG).show();
         }
@@ -162,7 +156,7 @@ public class Home extends AppCompatActivity
     private void setView(){
         sharedPreferences = getSharedPreferences("Startup",MODE_PRIVATE);
         int pos = sharedPreferences.getInt("pos",0);
-        fragment = new QuestionPap();
+        fragment = new Q5Year();
         switch (pos){
             case 0:
                chooseDrawerItem(0,0);
@@ -668,7 +662,7 @@ public class Home extends AppCompatActivity
 
             if (id == R.id.home && fragment!=getSupportFragmentManager().findFragmentByTag("Question Papers")) {
                 TAG="Question Papers";
-                fragment = new QuestionPap();
+                fragment = new Q5Year();
                 setNavProps(true, 0);
             } else if (id == R.id.offline && fragment!=getSupportFragmentManager().findFragmentByTag("Offline")) {
                 TAG="Offline";

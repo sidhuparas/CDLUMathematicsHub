@@ -1,7 +1,5 @@
 package com.parassidhu.cdlumaths;
 
-import android.content.ActivityNotFoundException;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -34,6 +32,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.cocosw.bottomsheet.BottomSheet;
+import com.parassidhu.cdlumaths.adapters.DataAdapter;
+import com.parassidhu.cdlumaths.models.AndroidVersion;
+import com.parassidhu.cdlumaths.models.Pair;
+import com.parassidhu.cdlumaths.utils.ItemClickSupport;
+import com.parassidhu.cdlumaths.utils.sidhu;
 import com.yarolegovich.lovelydialog.LovelyChoiceDialog;
 import com.yarolegovich.lovelydialog.LovelyTextInputDialog;
 

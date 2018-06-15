@@ -1,4 +1,4 @@
-package com.parassidhu.cdlumaths;
+package com.parassidhu.cdlumaths.utils;
 
 import android.animation.Animator;
 import android.animation.AnimatorSet;

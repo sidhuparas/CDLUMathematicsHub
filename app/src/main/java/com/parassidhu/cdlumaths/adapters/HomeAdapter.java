@@ -1,21 +1,20 @@
-package com.parassidhu.cdlumaths;
+package com.parassidhu.cdlumaths.adapters;
 
 import android.content.Context;
-import android.content.SharedPreferences;
 import android.graphics.Color;
-import android.support.design.widget.TabLayout;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.TextView;
+
+import com.parassidhu.cdlumaths.Home;
+import com.parassidhu.cdlumaths.R;
+import com.parassidhu.cdlumaths.models.AndroidVersion;
+import com.parassidhu.cdlumaths.utils.AnimationUtil;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
-
-import static android.content.Context.MODE_PRIVATE;
 
 public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
     private ArrayList<AndroidVersion> android_versions;
@@ -35,7 +34,8 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
     }
     @Override
     public void onBindViewHolder(ViewHolder viewHolder, int i) {
-        Picasso.with(context).load(android_versions.get(i).getAndroid_image_url()).resize(180, 180).into(viewHolder.img_android);
+        Picasso.with(context).load(android_versions.get(i).getAndroid_image_url())
+                .resize(150, 150).into(viewHolder.img_android);
         viewHolder.img_android.setColorFilter(Color.rgb(Home.r,Home.g,Home.b));
 
         if (!create){}else {

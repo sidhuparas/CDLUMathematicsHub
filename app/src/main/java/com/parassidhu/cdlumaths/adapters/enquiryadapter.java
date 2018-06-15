@@ -1,5 +1,4 @@
-package com.parassidhu.cdlumaths;
-
+package com.parassidhu.cdlumaths.adapters;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -7,19 +6,22 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
+
+import com.parassidhu.cdlumaths.models.GetSetGo;
+import com.parassidhu.cdlumaths.MyResult;
+import com.parassidhu.cdlumaths.R;
 
 import java.util.ArrayList;
 
-public class SummaryAdapter extends RecyclerView.Adapter<SummaryAdapter.ViewHolder> {
+public class enquiryadapter extends RecyclerView.Adapter<enquiryadapter.ViewHolder> {
     int i =0;
 
     Context context;
     private LayoutInflater inflater;
-    SummaryResult myResult;
+    MyResult myResult;
     private ArrayList<GetSetGo> mListe;
 
-    public SummaryAdapter(Context context,ArrayList<GetSetGo> abc,SummaryResult myResult) {
+    public enquiryadapter(Context context,ArrayList<GetSetGo> abc,MyResult myResult) {
         this.myResult=myResult;
         this.inflater = LayoutInflater.from(context);
         this.mListe = abc;
@@ -30,16 +32,17 @@ public class SummaryAdapter extends RecyclerView.Adapter<SummaryAdapter.ViewHold
         return (long) position;
     }
     @Override
-    public SummaryAdapter.ViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
-        View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.summary_row, viewGroup, false);
+    public enquiryadapter.ViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
+        View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.result_row, viewGroup, false);
 
         return new ViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(ViewHolder viewHolder, int i) {
-        viewHolder.tv_android.setText(mListe.get(i).getValue());
-        viewHolder.subname.setText(mListe.get(i).getKey());
+            viewHolder.tv_android.setText(mListe.get(i).getValue());
+            viewHolder.subname.setText(mListe.get(i).getKey());
+
     }
     @Override
     public int getItemCount() {

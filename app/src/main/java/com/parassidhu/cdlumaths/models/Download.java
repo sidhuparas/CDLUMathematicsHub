@@ -1,13 +1,11 @@
-package com.parassidhu.cdlumaths;
+package com.parassidhu.cdlumaths.models;
 
 import android.os.Parcel;
 import android.os.Parcelable;
 
 public class Download  implements Parcelable{
 
-    public Download(){
-
-    }
+    public Download(){ }
 
     private int progress;
     private int currentFileSize;

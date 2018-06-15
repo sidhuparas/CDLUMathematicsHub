@@ -13,6 +13,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.parassidhu.cdlumaths.adapters.WOOPAdapter;
+import com.parassidhu.cdlumaths.models.AndroidVersion;
+import com.parassidhu.cdlumaths.utils.ItemClickSupport;
+
 import java.util.ArrayList;
 
 public class WeightOnOtherPlanets extends AppCompatActivity {

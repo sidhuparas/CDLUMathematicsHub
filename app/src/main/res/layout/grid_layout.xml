@@ -10,7 +10,6 @@
     card_view:cardCornerRadius="5dp"
     android:background="@drawable/custom_bg"
     android:clickable="true"
-    android:translationZ="3dp"
     android:elevation="3dp"
     android:focusable="true">
 
@@ -21,8 +20,8 @@
         android:layout_height="match_parent">
 
         <ImageView
-            android:layout_width="120dp"
-            android:layout_height="120dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:id="@+id/img_android"
             android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
