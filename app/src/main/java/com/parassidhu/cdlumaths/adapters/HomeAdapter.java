@@ -19,9 +19,7 @@ import java.util.ArrayList;
 public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
     private ArrayList<AndroidVersion> android_versions;
     private Context context;
-    int previousPosition = 0;
-    boolean create=false;
-    int i =0;
+
     public HomeAdapter(Context context,ArrayList<AndroidVersion> android_versions) {
         this.context = context;
         this.android_versions = android_versions;
@@ -37,19 +35,6 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
         Picasso.with(context).load(android_versions.get(i).getAndroid_image_url())
                 .resize(150, 150).into(viewHolder.img_android);
         viewHolder.img_android.setColorFilter(Color.rgb(Home.r,Home.g,Home.b));
-
-        if (!create){}else {
-            if (i > previousPosition) {
-                AnimationUtil.animate(viewHolder, true);
-            } else {
-                AnimationUtil.animate(viewHolder, false);
-            }
-            previousPosition = i;
-        }
-        i++;
-        if (i==6){
-            create=true;
-        }
     }
     @Override
     public int getItemCount() {

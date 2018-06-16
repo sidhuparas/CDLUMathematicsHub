@@ -1,6 +1,7 @@
 package com.parassidhu.cdlumaths;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
@@ -35,6 +36,7 @@ public class Results extends Fragment {
         setHasOptionsMenu(true);
         setup();
     }
+
     public void setup(){
         try {
             TabLayout tabLayout = getActivity().findViewById(R.id.tab_layout);

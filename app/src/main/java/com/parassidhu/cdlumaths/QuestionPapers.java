@@ -2,8 +2,11 @@ package com.parassidhu.cdlumaths;
 
 import android.content.Intent;
 import android.graphics.Color;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
+import android.support.v4.widget.NestedScrollView;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -33,11 +36,13 @@ public class QuestionPapers extends Fragment {
     @BindView(R.id.apppromo) ImageView appPromo;
     @BindView(R.id.choose2Years) TextView choose2Years;
     @BindView(R.id.twoYearsRV) RecyclerView rcl2Years;
+    @BindView(R.id.scrollViewQuePap) NestedScrollView scrollViewQuePap;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.fragment_q5_year, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_question_papers, container, false);
         ButterKnife.bind(this, rootView);
         return rootView;
     }
@@ -249,6 +254,12 @@ public class QuestionPapers extends Fragment {
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+
     }
 }
 
