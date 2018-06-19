@@ -1,11 +1,14 @@
 package com.parassidhu.cdlumaths;
 
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -19,7 +22,7 @@ import com.android.volley.RequestQueue;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.parassidhu.cdlumaths.adapters.NoticesData;
+import com.parassidhu.cdlumaths.adapters.NoticesAdapter;
 import com.parassidhu.cdlumaths.models.ListItem;
 import com.parassidhu.cdlumaths.utils.sidhu;
 
@@ -31,11 +34,16 @@ import java.util.ArrayList;
 public class Notices extends Fragment {
 
     private RecyclerView recyclerView;
+    private RecyclerView.LayoutManager layoutManager;
     private ArrayList<ListItem> listItems = new ArrayList<>();
-    private NoticesData adapter;
+    private NoticesAdapter adapter;
     private ProgressBar progressBar;
     private SwipeRefreshLayout swipeRefreshLayout;
-    public Notices() {}
+
+    public Notices() {
+    }
+
+    String TAG = "Notices";
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -46,14 +54,17 @@ public class Notices extends Fragment {
     @Override
     public void onPrepareOptionsMenu(Menu menu) {
         MenuItem item = menu.findItem(R.id.sort);
-        sidhu.setOptVisibility(menu,false,true);
+        sidhu.setOptVisibility(menu, false, true);
     }
 
+
     @Override
-    public void onViewCreated(View view, Bundle savedInstanceState){
+    public void onViewCreated(View view, Bundle savedInstanceState) {
         try {
             setHasOptionsMenu(true);
             getActivity().setTitle("Notices");
+
+
             progressBar = getActivity().findViewById(R.id.progressBar);
             progressBar.setVisibility(View.VISIBLE);
             initViews();
@@ -69,28 +80,28 @@ public class Notices extends Fragment {
                 }
             });
 
-        }catch (Exception ex){
+        } catch (Exception ex) {
 
         }
     }
 
-    private void initViews(){
+    private void initViews() {
         recyclerView = getActivity().findViewById(R.id.recycler_view);
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity().getApplicationContext());
+        layoutManager = new LinearLayoutManager(getActivity().getApplicationContext());
         recyclerView.setLayoutManager(layoutManager);
         loadJSON();
     }
 
     public void loadNotice(String url, String name, String param) {
-        switch (param){
+        switch (param) {
             case "0":
-                sidhu.MsgBox(getActivity(),name.substring(0,name.length()-4),url);
+                sidhu.MsgBox(getActivity(), name.substring(0, name.length() - 4), url);
                 break;
             case "1":
-                sidhu.openWebPage((AppCompatActivity) getActivity(),url);
+                sidhu.openWebPage((AppCompatActivity) getActivity(), url);
                 break;
             default:
-                sidhu.startDownload(name,url, getActivity());
+                sidhu.startDownload(name, url, getActivity());
                 break;
         }
     }
@@ -100,25 +111,25 @@ public class Notices extends Fragment {
                 getResources().getString(R.string.notices), new com.android.volley.Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-                try{
+                try {
                     JSONObject jsonObject = new JSONObject(response);
                     JSONArray jsonArray = jsonObject.getJSONArray("notices");
 
-                    for (int i=0; i<jsonArray.length();i++){
+                    for (int i = 0; i < jsonArray.length(); i++) {
                         JSONObject o = jsonArray.getJSONObject(i);
-                        ListItem item = new ListItem(o.getString("title"),o.getString("content"),
+                        ListItem item = new ListItem(o.getString("title"), o.getString("content"),
                                 o.getString("param"));
                         listItems.add(item);
                     }
 
-                    adapter = new NoticesData(listItems,recyclerView,Notices.this);
+                    adapter = new NoticesAdapter(listItems, recyclerView, Notices.this);
                     recyclerView.setAdapter(adapter);
                     progressBar.setVisibility(View.GONE);
                     swipeRefreshLayout.setRefreshing(false);
 
-                }catch (Exception e){
+                } catch (Exception e) {
                     progressBar.setVisibility(View.GONE);
-                    Toast.makeText(getActivity(), "Error: Internet connection isn't buttery smooth!" , Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), "Error: Internet connection isn't buttery smooth!", Toast.LENGTH_SHORT).show();
                 }
             }
         }, new com.android.volley.Response.ErrorListener() {
@@ -127,7 +138,8 @@ public class Notices extends Fragment {
                 try {
                     progressBar.setVisibility(View.GONE);
                     Toast.makeText(getActivity(), "Error: Internet connection isn't buttery smooth!", Toast.LENGTH_SHORT).show();
-                }catch (Exception e){}
+                } catch (Exception e) {
+                }
             }
         });
 

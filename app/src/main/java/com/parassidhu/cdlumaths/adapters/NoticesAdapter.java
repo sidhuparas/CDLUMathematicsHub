@@ -13,13 +13,13 @@ import com.parassidhu.cdlumaths.utils.ItemClickSupport;
 
 import java.util.ArrayList;
 
-public class NoticesData extends RecyclerView.Adapter<NoticesData.ViewHolder> {
+public class NoticesAdapter extends RecyclerView.Adapter<NoticesAdapter.ViewHolder> {
 
     private ArrayList<ListItem> mAndroidList;
     private RecyclerView recyclerView;
     private Notices frag;
 
-    public NoticesData(ArrayList<ListItem> androidList, RecyclerView rcl, Notices fragment) {
+    public NoticesAdapter(ArrayList<ListItem> androidList, RecyclerView rcl, Notices fragment) {
         mAndroidList = androidList;
         recyclerView=rcl;
         frag=fragment;
