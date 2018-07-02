@@ -11,7 +11,7 @@ import android.widget.TextView;
 import com.parassidhu.cdlumaths.R;
 import com.parassidhu.cdlumaths.models.AndroidVersion;
 import com.parassidhu.cdlumaths.fragments.Offline;
-import com.parassidhu.cdlumaths.utils.sidhu;
+import com.parassidhu.cdlumaths.utils.AppUtils;
 import com.parassidhu.cdlumaths.utils.AnimationUtil;
 import com.squareup.picasso.Picasso;
 
@@ -46,11 +46,12 @@ public class DataAdapter extends RecyclerView.Adapter<DataAdapter.ViewHolder> {
     public void onBindViewHolder(final ViewHolder viewHolder, int i) {
 
         viewHolder.tv_android.setText(android_versions.get(i).getAndroid_version_name());
-        Picasso.with(context).load(android_versions.get(i).getAndroid_image_url()).resize(180, 180).into(viewHolder.img_android);
-        sidhu.setFont(context,viewHolder.tv_android,"segoeuisl.ttf");
+        Picasso.get().load(android_versions.get(i).getAndroid_image_url())
+                .resize(180, 180).into(viewHolder.img_android);
+        AppUtils.setFont(context,viewHolder.tv_android,"segoeuisl.ttf");
         if (isOffline){
             viewHolder.imageButton.setVisibility(View.VISIBLE);
-           // sidhu.setFont(context, viewHolder.tv_android,"Raleway.ttf");
+           // AppUtils.setFont(context, viewHolder.tv_android,"Raleway.ttf");
             viewHolder.imageButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {

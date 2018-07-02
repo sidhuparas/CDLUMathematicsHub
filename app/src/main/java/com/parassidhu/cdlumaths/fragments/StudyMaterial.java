@@ -28,8 +28,8 @@ import com.github.javiersantos.bottomdialogs.BottomDialog;
 import com.jaredrummler.materialspinner.MaterialSpinner;
 import com.parassidhu.cdlumaths.R;
 import com.parassidhu.cdlumaths.activities.Feedback;
+import com.parassidhu.cdlumaths.utils.AppUtils;
 import com.parassidhu.cdlumaths.utils.ItemClickSupport;
-import com.parassidhu.cdlumaths.utils.sidhu;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -77,7 +77,7 @@ public class StudyMaterial extends Fragment {
     private Button suggest;
 
     public void onPrepareOptionsMenu(Menu menu) {
-        sidhu.setOptVisibility(menu, false, true);
+        AppUtils.setOptVisibility(menu, false, true);
     }
 
     @Override
@@ -116,7 +116,7 @@ public class StudyMaterial extends Fragment {
 
         //Setup RecyclerView
         rcl.setLayoutManager(new LinearLayoutManager(getActivity()));
-        sidhu.setFastScrolling(rcl);
+        AppUtils.setFastScrolling(rcl);
         ItemClickSupport.addTo(rcl).setOnItemClickListener(new ItemClickSupport.OnItemClickListener() {
             @Override
             public void onItemClicked(RecyclerView recyclerView, int position, View v) {
@@ -195,7 +195,7 @@ public class StudyMaterial extends Fragment {
                         .onPositive(new BottomDialog.ButtonCallback() {
                             @Override
                             public void onClick(@NonNull BottomDialog bottomDialog) {
-                                sidhu.openWebPage((AppCompatActivity) getActivity(), listItems.get(pos).getLink());
+                                AppUtils.openWebPage((AppCompatActivity) getActivity(), listItems.get(pos).getLink());
                             }
                         });
                 break;
@@ -205,7 +205,7 @@ public class StudyMaterial extends Fragment {
                     .onPositive(new BottomDialog.ButtonCallback() {
                         @Override
                         public void onClick(@NonNull BottomDialog bottomDialog) {
-                            sidhu.startDownload(title + " (" + listItems.get(pos).getSubject() + ").pdf",
+                            AppUtils.startDownload(title + " (" + listItems.get(pos).getSubject() + ").pdf",
                                     listItems.get(pos).getLink(), getActivity());
                             increaseDownloads();
                         }
@@ -213,7 +213,7 @@ public class StudyMaterial extends Fragment {
                     .onNegative(new BottomDialog.ButtonCallback() {
                         @Override
                         public void onClick(@NonNull BottomDialog bottomDialog) {
-                            sidhu.openWebPage((AppCompatActivity) getActivity(), listItems.get(pos).getLink());
+                            AppUtils.openWebPage((AppCompatActivity) getActivity(), listItems.get(pos).getLink());
                             increaseDownloads();
                         }
                     });
@@ -366,8 +366,8 @@ class StudyAdapter extends RecyclerView.Adapter<StudyAdapter.ViewHolder> {
         viewHolder.name.setText(st.getName());
         viewHolder.subject.setText(st.getSubject());
 
-        sidhu.setFont(context, viewHolder.name, "Raleway-Medium.ttf");
-        sidhu.setFont(context, viewHolder.subject, "Raleway.ttf");
+        AppUtils.setFont(context, viewHolder.name, "Raleway-Medium.ttf");
+        AppUtils.setFont(context, viewHolder.subject, "Raleway.ttf");
 
         if (i % 5 == 0)
             viewHolder.itemView.setBackgroundResource(R.drawable.ngreen);

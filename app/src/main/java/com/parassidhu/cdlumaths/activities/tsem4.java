@@ -13,9 +13,9 @@ import com.google.android.gms.ads.AdView;
 import com.parassidhu.cdlumaths.R;
 import com.parassidhu.cdlumaths.adapters.QueAdapter;
 import com.parassidhu.cdlumaths.models.AndroidVersion;
+import com.parassidhu.cdlumaths.utils.AppUtils;
 import com.parassidhu.cdlumaths.utils.ItemClickSupport;
 import com.parassidhu.cdlumaths.utils.MyApp;
-import com.parassidhu.cdlumaths.utils.sidhu;
 
 import java.util.ArrayList;
 
@@ -37,9 +37,9 @@ public class tsem4 extends AppCompatActivity {
         setupView();
         initViews();
 
-        sidhu.renderTheme(this);
+        AppUtils.renderTheme(this);
         final AdView adView = this.findViewById(R.id.adView);
-        sidhu.displayAds(this,adView);
+        AppUtils.displayAds(this,adView);
 
         final RecyclerView rcl = findViewById(R.id.card_recycler_view);
         ItemClickSupport.addTo(rcl).setOnItemClickListener(new ItemClickSupport.OnItemClickListener() {
@@ -71,23 +71,23 @@ public class tsem4 extends AppCompatActivity {
             case R.id.download:
                 switch (m.hitit4()) {
                     case 0:
-                        sidhu.startDownload("Functional Analysis (May 16).pdf",add+"Functional%20Analysis.pdf",this);
+                        AppUtils.startDownload("Functional Analysis (May 16).pdf",add+"Functional%20Analysis.pdf",this);
                         break;
                     case 1:
-                        sidhu.startDownload("Partial Differential Equations (May 16).pdf",add+"PDE.pdf",this);
+                        AppUtils.startDownload("Partial Differential Equations (May 16).pdf",add+"PDE.pdf",this);
                         break;
                     case 2:
-                        sidhu.startDownload("Mechanics Of Solids-II (May 16).pdf",add+"Mechanics%20of%20Solids-II.pdf",this);
+                        AppUtils.startDownload("Mechanics Of Solids-II (May 16).pdf",add+"Mechanics%20of%20Solids-II.pdf",this);
                         break;
                     case 3:
-                        sidhu.startDownload("Operations Research (May 16).pdf",add+"Operations%20Research.pdf",this);
+                        AppUtils.startDownload("Operations Research (May 16).pdf",add+"Operations%20Research.pdf",this);
                         break;
                     case 4:
-                        sidhu.startDownload("Methods Of Applied Mathematics (May 16).pdf",
+                        AppUtils.startDownload("Methods Of Applied Mathematics (May 16).pdf",
                                 add+"Methods%20of%20Applied%20Maths.pdf",this);
                         break;
                     case 5:
-                        sidhu.startDownload("MSc Maths 2-Year 4th Sem (May 16).pdf",
+                        AppUtils.startDownload("MSc Maths 2-Year 4th Sem (May 16).pdf",
                                 add+"msc%20maths%202%20years%204th%20sem%2005%202016.pdf",this);
                         break;
                 }

@@ -22,7 +22,7 @@ import com.android.volley.toolbox.Volley;
 import com.parassidhu.cdlumaths.R;
 import com.parassidhu.cdlumaths.adapters.NoticesAdapter;
 import com.parassidhu.cdlumaths.models.ListItem;
-import com.parassidhu.cdlumaths.utils.sidhu;
+import com.parassidhu.cdlumaths.utils.AppUtils;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -52,7 +52,7 @@ public class Notices extends Fragment {
     @Override
     public void onPrepareOptionsMenu(Menu menu) {
         MenuItem item = menu.findItem(R.id.sort);
-        sidhu.setOptVisibility(menu, false, true);
+        AppUtils.setOptVisibility(menu, false, true);
     }
 
 
@@ -93,13 +93,13 @@ public class Notices extends Fragment {
     public void loadNotice(String url, String name, String param) {
         switch (param) {
             case "0":
-                sidhu.MsgBox(getActivity(), name.substring(0, name.length() - 4), url);
+                AppUtils.MsgBox(getActivity(), name.substring(0, name.length() - 4), url);
                 break;
             case "1":
-                sidhu.openWebPage((AppCompatActivity) getActivity(), url);
+                AppUtils.openWebPage((AppCompatActivity) getActivity(), url);
                 break;
             default:
-                sidhu.startDownload(name, url, getActivity());
+                AppUtils.startDownload(name, url, getActivity());
                 break;
         }
     }

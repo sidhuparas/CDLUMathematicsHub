@@ -15,7 +15,7 @@ import com.parassidhu.cdlumaths.adapters.QueAdapter;
 import com.parassidhu.cdlumaths.models.AndroidVersion;
 import com.parassidhu.cdlumaths.utils.ItemClickSupport;
 import com.parassidhu.cdlumaths.utils.MyApp;
-import com.parassidhu.cdlumaths.utils.sidhu;
+import com.parassidhu.cdlumaths.utils.AppUtils;
 
 import java.util.ArrayList;
 
@@ -37,9 +37,9 @@ public class sem8 extends AppCompatActivity {
         setupView();
         initViews();
         
-        sidhu.renderTheme(this);
+        AppUtils.renderTheme(this);
         AdView adView = this.findViewById(R.id.adView);
-        sidhu.displayAds(this,adView);
+        AppUtils.displayAds(this,adView);
         
         final RecyclerView rcl = findViewById(R.id.card_recycler_view);
         ItemClickSupport.addTo(rcl).setOnItemClickListener(new ItemClickSupport.OnItemClickListener() {
@@ -71,27 +71,27 @@ public class sem8 extends AppCompatActivity {
             case R.id.download:
                 switch (m.getit8()) {
                     case 0:
-                        sidhu.startDownload("Advanced Abstract Algebra-II (May 16).pdf",
+                        AppUtils.startDownload("Advanced Abstract Algebra-II (May 16).pdf",
                                 add+"AAA2%28May16%29.pdf",this);
                         break;
                     case 1:
-                        sidhu.startDownload("Measure and Integration Theory (May 16).pdf",
+                        AppUtils.startDownload("Measure and Integration Theory (May 16).pdf",
                                 add+"MaIT%28May16%29.pdf",this);
                         break;
                     case 2:
-                        sidhu.startDownload("Computer Programming (May 16).pdf",
+                        AppUtils.startDownload("Computer Programming (May 16).pdf",
                                 add+"CP%28May16%29.pdf",this);
                         break;
                     case 3:
-                        sidhu.startDownload("Complex Analysis-II (May 16).pdf",
+                        AppUtils.startDownload("Complex Analysis-II (May 16).pdf",
                                 add+"CA2%28May16%29.pdf",this);
                         break;
                     case 4:
-                        sidhu.startDownload("Ordinary Differential Equations-II (May 16).pdf",
+                        AppUtils.startDownload("Ordinary Differential Equations-II (May 16).pdf",
                                 add+"ODE2%28May16%29.pdf",this);
                         break;
                     case 5:
-                        sidhu.startDownload("MSc Maths 5-Year 8th Sem (May 16).pdf",
+                        AppUtils.startDownload("MSc Maths 5-Year 8th Sem (May 16).pdf",
                                 add+"MSc%20Maths%208th%20Sem%20%28May%2016%29.pdf",this);
                         break;
                 }

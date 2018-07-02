@@ -13,9 +13,9 @@ import com.google.android.gms.ads.AdView;
 import com.parassidhu.cdlumaths.R;
 import com.parassidhu.cdlumaths.adapters.QueAdapter;
 import com.parassidhu.cdlumaths.models.AndroidVersion;
+import com.parassidhu.cdlumaths.utils.AppUtils;
 import com.parassidhu.cdlumaths.utils.ItemClickSupport;
 import com.parassidhu.cdlumaths.utils.MyApp;
-import com.parassidhu.cdlumaths.utils.sidhu;
 
 import java.util.ArrayList;
 public class sem1 extends AppCompatActivity {
@@ -42,7 +42,7 @@ public class sem1 extends AppCompatActivity {
 
         AdView adView = this.findViewById(R.id.adView);
 
-        sidhu.displayAds(this,adView);
+        AppUtils.displayAds(this,adView);
         setupView();
         initViews();
         final RecyclerView rcl = findViewById(R.id.card_recycler_view);
@@ -57,7 +57,7 @@ public class sem1 extends AppCompatActivity {
                 }catch (Exception ex){}
             }
         });
-         sidhu.renderTheme(this);
+         AppUtils.renderTheme(this);
     }
     
     @Override
@@ -83,39 +83,39 @@ public class sem1 extends AppCompatActivity {
             case R.id.download:     //December 2014
                 switch (m.getit1()) {
                     case 0:
-                       sidhu.startDownload("Algebra (Dec 14).pdf",
+                       AppUtils.startDownload("Algebra (Dec 14).pdf",
                                add[0] + "Algebra%20(Dec%2014).pdf",this);
                         break;
                     case 1:
-                        sidhu.startDownload("Calculus (Dec 14).pdf",
+                        AppUtils.startDownload("Calculus (Dec 14).pdf",
                                 add[0]+"Calculus%20(Dec%2014).pdf",this);
                         break;
                     case 2:
-                        sidhu.startDownload("Solid Geometry (Dec 14).pdf",
+                        AppUtils.startDownload("Solid Geometry (Dec 14).pdf",
                                 add[0]+"Solid%20Geometry%20(Dec%2014).pdf",this);
                         break;
                     case 3:
-                        sidhu.startDownload("Discrete Mathematics-I (Dec 14).pdf",
+                        AppUtils.startDownload("Discrete Mathematics-I (Dec 14).pdf",
                                 add[0]+"Discrete%20Mathematics-I%20(Dec%2014).pdf",this);
                         break;
                     case 4:
-                        sidhu.startDownload("Descriptive Statistics (Dec 14).pdf",
+                        AppUtils.startDownload("Descriptive Statistics (Dec 14).pdf",
                                 add[0]+"Descriptive%20Statistics%20(Dec%2014).pdf",this);
                         break;
                     case 5:
-                        sidhu.startDownload("Computer Fundamentals (Dec 14).pdf",
+                        AppUtils.startDownload("Computer Fundamentals (Dec 14).pdf",
                                 add[0]+"Computer%20Fundamentals%20(Dec%2014).pdf",this);
                         break;
                     case 6:
-                        sidhu.startDownload("Introduction To Window Softwares (Dec 14).pdf",
+                        AppUtils.startDownload("Introduction To Window Softwares (Dec 14).pdf",
                                 add[0]+"Introduction%20To%20Window%20Softwares%20(Dec%2014).pdf",this);
                         break;
                     case 7:
-                        sidhu.startDownload("English-I (Dec 14).pdf",
+                        AppUtils.startDownload("English-I (Dec 14).pdf",
                                 add[0]+"English-I%20(Dec%2014).pdf",this);
                         break;
                     case 8:
-                        sidhu.startDownload("Complete Sem 1 (Dec 14).pdf",
+                        AppUtils.startDownload("Complete Sem 1 (Dec 14).pdf",
                                 add[0]+"Complete%20Sem%201%20(Dec%2014).pdf",this);
                         break;
                 }
@@ -123,39 +123,39 @@ public class sem1 extends AppCompatActivity {
             case R.id.download2://December 2015
                 switch (m.getit1()) {
                     case 0:
-                        sidhu.startDownload("Algebra (Dec 15).pdf",
+                        AppUtils.startDownload("Algebra (Dec 15).pdf",
                                 add[1]+"Al%28Dec15%29.pdf",this);
                         break;
                     case 1:
-                        sidhu.startDownload("Calculus (Dec 15).pdf",
+                        AppUtils.startDownload("Calculus (Dec 15).pdf",
                                 add[1]+"Ca%28Dec15%29.pdf",this);
                         break;
                     case 2:
-                        sidhu.startDownload("Solid Geometry (Dec 15).pdf",
+                        AppUtils.startDownload("Solid Geometry (Dec 15).pdf",
                                 add[1]+"SG%28Dec15%29.pdf",this);
                         break;
                     case 3:
-                        sidhu.startDownload("Discrete Mathematics-I (Dec 15).pdf",
+                        AppUtils.startDownload("Discrete Mathematics-I (Dec 15).pdf",
                                 add[1]+"DM1%28Dec15%29.pdf",this);
                         break;
                     case 4:
-                        sidhu.startDownload("Descriptive Statistics (Dec 15).pdf",
+                        AppUtils.startDownload("Descriptive Statistics (Dec 15).pdf",
                                 add[1]+"DS%28Dec15%29.pdf",this);
                         break;
                     case 5:
-                        sidhu.startDownload("Computer Fundamentals (Dec 15).pdf",
+                        AppUtils.startDownload("Computer Fundamentals (Dec 15).pdf",
                                 add[1]+"CF%28Dec15%29.pdf",this);
                         break;
                     case 6:
-                        sidhu.startDownload("Introduction To Window Softwares (Dec 15).pdf",
+                        AppUtils.startDownload("Introduction To Window Softwares (Dec 15).pdf",
                                 add[1]+"ItWS%28Dec15%29.pdf",this);
                         break;
                     case 7:
-                        sidhu.startDownload("English-I (Dec 15).pdf",
+                        AppUtils.startDownload("English-I (Dec 15).pdf",
                                 add[1]+"E%28Dec15%29.pdf",this);
                         break;
                     case 8:
-                        sidhu.startDownload("Complete Sem 1 (Dec 15).pdf",
+                        AppUtils.startDownload("Complete Sem 1 (Dec 15).pdf",
                                 add[1]+"Complete%20Sem%201%20%28Dec15%29.pdf",this);
                         break;
                 }
@@ -164,39 +164,39 @@ public class sem1 extends AppCompatActivity {
             case R.id.download3:
                 switch (m.getit1()) {
                     case 0:
-                        sidhu.startDownload("Algebra (Dec 16).pdf",
+                        AppUtils.startDownload("Algebra (Dec 16).pdf",
                                 add[2]+"A.pdf",this);
                         break;
                     case 1:
-                        sidhu.startDownload("Calculus (Dec 16).pdf",
+                        AppUtils.startDownload("Calculus (Dec 16).pdf",
                                 add[2]+"C.pdf",this);
                         break;
                     case 2:
-                        sidhu.startDownload("Solid Geometry (Dec 16).pdf",
+                        AppUtils.startDownload("Solid Geometry (Dec 16).pdf",
                                 add[2]+"SG.pdf",this);
                         break;
                     case 3:
-                        sidhu.startDownload("Discrete Mathematics-I (Dec 16).pdf",
+                        AppUtils.startDownload("Discrete Mathematics-I (Dec 16).pdf",
                                 add[2]+"DM.pdf",this);
                         break;
                     case 4:
-                        sidhu.startDownload("Descriptive Statistics (Dec 16).pdf",
+                        AppUtils.startDownload("Descriptive Statistics (Dec 16).pdf",
                                 add[2]+"DS.pdf",this);
                         break;
                     case 5:
-                        sidhu.startDownload("Computer Fundamentals (Dec 16).pdf",
+                        AppUtils.startDownload("Computer Fundamentals (Dec 16).pdf",
                                 add[2]+"CF.pdf",this);
                         break;
                     case 6:
-                        sidhu.startDownload("Introduction To Window Softwares (Dec 16).pdf",
+                        AppUtils.startDownload("Introduction To Window Softwares (Dec 16).pdf",
                                 add[2]+"IWS.pdf",this);
                         break;
                     case 7:
-                        sidhu.startDownload("English-I (Dec 16).pdf",
+                        AppUtils.startDownload("English-I (Dec 16).pdf",
                                 add[2]+"E.pdf",this);
                         break;
                     case 8:
-                        sidhu.startDownload("Complete Sem 1 (Dec 16).pdf",
+                        AppUtils.startDownload("Complete Sem 1 (Dec 16).pdf",
                                 add[2]+"ALL.pdf",this);
                         break;
                 }
@@ -205,39 +205,39 @@ public class sem1 extends AppCompatActivity {
             case R.id.dec17:
                 switch (m.getit1()) {
                     case 0:
-                        sidhu.startDownload("Algebra (Dec 17).pdf",
+                        AppUtils.startDownload("Algebra (Dec 17).pdf",
                                 add[3]+"A.pdf",this);
                         break;
                     case 1:
-                        sidhu.startDownload("Calculus (Dec 17).pdf",
+                        AppUtils.startDownload("Calculus (Dec 17).pdf",
                                 add[3]+"C.pdf",this);
                         break;
                     case 2:
-                        sidhu.startDownload("Solid Geometry (Dec 17).pdf",
+                        AppUtils.startDownload("Solid Geometry (Dec 17).pdf",
                                 add[3]+"SG.pdf",this);
                         break;
                     case 3:
-                        sidhu.startDownload("Discrete Mathematics-I (Dec 17).pdf",
+                        AppUtils.startDownload("Discrete Mathematics-I (Dec 17).pdf",
                                 add[3]+"DM.pdf",this);
                         break;
                     case 4:
-                        sidhu.startDownload("Descriptive Statistics (Dec 17).pdf",
+                        AppUtils.startDownload("Descriptive Statistics (Dec 17).pdf",
                                 add[3]+"DS.pdf",this);
                         break;
                     case 5:
-                        sidhu.startDownload("Computer Fundamentals (Dec 17).pdf",
+                        AppUtils.startDownload("Computer Fundamentals (Dec 17).pdf",
                                 add[3]+"CF.pdf",this);
                         break;
                     case 6:
-                        sidhu.startDownload("Introduction To Window Softwares (Dec 17).pdf",
+                        AppUtils.startDownload("Introduction To Window Softwares (Dec 17).pdf",
                                 add[3]+"ItWS.pdf",this);
                         break;
                     case 7:
-                        sidhu.startDownload("English-I (Dec 17).pdf",
+                        AppUtils.startDownload("English-I (Dec 17).pdf",
                                 add[3]+"E.pdf",this);
                         break;
                     case 8:
-                        sidhu.startDownload("Complete Sem 1 (Dec 17).pdf",
+                        AppUtils.startDownload("Complete Sem 1 (Dec 17).pdf",
                                 add[3]+"ALL.pdf",this);
                         break;
                 }

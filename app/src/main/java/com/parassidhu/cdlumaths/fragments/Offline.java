@@ -37,8 +37,8 @@ import com.parassidhu.cdlumaths.activities.Home;
 import com.parassidhu.cdlumaths.adapters.DataAdapter;
 import com.parassidhu.cdlumaths.models.AndroidVersion;
 import com.parassidhu.cdlumaths.models.Pair;
+import com.parassidhu.cdlumaths.utils.AppUtils;
 import com.parassidhu.cdlumaths.utils.ItemClickSupport;
-import com.parassidhu.cdlumaths.utils.sidhu;
 import com.yarolegovich.lovelydialog.LovelyChoiceDialog;
 import com.yarolegovich.lovelydialog.LovelyTextInputDialog;
 
@@ -166,7 +166,7 @@ public class Offline extends Fragment {
     @Override
     public void onPrepareOptionsMenu(Menu menu) {
         MenuItem item = menu.findItem(R.id.sort);
-        sidhu.setOptVisibility(menu,false,true);
+        AppUtils.setOptVisibility(menu,false,true);
     }
 
     private String giveName(){
@@ -235,12 +235,12 @@ public class Offline extends Fragment {
     }
 
     public void showSheet(final View v,final ArrayList androidVersions,final TextView textView, final int position){
-        int pinMenu = R.menu.list;
+        int pinMenu = R.menu.offline_pin_list;
 
         if (textView.getText().toString().equals(getPinValue("0")) ||
                 textView.getText().toString().equals(getPinValue("1")) ||
                         textView.getText().toString().equals(getPinValue("2")))
-            pinMenu = R.menu.list2;
+            pinMenu = R.menu.offline_unpin_list;
         new BottomSheet.Builder(getActivity(),R.style.BottomSheet_StyleDialog).sheet(pinMenu).title(textView.getText().toString())
                 .listener(new DialogInterface.OnClickListener() {
             @Override
@@ -350,7 +350,7 @@ public class Offline extends Fragment {
                         else addShortcutInOreo(textView.getText().toString());
                         break;
                     case R.id.rename:
-                        if (sidhu.checkPerm(getActivity()))
+                        if (AppUtils.checkPerm(getActivity()))
                         renFile(textView.getText().toString(), position, androidVersions);
                         break;
                 }
@@ -403,7 +403,7 @@ public class Offline extends Fragment {
         ItemClickSupport.addTo(rcl).setOnItemClickListener(new ItemClickSupport.OnItemClickListener() {
             @Override
             public void onItemClicked(RecyclerView recyclerView, int position, View v) {
-                sidhu.openFile(getActivity(),names.get(position) +".pdf");
+                AppUtils.openFile(getActivity(),names.get(position) +".pdf");
             }
         });
 

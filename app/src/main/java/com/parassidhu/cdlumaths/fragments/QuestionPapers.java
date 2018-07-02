@@ -36,8 +36,8 @@ import com.parassidhu.cdlumaths.activities.tsem1;
 import com.parassidhu.cdlumaths.activities.tsem2;
 import com.parassidhu.cdlumaths.activities.tsem3;
 import com.parassidhu.cdlumaths.activities.tsem4;
+import com.parassidhu.cdlumaths.utils.AppUtils;
 import com.parassidhu.cdlumaths.utils.ItemClickSupport;
-import com.parassidhu.cdlumaths.utils.sidhu;
 
 import java.util.ArrayList;
 
@@ -47,12 +47,11 @@ import butterknife.ButterKnife;
 public class QuestionPapers extends Fragment {
 
     @BindView(R.id.choose5Years) TextView choose5Years;
-    @BindView(R.id.card_recycler_vie) RecyclerView rcl5Years;
+    @BindView(R.id.fiveYearsRV) RecyclerView rcl5Years;
     @BindView(R.id.apppromo) ImageView appPromo;
     @BindView(R.id.choose2Years) TextView choose2Years;
     @BindView(R.id.twoYearsRV) RecyclerView rcl2Years;
     @BindView(R.id.scrollViewQuePap) NestedScrollView scrollViewQuePap;
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -74,7 +73,7 @@ public class QuestionPapers extends Fragment {
         appPromo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                sidhu.openWebPage((AppCompatActivity) getActivity(),
+                AppUtils.openWebPage((AppCompatActivity) getActivity(),
                         "https://play.google.com/store/apps/details?id=com.parassidhu.pdfpin");
             }
         });
@@ -82,17 +81,16 @@ public class QuestionPapers extends Fragment {
         rcl5Years.setHasFixedSize(true);
         rcl5Years.setLayoutManager(new GridLayoutManager
                 (getActivity().getApplicationContext(), 4));
-        HomeAdapter adapter = new HomeAdapter(getActivity(), prepareDataFor5Years());
+        HomeAdapter adapter = new HomeAdapter(getActivity(), AppUtils.prepareDataFor5Years());
         rcl5Years.setAdapter(adapter);
-        sidhu.setFastScrolling(rcl5Years);
+        AppUtils.setFastScrolling(rcl5Years);
 
 
         rcl2Years.setHasFixedSize(true);
         rcl2Years.setLayoutManager(new GridLayoutManager
                 (getActivity().getApplicationContext(), 4));
 
-        ArrayList androidVersions = prepareDataFor2Years();
-        HomeAdapter adapter2Years = new HomeAdapter(getActivity(), androidVersions);
+        HomeAdapter adapter2Years = new HomeAdapter(getActivity(), AppUtils.prepareDataFor2Years());
         rcl2Years.setAdapter(adapter2Years);
 
         //Theme for Choose
@@ -105,83 +103,7 @@ public class QuestionPapers extends Fragment {
         setHasOptionsMenu(true);
     }
 
-    private ArrayList prepareDataFor5Years() {
-        ArrayList android_version = new ArrayList<>();
-        for (int i = 0; i < 10; i++) {
-            AndroidVersion androidVersion = new AndroidVersion();
-            switch (i) {
-                case 0:
-                    androidVersion.setAndroid_image_url(R.drawable.a1);
-                    android_version.add(androidVersion);
-                    break;
-                case 1:
-                    androidVersion.setAndroid_image_url(R.drawable.a2);
-                    android_version.add(androidVersion);
-                    break;
-                case 2:
-                    androidVersion.setAndroid_image_url(R.drawable.a3);
-                    android_version.add(androidVersion);
-                    break;
-                case 3:
-                    androidVersion.setAndroid_image_url(R.drawable.a4);
-                    android_version.add(androidVersion);
-                    break;
-                case 4:
-                    androidVersion.setAndroid_image_url(R.drawable.a5);
-                    android_version.add(androidVersion);
-                    break;
-                case 5:
-                    androidVersion.setAndroid_image_url(R.drawable.a6);
-                    android_version.add(androidVersion);
-                    break;
-                case 6:
-                    androidVersion.setAndroid_image_url(R.drawable.a7);
-                    android_version.add(androidVersion);
-                    break;
-                case 7:
-                    androidVersion.setAndroid_image_url(R.drawable.a8);
-                    android_version.add(androidVersion);
-                    break;
-                case 8:
-                    androidVersion.setAndroid_image_url(R.drawable.a9);
-                    android_version.add(androidVersion);
-                    break;
-                case 9:
-                    androidVersion.setAndroid_image_url(R.drawable.a10);
-                    android_version.add(androidVersion);
-                    break;
-            }
 
-        }
-        return android_version;
-    }
-
-
-    private ArrayList prepareDataFor2Years() {
-        ArrayList android_version = new ArrayList<>();
-        for (int i = 0; i < 4; i++) {
-            AndroidVersion androidVersion = new AndroidVersion();
-            switch (i) {
-                case 0:
-                    androidVersion.setAndroid_image_url(R.drawable.a1);
-                    android_version.add(androidVersion);
-                    break;
-                case 1:
-                    androidVersion.setAndroid_image_url(R.drawable.a2);
-                    android_version.add(androidVersion);
-                    break;
-                case 2:
-                    androidVersion.setAndroid_image_url(R.drawable.a3);
-                    android_version.add(androidVersion);
-                    break;
-                case 3:
-                    androidVersion.setAndroid_image_url(R.drawable.a4);
-                    android_version.add(androidVersion);
-                    break;
-            }
-        }
-        return android_version;
-    }
 
     private void setListener5Years() {
         ItemClickSupport.addTo(rcl5Years).setOnItemClickListener(new ItemClickSupport.OnItemClickListener() {
@@ -262,7 +184,7 @@ public class QuestionPapers extends Fragment {
     @Override
     public void onPrepareOptionsMenu(Menu menu) {
         MenuItem item = menu.findItem(R.id.sort);
-        sidhu.setOptVisibility(menu, false, true);
+        AppUtils.setOptVisibility(menu, false, true);
     }
 
     @Override

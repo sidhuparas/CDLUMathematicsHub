@@ -13,9 +13,9 @@ import com.google.android.gms.ads.AdView;
 import com.parassidhu.cdlumaths.R;
 import com.parassidhu.cdlumaths.adapters.QueAdapter;
 import com.parassidhu.cdlumaths.models.AndroidVersion;
+import com.parassidhu.cdlumaths.utils.AppUtils;
 import com.parassidhu.cdlumaths.utils.ItemClickSupport;
 import com.parassidhu.cdlumaths.utils.MyApp;
-import com.parassidhu.cdlumaths.utils.sidhu;
 
 import java.util.ArrayList;
 
@@ -39,7 +39,7 @@ public class sem2 extends AppCompatActivity {
         setContentView(R.layout.activity_sem2);
 
         AdView adView = this.findViewById(R.id.adView);
-        sidhu.displayAds(this,adView);
+        AppUtils.displayAds(this,adView);
 
         setupView();
         initViews();
@@ -55,7 +55,7 @@ public class sem2 extends AppCompatActivity {
                 }catch (Exception ex){}
             }
         });
-        sidhu.renderTheme(this);
+        AppUtils.renderTheme(this);
     }
 
     @Override
@@ -76,39 +76,39 @@ public class sem2 extends AppCompatActivity {
             case R.id.download:     //May 2015
                 switch (m.getit2()) {
                     case 0:
-                        sidhu.startDownload("Number Theory and Trigonometry (May 15).pdf",
+                        AppUtils.startDownload("Number Theory and Trigonometry (May 15).pdf",
                                 add+"Number%20Theory%20And%20Trigonometry%20(Dec%2014).pdf",this);
                         break;
                     case 1:
-                        sidhu.startDownload("Ordinary Differential Equations (May 15).pdf",
+                        AppUtils.startDownload("Ordinary Differential Equations (May 15).pdf",
                                 add+"Ordinary%20Differential%20Equations%20(Dec%2014).pdf",this);
                         break;
                     case 2:
-                        sidhu.startDownload("Vector Calculus (May 15).pdf",
+                        AppUtils.startDownload("Vector Calculus (May 15).pdf",
                                 add+"Vector%20Calculus%20(Dec%2014).pdf",this);
                         break;
                     case 3:
-                        sidhu.startDownload("Discrete Mathematics-II (May 15).pdf",
+                        AppUtils.startDownload("Discrete Mathematics-II (May 15).pdf",
                                 add+"Discrete%20Mathematics-II%20(Dec%2014).pdf",this);
                         break;
                     case 4:
-                        sidhu.startDownload("Regression Analysis And Probability (May 15).pdf",
+                        AppUtils.startDownload("Regression Analysis And Probability (May 15).pdf",
                                 add+"Regression%20Analysis%20And%20Probability%20(Dec%2014).pdf",this);
                         break;
                     case 5:
-                        sidhu.startDownload("Digital Logic and Computer Design (May 15).pdf",
+                        AppUtils.startDownload("Digital Logic and Computer Design (May 15).pdf",
                                 add+"Digital%20Logic%20And%20Computer%20Design%20(Dec%2014).pdf",this);
                         break;
                     case 6:
-                        sidhu.startDownload("Problem Solving Through C (May 15).pdf",
+                        AppUtils.startDownload("Problem Solving Through C (May 15).pdf",
                                 add+"Problem%20Solving%20Through%20C%20(Dec%2014).pdf",this);
                         break;
                     case 7:
-                        sidhu.startDownload("English-II (May 15).pdf",
+                        AppUtils.startDownload("English-II (May 15).pdf",
                                 add+"English-II%20(Dec%2014).pdf",this);
                         break;
                     case 8:
-                        sidhu.startDownload("Complete Sem 2 (May 15).pdf",
+                        AppUtils.startDownload("Complete Sem 2 (May 15).pdf",
                                 add+"Complete%20Sem%202%20(Dec%2014).pdf",this);
                         break;
                 }
@@ -116,39 +116,39 @@ public class sem2 extends AppCompatActivity {
             case R.id.download2:    //May 2016
                 switch (m.getit2()) {
                     case 0:
-                        sidhu.startDownload("Number Theory and Trigonometry (May 16).pdf",
+                        AppUtils.startDownload("Number Theory and Trigonometry (May 16).pdf",
                                 add2+"Number%20Theory%20And%20Trigonometry.pdf",this);
                         break;
                     case 1:
-                        sidhu.startDownload("Ordinary Differential Equations (May 16).pdf",
+                        AppUtils.startDownload("Ordinary Differential Equations (May 16).pdf",
                                 add2+"Ordinary%20Differential%20Equations.pdf",this);
                         break;
                     case 2:
-                        sidhu.startDownload("Vector Calculus (May 16).pdf",
+                        AppUtils.startDownload("Vector Calculus (May 16).pdf",
                                 add2+"Vector%20Calculus.pdf",this);
                         break;
                     case 3:
-                        sidhu.startDownload("Discrete Mathematics-II (May 16).pdf",
+                        AppUtils.startDownload("Discrete Mathematics-II (May 16).pdf",
                                 add2+"Discrete%20Mathematics-II.pdf",this);
                         break;
                     case 4:
-                        sidhu.startDownload("Regression Analysis And Probability (May 16).pdf",
+                        AppUtils.startDownload("Regression Analysis And Probability (May 16).pdf",
                                 add2+"Regression%20Analysis%20And%20Probability.pdf",this);
                         break;
                     case 5:
-                        sidhu.startDownload("Digital Logic and Computer Design (May 16).pdf",
+                        AppUtils.startDownload("Digital Logic and Computer Design (May 16).pdf",
                                 add2+"Digital%20Logic%20And%20Computer%20Design.pdf",this);
                         break;
                     case 6:
-                        sidhu.startDownload("Problem Solving Through C (May 16).pdf",
+                        AppUtils.startDownload("Problem Solving Through C (May 16).pdf",
                                 add2+"Problem%20Solving%20Through%20C.pdf",this);
                         break;
                     case 7:
-                        sidhu.startDownload("English-II (May 16).pdf",
+                        AppUtils.startDownload("English-II (May 16).pdf",
                                 add2+"English-II.pdf",this);
                         break;
                     case 8:
-                        sidhu.startDownload("MSc Maths 5-Year 2nd Sem (May 16).pdf",
+                        AppUtils.startDownload("MSc Maths 5-Year 2nd Sem (May 16).pdf",
                                 add2+"MSc%20Maths%202nd%20Sem%20%28May%202016%29.pdf",this);
                         break;
                 }
@@ -157,39 +157,39 @@ public class sem2 extends AppCompatActivity {
             case R.id.download3:
                 switch (m.getit2()) {
                     case 0:
-                        sidhu.startDownload("Number Theory and Trigonometry (May 17).pdf",
+                        AppUtils.startDownload("Number Theory and Trigonometry (May 17).pdf",
                                 n+"NTT.pdf",this);
                         break;
                     case 1:
-                        sidhu.startDownload("Ordinary Differential Equations (May 17).pdf",
+                        AppUtils.startDownload("Ordinary Differential Equations (May 17).pdf",
                                 n+"ODE.pdf",this);
                         break;
                     case 2:
-                        sidhu.startDownload("Vector Calculus (May 17).pdf",
+                        AppUtils.startDownload("Vector Calculus (May 17).pdf",
                                 n+"VC.pdf",this);
                         break;
                     case 3:
-                        sidhu.startDownload("Discrete Mathematics-II (May 17).pdf",
+                        AppUtils.startDownload("Discrete Mathematics-II (May 17).pdf",
                                 n+"DM.pdf",this);
                         break;
                     case 4:
-                        sidhu.startDownload("Regression Analysis And Probability (May 17).pdf",
+                        AppUtils.startDownload("Regression Analysis And Probability (May 17).pdf",
                                 n+"RAP.pdf",this);
                         break;
                     case 5:
-                        sidhu.startDownload("Digital Logic and Computer Design (May 17).pdf",
+                        AppUtils.startDownload("Digital Logic and Computer Design (May 17).pdf",
                                 n+"DLCD.pdf",this);
                         break;
                     case 6:
-                        sidhu.startDownload("Problem Solving Through C (May 17).pdf",
+                        AppUtils.startDownload("Problem Solving Through C (May 17).pdf",
                                 n+"PSTC.pdf",this);
                         break;
                     case 7:
-                        sidhu.startDownload("English-II (May 17).pdf",
+                        AppUtils.startDownload("English-II (May 17).pdf",
                                 n+"E.pdf",this);
                         break;
                     case 8:
-                        sidhu.startDownload("MSc Maths 5-Year 2nd Sem (May 17).pdf",
+                        AppUtils.startDownload("MSc Maths 5-Year 2nd Sem (May 17).pdf",
                                 n+"ALL.pdf",this);
                         break;
                 }

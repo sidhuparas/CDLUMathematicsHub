@@ -13,7 +13,7 @@ import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.InterstitialAd;
 import com.parassidhu.cdlumaths.R;
-import com.parassidhu.cdlumaths.utils.sidhu;
+import com.parassidhu.cdlumaths.utils.AppUtils;
 
 public class Support extends Fragment {
     private Button paytm2;
@@ -50,7 +50,7 @@ public class Support extends Fragment {
     @Override
     public void onPrepareOptionsMenu(Menu menu) {
         MenuItem item = menu.findItem(R.id.sort);
-        sidhu.setOptVisibility(menu,false,true);
+        AppUtils.setOptVisibility(menu,false,true);
     }
 
     @Override

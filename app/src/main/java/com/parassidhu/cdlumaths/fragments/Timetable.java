@@ -23,7 +23,7 @@ import com.jaredrummler.materialspinner.MaterialSpinner;
 import com.parassidhu.cdlumaths.R;
 import com.parassidhu.cdlumaths.adapters.TimeTableAdapter;
 import com.parassidhu.cdlumaths.models.TTItem;
-import com.parassidhu.cdlumaths.utils.sidhu;
+import com.parassidhu.cdlumaths.utils.AppUtils;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -52,7 +52,7 @@ public class Timetable extends Fragment {
     }
 
     public void onPrepareOptionsMenu(Menu menu) {
-        sidhu.setOptVisibility(menu, false, true);
+        AppUtils.setOptVisibility(menu, false, true);
     }
 
     public void onViewCreated(View v, Bundle savedInstanceState) {
@@ -61,7 +61,7 @@ public class Timetable extends Fragment {
         setSpinnerListener();
         sharedPreferences = getActivity().getSharedPreferences("Values", Context.MODE_PRIVATE);
 
-        sidhu.tipMsg(getActivity(), "You can set Timetable to launch at startup. Just tap the button above beside the three dots.", 2000);
+        AppUtils.tipMsg(getActivity(), "You can set Timetable to launch at startup. Just tap the button above beside the three dots.", 2000);
         try {
             spinner.setSelectedIndex(calendar.get(Calendar.DAY_OF_WEEK) - 2);
             //ttSem.setSelectedIndex();
@@ -186,7 +186,7 @@ public class Timetable extends Fragment {
         ttList.setFocusable(false);
         disableText = getActivity().findViewById(R.id.disableText);
         ttSem = getActivity().findViewById(R.id.ttSem);
-        sidhu.setFastScrolling(ttList);
+        AppUtils.setFastScrolling(ttList);
         getActivity().setTitle("TimeTable");
         next.setOnClickListener(new View.OnClickListener() {
             @Override

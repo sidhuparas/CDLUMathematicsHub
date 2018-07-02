@@ -13,9 +13,9 @@ import com.google.android.gms.ads.AdView;
 import com.parassidhu.cdlumaths.R;
 import com.parassidhu.cdlumaths.adapters.QueAdapter;
 import com.parassidhu.cdlumaths.models.AndroidVersion;
+import com.parassidhu.cdlumaths.utils.AppUtils;
 import com.parassidhu.cdlumaths.utils.ItemClickSupport;
 import com.parassidhu.cdlumaths.utils.MyApp;
-import com.parassidhu.cdlumaths.utils.sidhu;
 
 import java.util.ArrayList;
 
@@ -38,9 +38,9 @@ public class tsem3 extends AppCompatActivity {
         setupView();
         initViews();
 
-        sidhu.renderTheme(this);
+        AppUtils.renderTheme(this);
         final AdView adView = this.findViewById(R.id.adView);
-        sidhu.displayAds(this,adView);
+        AppUtils.displayAds(this,adView);
 
         final RecyclerView rcl = findViewById(R.id.card_recycler_view);
         ItemClickSupport.addTo(rcl).setOnItemClickListener(new ItemClickSupport.OnItemClickListener() {
@@ -72,25 +72,25 @@ public class tsem3 extends AppCompatActivity {
             case R.id.download:
                 switch (m.hitit3()) {
                     case 0:
-                        sidhu.startDownload("Topology (Dec 15).pdf",add+"Topology.pdf",this);
+                        AppUtils.startDownload("Topology (Dec 15).pdf",add+"Topology.pdf",this);
                         break;
                     case 1:
-                        sidhu.startDownload("Integral Equations (Dec 15).pdf",add+"Integral%20Equations.pdf",this);
+                        AppUtils.startDownload("Integral Equations (Dec 15).pdf",add+"Integral%20Equations.pdf",this);
                         break;
                     case 2:
-                        sidhu.startDownload("Mechanics Of Solids-I (Dec 15).pdf",add+"Mechanics%20of%20Solids-I.pdf",this);
+                        AppUtils.startDownload("Mechanics Of Solids-I (Dec 15).pdf",add+"Mechanics%20of%20Solids-I.pdf",this);
                         break;
                     case 3:
-                        sidhu.startDownload("Mathematical Statistics (Dec 15).pdf",add+"Mathematical%20Statistics.pdf",this);
+                        AppUtils.startDownload("Mathematical Statistics (Dec 15).pdf",add+"Mathematical%20Statistics.pdf",this);
                         break;
                     case 4:
-                        sidhu.startDownload("Advanced Discrete Mathematics (Dec 15).pdf",add+"Advanced%20Discrete%20Maths.pdf",this);
+                        AppUtils.startDownload("Advanced Discrete Mathematics (Dec 15).pdf",add+"Advanced%20Discrete%20Maths.pdf",this);
                         break;
                     case 5:
-                        sidhu.startDownload("Ordinary Differential Equations (Dec 15).pdf",add+"ODE.pdf",this);
+                        AppUtils.startDownload("Ordinary Differential Equations (Dec 15).pdf",add+"ODE.pdf",this);
                         break;
                     case 6:
-                        sidhu.startDownload("MSc Maths 2-Year 3rd Sem (Dec 15).pdf",
+                        AppUtils.startDownload("MSc Maths 2-Year 3rd Sem (Dec 15).pdf",
                                 add+"msc%20maths%202%20years%203rd%20sem%2012%202015.pdf",this);
                         break;
                 }

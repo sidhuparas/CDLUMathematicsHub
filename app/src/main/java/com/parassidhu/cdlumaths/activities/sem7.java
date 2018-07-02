@@ -13,9 +13,9 @@ import com.google.android.gms.ads.AdView;
 import com.parassidhu.cdlumaths.R;
 import com.parassidhu.cdlumaths.adapters.QueAdapter;
 import com.parassidhu.cdlumaths.models.AndroidVersion;
+import com.parassidhu.cdlumaths.utils.AppUtils;
 import com.parassidhu.cdlumaths.utils.ItemClickSupport;
 import com.parassidhu.cdlumaths.utils.MyApp;
-import com.parassidhu.cdlumaths.utils.sidhu;
 
 import java.util.ArrayList;
 
@@ -37,9 +37,9 @@ public class sem7 extends AppCompatActivity {
         setupView();
         initViews();
         
-        sidhu.renderTheme(this);
+        AppUtils.renderTheme(this);
         final AdView adView = this.findViewById(R.id.adView);
-        sidhu.displayAds(this,adView);
+        AppUtils.displayAds(this,adView);
 
         final RecyclerView rcl = findViewById(R.id.card_recycler_view);
         ItemClickSupport.addTo(rcl).setOnItemClickListener(new ItemClickSupport.OnItemClickListener() {
@@ -84,27 +84,27 @@ public class sem7 extends AppCompatActivity {
         String yr = year.concat(").pdf");
         switch (m.getit7()) {
             case 0:
-                sidhu.startDownload("Abstract Algebra (Dec 1".concat(yr),
+                AppUtils.startDownload("Abstract Algebra (Dec 1".concat(yr),
                         add+"AA.pdf",this);
                 break;
             case 1:
-                sidhu.startDownload("Real Analysis 5 (Dec 1".concat(yr),
+                AppUtils.startDownload("Real Analysis 5 (Dec 1".concat(yr),
                         add+"RA.pdf",this);
                 break;
             case 2:
-                sidhu.startDownload("Mechanics (Dec 1".concat(yr),
+                AppUtils.startDownload("Mechanics (Dec 1".concat(yr),
                         add+"M.pdf",this);
                 break;
             case 3:
-                sidhu.startDownload("Complex Analysis-I (Dec 1".concat(yr),
+                AppUtils.startDownload("Complex Analysis-I (Dec 1".concat(yr),
                         add+"CA.pdf",this);
                 break;
             case 4:
-                sidhu.startDownload("Ordinary Differential Equations (Dec 1".concat(yr),
+                AppUtils.startDownload("Ordinary Differential Equations (Dec 1".concat(yr),
                         add+"ODE.pdf",this);
                 break;
             case 5:
-                sidhu.startDownload("Complete Sem 7th (Dec 1".concat(yr),
+                AppUtils.startDownload("Complete Sem 7th (Dec 1".concat(yr),
                         add+"ALL.pdf",this);
                 break;
         }
@@ -115,27 +115,27 @@ public class sem7 extends AppCompatActivity {
         String add= "CDLU/sem7/201".concat(year).concat("/");
         switch (m.getit7()) {
             case 0:
-                sidhu.startDownload("Advanced Abstract Algebra (Dec 1".concat(").pdf"),
+                AppUtils.startDownload("Advanced Abstract Algebra (Dec 1".concat(").pdf"),
                         add+"1AAA%28Dec15%29.pdf",this);
                 break;
             case 1:
-                sidhu.startDownload("Real Analysis 5 (Dec 1".concat(").pdf"),
+                AppUtils.startDownload("Real Analysis 5 (Dec 1".concat(").pdf"),
                         add+"2RA5%28Dec15%29.pdf",this);
                 break;
             case 2:
-                sidhu.startDownload("Mechanics (Dec 1".concat(").pdf"),
+                AppUtils.startDownload("Mechanics (Dec 1".concat(").pdf"),
                         add+"3Mech%28Dec15%29.pdf",this);
                 break;
             case 3:
-                sidhu.startDownload("Complex Analysis-I (Dec 1".concat(").pdf"),
+                AppUtils.startDownload("Complex Analysis-I (Dec 1".concat(").pdf"),
                         add+"4CA1%28Dec15%29.pdf",this);
                 break;
             case 4:
-                sidhu.startDownload("Ordinary Differential Equations (Dec 1".concat(").pdf"),
+                AppUtils.startDownload("Ordinary Differential Equations (Dec 1".concat(").pdf"),
                         add+"5ODE5%28Dec15%29.pdf",this);
                 break;
             case 5:
-                sidhu.startDownload("Complete Sem 7th (Dec 1".concat(").pdf"),
+                AppUtils.startDownload("Complete Sem 7th (Dec 1".concat(").pdf"),
                         add+"Complete%20Sem%207%20%28Dec15%29.pdf",this);
                 break;
         }

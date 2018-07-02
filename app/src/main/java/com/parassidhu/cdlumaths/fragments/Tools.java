@@ -19,8 +19,8 @@ import com.parassidhu.cdlumaths.activities.Feedback;
 import com.parassidhu.cdlumaths.activities.quadratic;
 import com.parassidhu.cdlumaths.adapters.DataAdapter;
 import com.parassidhu.cdlumaths.models.AndroidVersion;
+import com.parassidhu.cdlumaths.utils.AppUtils;
 import com.parassidhu.cdlumaths.utils.ItemClickSupport;
-import com.parassidhu.cdlumaths.utils.sidhu;
 
 import java.util.ArrayList;
 
@@ -40,7 +40,7 @@ public class Tools extends Fragment{
     DataAdapter adapter;
 
     private void addShortcut() {
-        sidhu.MsgBox(getActivity(),"Instructions","1. Download the latest Timetable from Notices\n2. Open Offline section\n" +
+        AppUtils.MsgBox(getActivity(),"Instructions","1. Download the latest Timetable from Notices\n2. Open Offline section\n" +
                 "3. Tap and hold the " +
                 "downloaded Timetable\n4. Choose Add To Home Screen");
     }
@@ -48,7 +48,7 @@ public class Tools extends Fragment{
     @Override
     public void onPrepareOptionsMenu(Menu menu) {
         MenuItem item = menu.findItem(R.id.sort);
-        sidhu.setOptVisibility(menu,false,true);
+        AppUtils.setOptVisibility(menu,false,true);
     }
 
     @Override
@@ -78,7 +78,7 @@ public class Tools extends Fragment{
                         addShortcut();
                         break;
                     case 1:
-                        sidhu.openWebPage((AppCompatActivity) getActivity(),
+                        AppUtils.openWebPage((AppCompatActivity) getActivity(),
                                 "https://play.google.com/store/apps/details?id=com.parassidhu.sarvodaya");
                         break;
                     case 2:

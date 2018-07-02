@@ -1,35 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="0dp"
     android:background="@color/white"
+    android:paddingBottom="0dp"
     android:paddingLeft="0dp"
     android:paddingRight="0dp"
     android:paddingTop="0dp"
     tools:context="com.parassidhu.cdlumaths.fragments.Syllabus">
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_alignParentBottom="true">
 
-    <android.support.design.widget.TabLayout
-        android:id="@+id/tab_layout"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/toolbar"
-        android:background="?attr/colorPrimary"
-        android:elevation="6dp"
-        android:minHeight="?attr/actionBarSize"
-        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"/>
+        android:layout_height="match_parent">
 
-    <android.support.v4.view.ViewPager
-        android:id="@+id/pager"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/tab_layout"
-        android:layout_weight="1"/>
-    </LinearLayout>
-</RelativeLayout>
+        <include
+            android:id="@+id/mainLayout"
+            layout="@layout/course_list" />
+
+        <Button
+            android:id="@+id/DownloadAll5Years"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/mainLayout"
+            android:layout_marginTop="5dp"
+            android:background="@color/colorAccent"
+            android:clickable="true"
+            android:elevation="5dp"
+            android:focusable="true"
+            android:text="@string/comSyllabus5"
+            android:textColor="@color/white" />
+
+        <Button
+            android:id="@+id/DownloadAll2Years"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/DownloadAll5Years"
+            android:layout_marginTop="5dp"
+            android:background="@color/colorAccent"
+            android:clickable="true"
+            android:elevation="5dp"
+            android:focusable="true"
+            android:text="@string/comSyllabus2"
+            android:textColor="@color/white" />
+    </RelativeLayout>
+</android.support.v4.widget.NestedScrollView>

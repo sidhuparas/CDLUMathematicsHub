@@ -27,7 +27,7 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.parassidhu.cdlumaths.R;
-import com.parassidhu.cdlumaths.utils.sidhu;
+import com.parassidhu.cdlumaths.utils.AppUtils;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -49,7 +49,7 @@ public class Feedback extends AppCompatActivity {
         android.support.v7.app.ActionBar acb = getSupportActionBar();
         acb.setTitle("Send Feedback");
         acb.show();
-        sidhu.renderTheme(this);
+        AppUtils.renderTheme(this);
 
         feedback = findViewById(R.id.editText3);
         name = findViewById(R.id.editText2);
@@ -120,7 +120,7 @@ public class Feedback extends AppCompatActivity {
     private boolean checkPermissions(){
         if(ContextCompat.checkSelfPermission(this, android.Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_DENIED ||
                 ContextCompat.checkSelfPermission(this, android.Manifest.permission.READ_EXTERNAL_STORAGE) ==PackageManager.PERMISSION_DENIED){
-            sidhu.permBox(this, "We need storage permissions to send feedback.", new View.OnClickListener() {
+            AppUtils.permBox(this, "We need storage permissions to send feedback.", new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     ActivityCompat.requestPermissions(Feedback.this,

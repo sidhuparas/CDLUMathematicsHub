@@ -13,9 +13,9 @@ import com.google.android.gms.ads.AdView;
 import com.parassidhu.cdlumaths.R;
 import com.parassidhu.cdlumaths.adapters.QueAdapter;
 import com.parassidhu.cdlumaths.models.AndroidVersion;
+import com.parassidhu.cdlumaths.utils.AppUtils;
 import com.parassidhu.cdlumaths.utils.ItemClickSupport;
 import com.parassidhu.cdlumaths.utils.MyApp;
-import com.parassidhu.cdlumaths.utils.sidhu;
 
 import java.util.ArrayList;
 
@@ -39,9 +39,9 @@ public class sem6 extends AppCompatActivity {
         setupView();
         initViews();
 
-        sidhu.renderTheme(this);
+        AppUtils.renderTheme(this);
         final AdView adView = this.findViewById(R.id.adView);
-        sidhu.displayAds(this,adView);
+        AppUtils.displayAds(this,adView);
 
         final RecyclerView rcl = findViewById(R.id.card_recycler_view);
         ItemClickSupport.addTo(rcl).setOnItemClickListener(new ItemClickSupport.OnItemClickListener() {
@@ -74,35 +74,35 @@ public class sem6 extends AppCompatActivity {
             case R.id.download:
                 switch (m.getit6()) {
                     case 0:
-                        sidhu.startDownload("Real and Complex Analysis (May 16).pdf",
+                        AppUtils.startDownload("Real and Complex Analysis (May 16).pdf",
                                 add+"RACA%28May16%29.pdf",this);
                         break;
                     case 1:
-                        sidhu.startDownload("Linear Algebra (May 16).pdf",
+                        AppUtils.startDownload("Linear Algebra (May 16).pdf",
                                 add+"LA%28May16%29.pdf",this);
                         break;
                     case 2:
-                        sidhu.startDownload("Dynamics (May 16).pdf",
+                        AppUtils.startDownload("Dynamics (May 16).pdf",
                                 add+"D%28May16%29.pdf",this);
                         break;
                     case 3:
-                        sidhu.startDownload("Mathematical Modelling (May 16).pdf",
+                        AppUtils.startDownload("Mathematical Modelling (May 16).pdf",
                                 add+"MM%28May16%29.pdf",this);
                         break;
                     case 4:
-                        sidhu.startDownload("Mechanics (May 16).pdf",
+                        AppUtils.startDownload("Mechanics (May 16).pdf",
                                 add+"Mech%28May16%29.pdf",this);
                         break;
                     case 5:
-                        sidhu.startDownload("Computer Graphics (May 16).pdf",
+                        AppUtils.startDownload("Computer Graphics (May 16).pdf",
                                 add+"CG%28May16%29.pdf",this);
                         break;
                     case 6:
-                        sidhu.startDownload("Programming In Java (May 16).pdf",
+                        AppUtils.startDownload("Programming In Java (May 16).pdf",
                                 add+"PiJ%28May16%29.pdf",this);
                         break;
                     case 7:
-                        sidhu.startDownload("MSc Maths 5-Year 6th Sem (May 16).pdf",
+                        AppUtils.startDownload("MSc Maths 5-Year 6th Sem (May 16).pdf",
                                 add+"MSc%20Maths%206th%20Sem%20%28May%2016%29.pdf",this);
                         break;
                 }
@@ -111,28 +111,28 @@ public class sem6 extends AppCompatActivity {
             case R.id.download2:
                 switch (m.getit6()){
                     case 0:
-                        sidhu.startDownload("Real and Complex Analysis (May 17).pdf",n+"RCA.pdf",this);
+                        AppUtils.startDownload("Real and Complex Analysis (May 17).pdf",n+"RCA.pdf",this);
                         break;
                     case 1:
-                        sidhu.startDownload("Linear Algebra (May 17).pdf",n+"LA.pdf",this);
+                        AppUtils.startDownload("Linear Algebra (May 17).pdf",n+"LA.pdf",this);
                         break;
                     case 2:
-                        sidhu.startDownload("Dynamics (May 17).pdf",n+"D.pdf",this);
+                        AppUtils.startDownload("Dynamics (May 17).pdf",n+"D.pdf",this);
                         break;
                     case 3:
-                        sidhu.startDownload("Mathematical Modelling (May 17).pdf",n+"MM.pdf",this);
+                        AppUtils.startDownload("Mathematical Modelling (May 17).pdf",n+"MM.pdf",this);
                         break;
                     case 4:
-                        sidhu.startDownload("Mechanics (May 17).pdf",n+"Mech.pdf",this);
+                        AppUtils.startDownload("Mechanics (May 17).pdf",n+"Mech.pdf",this);
                         break;
                     case 5:
-                        sidhu.startDownload("Computer Graphics (May 17).pdf",n+"CG.pdf",this);
+                        AppUtils.startDownload("Computer Graphics (May 17).pdf",n+"CG.pdf",this);
                         break;
                     case 6:
-                        sidhu.startDownload("Programming In Java (May 17).pdf",n+"PJ.pdf",this);
+                        AppUtils.startDownload("Programming In Java (May 17).pdf",n+"PJ.pdf",this);
                         break;
                     case 7:
-                        sidhu.startDownload("MSc Maths 5-Year 6th Sem (May 17).pdf",n+"ALL.pdf",this);
+                        AppUtils.startDownload("MSc Maths 5-Year 6th Sem (May 17).pdf",n+"ALL.pdf",this);
                         break;
                 }
                 return true;

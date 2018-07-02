@@ -12,8 +12,8 @@ import com.parassidhu.cdlumaths.R;
 import com.parassidhu.cdlumaths.activities.MyResult;
 import com.parassidhu.cdlumaths.adapters.HomeAdapter;
 import com.parassidhu.cdlumaths.models.AndroidVersion;
+import com.parassidhu.cdlumaths.utils.AppUtils;
 import com.parassidhu.cdlumaths.utils.ItemClickSupport;
-import com.parassidhu.cdlumaths.utils.sidhu;
 
 import java.util.ArrayList;
 
@@ -49,7 +49,7 @@ public class Result1 extends Fragment {
         androidVersions = new ArrayList<>(prepareData());
         adapter = new HomeAdapter(getActivity(),androidVersions);
         rcl.setAdapter(adapter);
-        sidhu.setFastScrolling(rcl);
+        AppUtils.setFastScrolling(rcl);
         ItemClickSupport.addTo(rcl).setOnItemClickListener(new ItemClickSupport.OnItemClickListener() {
             @Override
             public void onItemClicked(RecyclerView recyclerView, int position, View v) {

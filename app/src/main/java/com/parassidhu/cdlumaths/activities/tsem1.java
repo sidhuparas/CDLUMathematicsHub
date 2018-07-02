@@ -13,9 +13,9 @@ import com.google.android.gms.ads.AdView;
 import com.parassidhu.cdlumaths.R;
 import com.parassidhu.cdlumaths.adapters.QueAdapter;
 import com.parassidhu.cdlumaths.models.AndroidVersion;
+import com.parassidhu.cdlumaths.utils.AppUtils;
 import com.parassidhu.cdlumaths.utils.ItemClickSupport;
 import com.parassidhu.cdlumaths.utils.MyApp;
-import com.parassidhu.cdlumaths.utils.sidhu;
 
 import java.util.ArrayList;
 
@@ -37,9 +37,9 @@ public class tsem1 extends AppCompatActivity {
         setupView();
         initViews();
 
-        sidhu.renderTheme(this);
+        AppUtils.renderTheme(this);
         final AdView adView = this.findViewById(R.id.adView);
-        sidhu.displayAds(this,adView);
+        AppUtils.displayAds(this,adView);
 
         final RecyclerView rcl = findViewById(R.id.card_recycler_view);
         ItemClickSupport.addTo(rcl).setOnItemClickListener(new ItemClickSupport.OnItemClickListener() {
@@ -71,22 +71,22 @@ public class tsem1 extends AppCompatActivity {
             case R.id.download:
                 switch (m.hitit1()) {
                     case 0:
-                        sidhu.startDownload("Advanced Abstract Algebra-I (Dec 15).pdf",add+"AAA-I.pdf",this);
+                        AppUtils.startDownload("Advanced Abstract Algebra-I (Dec 15).pdf",add+"AAA-I.pdf",this);
                         break;
                     case 1:
-                        sidhu.startDownload("Real Analysis (Dec 15).pdf",add+"Real%20Analysis.pdf",this);
+                        AppUtils.startDownload("Real Analysis (Dec 15).pdf",add+"Real%20Analysis.pdf",this);
                         break;
                     case 2:
-                        sidhu.startDownload("Mechanics (Dec 15).pdf",add+"Mechanics.pdf",this);
+                        AppUtils.startDownload("Mechanics (Dec 15).pdf",add+"Mechanics.pdf",this);
                         break;
                     case 3:
-                        sidhu.startDownload("Complex Analysis-I (Dec 15).pdf",add+"CA.pdf",this);
+                        AppUtils.startDownload("Complex Analysis-I (Dec 15).pdf",add+"CA.pdf",this);
                         break;
                     case 4:
-                        sidhu.startDownload("Ordinary Differential Equations-I (Dec 15).pdf",add+"ODE.pdf",this);
+                        AppUtils.startDownload("Ordinary Differential Equations-I (Dec 15).pdf",add+"ODE.pdf",this);
                         break;
                     case 5:
-                        sidhu.startDownload("MSc Maths 2-Year 1st Sem (Dec 15).pdf",
+                        AppUtils.startDownload("MSc Maths 2-Year 1st Sem (Dec 15).pdf",
                                 add+"Msc%20maths%202-year%201st%20sem.pdf",this);
                         break;
                 }

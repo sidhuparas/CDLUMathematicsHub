@@ -13,9 +13,9 @@ import com.google.android.gms.ads.AdView;
 import com.parassidhu.cdlumaths.R;
 import com.parassidhu.cdlumaths.adapters.QueAdapter;
 import com.parassidhu.cdlumaths.models.AndroidVersion;
+import com.parassidhu.cdlumaths.utils.AppUtils;
 import com.parassidhu.cdlumaths.utils.ItemClickSupport;
 import com.parassidhu.cdlumaths.utils.MyApp;
-import com.parassidhu.cdlumaths.utils.sidhu;
 
 import java.util.ArrayList;
 
@@ -37,9 +37,9 @@ public class sem9 extends AppCompatActivity {
         setupView();
         initViews();
 
-        sidhu.renderTheme(this);
+        AppUtils.renderTheme(this);
         AdView adView = this.findViewById(R.id.adView);
-        sidhu.displayAds(this, adView);
+        AppUtils.displayAds(this, adView);
 
         final RecyclerView rcl = findViewById(R.id.card_recycler_view);
         ItemClickSupport.addTo(rcl).setOnItemClickListener(new ItemClickSupport.OnItemClickListener() {
@@ -72,27 +72,27 @@ public class sem9 extends AppCompatActivity {
             case R.id.download:    //December 2015
                 switch (m.getit9()) {
                     case 0:
-                        sidhu.startDownload("Topology (Dec 15).pdf",
+                        AppUtils.startDownload("Topology (Dec 15).pdf",
                                 add+"To%28Dec15%29.pdf",this);
                         break;
                     case 1:
-                        sidhu.startDownload("Advanced Mathematical Methods (Dec 15).pdf",
+                        AppUtils.startDownload("Advanced Mathematical Methods (Dec 15).pdf",
                                 add+"AMM%28Dec15%29.pdf",this);
                         break;
                     case 2:
-                        sidhu.startDownload("Mechanics of Solids-I (Dec 15).pdf",
+                        AppUtils.startDownload("Mechanics of Solids-I (Dec 15).pdf",
                                 add+"MoS1%28Dec15%29.pdf",this);
                         break;
                     case 3:
-                        sidhu.startDownload("Integral Equations (Dec 15).pdf",
+                        AppUtils.startDownload("Integral Equations (Dec 15).pdf",
                                 add+"IE%28Dec15%29.pdf",this);
                         break;
                     case 4:
-                        sidhu.startDownload("Operations Research (Dec 15).pdf",
+                        AppUtils.startDownload("Operations Research (Dec 15).pdf",
                                 add+"OR%28Dec15%29.pdf",this);
                         break;
                     case 5:
-                        sidhu.startDownload("MSc Maths 5-Year Sem 9th (Dec 15).pdf",
+                        AppUtils.startDownload("MSc Maths 5-Year Sem 9th (Dec 15).pdf",
                                 add+"Complete%20Sem%209%20%28Dec%2015%29.pdf",this);
                         break;
                 }
@@ -100,22 +100,22 @@ public class sem9 extends AppCompatActivity {
             case R.id.download2:
                 switch (m.getit9()) {
                     case 0:
-                        sidhu.startDownload("Topology (Dec 16).pdf",a+"T.pdf",this);
+                        AppUtils.startDownload("Topology (Dec 16).pdf",a+"T.pdf",this);
                         break;
                     case 1:
-                        sidhu.startDownload("Advanced Mathematical Methods (Dec 16).pdf",a+"AMM.pdf",this);
+                        AppUtils.startDownload("Advanced Mathematical Methods (Dec 16).pdf",a+"AMM.pdf",this);
                         break;
                     case 2:
-                        sidhu.startDownload("Mechanics of Solids-I (Dec 16).pdf",a+"MS.pdf",this);
+                        AppUtils.startDownload("Mechanics of Solids-I (Dec 16).pdf",a+"MS.pdf",this);
                         break;
                     case 3:
-                        sidhu.startDownload("Integral Equations (Dec 16).pdf",a+"IE.pdf",this);
+                        AppUtils.startDownload("Integral Equations (Dec 16).pdf",a+"IE.pdf",this);
                         break;
                     case 4:
-                        sidhu.startDownload("Operations Research (Dec 16).pdf",a+"OR.pdf",this);
+                        AppUtils.startDownload("Operations Research (Dec 16).pdf",a+"OR.pdf",this);
                         break;
                     case 5:
-                        sidhu.startDownload("MSc Maths 5-Year Sem 9th (Dec 16).pdf",a+"ALL.pdf",this);
+                        AppUtils.startDownload("MSc Maths 5-Year Sem 9th (Dec 16).pdf",a+"ALL.pdf",this);
                         break;
                 }
                 

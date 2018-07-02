@@ -31,7 +31,7 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
     }
     @Override
     public void onBindViewHolder(ViewHolder viewHolder, int i) {
-        Picasso.with(context).load(android_versions.get(i).getAndroid_image_url())
+        Picasso.get().load(android_versions.get(i).getAndroid_image_url())
                 .resize(150, 150).into(viewHolder.img_android);
         viewHolder.img_android.setColorFilter(Color.rgb(Home.r,Home.g,Home.b));
     }

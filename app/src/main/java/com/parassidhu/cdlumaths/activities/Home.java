@@ -60,7 +60,7 @@ import com.parassidhu.cdlumaths.fragments.Timetable;
 import com.parassidhu.cdlumaths.fragments.Tools;
 import com.parassidhu.cdlumaths.fragments.About;
 import com.parassidhu.cdlumaths.services.DownloadService;
-import com.parassidhu.cdlumaths.utils.sidhu;
+import com.parassidhu.cdlumaths.utils.AppUtils;
 import com.yarolegovich.lovelydialog.LovelyChoiceDialog;
 import com.yarolegovich.lovelydialog.LovelyInfoDialog;
 import com.yarolegovich.lovelydialog.LovelyStandardDialog;
@@ -132,7 +132,7 @@ public class Home extends AppCompatActivity
 
             setView();
             checkBack();
-            welcomeReleaseNotes("What's New In This Update?", sidhu.releaseNotes, 111);
+            welcomeReleaseNotes("What's New In This Update?", AppUtils.releaseNotes, 111);
 
         } catch (Exception ex) {
             Toast.makeText(this, ex.getMessage(), Toast.LENGTH_LONG).show();
@@ -582,7 +582,7 @@ public class Home extends AppCompatActivity
         } else if (id == R.id.defaultView) {
             setDefaultView();
         } else if (id == R.id.releasenotes) {
-            MsgBox("Release Notes", sidhu.releaseNotes, 1001);
+            MsgBox("Release Notes", AppUtils.releaseNotes, 1001);
         } else if (id == R.id.theme) {
             changeThemeOptions();
         }
@@ -701,7 +701,7 @@ public class Home extends AppCompatActivity
         else
             fab.setVisibility(View.GONE);
 
-        if (sidhu.isLollipop()) {
+        if (AppUtils.isLollipop()) {
             appbar.setTranslationZ(translation);
         }
     }
@@ -728,7 +728,7 @@ public class Home extends AppCompatActivity
             } else if (id == R.id.syll && fragment != getSupportFragmentManager().findFragmentByTag("Syllabus")) {
                 TAG = "Syllabus";
                 fragment = new Syllabus();
-                setNavProps(true, 0);
+                setNavProps(true, 4);
             } else if (id == R.id.Tools && fragment != getSupportFragmentManager().findFragmentByTag("Tools")) {
                 TAG = "Tools";
                 fragment = new Tools();

@@ -14,9 +14,9 @@ import com.google.android.gms.ads.AdView;
 import com.parassidhu.cdlumaths.R;
 import com.parassidhu.cdlumaths.adapters.QueAdapter;
 import com.parassidhu.cdlumaths.models.AndroidVersion;
+import com.parassidhu.cdlumaths.utils.AppUtils;
 import com.parassidhu.cdlumaths.utils.ItemClickSupport;
 import com.parassidhu.cdlumaths.utils.MyApp;
-import com.parassidhu.cdlumaths.utils.sidhu;
 
 import java.util.ArrayList;
 
@@ -41,9 +41,9 @@ public class sem3 extends AppCompatActivity {
         setupView();
         initViews();
         
-        sidhu.renderTheme(this);
+        AppUtils.renderTheme(this);
         final AdView adView = this.findViewById(R.id.adView);
-        sidhu.displayAds(this,adView);
+        AppUtils.displayAds(this,adView);
 
         final RecyclerView rcl = findViewById(R.id.card_recycler_view);
         ItemClickSupport.addTo(rcl).setOnItemClickListener(new ItemClickSupport.OnItemClickListener() {
@@ -77,38 +77,38 @@ public class sem3 extends AppCompatActivity {
             case R.id.download:    //December 2015
                 switch (m.getit3()) {
                     case 0:
-                        sidhu.startDownload("Advanced Calculus (Dec 15).pdf",
+                        AppUtils.startDownload("Advanced Calculus (Dec 15).pdf",
                                 add+"AdvancedCalculus(Dec14).pdf",this);
                         break;
                     case 1:
-                        sidhu.startDownload("Partial Differential Equations (Dec 15).pdf",
+                        AppUtils.startDownload("Partial Differential Equations (Dec 15).pdf",
                                 add+"Partial%20Differential%20Equations%20(Dec%2014).pdf",this);
                         break;
                     case 2:
-                        sidhu.startDownload("Statics (Dec 15).pdf",add+"Statics%20(Dec%2014).pdf",this);
+                        AppUtils.startDownload("Statics (Dec 15).pdf",add+"Statics%20(Dec%2014).pdf",this);
                         break;
                     case 3:
-                        sidhu.startDownload("Differential Geometry (Dec 15).pdf",
+                        AppUtils.startDownload("Differential Geometry (Dec 15).pdf",
                                 add+"Differential%20Geometry%20(Dec%2014).pdf",this);
                         break;
                     case 4:
-                        sidhu.startDownload("Probability Distributions (Dec 15).pdf",
+                        AppUtils.startDownload("Probability Distributions (Dec 15).pdf",
                                 add+"Probability%20Distributions%20(Dec%2014).pdf",this);
                         break;
                     case 5:
-                        sidhu.startDownload("Structured System Analysis and Design (Dec 15).pdf",
+                        AppUtils.startDownload("Structured System Analysis and Design (Dec 15).pdf",
                                 add+"Structured%20System%20Analysis%20And%20Design%20(Dec%2014).pdf",this);
                         break;
                     case 6:
-                        sidhu.startDownload("Internet And Web Designing (Dec 15).pdf",
+                        AppUtils.startDownload("Internet And Web Designing (Dec 15).pdf",
                                 add+"Internet%20And%20Web%20Designing%20(Dec%2014).pdf",this);
                         break;
                     case 7:
-                        sidhu.startDownload("Hindi-I (Dec 15).pdf",
+                        AppUtils.startDownload("Hindi-I (Dec 15).pdf",
                                 add+"Hindi-I%20(Dec%2014).pdf",this);
                         break;
                     case 8:
-                        sidhu.startDownload("Complete Sem 3 (Dec 15).pdf",
+                        AppUtils.startDownload("Complete Sem 3 (Dec 15).pdf",
                                 add+"Complete%20Sem%203%20(Dec%2014).pdf",this);
                         break;
                 }
@@ -117,31 +117,31 @@ public class sem3 extends AppCompatActivity {
                 
                 switch (m.getit3()) {
                     case 0:
-                        sidhu.startDownload("Advanced Calculus (Dec 16).pdf",n+"AC.pdf",this);
+                        AppUtils.startDownload("Advanced Calculus (Dec 16).pdf",n+"AC.pdf",this);
                         break;
                     case 1:
-                        sidhu.startDownload("Partial Differential Equations (Dec 16).pdf",n+"PDE.pdf",this);
+                        AppUtils.startDownload("Partial Differential Equations (Dec 16).pdf",n+"PDE.pdf",this);
                         break;
                     case 2:
-                        sidhu.startDownload("Statics (Dec 16).pdf",n+"S.pdf",this);
+                        AppUtils.startDownload("Statics (Dec 16).pdf",n+"S.pdf",this);
                         break;
                     case 3:
-                        sidhu.startDownload("Differential Geometry (Dec 16).pdf",n+"DG.pdf",this);
+                        AppUtils.startDownload("Differential Geometry (Dec 16).pdf",n+"DG.pdf",this);
                         break;
                     case 4:
-                        sidhu.startDownload("Probability Distributions (Dec 16).pdf",n+"PD.pdf",this);
+                        AppUtils.startDownload("Probability Distributions (Dec 16).pdf",n+"PD.pdf",this);
                         break;
                     case 5:
-                        sidhu.startDownload("Structured System Analysis and Design (Dec 16).pdf",n+"SSAD.pdf",this);
+                        AppUtils.startDownload("Structured System Analysis and Design (Dec 16).pdf",n+"SSAD.pdf",this);
                         break;
                     case 6:
-                        sidhu.startDownload("Internet And Web Designing (Dec 16).pdf",n+"IWD.pdf",this);
+                        AppUtils.startDownload("Internet And Web Designing (Dec 16).pdf",n+"IWD.pdf",this);
                         break;
                     case 7:
-                        sidhu.startDownload("Hindi-I (Dec 16).pdf",n+"H.pdf",this);
+                        AppUtils.startDownload("Hindi-I (Dec 16).pdf",n+"H.pdf",this);
                         break;
                     case 8:
-                        sidhu.startDownload("Complete Sem 3 (Dec 16).pdf",n+"ALL.pdf",this);
+                        AppUtils.startDownload("Complete Sem 3 (Dec 16).pdf",n+"ALL.pdf",this);
                         break;
                 }
                 return true;
@@ -163,7 +163,7 @@ public class sem3 extends AppCompatActivity {
         download.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                sidhu.openWebPage(sem3.this,"http://www.downloadinformer.com/2016/07/live-html-makes-html-coding-easier.html");
+                AppUtils.openWebPage(sem3.this,"http://www.downloadinformer.com/2016/07/live-html-makes-html-coding-easier.html");
             }
         });
         recyclerView.setHasFixedSize(true);

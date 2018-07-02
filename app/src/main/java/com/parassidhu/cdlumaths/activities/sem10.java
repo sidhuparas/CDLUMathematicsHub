@@ -13,9 +13,9 @@ import com.google.android.gms.ads.AdView;
 import com.parassidhu.cdlumaths.R;
 import com.parassidhu.cdlumaths.adapters.QueAdapter;
 import com.parassidhu.cdlumaths.models.AndroidVersion;
+import com.parassidhu.cdlumaths.utils.AppUtils;
 import com.parassidhu.cdlumaths.utils.ItemClickSupport;
 import com.parassidhu.cdlumaths.utils.MyApp;
-import com.parassidhu.cdlumaths.utils.sidhu;
 
 import java.util.ArrayList;
 
@@ -37,9 +37,9 @@ public class sem10 extends AppCompatActivity {
         setupView();
         initViews();
 
-        sidhu.renderTheme(this);
+        AppUtils.renderTheme(this);
         AdView adView = this.findViewById(R.id.adView);
-        sidhu.displayAds(this,adView);
+        AppUtils.displayAds(this,adView);
         final RecyclerView rcl = findViewById(R.id.card_recycler_view);
         ItemClickSupport.addTo(rcl).setOnItemClickListener(new ItemClickSupport.OnItemClickListener() {
             @Override
@@ -72,27 +72,27 @@ public class sem10 extends AppCompatActivity {
             case R.id.download:
                 switch (m.getit10()) {
                     case 0:
-                        sidhu.startDownload("Functional Analysis (May 16).pdf",
+                        AppUtils.startDownload("Functional Analysis (May 16).pdf",
                                 add[0]+"FA%28May16%29.pdf",this);
                         break;
                     case 1:
-                        sidhu.startDownload("Partial Differential Equations-10 (May 16).pdf",
+                        AppUtils.startDownload("Partial Differential Equations-10 (May 16).pdf",
                                 add[0]+"PDE%28May16%29.pdf",this);
                         break;
                     case 2:
-                        sidhu.startDownload("Mechanics of Solids-II (May 16).pdf",
+                        AppUtils.startDownload("Mechanics of Solids-II (May 16).pdf",
                                 add[0]+"MoS%28May16%29.pdf",this);
                         break;
                     case 3:
-                        sidhu.startDownload("Boundary Value Problem (May 16).pdf",
+                        AppUtils.startDownload("Boundary Value Problem (May 16).pdf",
                                 add[0]+"BVP%28May16%29.pdf",this);
                         break;
                     case 4:
-                        sidhu.startDownload("Mathematical Aspect of Seismology (May 16).pdf",
+                        AppUtils.startDownload("Mathematical Aspect of Seismology (May 16).pdf",
                                 add[0]+"MaOS%28May16%29.pdf",this);
                         break;
                     case 5:
-                        sidhu.startDownload("MSc Maths 5-Year 10th Sem (May 16).pdf",
+                        AppUtils.startDownload("MSc Maths 5-Year 10th Sem (May 16).pdf",
                                 add[0]+"MSc%20Maths%2010th%20Sem%20%28May%2016%29.pdf",this);
                         break;
                 }
@@ -100,27 +100,27 @@ public class sem10 extends AppCompatActivity {
             case R.id.may17:
                 switch (m.getit10()) {
                     case 0:
-                        sidhu.startDownload("Functional Analysis (May 17).pdf",
+                        AppUtils.startDownload("Functional Analysis (May 17).pdf",
                                 add[1]+"FA.pdf",this);
                         break;
                     case 1:
-                        sidhu.startDownload("Partial Differential Equations-10 (May 17).pdf",
+                        AppUtils.startDownload("Partial Differential Equations-10 (May 17).pdf",
                                 add[1]+"PDE.pdf",this);
                         break;
                     case 2:
-                        sidhu.startDownload("Mechanics of Solids-II (May 17).pdf",
+                        AppUtils.startDownload("Mechanics of Solids-II (May 17).pdf",
                                 add[1]+"MoS.pdf",this);
                         break;
                     case 3:
-                        sidhu.startDownload("Boundary Value Problem (May 17).pdf",
+                        AppUtils.startDownload("Boundary Value Problem (May 17).pdf",
                                 add[1]+"BVP.pdf",this);
                         break;
                     case 4:
-                        sidhu.startDownload("Mathematical Aspect of Seismology (May 17).pdf",
+                        AppUtils.startDownload("Mathematical Aspect of Seismology (May 17).pdf",
                                 add[1]+"MaOS.pdf",this);
                         break;
                     case 5:
-                        sidhu.startDownload("MSc Maths 5-Year 10th Sem (May 17).pdf",
+                        AppUtils.startDownload("MSc Maths 5-Year 10th Sem (May 17).pdf",
                                 add[1]+"ALL.pdf",this);
                         break;
                 }

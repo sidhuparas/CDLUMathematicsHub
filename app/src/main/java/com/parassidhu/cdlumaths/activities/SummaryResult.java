@@ -24,9 +24,9 @@ import com.parassidhu.cdlumaths.BuildConfig;
 import com.parassidhu.cdlumaths.R;
 import com.parassidhu.cdlumaths.adapters.SummaryAdapter;
 import com.parassidhu.cdlumaths.models.GetSetGo;
+import com.parassidhu.cdlumaths.utils.AppUtils;
 import com.parassidhu.cdlumaths.utils.ItemClickSupport;
 import com.parassidhu.cdlumaths.utils.ServiceHandler;
-import com.parassidhu.cdlumaths.utils.sidhu;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -135,7 +135,7 @@ public class SummaryResult extends AppCompatActivity {
         total = (int) (val2 - val);
         checkifFree();
         setListener(sem,geturlcode);
-        sidhu.tipMsg(this,"Tap on any name to view individual result",2001);
+        AppUtils.tipMsg(this,"Tap on any name to view individual result",2001);
     }
 
     private void setListener(final String sem, final String code) {

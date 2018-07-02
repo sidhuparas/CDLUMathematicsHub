@@ -1,26 +1,47 @@
 package com.parassidhu.cdlumaths.fragments;
 
-import android.graphics.Color;
+import android.content.DialogInterface;
 import android.support.annotation.Nullable;
-import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
-import android.support.v4.view.ViewPager;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.parassidhu.cdlumaths.R;
-import com.parassidhu.cdlumaths.activities.Home;
-import com.parassidhu.cdlumaths.adapters.PagerAdapter;
-import com.parassidhu.cdlumaths.utils.sidhu;
+import com.parassidhu.cdlumaths.adapters.HomeAdapter;
+import com.parassidhu.cdlumaths.utils.AppUtils;
+import com.parassidhu.cdlumaths.utils.ItemClickSupport;
+import com.parassidhu.cdlumaths.utils.SyllabusUtils;
+
+import java.util.ArrayList;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class Syllabus extends Fragment {
 
+    @BindView(R.id.choose5Years) TextView choose5Years;
+    @BindView(R.id.fiveYearsRV) RecyclerView rcl5Years;
+    @BindView(R.id.choose2Years) TextView choose2Years;
+    @BindView(R.id.twoYearsRV) RecyclerView rcl2Years;
+    @BindView(R.id.DownloadAll5Years) Button downloadAll5Years;
+    @BindView(R.id.DownloadAll2Years) Button downloadAll2Years;
+
+    private HomeAdapter adapter;
+
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_syllabus, container, false);
+        ButterKnife.bind(this,rootView);
         return rootView;
     }
 
@@ -29,45 +50,86 @@ public class Syllabus extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         getActivity().setTitle("Syllabus");
         setHasOptionsMenu(true);
-        setup();
+        setUpRVFor5Years();
+        setUpRVFor2Years();
+    }
+
+    private void setUpRVFor5Years(){
+        rcl5Years.setHasFixedSize(true);
+        RecyclerView.LayoutManager layoutManager = new GridLayoutManager(getActivity(),4);
+        rcl5Years.setLayoutManager(layoutManager);
+
+        adapter = new HomeAdapter(getActivity(), AppUtils.prepareDataFor5Years());
+        rcl5Years.setAdapter(adapter);
+
+        ItemClickSupport.addTo(rcl5Years).setOnItemClickListener(new ItemClickSupport.OnItemClickListener() {
+            @Override
+            public void onItemClicked(RecyclerView recyclerView, int position, View v) {
+                    SyllabusUtils.downloadSyllabus(getActivity(),String.valueOf(position+1));
+            }
+        });
+    }
+
+    private void setUpRVFor2Years(){
+        rcl2Years.setHasFixedSize(true);
+        RecyclerView.LayoutManager layoutManager = new GridLayoutManager(getActivity(),4);
+        rcl2Years.setLayoutManager(layoutManager);
+
+        adapter = new HomeAdapter(getActivity(), AppUtils.prepareDataFor2Years());
+        rcl2Years.setAdapter(adapter);
+
+        ItemClickSupport.addTo(rcl2Years).setOnItemClickListener(new ItemClickSupport.OnItemClickListener() {
+            @Override
+            public void onItemClicked(RecyclerView recyclerView, int position, View v) {
+                SyllabusUtils.downloadSyllabus2Years(getActivity(),String.valueOf(position+1));
+            }
+        });
+    }
+
+    @OnClick(R.id.DownloadAll5Years)
+    public void onDownloadAllClick(){
+        final String add="CDLU/syllabus/5year/";
+
+        askForConfirmation(new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                AppUtils.startDownload("MSc Maths 5-Year.pdf",
+                        add+"M.Sc.%20Math%20(5%20years).pdf",getActivity());
+            }
+        });
+    }
+
+    @OnClick(R.id.DownloadAll2Years)
+    public void onDownloadAll2Click(){
+        final String add="CDLU/syllabus/2year/";
+
+        askForConfirmation(new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                AppUtils.startDownload("MSc Maths 2-Year.pdf",
+                        add+"MSc%20Maths%202-Year.pdf",getActivity());
+            }
+        });
+    }
+
+    // For full syllabus downloads of 5-Years and 2-Years
+    private void askForConfirmation(DialogInterface.OnClickListener yes){
+        AlertDialog.Builder alert = new AlertDialog.Builder(getActivity());
+        alert.setTitle("Start Download?")
+                .setMessage("Do you want to download the full syllabus?")
+                .setPositiveButton("Yes", yes)
+                .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                    }
+                }).show();
     }
 
     @Override
     public void onPrepareOptionsMenu(Menu menu) {
         MenuItem item = menu.findItem(R.id.sort);
-        sidhu.setOptVisibility(menu,false,true);
-    }
-
-    public void setup(){
-       try {
-           TabLayout tabLayout = getActivity().findViewById(R.id.tab_layout);
-           tabLayout.addTab(tabLayout.newTab().setText("5-Years"));
-           tabLayout.addTab(tabLayout.newTab().setText("2-Years"));
-           tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
-           int r,g,b;
-           r = Home.r;
-           g = Home.g;
-           b = Home.b;
-           tabLayout.setBackgroundColor(Color.rgb(r,g,b));
-           tabLayout.setSelectedTabIndicatorColor(Color.rgb(r,g,b));
-
-           final ViewPager viewPager = getActivity().findViewById(R.id.pager);
-           final PagerAdapter adapter = new PagerAdapter
-                   (getActivity().getSupportFragmentManager(), tabLayout.getTabCount(),"Syllabus");
-           viewPager.setAdapter(adapter);
-           viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
-           tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
-               @Override
-               public void onTabSelected(TabLayout.Tab tab) {
-                   viewPager.setCurrentItem(tab.getPosition());
-               }
-
-               public void onTabUnselected(TabLayout.Tab tab) {}
-               public void onTabReselected(TabLayout.Tab tab) {}
-           });
-       }catch (Exception ex){
-
-       }
+        AppUtils.setOptVisibility(menu,false,true);
     }
 
     @Override

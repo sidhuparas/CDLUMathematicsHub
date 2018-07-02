@@ -32,6 +32,8 @@ import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.MobileAds;
+import com.parassidhu.cdlumaths.R;
+import com.parassidhu.cdlumaths.models.AndroidVersion;
 import com.parassidhu.cdlumaths.services.DownloadService;
 import com.parassidhu.cdlumaths.activities.Home;
 import com.yarolegovich.lovelydialog.LovelyInfoDialog;
@@ -40,7 +42,7 @@ import com.yarolegovich.lovelydialog.LovelyStandardDialog;
 import java.io.File;
 import java.util.ArrayList;
 
-public class sidhu {
+public class AppUtils {
 
     public static String releaseNotes ="- Added Question Papers for 1st, 4th, 7th and 10th Semesters.\n" +
             "- Added Rename option in Offline.\n" +
@@ -267,5 +269,83 @@ public class sidhu {
         catch (ActivityNotFoundException e) {
             Toast.makeText(context, "No PDF reader installed. Please download from Play Store.", Toast.LENGTH_SHORT).show();
         }
+    }
+
+    public static ArrayList<AndroidVersion> prepareDataFor5Years() {
+        ArrayList<AndroidVersion> android_version = new ArrayList<>();
+        for (int i = 0; i < 10; i++) {
+            AndroidVersion androidVersion = new AndroidVersion();
+            switch (i) {
+                case 0:
+                    androidVersion.setAndroid_image_url(R.drawable.a1);
+                    android_version.add(androidVersion);
+                    break;
+                case 1:
+                    androidVersion.setAndroid_image_url(R.drawable.a2);
+                    android_version.add(androidVersion);
+                    break;
+                case 2:
+                    androidVersion.setAndroid_image_url(R.drawable.a3);
+                    android_version.add(androidVersion);
+                    break;
+                case 3:
+                    androidVersion.setAndroid_image_url(R.drawable.a4);
+                    android_version.add(androidVersion);
+                    break;
+                case 4:
+                    androidVersion.setAndroid_image_url(R.drawable.a5);
+                    android_version.add(androidVersion);
+                    break;
+                case 5:
+                    androidVersion.setAndroid_image_url(R.drawable.a6);
+                    android_version.add(androidVersion);
+                    break;
+                case 6:
+                    androidVersion.setAndroid_image_url(R.drawable.a7);
+                    android_version.add(androidVersion);
+                    break;
+                case 7:
+                    androidVersion.setAndroid_image_url(R.drawable.a8);
+                    android_version.add(androidVersion);
+                    break;
+                case 8:
+                    androidVersion.setAndroid_image_url(R.drawable.a9);
+                    android_version.add(androidVersion);
+                    break;
+                case 9:
+                    androidVersion.setAndroid_image_url(R.drawable.a10);
+                    android_version.add(androidVersion);
+                    break;
+            }
+
+        }
+        return android_version;
+    }
+
+
+    public static ArrayList<AndroidVersion> prepareDataFor2Years() {
+        ArrayList<AndroidVersion> android_version = new ArrayList<>();
+        for (int i = 0; i < 4; i++) {
+            AndroidVersion androidVersion = new AndroidVersion();
+            switch (i) {
+                case 0:
+                    androidVersion.setAndroid_image_url(R.drawable.a1);
+                    android_version.add(androidVersion);
+                    break;
+                case 1:
+                    androidVersion.setAndroid_image_url(R.drawable.a2);
+                    android_version.add(androidVersion);
+                    break;
+                case 2:
+                    androidVersion.setAndroid_image_url(R.drawable.a3);
+                    android_version.add(androidVersion);
+                    break;
+                case 3:
+                    androidVersion.setAndroid_image_url(R.drawable.a4);
+                    android_version.add(androidVersion);
+                    break;
+            }
+        }
+        return android_version;
     }
 }

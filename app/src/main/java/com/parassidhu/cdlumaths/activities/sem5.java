@@ -13,9 +13,9 @@ import com.google.android.gms.ads.AdView;
 import com.parassidhu.cdlumaths.R;
 import com.parassidhu.cdlumaths.adapters.QueAdapter;
 import com.parassidhu.cdlumaths.models.AndroidVersion;
+import com.parassidhu.cdlumaths.utils.AppUtils;
 import com.parassidhu.cdlumaths.utils.ItemClickSupport;
 import com.parassidhu.cdlumaths.utils.MyApp;
-import com.parassidhu.cdlumaths.utils.sidhu;
 
 import java.util.ArrayList;
 
@@ -38,9 +38,9 @@ public class sem5 extends AppCompatActivity {
         setupView();
         initViews();
         
-        sidhu.renderTheme(this);
+        AppUtils.renderTheme(this);
         AdView adView = this.findViewById(R.id.adView);
-        sidhu.displayAds(this,adView);
+        AppUtils.displayAds(this,adView);
 
         final RecyclerView rcl = findViewById(R.id.card_recycler_view);
         ItemClickSupport.addTo(rcl).setOnItemClickListener(new ItemClickSupport.OnItemClickListener() {
@@ -74,31 +74,31 @@ public class sem5 extends AppCompatActivity {
             case R.id.download:
                 switch (m.getit5()) {
                     case 0:
-                        sidhu.startDownload("Real Analysis (Dec 15).pdf",
+                        AppUtils.startDownload("Real Analysis (Dec 15).pdf",
                                 add + "Real%20Analysis%20%28Dec%2015%29.pdf", this);
                         break;
                     case 1:
-                        sidhu.startDownload("Groups and Rings (Dec 15).pdf",
+                        AppUtils.startDownload("Groups and Rings (Dec 15).pdf",
                                 add + "Groups%20And%20Rings%20(Dec%2015).pdf", this);
                         break;
                     case 2:
-                        sidhu.startDownload("Numerical Methods (Dec 15).pdf",
+                        AppUtils.startDownload("Numerical Methods (Dec 15).pdf",
                                 add + "Numerical%20Methods%20(Dec%2015).pdf", this);
                         break;
                     case 3:
-                        sidhu.startDownload("Methods of Applied Mathematics (Dec 15).pdf",
+                        AppUtils.startDownload("Methods of Applied Mathematics (Dec 15).pdf",
                                 add + "Methods%20of%20Applied%20Mathematics%20(Dec%2015).pdf", this);
                         break;
                     case 4:
-                        sidhu.startDownload("Computer Networks and Data Communication (Dec 15).pdf",
+                        AppUtils.startDownload("Computer Networks and Data Communication (Dec 15).pdf",
                                 add + "Computer%20Networks%20and%20Data%20Communication%20(Dec%2015).pdf", this);
                         break;
                     case 5:
-                        sidhu.startDownload("Object-Oriented Programming With C++ (Dec 15).pdf",
+                        AppUtils.startDownload("Object-Oriented Programming With C++ (Dec 15).pdf",
                                 add + "Object-Oriented%20Programming%20With%20C++%20(Dec%2015).pdf", this);
                         break;
                     case 6:
-                        sidhu.startDownload("MSc Maths 5-Year 5th Sem (Dec 15).pdf",
+                        AppUtils.startDownload("MSc Maths 5-Year 5th Sem (Dec 15).pdf",
                                 add + "MSc%20Maths%205-Year%205th%20Sem.pdf", this);
                         break;
                 }
@@ -107,25 +107,25 @@ public class sem5 extends AppCompatActivity {
                 
                 switch (m.getit5()) {
                     case 0:
-                        sidhu.startDownload("Real Analysis (Dec 16).pdf", n + "RA.pdf", this);
+                        AppUtils.startDownload("Real Analysis (Dec 16).pdf", n + "RA.pdf", this);
                         break;
                     case 1:
-                        sidhu.startDownload("Groups and Rings (Dec 16).pdf", n + "GR.pdf", this);
+                        AppUtils.startDownload("Groups and Rings (Dec 16).pdf", n + "GR.pdf", this);
                         break;
                     case 2:
-                        sidhu.startDownload("Numerical Methods (Dec 16).pdf", n + "NM.pdf", this);
+                        AppUtils.startDownload("Numerical Methods (Dec 16).pdf", n + "NM.pdf", this);
                         break;
                     case 3:
-                        sidhu.startDownload("Methods of Applied Mathematics (Dec 16).pdf", n + "MAM.pdf", this);
+                        AppUtils.startDownload("Methods of Applied Mathematics (Dec 16).pdf", n + "MAM.pdf", this);
                         break;
                     case 4:
-                        sidhu.startDownload("Computer Networks and Data Communication (Dec 16).pdf", n + "CNDC.pdf", this);
+                        AppUtils.startDownload("Computer Networks and Data Communication (Dec 16).pdf", n + "CNDC.pdf", this);
                         break;
                     case 5:
-                        sidhu.startDownload("Object-Oriented Programming With C++ (Dec 16).pdf", n + "OOPC.pdf", this);
+                        AppUtils.startDownload("Object-Oriented Programming With C++ (Dec 16).pdf", n + "OOPC.pdf", this);
                         break;
                     case 6:
-                        sidhu.startDownload("MSc Maths 5-Year 5th Sem (Dec 16).pdf", n + "ALL.pdf", this);
+                        AppUtils.startDownload("MSc Maths 5-Year 5th Sem (Dec 16).pdf", n + "ALL.pdf", this);
                         break;
                 }
                 return true;

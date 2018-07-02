@@ -8,8 +8,6 @@ import com.parassidhu.cdlumaths.fragments.QuestionPapers;
 import com.parassidhu.cdlumaths.fragments.Result1;
 import com.parassidhu.cdlumaths.fragments.Result2;
 import com.parassidhu.cdlumaths.fragments.Summary;
-import com.parassidhu.cdlumaths.fragments.Syllabus2Year;
-import com.parassidhu.cdlumaths.fragments.Syllabus5Year;
 
 public class PagerAdapter extends FragmentStatePagerAdapter {
 
@@ -27,24 +25,12 @@ public class PagerAdapter extends FragmentStatePagerAdapter {
         switch (activity){
             case "QuestionPap":
                 return new QuestionPapers();
-            case "Syllabus":
-                return Syllabus(position);
-            case "Result":
+             case "Result":
                 return Result(position);
         }
       return null;
     }
 
-    private Fragment Syllabus(int position){
-        switch (position) {
-            case 0:
-                return new Syllabus5Year();
-            case 1:
-                return new Syllabus2Year();
-            default:
-                return null;
-        }
-    }
 
     private Fragment Result(int position){
         switch (position) {

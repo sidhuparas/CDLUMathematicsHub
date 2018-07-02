@@ -36,7 +36,7 @@ import com.parassidhu.cdlumaths.R;
 import com.parassidhu.cdlumaths.activities.RequestInterface;
 import com.parassidhu.cdlumaths.models.Download;
 import com.parassidhu.cdlumaths.activities.sem1;
-import com.parassidhu.cdlumaths.utils.sidhu;
+import com.parassidhu.cdlumaths.utils.AppUtils;
 
 import java.io.BufferedInputStream;
 import java.io.File;
@@ -98,7 +98,7 @@ public class DownloadService extends Service {
                     notificationBuilder.setChannelId("download");
                 }
 
-                if (!sidhu.isLollipop())
+                if (!AppUtils.isLollipop())
                     notificationBuilder.setSmallIcon(R.drawable.ic_file_download_deep_orange_a400_18dp);
 
                 notificationManager.notify(x.ID, notificationBuilder.build());
@@ -137,7 +137,7 @@ public class DownloadService extends Service {
         handler.post(new Runnable() {
             @Override
             public void run() {
-                if(sidhu.checkPerm(DownloadService.this))
+                if(AppUtils.checkPerm(DownloadService.this))
                     starting();
             }
         });

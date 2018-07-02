@@ -9,7 +9,7 @@ import android.widget.TextView;
 
 import com.parassidhu.cdlumaths.R;
 import com.parassidhu.cdlumaths.models.TTItem;
-import com.parassidhu.cdlumaths.utils.sidhu;
+import com.parassidhu.cdlumaths.utils.AppUtils;
 
 import java.util.ArrayList;
 
@@ -35,8 +35,8 @@ public class TimeTableAdapter extends RecyclerView.Adapter<TimeTableAdapter.View
         viewHolder.subName.setText(currentItem.getSubName());
         viewHolder.teacherName.setText(currentItem.getTeacherName());
 
-        sidhu.setFont(context,viewHolder.subName,"graduate.ttf");
-        sidhu.setFont(context,viewHolder.teacherName,"graduate.ttf");
+        AppUtils.setFont(context,viewHolder.subName,"graduate.ttf");
+        AppUtils.setFont(context,viewHolder.teacherName,"graduate.ttf");
 
         switch (i) {
             case 0:
