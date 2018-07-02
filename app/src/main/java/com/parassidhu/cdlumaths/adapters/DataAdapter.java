@@ -10,7 +10,7 @@ import android.widget.TextView;
 
 import com.parassidhu.cdlumaths.R;
 import com.parassidhu.cdlumaths.models.AndroidVersion;
-import com.parassidhu.cdlumaths.Offline;
+import com.parassidhu.cdlumaths.fragments.Offline;
 import com.parassidhu.cdlumaths.utils.sidhu;
 import com.parassidhu.cdlumaths.utils.AnimationUtil;
 import com.squareup.picasso.Picasso;

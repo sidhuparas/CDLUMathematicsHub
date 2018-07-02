@@ -9,7 +9,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.parassidhu.cdlumaths.R;
-import com.parassidhu.cdlumaths.SummaryResult;
+import com.parassidhu.cdlumaths.activities.SummaryResult;
 import com.parassidhu.cdlumaths.models.GetSetGo;
 
 import java.util.ArrayList;

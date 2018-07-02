@@ -5,7 +5,7 @@
     android:background="@color/white"
     android:layout_height="match_parent"
     xmlns:ads="http://schemas.android.com/apk/res-auto"
-    tools:context="com.parassidhu.cdlumaths.sem3">
+    tools:context="com.parassidhu.cdlumaths.activities.sem3">
 
     <LinearLayout
         android:layout_width="match_parent"

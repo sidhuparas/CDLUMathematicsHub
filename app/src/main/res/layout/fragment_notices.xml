@@ -6,7 +6,7 @@
     android:paddingLeft="10dp"
     android:paddingRight="10dp"
     android:paddingTop="16dp"
-    tools:context="com.parassidhu.cdlumaths.Notices">
+    tools:context="com.parassidhu.cdlumaths.fragments.Notices">
 
         <android.support.v4.widget.SwipeRefreshLayout
             android:id="@+id/swipeRefreshLayout"

@@ -9,7 +9,7 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
-        android:name=".MyApp"
+        android:name=".utils.MyApp"
         android:allowBackup="true"
         android:icon="@drawable/icon"
         android:roundIcon="@drawable/icon"
@@ -28,30 +28,30 @@
         </provider>
 
         <service
-            android:name=".DownloadService"
+            android:name=".services.DownloadService"
             android:enabled="true" />
 
         <activity
-            android:name=".sem1"
-            android:parentActivityName=".Home" />
+            android:name=".activities.sem1"
+            android:parentActivityName=".activities.Home" />
         <activity
-            android:name=".sem2"
-            android:parentActivityName=".Home" />
+            android:name=".activities.sem2"
+            android:parentActivityName=".activities.Home" />
         <activity
-            android:name=".sem3"
-            android:parentActivityName=".Home" />
+            android:name=".activities.sem3"
+            android:parentActivityName=".activities.Home" />
         <activity
-            android:name=".sem4"
-            android:parentActivityName=".Home" />
+            android:name=".activities.sem4"
+            android:parentActivityName=".activities.Home" />
         <activity
-            android:name=".WeightOnOtherPlanets"
-            android:parentActivityName=".Home" />
+            android:name=".activities.WeightOnOtherPlanets"
+            android:parentActivityName=".activities.Home" />
         <activity
-            android:name=".Feedback"
-            android:parentActivityName=".Home" />
+            android:name=".activities.Feedback"
+            android:parentActivityName=".activities.Home" />
         <activity
-            android:name=".quadratic"
-            android:parentActivityName=".Home" />
+            android:name=".activities.quadratic"
+            android:parentActivityName=".activities.Home" />
 
         <meta-data
             android:name="com.google.android.gms.version"
@@ -61,37 +61,37 @@
             android:name="com.google.android.gms.ads.AdActivity"
             android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize" />
         <activity
-            android:name=".sem5"
-            android:parentActivityName=".Home" />
+            android:name=".activities.sem5"
+            android:parentActivityName=".activities.Home" />
         <activity
-            android:name=".sem6"
-            android:parentActivityName=".Home" />
+            android:name=".activities.sem6"
+            android:parentActivityName=".activities.Home" />
         <activity
-            android:name=".sem7"
-            android:parentActivityName=".Home" />
+            android:name=".activities.sem7"
+            android:parentActivityName=".activities.Home" />
         <activity
-            android:name=".sem8"
-            android:parentActivityName=".Home" />
+            android:name=".activities.sem8"
+            android:parentActivityName=".activities.Home" />
         <activity
-            android:name=".sem9"
-            android:parentActivityName=".Home" />
+            android:name=".activities.sem9"
+            android:parentActivityName=".activities.Home" />
         <activity
-            android:name=".sem10"
-            android:parentActivityName=".Home" />
+            android:name=".activities.sem10"
+            android:parentActivityName=".activities.Home" />
         <activity
-            android:name=".tsem1"
-            android:parentActivityName=".Home" />
+            android:name=".activities.tsem1"
+            android:parentActivityName=".activities.Home" />
         <activity
-            android:name=".tsem2"
-            android:parentActivityName=".Home" />
+            android:name=".activities.tsem2"
+            android:parentActivityName=".activities.Home" />
         <activity
-            android:name=".tsem3"
-            android:parentActivityName=".Home" />
+            android:name=".activities.tsem3"
+            android:parentActivityName=".activities.Home" />
         <activity
-            android:name=".tsem4"
-            android:parentActivityName=".Home" />
+            android:name=".activities.tsem4"
+            android:parentActivityName=".activities.Home" />
         <activity
-            android:name=".Home"
+            android:name=".activities.Home"
             android:label="CDLU Mathematics Hub"
             android:launchMode="singleTop"
             android:theme="@style/AppTheme.NoActionBar">
@@ -102,13 +102,13 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".MyResult"
-            android:parentActivityName=".Home"
+            android:name=".activities.MyResult"
+            android:parentActivityName=".activities.Home"
             android:screenOrientation="portrait">
 
         </activity>
-        <activity android:name=".SummaryResult"
-            android:parentActivityName=".Home"
+        <activity android:name=".activities.SummaryResult"
+            android:parentActivityName=".activities.Home"
             android:screenOrientation="portrait">
 
         </activity>
@@ -119,7 +119,7 @@
             android:resource="@color/colorPrimaryDark" />
 
         <service
-            android:name=".FirebaseService"
+            android:name=".services.FirebaseService"
             android:exported="false">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT"/>

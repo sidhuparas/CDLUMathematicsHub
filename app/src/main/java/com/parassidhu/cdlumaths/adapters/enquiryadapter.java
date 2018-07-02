@@ -8,7 +8,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.parassidhu.cdlumaths.models.GetSetGo;
-import com.parassidhu.cdlumaths.MyResult;
+import com.parassidhu.cdlumaths.activities.MyResult;
 import com.parassidhu.cdlumaths.R;
 
 import java.util.ArrayList;

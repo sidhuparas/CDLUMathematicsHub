@@ -8,10 +8,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
-import com.parassidhu.cdlumaths.Home;
+import com.parassidhu.cdlumaths.activities.Home;
 import com.parassidhu.cdlumaths.R;
 import com.parassidhu.cdlumaths.models.AndroidVersion;
-import com.parassidhu.cdlumaths.utils.AnimationUtil;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;

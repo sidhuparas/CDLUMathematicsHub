@@ -6,7 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.parassidhu.cdlumaths.Notices;
+import com.parassidhu.cdlumaths.fragments.Notices;
 import com.parassidhu.cdlumaths.R;
 import com.parassidhu.cdlumaths.models.ListItem;
 import com.parassidhu.cdlumaths.utils.ItemClickSupport;

@@ -9,7 +9,7 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     android:id="@+id/quadLayout"
     android:background="@color/white"
-    tools:context="com.parassidhu.cdlumaths.quadratic"
+    tools:context="com.parassidhu.cdlumaths.activities.quadratic"
     android:descendantFocusability="beforeDescendants"
     android:focusableInTouchMode="true">
 <ScrollView

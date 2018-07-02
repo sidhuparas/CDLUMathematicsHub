@@ -6,7 +6,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.parassidhu.cdlumaths.Result2">
+    tools:context="com.parassidhu.cdlumaths.fragments.Result2">
 
     <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
