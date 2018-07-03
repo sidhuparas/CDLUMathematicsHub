@@ -23,7 +23,7 @@ public class QueAdapter extends RecyclerView.Adapter<QueAdapter.ViewHolder> {
 
     @Override
     public QueAdapter.ViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
-        View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.que_layout, viewGroup, false);
+        View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.row_que, viewGroup, false);
         return new ViewHolder(view);
     }
 

@@ -218,7 +218,7 @@ public class Home extends AppCompatActivity
 
     //Returns App Version
     private String giveVersion() {
-        PackageInfo packageInfo = null;
+        PackageInfo packageInfo;
         try {
             packageInfo = getPackageManager().getPackageInfo(this.getPackageName(), 0);
             return packageInfo.versionName;
@@ -269,9 +269,7 @@ public class Home extends AppCompatActivity
             String msg = intent.getStringExtra("text");
             if (!msg.isEmpty())
                 showNotifMessage(msg);
-        } catch (Exception e) {
-
-        }
+        } catch (Exception e) { }
     }
 
     private void showNotifMessage(String message) {
@@ -636,21 +634,21 @@ public class Home extends AppCompatActivity
                                 break;
                             case 4:
                                 //Pink
-                                r = 255;
-                                g = 128;
-                                b = 171;
-                                e = 201;
-                                f = 79;
-                                v = 124;
+                                a = 255;
+                                b = 128;
+                                c = 171;
+                                d = 201;
+                                e = 79;
+                                f = 124;
                                 break;
                             case 5:
                                 //Dark Blue
-                                r = 1;
-                                g = 87;
-                                b = 155;
-                                e = 0;
-                                f = 47;
-                                v = 108;
+                                a = 1;
+                                b = 87;
+                                c = 155;
+                                d = 0;
+                                e = 47;
+                                f = 108;
                                 break;
                         }
                         ed = sp.edit();

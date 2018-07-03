@@ -5,8 +5,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
 import com.parassidhu.cdlumaths.fragments.QuestionPapers;
-import com.parassidhu.cdlumaths.fragments.Result1;
-import com.parassidhu.cdlumaths.fragments.Result2;
+import com.parassidhu.cdlumaths.fragments.ResultIndividual;
 import com.parassidhu.cdlumaths.fragments.Summary;
 
 public class PagerAdapter extends FragmentStatePagerAdapter {
@@ -35,10 +34,8 @@ public class PagerAdapter extends FragmentStatePagerAdapter {
     private Fragment Result(int position){
         switch (position) {
             case 0:
-                return new Result1();
+                return new ResultIndividual();
             case 1:
-                return new Result2();
-            case 2:
                 return new Summary();
             default:
                 return null;

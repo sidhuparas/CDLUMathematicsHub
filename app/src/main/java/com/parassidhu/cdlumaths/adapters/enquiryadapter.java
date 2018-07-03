@@ -33,7 +33,7 @@ public class enquiryadapter extends RecyclerView.Adapter<enquiryadapter.ViewHold
     }
     @Override
     public enquiryadapter.ViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
-        View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.result_row, viewGroup, false);
+        View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.row_result, viewGroup, false);
 
         return new ViewHolder(view);
     }

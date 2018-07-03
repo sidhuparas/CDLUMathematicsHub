@@ -356,7 +356,7 @@ class StudyAdapter extends RecyclerView.Adapter<StudyAdapter.ViewHolder> {
 
     @Override
     public StudyAdapter.ViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
-        View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.study_layout, viewGroup, false);
+        View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.row_study, viewGroup, false);
         return new ViewHolder(view);
     }
 

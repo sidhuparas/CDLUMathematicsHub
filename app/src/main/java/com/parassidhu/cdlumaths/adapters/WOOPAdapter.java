@@ -26,7 +26,7 @@ public class WOOPAdapter extends RecyclerView.Adapter<WOOPAdapter.ViewHolder> {
 
     @Override
     public WOOPAdapter.ViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
-        View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.woop_layout, viewGroup, false);
+        View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.row_woop, viewGroup, false);
         return new ViewHolder(view);
     }
     @Override

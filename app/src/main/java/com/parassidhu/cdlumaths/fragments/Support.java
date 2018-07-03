@@ -24,7 +24,7 @@ public class Support extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         getActivity().setTitle("Thank You!");
-        View v =  inflater.inflate(R.layout.fragment_donate, container, false);
+        View v =  inflater.inflate(R.layout.fragment_support, container, false);
         return v;
     }
 
