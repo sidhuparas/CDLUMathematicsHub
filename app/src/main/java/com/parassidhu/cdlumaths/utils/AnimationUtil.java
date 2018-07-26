@@ -1,11 +1,8 @@
 package com.parassidhu.cdlumaths.utils;
 
-import android.animation.Animator;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
-import android.content.Context;
 import android.support.v7.widget.RecyclerView;
-import android.widget.Toast;
 
 public class AnimationUtil {
 

@@ -1,8 +1,5 @@
 package com.parassidhu.cdlumaths.utils;
-import android.app.Application;
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.support.multidex.MultiDex;
+
 import android.support.multidex.MultiDexApplication;
 
 public class MyApp extends MultiDexApplication {

@@ -61,11 +61,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/help"
-                android:textSize="40dp"
+                android:textSize="40sp"
                 android:layout_marginTop="10dp"
                 android:fontFamily="sans-serif-light"
                 android:gravity="center_horizontal"
-                android:text="THANK YOU :D"
+                android:text="@string/thank_you"
                 android:textColor="@color/Orange" />
 
 

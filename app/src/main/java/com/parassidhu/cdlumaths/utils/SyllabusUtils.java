@@ -2,23 +2,7 @@ package com.parassidhu.cdlumaths.utils;
 
 import android.content.Context;
 import android.content.DialogInterface;
-import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Button;
-
-import com.parassidhu.cdlumaths.R;
-import com.parassidhu.cdlumaths.adapters.HomeAdapter;
-import com.parassidhu.cdlumaths.models.AndroidVersion;
-import com.parassidhu.cdlumaths.utils.AppUtils;
-import com.parassidhu.cdlumaths.utils.ItemClickSupport;
-
-import java.util.ArrayList;
 
 public class SyllabusUtils {
 
@@ -83,14 +67,12 @@ public class SyllabusUtils {
             public void onClick(DialogInterface dialogInterface, int i) {
                 AppUtils.startDownload("Semester 7th.pdf",
                         add + "7th%20Semester.pdf", context);
-                ;
             }
         }, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 AppUtils.startDownload("Semester 7th Old.pdf",
                         add + "7th%20SemesterO.pdf", context);
-                ;
             }
         },context);
     }

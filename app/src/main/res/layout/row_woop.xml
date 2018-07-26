@@ -14,7 +14,7 @@
         android:layout_marginBottom="20dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        >
+        android:layout_marginStart="0dp">
         <TextView
             android:layout_marginTop="10dp"
             android:textSize="20sp"
@@ -23,8 +23,8 @@
             android:id="@+id/tv_android"
             android:textStyle="normal"
             android:layout_centerVertical="true"
-            android:layout_toRightOf="@+id/img_android"
-            android:layout_marginLeft="30dp"/>
+            android:layout_marginLeft="30dp"
+            android:layout_marginStart="30dp" />
     </RelativeLayout>
 
 </android.support.v7.widget.CardView>

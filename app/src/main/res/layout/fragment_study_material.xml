@@ -23,7 +23,7 @@
             android:elevation="3dp"
             android:translationZ="3dp"
             android:textColor="@color/white"
-            android:text="Study Material is newly launched feature so not much content will be available for now. But we're adding new material very soon.">
+            android:text="@string/study_material_placeholder">
 
         </TextView>
 

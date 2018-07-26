@@ -1,6 +1,7 @@
 package com.parassidhu.cdlumaths.adapters;
 
 import android.content.Context;
+import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -37,13 +38,14 @@ public class DataAdapter extends RecyclerView.Adapter<DataAdapter.ViewHolder> {
         this.isOffline = isOffline;
         this.fragment = fragment;
     }
+    @NonNull
     @Override
-    public DataAdapter.ViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
+    public DataAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
         View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.row_layout, viewGroup, false);
         return new ViewHolder(view);
     }
     @Override
-    public void onBindViewHolder(final ViewHolder viewHolder, int i) {
+    public void onBindViewHolder(@NonNull final ViewHolder viewHolder, int i) {
 
         viewHolder.tv_android.setText(android_versions.get(i).getAndroid_version_name());
         Picasso.get().load(android_versions.get(i).getAndroid_image_url())
@@ -70,7 +72,6 @@ public class DataAdapter extends RecyclerView.Adapter<DataAdapter.ViewHolder> {
 
             } else {
                 AnimationUtil.animate(viewHolder, false);
-
             }
             previousPosition = i;
         }

@@ -2,9 +2,9 @@ package com.parassidhu.cdlumaths.fragments;
 
 import android.content.Intent;
 import android.graphics.Color;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
-import android.os.Bundle;
 import android.support.v4.widget.NestedScrollView;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
@@ -17,11 +17,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-
 import com.parassidhu.cdlumaths.R;
 import com.parassidhu.cdlumaths.activities.Home;
-import com.parassidhu.cdlumaths.adapters.HomeAdapter;
-import com.parassidhu.cdlumaths.models.AndroidVersion;
 import com.parassidhu.cdlumaths.activities.sem1;
 import com.parassidhu.cdlumaths.activities.sem10;
 import com.parassidhu.cdlumaths.activities.sem2;
@@ -36,10 +33,9 @@ import com.parassidhu.cdlumaths.activities.tsem1;
 import com.parassidhu.cdlumaths.activities.tsem2;
 import com.parassidhu.cdlumaths.activities.tsem3;
 import com.parassidhu.cdlumaths.activities.tsem4;
+import com.parassidhu.cdlumaths.adapters.HomeAdapter;
 import com.parassidhu.cdlumaths.utils.AppUtils;
 import com.parassidhu.cdlumaths.utils.ItemClickSupport;
-
-import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

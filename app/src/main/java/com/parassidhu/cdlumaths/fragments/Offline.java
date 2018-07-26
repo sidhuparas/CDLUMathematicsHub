@@ -74,21 +74,21 @@ public class Offline extends Fragment {
 
         ArrayList<String> arrayFiles;
         if (sort==0) {
-            arrayFiles = new ArrayList<String>();
+            arrayFiles = new ArrayList<>();
             if (file.length == 0)
                 return null;
             else {
-                for (int i = 0; i < file.length; i++) {
-                    String fileName = file[i].getName();
+                for (File aFile : file) {
+                    String fileName = aFile.getName();
                     //arrayFiles.add(file[i].getName().split("\\.")[count-1]);
-                    String newName = fileName.substring(0,fileName.lastIndexOf("."));
+                    String newName = fileName.substring(0, fileName.lastIndexOf("."));
                     arrayFiles.add(newName);
 
                 }
             }
             Collections.sort(arrayFiles);
         }else {
-            arrayFiles = new ArrayList<String>();
+            arrayFiles = new ArrayList<>();
             Pair[] pairs = new Pair[file.length];
             for (int i = 0; i < file.length; i++)
                 pairs[i] = new Pair(file[i]);
