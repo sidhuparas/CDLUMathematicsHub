@@ -82,7 +82,6 @@ public class Home extends AppCompatActivity
     private SharedPreferences sharedPreferences, sp;
     private SharedPreferences.Editor editor, ed;
     private InterstitialAd mInterstitialAd;
-    private android.support.v7.widget.ShareActionProvider mShareActionProvider;
     int p;
     private String[] code = {"Name", "Date Created"};
     boolean doubleBackToExitPressedOnce = false;
@@ -90,7 +89,6 @@ public class Home extends AppCompatActivity
     String TAG = null; // For Fragment Transactions
     String TAGd = "HomeDrawer";
     private NavigationView navigationView;
-    private String change = "New update comes with various new features and enhancements";
     private List<String> defaultList;
     private FloatingActionButton fab;
 
@@ -205,6 +203,7 @@ public class Home extends AppCompatActivity
         editor = sharedPreferences.edit();
         int times = sharedPreferences.getInt("update", 0);
         if (times == 0) {
+            String change = "New update comes with various new features and enhancements";
             if (!latversion.equals(giveVersion()) && !latversion.equals("0"))
                 UpdateDialog(sharedPreferences.getString("whatsnew", change));
         } else {
@@ -351,8 +350,7 @@ public class Home extends AppCompatActivity
 
     public int getPosition() {
         sharedPreferences = getSharedPreferences("offlinesorting", Context.MODE_PRIVATE);
-        int sort = sharedPreferences.getInt("offlinesorting", 0);
-        return sort;
+        return sharedPreferences.getInt("offlinesorting", 0);
     }
 
     public String getTag() {
@@ -534,7 +532,6 @@ public class Home extends AppCompatActivity
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu_main, menu);
         MenuItem item = menu.findItem(R.id.Share);
-        mShareActionProvider = (ShareActionProvider) MenuItemCompat.getActionProvider(item);
         return true;
     }
 

@@ -147,7 +147,6 @@ public class Feedback extends AppCompatActivity {
                     Toast.makeText(this, "Permissions for accessing External Storage not granted! " +
                             "Please go to Settings->Apps to grant Storage permission.", Toast.LENGTH_SHORT).show();
                 }
-                return;
             }
         }
     }

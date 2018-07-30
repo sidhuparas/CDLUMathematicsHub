@@ -64,7 +64,7 @@ public class Tools extends Fragment{
         final Intent a = new Intent(getContext(),Feedback.class);
         final Intent b = new Intent(getContext(),quadratic.class);
         a.putExtra("radio",3);
-        ArrayList androidVersions;
+        ArrayList<AndroidVersion> androidVersions;
         androidVersions = new ArrayList<>(prepareData());
         adapter = new DataAdapter(getActivity(),androidVersions);
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(rcl.getContext(),DividerItemDecoration.VERTICAL);
@@ -95,8 +95,8 @@ public class Tools extends Fragment{
         });
     }
 
-    private ArrayList prepareData(){
-        ArrayList android_version = new ArrayList<>();
+    private ArrayList<AndroidVersion> prepareData(){
+        ArrayList<AndroidVersion> android_version = new ArrayList<AndroidVersion>();
         for(int i=0;i<tools.length;i++){
             AndroidVersion androidVersion = new AndroidVersion();
             androidVersion.setAndroid_version_name(tools[i]);

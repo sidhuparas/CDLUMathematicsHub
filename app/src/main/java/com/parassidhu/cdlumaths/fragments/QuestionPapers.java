@@ -188,11 +188,5 @@ public class QuestionPapers extends Fragment {
         int id = item.getItemId();
         return super.onOptionsItemSelected(item);
     }
-
-    @Override
-    public void onSaveInstanceState(@NonNull Bundle outState) {
-        super.onSaveInstanceState(outState);
-
-    }
 }
 

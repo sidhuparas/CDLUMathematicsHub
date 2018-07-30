@@ -43,7 +43,8 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/ratingBar"
                 android:layout_marginTop="15dp"
-                android:hint="Please provide suitable link and semester name here if you want to suggest Study Material!"
+                android:inputType="text"
+                android:hint="@string/desc_suggest_study_material"
                 android:textColorHint="@color/grey" />
 
             <Button

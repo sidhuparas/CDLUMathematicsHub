@@ -18,13 +18,12 @@ import com.parassidhu.cdlumaths.R;
 import com.parassidhu.cdlumaths.utils.AppUtils;
 
 public class About extends Fragment {
-    TextView appversion;
+    private TextView appversion;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.fragment_about, container, false);
-        return rootView;
+        return inflater.inflate(R.layout.fragment_about, container, false);
     }
 
     @Override

@@ -32,4 +32,8 @@
     <string name="comSyllabus2">Download Complete Syllabus (2 Years)</string>
     <string name="study_material_placeholder">Study Material is newly launched feature so not much content will be available for now. But we\'re adding new material very soon.</string>
     <string name="thank_you">THANK YOU :D</string>
+    <string name="next_result">Next Result</string>
+    <string name="find_another">Find Another</string>
+    <string name="desc_subject_code">Enter Subject Code</string>
+    <string name="desc_suggest_study_material">Please provide suitable link and semester name here if you want to suggest Study Material!</string>
 </resources>

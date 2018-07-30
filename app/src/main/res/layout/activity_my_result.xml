@@ -94,11 +94,13 @@
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="wrap_content"
-                    android:text="Next Result"
+                    android:text="@string/next_result"
                     android:id="@+id/nextresult"
                     android:background="@color/blue"
                     android:textColor="@color/white"
-                    android:textSize="16sp" />
+                    android:textSize="16sp"
+                    style="?android:attr/buttonBarButtonStyle"/>
+
                 <Button
                     android:layout_width="0dp"
                     android:layout_weight="1"
@@ -107,7 +109,9 @@
                     android:textColor="@color/white"
                     android:textSize="16sp"
                     android:layout_height="wrap_content"
-                    android:text="Find Another"/>
+                    android:text="@string/find_another"
+                    style="?android:attr/buttonBarButtonStyle"/>
+
             </LinearLayout>
         </LinearLayout>
     </RelativeLayout>

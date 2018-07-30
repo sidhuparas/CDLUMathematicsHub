@@ -234,7 +234,7 @@ public class Offline extends Fragment {
         reloadData();
     }
 
-    public void showSheet(final View v,final ArrayList androidVersions,final TextView textView, final int position){
+    public void showSheet(final View v, final ArrayList<AndroidVersion> androidVersions, final TextView textView, final int position){
         int pinMenu = R.menu.offline_pin_list;
 
         if (textView.getText().toString().equals(getPinValue("0")) ||
@@ -393,8 +393,8 @@ public class Offline extends Fragment {
         Button theme = getActivity().findViewById(R.id.theme);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
         rcl.setLayoutManager(layoutManager);
-        final ArrayList androidVersions;
-        androidVersions = new ArrayList<>(prepareData());
+        final ArrayList<AndroidVersion> androidVersions;
+        androidVersions = new ArrayList<AndroidVersion>(prepareData());
         adapter = new DataAdapter(getActivity(),androidVersions,true,this);
         //Added Dividers
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(rcl.getContext(),DividerItemDecoration.VERTICAL);
@@ -432,9 +432,8 @@ public class Offline extends Fragment {
     }
 
     private void changeThemeOptions(){
-        ArrayList defaultList = new ArrayList<>();
         String[] list = {"Green","Red","Orange","Blue"};
-        defaultList.addAll(Arrays.asList(list));
+        ArrayList<String> defaultList = new ArrayList<String>(Arrays.asList(list));
 
         new LovelyChoiceDialog(getActivity())
                 .setTitle("Select Your Color")
@@ -483,8 +482,7 @@ public class Offline extends Fragment {
 
     public int getPosition(){
         sharedPreferences = getActivity().getSharedPreferences("offlinesorting", MODE_PRIVATE);
-        int sort = sharedPreferences.getInt("offlinesorting",0);
-        return sort;
+        return sharedPreferences.getInt("offlinesorting",0);
     }
 
     public void showDialog(){
@@ -573,9 +571,9 @@ public class Offline extends Fragment {
         return Build.VERSION.SDK_INT > 25;
     }
 
-    private ArrayList prepareData(){
+    private ArrayList<AndroidVersion> prepareData(){
         sharedPreferences = getActivity().getSharedPreferences("Pin", MODE_PRIVATE);
-        ArrayList android_version = new ArrayList<>();
+        ArrayList<AndroidVersion> android_version = new ArrayList<AndroidVersion>();
         for(int i=0;i<names.size();i++){
             AndroidVersion androidVersion = new AndroidVersion();
             androidVersion.setAndroid_version_name(names.get(i));
