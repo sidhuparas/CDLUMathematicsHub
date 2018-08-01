@@ -19,22 +19,21 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 
 public class DataAdapter extends RecyclerView.Adapter<DataAdapter.ViewHolder> {
-    private ArrayList<OldItem> android_versions;
+    private ArrayList<OldItem> listItems;
     private Context context;
-    int previousPosition = 0;
-    boolean create=false;
-    Boolean isOffline=false;
-    Offline fragment;
-    int i =0;
+    private int previousPosition = 0;
+    private boolean create=false;
+    private Boolean isOffline=false;
+    private Offline fragment;
 
-    public DataAdapter(Context context,ArrayList<OldItem> android_versions) {
+    public DataAdapter(Context context,ArrayList<OldItem> listItems) {
         this.context = context;
-        this.android_versions = android_versions;
+        this.listItems = listItems;
     }
 
-    public DataAdapter(Context context, ArrayList<OldItem> android_versions, Boolean isOffline, Offline fragment) {
+    public DataAdapter(Context context, ArrayList<OldItem> listItems, Boolean isOffline, Offline fragment) {
         this.context = context;
-        this.android_versions = android_versions;
+        this.listItems = listItems;
         this.isOffline = isOffline;
         this.fragment = fragment;
     }
@@ -45,44 +44,13 @@ public class DataAdapter extends RecyclerView.Adapter<DataAdapter.ViewHolder> {
         return new ViewHolder(view);
     }
     @Override
-    public void onBindViewHolder(@NonNull final ViewHolder viewHolder, int i) {
-
-        viewHolder.tv_android.setText(android_versions.get(i).getName());
-        Picasso.get().load(android_versions.get(i).getImage_url())
-                .resize(180, 180).into(viewHolder.img_android);
-        AppUtils.setFont(context,viewHolder.tv_android,"segoeuisl.ttf");
-        if (isOffline){
-            viewHolder.imageButton.setVisibility(View.VISIBLE);
-           // AppUtils.setFont(context, viewHolder.tv_android,"Raleway.ttf");
-            viewHolder.imageButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    fragment.showSheet(view,android_versions,viewHolder.tv_android,viewHolder.getAdapterPosition());
-                }
-            });
-        }else {
-            viewHolder.imageButton.setVisibility(View.GONE);
-        }
-
-
-        if (!create){
-        }else {
-            if (i > previousPosition) {
-                AnimationUtil.animate(viewHolder, true);
-
-            } else {
-                AnimationUtil.animate(viewHolder, false);
-            }
-            previousPosition = i;
-        }
-        i++;
-        if (i==6){
-            create=true;
-        }
+    public void onBindViewHolder(@NonNull final ViewHolder viewHolder, int position) {
+        viewHolder.bind(position);
     }
+    
     @Override
     public int getItemCount() {
-        return android_versions.size();
+        return listItems.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{
@@ -94,6 +62,32 @@ public class DataAdapter extends RecyclerView.Adapter<DataAdapter.ViewHolder> {
             tv_android = view.findViewById(R.id.tv_android);
             img_android = view.findViewById(R.id.img_android);
             imageButton = view.findViewById(R.id.imgButton);
+        }
+        
+        void bind(int position){
+            OldItem item = listItems.get(position);
+
+            // Main Text
+            tv_android.setText(item.getName());
+
+            // Left side image
+            Picasso.get().load(item.getImage_url())
+                    .resize(180, 180).into(img_android);
+
+            AppUtils.setFont(context, tv_android,"segoeuisl.ttf");
+
+            // Only for offline section
+            if (isOffline){
+                imageButton.setVisibility(View.VISIBLE);
+                imageButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        fragment.showSheet(view, listItems, tv_android, getAdapterPosition());
+                    }
+                });
+            }else {
+                imageButton.setVisibility(View.GONE);
+            }
         }
     }
 }
