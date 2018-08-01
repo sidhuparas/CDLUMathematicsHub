@@ -33,7 +33,7 @@ import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.MobileAds;
 import com.parassidhu.cdlumaths.R;
-import com.parassidhu.cdlumaths.models.AndroidVersion;
+import com.parassidhu.cdlumaths.models.OldItem;
 import com.parassidhu.cdlumaths.services.DownloadService;
 import com.parassidhu.cdlumaths.activities.Home;
 import com.yarolegovich.lovelydialog.LovelyInfoDialog;
@@ -271,50 +271,50 @@ public class AppUtils {
         }
     }
 
-    public static ArrayList<AndroidVersion> prepareDataFor5Years() {
-        ArrayList<AndroidVersion> android_version = new ArrayList<>();
+    public static ArrayList<OldItem> prepareDataFor5Years() {
+        ArrayList<OldItem> android_version = new ArrayList<>();
         for (int i = 0; i < 10; i++) {
-            AndroidVersion androidVersion = new AndroidVersion();
+            OldItem oldItem = new OldItem();
             switch (i) {
                 case 0:
-                    androidVersion.setAndroid_image_url(R.drawable.a1);
-                    android_version.add(androidVersion);
+                    oldItem.setImage_url(R.drawable.a1);
+                    android_version.add(oldItem);
                     break;
                 case 1:
-                    androidVersion.setAndroid_image_url(R.drawable.a2);
-                    android_version.add(androidVersion);
+                    oldItem.setImage_url(R.drawable.a2);
+                    android_version.add(oldItem);
                     break;
                 case 2:
-                    androidVersion.setAndroid_image_url(R.drawable.a3);
-                    android_version.add(androidVersion);
+                    oldItem.setImage_url(R.drawable.a3);
+                    android_version.add(oldItem);
                     break;
                 case 3:
-                    androidVersion.setAndroid_image_url(R.drawable.a4);
-                    android_version.add(androidVersion);
+                    oldItem.setImage_url(R.drawable.a4);
+                    android_version.add(oldItem);
                     break;
                 case 4:
-                    androidVersion.setAndroid_image_url(R.drawable.a5);
-                    android_version.add(androidVersion);
+                    oldItem.setImage_url(R.drawable.a5);
+                    android_version.add(oldItem);
                     break;
                 case 5:
-                    androidVersion.setAndroid_image_url(R.drawable.a6);
-                    android_version.add(androidVersion);
+                    oldItem.setImage_url(R.drawable.a6);
+                    android_version.add(oldItem);
                     break;
                 case 6:
-                    androidVersion.setAndroid_image_url(R.drawable.a7);
-                    android_version.add(androidVersion);
+                    oldItem.setImage_url(R.drawable.a7);
+                    android_version.add(oldItem);
                     break;
                 case 7:
-                    androidVersion.setAndroid_image_url(R.drawable.a8);
-                    android_version.add(androidVersion);
+                    oldItem.setImage_url(R.drawable.a8);
+                    android_version.add(oldItem);
                     break;
                 case 8:
-                    androidVersion.setAndroid_image_url(R.drawable.a9);
-                    android_version.add(androidVersion);
+                    oldItem.setImage_url(R.drawable.a9);
+                    android_version.add(oldItem);
                     break;
                 case 9:
-                    androidVersion.setAndroid_image_url(R.drawable.a10);
-                    android_version.add(androidVersion);
+                    oldItem.setImage_url(R.drawable.a10);
+                    android_version.add(oldItem);
                     break;
             }
 
@@ -323,26 +323,26 @@ public class AppUtils {
     }
 
 
-    public static ArrayList<AndroidVersion> prepareDataFor2Years() {
-        ArrayList<AndroidVersion> android_version = new ArrayList<>();
+    public static ArrayList<OldItem> prepareDataFor2Years() {
+        ArrayList<OldItem> android_version = new ArrayList<>();
         for (int i = 0; i < 4; i++) {
-            AndroidVersion androidVersion = new AndroidVersion();
+            OldItem oldItem = new OldItem();
             switch (i) {
                 case 0:
-                    androidVersion.setAndroid_image_url(R.drawable.a1);
-                    android_version.add(androidVersion);
+                    oldItem.setImage_url(R.drawable.a1);
+                    android_version.add(oldItem);
                     break;
                 case 1:
-                    androidVersion.setAndroid_image_url(R.drawable.a2);
-                    android_version.add(androidVersion);
+                    oldItem.setImage_url(R.drawable.a2);
+                    android_version.add(oldItem);
                     break;
                 case 2:
-                    androidVersion.setAndroid_image_url(R.drawable.a3);
-                    android_version.add(androidVersion);
+                    oldItem.setImage_url(R.drawable.a3);
+                    android_version.add(oldItem);
                     break;
                 case 3:
-                    androidVersion.setAndroid_image_url(R.drawable.a4);
-                    android_version.add(androidVersion);
+                    oldItem.setImage_url(R.drawable.a4);
+                    android_version.add(oldItem);
                     break;
             }
         }

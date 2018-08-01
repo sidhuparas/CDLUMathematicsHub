@@ -8,17 +8,17 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.parassidhu.cdlumaths.R;
-import com.parassidhu.cdlumaths.models.AndroidVersion;
+import com.parassidhu.cdlumaths.models.OldItem;
 import com.parassidhu.cdlumaths.utils.AnimationUtil;
 
 import java.util.ArrayList;
 
 public class WOOPAdapter extends RecyclerView.Adapter<WOOPAdapter.ViewHolder> {
-    private ArrayList<AndroidVersion> android_versions;
+    private ArrayList<OldItem> android_versions;
     private Context context;
     int previousPosition = 0;
 
-    public WOOPAdapter(Context context, ArrayList<AndroidVersion> android_versions) {
+    public WOOPAdapter(Context context, ArrayList<OldItem> android_versions) {
         this.context = context;
         this.android_versions = android_versions;
 
@@ -31,7 +31,7 @@ public class WOOPAdapter extends RecyclerView.Adapter<WOOPAdapter.ViewHolder> {
     }
     @Override
     public void onBindViewHolder(ViewHolder viewHolder, int i) {
-        viewHolder.tv_android.setText(android_versions.get(i).getAndroid_version_name());
+        viewHolder.tv_android.setText(android_versions.get(i).getName());
         if (i > previousPosition) {
             AnimationUtil.animate(viewHolder,true);
         }else {

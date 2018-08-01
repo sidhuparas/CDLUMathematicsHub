@@ -18,7 +18,7 @@ import com.parassidhu.cdlumaths.activities.WeightOnOtherPlanets;
 import com.parassidhu.cdlumaths.activities.Feedback;
 import com.parassidhu.cdlumaths.activities.quadratic;
 import com.parassidhu.cdlumaths.adapters.DataAdapter;
-import com.parassidhu.cdlumaths.models.AndroidVersion;
+import com.parassidhu.cdlumaths.models.OldItem;
 import com.parassidhu.cdlumaths.utils.AppUtils;
 import com.parassidhu.cdlumaths.utils.ItemClickSupport;
 
@@ -64,9 +64,9 @@ public class Tools extends Fragment{
         final Intent a = new Intent(getContext(),Feedback.class);
         final Intent b = new Intent(getContext(),quadratic.class);
         a.putExtra("radio",3);
-        ArrayList<AndroidVersion> androidVersions;
-        androidVersions = new ArrayList<>(prepareData());
-        adapter = new DataAdapter(getActivity(),androidVersions);
+        ArrayList<OldItem> oldItems;
+        oldItems = new ArrayList<>(prepareData());
+        adapter = new DataAdapter(getActivity(), oldItems);
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(rcl.getContext(),DividerItemDecoration.VERTICAL);
         rcl.addItemDecoration(dividerItemDecoration);
         rcl.setAdapter(adapter);
@@ -95,29 +95,29 @@ public class Tools extends Fragment{
         });
     }
 
-    private ArrayList<AndroidVersion> prepareData(){
-        ArrayList<AndroidVersion> android_version = new ArrayList<AndroidVersion>();
+    private ArrayList<OldItem> prepareData(){
+        ArrayList<OldItem> android_version = new ArrayList<OldItem>();
         for(int i=0;i<tools.length;i++){
-            AndroidVersion androidVersion = new AndroidVersion();
-            androidVersion.setAndroid_version_name(tools[i]);
+            OldItem oldItem = new OldItem();
+            oldItem.setName(tools[i]);
             switch (i){
                 case 0:
-                    androidVersion.setAndroid_image_url(R.drawable.news);
+                    oldItem.setImage_url(R.drawable.news);
                     break;
                 case 1:
-                    androidVersion.setAndroid_image_url(R.drawable.icon);
+                    oldItem.setImage_url(R.drawable.icon);
                     break;
                 case 2:
-                    androidVersion.setAndroid_image_url(R.drawable.earth);
+                    oldItem.setImage_url(R.drawable.earth);
                     break;
                 case 3:
-                    androidVersion.setAndroid_image_url(R.drawable.x2);
+                    oldItem.setImage_url(R.drawable.x2);
                     break;
                 case 4:
-                    androidVersion.setAndroid_image_url(R.drawable.contri);
+                    oldItem.setImage_url(R.drawable.contri);
                     break;
             }
-            android_version.add(androidVersion);
+            android_version.add(oldItem);
         }
         return android_version;
     }

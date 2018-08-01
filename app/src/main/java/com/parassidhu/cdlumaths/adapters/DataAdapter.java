@@ -10,7 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.parassidhu.cdlumaths.R;
-import com.parassidhu.cdlumaths.models.AndroidVersion;
+import com.parassidhu.cdlumaths.models.OldItem;
 import com.parassidhu.cdlumaths.fragments.Offline;
 import com.parassidhu.cdlumaths.utils.AppUtils;
 import com.parassidhu.cdlumaths.utils.AnimationUtil;
@@ -19,7 +19,7 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 
 public class DataAdapter extends RecyclerView.Adapter<DataAdapter.ViewHolder> {
-    private ArrayList<AndroidVersion> android_versions;
+    private ArrayList<OldItem> android_versions;
     private Context context;
     int previousPosition = 0;
     boolean create=false;
@@ -27,12 +27,12 @@ public class DataAdapter extends RecyclerView.Adapter<DataAdapter.ViewHolder> {
     Offline fragment;
     int i =0;
 
-    public DataAdapter(Context context,ArrayList<AndroidVersion> android_versions) {
+    public DataAdapter(Context context,ArrayList<OldItem> android_versions) {
         this.context = context;
         this.android_versions = android_versions;
     }
 
-    public DataAdapter(Context context, ArrayList<AndroidVersion> android_versions, Boolean isOffline, Offline fragment) {
+    public DataAdapter(Context context, ArrayList<OldItem> android_versions, Boolean isOffline, Offline fragment) {
         this.context = context;
         this.android_versions = android_versions;
         this.isOffline = isOffline;
@@ -47,8 +47,8 @@ public class DataAdapter extends RecyclerView.Adapter<DataAdapter.ViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull final ViewHolder viewHolder, int i) {
 
-        viewHolder.tv_android.setText(android_versions.get(i).getAndroid_version_name());
-        Picasso.get().load(android_versions.get(i).getAndroid_image_url())
+        viewHolder.tv_android.setText(android_versions.get(i).getName());
+        Picasso.get().load(android_versions.get(i).getImage_url())
                 .resize(180, 180).into(viewHolder.img_android);
         AppUtils.setFont(context,viewHolder.tv_android,"segoeuisl.ttf");
         if (isOffline){

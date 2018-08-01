@@ -15,7 +15,7 @@ import android.widget.TextView;
 
 import com.parassidhu.cdlumaths.R;
 import com.parassidhu.cdlumaths.adapters.WOOPAdapter;
-import com.parassidhu.cdlumaths.models.AndroidVersion;
+import com.parassidhu.cdlumaths.models.OldItem;
 import com.parassidhu.cdlumaths.utils.ItemClickSupport;
 
 import java.util.ArrayList;
@@ -115,59 +115,59 @@ public class WeightOnOtherPlanets extends AppCompatActivity {
     private ArrayList prepareDataforPlanets(){
         ArrayList android_version = new ArrayList<>();
         for(int i=0;i<planets.length;i++){
-            AndroidVersion androidVersion = new AndroidVersion();
+            OldItem oldItem = new OldItem();
             switch (i){
                 case 0:
                     planets[0]= "Sun = " + sun + " kg";
-                    androidVersion.setAndroid_version_name(planets[0]);
+                    oldItem.setName(planets[0]);
                     break;
 
                 case 1:
                     planets[1]= "Mercury = " + mercury + " kg";
-                    androidVersion.setAndroid_version_name(planets[1]);
+                    oldItem.setName(planets[1]);
                     break;
 
                 case 2:
                     planets[2]= "Venus = " + venus + " kg";
-                    androidVersion.setAndroid_version_name(planets[2]);
+                    oldItem.setName(planets[2]);
                     break;
 
                 case 3:
                     planets[3]= "Moon = " + moon + " kg";
-                    androidVersion.setAndroid_version_name(planets[3]);
+                    oldItem.setName(planets[3]);
                     break;
 
                 case 4:
                     planets[4]= "Mars = " + mars + " kg";
-                    androidVersion.setAndroid_version_name(planets[4]);
+                    oldItem.setName(planets[4]);
                     break;
 
                 case 5:
                     planets[5]= "Jupiter = " + jupiter + " kg";
-                    androidVersion.setAndroid_version_name(planets[5]);
+                    oldItem.setName(planets[5]);
                     break;
 
                 case 6:
                     planets[6]= "Saturn = " + saturn + " kg";
-                    androidVersion.setAndroid_version_name(planets[6]);
+                    oldItem.setName(planets[6]);
                     break;
 
                 case 7:
                     planets[7]= "Uranus = " + uranus + " kg";
-                    androidVersion.setAndroid_version_name(planets[7]);
+                    oldItem.setName(planets[7]);
                     break;
 
                 case 8:
                     planets[8]= "Neptune = " + neptune + " kg";
-                    androidVersion.setAndroid_version_name(planets[8]);
+                    oldItem.setName(planets[8]);
                     break;
 
                 case 9:
                     planets[9]= "Pluto = " + pluto + " kg";
-                    androidVersion.setAndroid_version_name(planets[9]);
+                    oldItem.setName(planets[9]);
                     break;
             }
-            android_version.add(androidVersion);
+            android_version.add(oldItem);
         }
         return android_version;
     }
@@ -175,10 +175,10 @@ public class WeightOnOtherPlanets extends AppCompatActivity {
     private ArrayList prepareData(){
         ArrayList android_version = new ArrayList<>();
         for(int i=0;i<planets.length;i++){
-            AndroidVersion androidVersion = new AndroidVersion();
-            androidVersion.setAndroid_version_name(planets[i]);
-            androidVersion.setAndroid_image_url(R.mipmap.ic_launcher);
-            android_version.add(androidVersion);
+            OldItem oldItem = new OldItem();
+            oldItem.setName(planets[i]);
+            oldItem.setImage_url(R.mipmap.ic_launcher);
+            android_version.add(oldItem);
         }
         return android_version;
     }

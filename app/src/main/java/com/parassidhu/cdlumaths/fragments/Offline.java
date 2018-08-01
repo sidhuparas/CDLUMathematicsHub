@@ -35,7 +35,7 @@ import com.cocosw.bottomsheet.BottomSheet;
 import com.parassidhu.cdlumaths.R;
 import com.parassidhu.cdlumaths.activities.Home;
 import com.parassidhu.cdlumaths.adapters.DataAdapter;
-import com.parassidhu.cdlumaths.models.AndroidVersion;
+import com.parassidhu.cdlumaths.models.OldItem;
 import com.parassidhu.cdlumaths.models.Pair;
 import com.parassidhu.cdlumaths.utils.AppUtils;
 import com.parassidhu.cdlumaths.utils.ItemClickSupport;
@@ -234,7 +234,7 @@ public class Offline extends Fragment {
         reloadData();
     }
 
-    public void showSheet(final View v, final ArrayList<AndroidVersion> androidVersions, final TextView textView, final int position){
+    public void showSheet(final View v, final ArrayList<OldItem> oldItems, final TextView textView, final int position){
         int pinMenu = R.menu.offline_pin_list;
 
         if (textView.getText().toString().equals(getPinValue("0")) ||
@@ -259,19 +259,19 @@ public class Offline extends Fragment {
                     case R.id.Unpin:
                         if(getPinValue("0").equals(textView.getText().toString())) {
                             setPinValue("0", nothing);
-                            androidVersions.remove(position);
+                            oldItems.remove(position);
                             adapter.notifyItemRemoved(position);
                             shiftPinValue("0");
                         }
                         if(getPinValue("1").equals(textView.getText().toString())) {
                             setPinValue("1", nothing);
-                            androidVersions.remove(position);
+                            oldItems.remove(position);
                             adapter.notifyItemRemoved(position);
                             shiftPinValue("1");
                         }
                         if(getPinValue("2").equals(textView.getText().toString())) {
                             setPinValue("2", nothing);
-                            androidVersions.remove(position);
+                            oldItems.remove(position);
                             adapter.notifyItemRemoved(position);
                             shiftPinValue("2");
                         }
@@ -279,7 +279,7 @@ public class Offline extends Fragment {
                         break;
                     case R.id.delete1:
                         try {
-                            androidVersions.remove(position);
+                            oldItems.remove(position);
                             adapter.notifyItemRemoved(position);
                             final Handler mHandler = new Handler(Looper.getMainLooper()) {
                                 @Override
@@ -351,14 +351,14 @@ public class Offline extends Fragment {
                         break;
                     case R.id.rename:
                         if (AppUtils.checkPerm(getActivity()))
-                        renFile(textView.getText().toString(), position, androidVersions);
+                        renFile(textView.getText().toString(), position, oldItems);
                         break;
                 }
             }
         }).show();
     }
 
-    private void renFile(final String name, final int position, final ArrayList<AndroidVersion> list) {
+    private void renFile(final String name, final int position, final ArrayList<OldItem> list) {
         final File file = new File(Environment.getExternalStorageDirectory()+"/CDLU Mathematics Hub",
                 name+".pdf");
 
@@ -375,7 +375,7 @@ public class Offline extends Fragment {
                             File renamed = new File(Environment.getExternalStorageDirectory() + "/CDLU Mathematics Hub",
                                     text + ".pdf");
                             if (file.renameTo(renamed)) {
-                                list.get(position).setAndroid_version_name(text);
+                                list.get(position).setName(text);
                                 names.set(position, text);
                                 adapter.notifyItemChanged(position);
                                 Toast.makeText(getActivity(),
@@ -393,9 +393,9 @@ public class Offline extends Fragment {
         Button theme = getActivity().findViewById(R.id.theme);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
         rcl.setLayoutManager(layoutManager);
-        final ArrayList<AndroidVersion> androidVersions;
-        androidVersions = new ArrayList<AndroidVersion>(prepareData());
-        adapter = new DataAdapter(getActivity(),androidVersions,true,this);
+        final ArrayList<OldItem> oldItems;
+        oldItems = new ArrayList<OldItem>(prepareData());
+        adapter = new DataAdapter(getActivity(), oldItems,true,this);
         //Added Dividers
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(rcl.getContext(),DividerItemDecoration.VERTICAL);
         rcl.addItemDecoration(dividerItemDecoration);
@@ -411,7 +411,7 @@ public class Offline extends Fragment {
             @Override
             public boolean onItemLongClicked(final RecyclerView recyclerView, final int position, final View v) {
                 textView = v.findViewById(R.id.tv_android);
-                showSheet(v,androidVersions,textView,position);
+                showSheet(v, oldItems,textView,position);
                 return false;
             }
         });
@@ -571,19 +571,19 @@ public class Offline extends Fragment {
         return Build.VERSION.SDK_INT > 25;
     }
 
-    private ArrayList<AndroidVersion> prepareData(){
+    private ArrayList<OldItem> prepareData(){
         sharedPreferences = getActivity().getSharedPreferences("Pin", MODE_PRIVATE);
-        ArrayList<AndroidVersion> android_version = new ArrayList<AndroidVersion>();
+        ArrayList<OldItem> android_version = new ArrayList<OldItem>();
         for(int i=0;i<names.size();i++){
-            AndroidVersion androidVersion = new AndroidVersion();
-            androidVersion.setAndroid_version_name(names.get(i));
+            OldItem oldItem = new OldItem();
+            oldItem.setName(names.get(i));
             if (names.get(i).equals(getPinValue("0")) ||
                     names.get(i).equals(getPinValue("1")) ||
                     names.get(i).equals(getPinValue("2")) )
-                androidVersion.setAndroid_image_url(R.drawable.pinoffline);
+                oldItem.setImage_url(R.drawable.pinoffline);
                 else
-                androidVersion.setAndroid_image_url(R.drawable.offline1);
-            android_version.add(androidVersion);
+                oldItem.setImage_url(R.drawable.offline1);
+            android_version.add(oldItem);
         }
         return android_version;
     }

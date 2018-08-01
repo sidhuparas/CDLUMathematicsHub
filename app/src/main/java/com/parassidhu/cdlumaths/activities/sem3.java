@@ -13,7 +13,7 @@ import android.widget.Button;
 import com.google.android.gms.ads.AdView;
 import com.parassidhu.cdlumaths.R;
 import com.parassidhu.cdlumaths.adapters.QueAdapter;
-import com.parassidhu.cdlumaths.models.AndroidVersion;
+import com.parassidhu.cdlumaths.models.OldItem;
 import com.parassidhu.cdlumaths.utils.AppUtils;
 import com.parassidhu.cdlumaths.utils.ItemClickSupport;
 import com.parassidhu.cdlumaths.utils.MyApp;
@@ -178,10 +178,10 @@ public class sem3 extends AppCompatActivity {
     private ArrayList prepareData(){
         ArrayList android_version = new ArrayList<>();
         for(int i=0;i<subject_names.length;i++){
-            AndroidVersion androidVersion = new AndroidVersion();
-            androidVersion.setAndroid_version_name(subject_names[i]);
-            androidVersion.setAndroid_image_url(R.drawable.materialq);
-            android_version.add(androidVersion);
+            OldItem oldItem = new OldItem();
+            oldItem.setName(subject_names[i]);
+            oldItem.setImage_url(R.drawable.materialq);
+            android_version.add(oldItem);
         }
         return android_version;
     }

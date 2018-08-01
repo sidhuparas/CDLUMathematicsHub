@@ -8,15 +8,15 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.parassidhu.cdlumaths.R;
-import com.parassidhu.cdlumaths.models.AndroidVersion;
+import com.parassidhu.cdlumaths.models.OldItem;
 
 import java.util.ArrayList;
 
 public class QueAdapter extends RecyclerView.Adapter<QueAdapter.ViewHolder> {
-    private ArrayList<AndroidVersion> android_versions;
+    private ArrayList<OldItem> android_versions;
     private Context context;
 
-    public QueAdapter(Context context,ArrayList<AndroidVersion> android_versions) {
+    public QueAdapter(Context context,ArrayList<OldItem> android_versions) {
         this.context = context;
         this.android_versions = android_versions;
     }
@@ -34,7 +34,7 @@ public class QueAdapter extends RecyclerView.Adapter<QueAdapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(final ViewHolder viewHolder, int i) {
-        viewHolder.tv_android.setText(android_versions.get(i).getAndroid_version_name());
+        viewHolder.tv_android.setText(android_versions.get(i).getName());
         viewHolder.itemView.setBackgroundResource(getRandomColor(i%2));
     }
 

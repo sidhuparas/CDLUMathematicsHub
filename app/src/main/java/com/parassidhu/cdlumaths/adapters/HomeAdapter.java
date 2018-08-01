@@ -10,16 +10,16 @@ import android.widget.ImageView;
 
 import com.parassidhu.cdlumaths.activities.Home;
 import com.parassidhu.cdlumaths.R;
-import com.parassidhu.cdlumaths.models.AndroidVersion;
+import com.parassidhu.cdlumaths.models.OldItem;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
 public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
-    private ArrayList<AndroidVersion> android_versions;
+    private ArrayList<OldItem> android_versions;
     private Context context;
 
-    public HomeAdapter(Context context,ArrayList<AndroidVersion> android_versions) {
+    public HomeAdapter(Context context,ArrayList<OldItem> android_versions) {
         this.context = context;
         this.android_versions = android_versions;
     }
@@ -31,7 +31,7 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
     }
     @Override
     public void onBindViewHolder(ViewHolder viewHolder, int i) {
-        Picasso.get().load(android_versions.get(i).getAndroid_image_url())
+        Picasso.get().load(android_versions.get(i).getImage_url())
                 .resize(150, 150).into(viewHolder.img_android);
         viewHolder.img_android.setColorFilter(Color.rgb(Home.r,Home.g,Home.b));
     }
