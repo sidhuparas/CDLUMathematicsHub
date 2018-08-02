@@ -15,7 +15,8 @@
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
         <item name="colorControlNormal">@color/white</item>
-
+        <item name="actionModeBackground">@color/blue</item>
+        <item name="android:windowActionModeOverlay">true</item>
     </style>
 
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />

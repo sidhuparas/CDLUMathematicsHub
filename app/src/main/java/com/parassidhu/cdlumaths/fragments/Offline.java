@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import android.content.pm.ShortcutInfo;
 import android.content.pm.ShortcutManager;
 import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Icon;
 import android.net.Uri;
 import android.os.Build;
@@ -19,9 +20,13 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.FileProvider;
 import android.support.v7.app.AlertDialog;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.view.ActionMode;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -60,6 +65,9 @@ public class Offline extends Fragment {
     String one,two,three;
     String nothing = "nothing";
     final String root = Environment.getExternalStorageDirectory().toString();
+    private ActionMode actionMode;
+    private ActionModeCallback actionModeCallback = new ActionModeCallback();
+
     public Offline() {}
 
     @Override
@@ -403,16 +411,30 @@ public class Offline extends Fragment {
         ItemClickSupport.addTo(rcl).setOnItemClickListener(new ItemClickSupport.OnItemClickListener() {
             @Override
             public void onItemClicked(RecyclerView recyclerView, int position, View v) {
-                AppUtils.openFile(getActivity(),names.get(position) +".pdf");
+                if (actionMode !=null){
+                    toggleSelection(position);
+                } else {
+                    AppUtils.openFile(getActivity(), names.get(position) + ".pdf");
+                }
             }
         });
 
         ItemClickSupport.addTo(rcl).setOnItemLongClickListener(new ItemClickSupport.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClicked(final RecyclerView recyclerView, final int position, final View v) {
-                textView = v.findViewById(R.id.tv_android);
-                showSheet(v, oldItems,textView,position);
-                return false;
+               /* textView = v.findViewById(R.id.tv_android);
+                showSheet(v, oldItems,textView,position);*/
+               if (actionMode==null){
+                   Toolbar toolbar = getActivity().findViewById(R.id.toolbar);
+/*
+                    actionMode = toolbar.startActionMode(actionModeCallback);
+*/
+                actionMode = ((AppCompatActivity) getActivity()).startSupportActionMode(actionModeCallback);
+               }
+
+               toggleSelection(position);
+
+                return true;
             }
         });
 
@@ -586,5 +608,53 @@ public class Offline extends Fragment {
             android_version.add(oldItem);
         }
         return android_version;
+    }
+
+    private void toggleSelection(int position) {
+        adapter.toggleSelection(position);
+        int count = adapter.getSelectedItemCount();
+
+        if (count == 0) {
+            actionMode.finish();
+        } else {
+            actionMode.setTitle(String.valueOf(count));
+            actionMode.invalidate();
+        }
+    }
+
+    private class ActionModeCallback implements ActionMode.Callback {
+        @SuppressWarnings("unused")
+        private final String TAG = ActionModeCallback.class.getSimpleName();
+
+        @Override
+        public boolean onCreateActionMode(ActionMode mode, Menu menu) {
+            mode.getMenuInflater().inflate (R.menu.offline_pin_list, menu);
+            return true;
+        }
+
+        @Override
+        public boolean onPrepareActionMode(ActionMode mode, Menu menu) {
+            return false;
+        }
+
+        @Override
+        public boolean onActionItemClicked(ActionMode mode, MenuItem item) {
+            switch (item.getItemId()) {
+                case R.id.shar:
+                    // TODO: actually remove items
+                    Log.d(TAG, "menu_remove");
+                    mode.finish();
+                    return true;
+
+                default:
+                    return false;
+            }
+        }
+
+        @Override
+        public void onDestroyActionMode(ActionMode mode) {
+            adapter.clearSelection();
+            actionMode = null;
+        }
     }
 }

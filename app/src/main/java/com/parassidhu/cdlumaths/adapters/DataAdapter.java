@@ -1,6 +1,7 @@
 package com.parassidhu.cdlumaths.adapters;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -18,53 +19,54 @@ import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
-public class DataAdapter extends RecyclerView.Adapter<DataAdapter.ViewHolder> {
+public class DataAdapter extends SelectableAdapter<DataAdapter.ViewHolder> {
     private ArrayList<OldItem> listItems;
     private Context context;
-    private int previousPosition = 0;
-    private boolean create=false;
-    private Boolean isOffline=false;
+    private Boolean isOffline = false;
     private Offline fragment;
 
-    public DataAdapter(Context context,ArrayList<OldItem> listItems) {
+    public DataAdapter(Context context, ArrayList<OldItem> listItems) {
         this.context = context;
         this.listItems = listItems;
     }
 
     public DataAdapter(Context context, ArrayList<OldItem> listItems, Boolean isOffline, Offline fragment) {
-        this.context = context;
-        this.listItems = listItems;
+        this(context, listItems);
         this.isOffline = isOffline;
         this.fragment = fragment;
     }
+
     @NonNull
     @Override
     public DataAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-        View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.row_layout, viewGroup, false);
+        View view = LayoutInflater.from(viewGroup.getContext()).
+                inflate(R.layout.row_layout, viewGroup, false);
         return new ViewHolder(view);
     }
+
     @Override
     public void onBindViewHolder(@NonNull final ViewHolder viewHolder, int position) {
         viewHolder.bind(position);
     }
-    
+
     @Override
     public int getItemCount() {
         return listItems.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder{
+    public class ViewHolder extends RecyclerView.ViewHolder {
         TextView tv_android;
         ImageView img_android;
         TextView imageButton;
+
         public ViewHolder(View view) {
             super(view);
             tv_android = view.findViewById(R.id.tv_android);
             img_android = view.findViewById(R.id.img_android);
             imageButton = view.findViewById(R.id.imgButton);
         }
-        
-        void bind(int position){
+
+        void bind(int position) {
             OldItem item = listItems.get(position);
 
             // Main Text
@@ -74,10 +76,10 @@ public class DataAdapter extends RecyclerView.Adapter<DataAdapter.ViewHolder> {
             Picasso.get().load(item.getImage_url())
                     .resize(180, 180).into(img_android);
 
-            AppUtils.setFont(context, tv_android,"segoeuisl.ttf");
+            AppUtils.setFont(context, tv_android, "segoeuisl.ttf");
 
             // Only for offline section
-            if (isOffline){
+            if (isOffline) {
                 imageButton.setVisibility(View.VISIBLE);
                 imageButton.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -85,7 +87,13 @@ public class DataAdapter extends RecyclerView.Adapter<DataAdapter.ViewHolder> {
                         fragment.showSheet(view, listItems, tv_android, getAdapterPosition());
                     }
                 });
-            }else {
+
+                //Experiment with Selected Overlay
+
+                itemView.setBackgroundColor(isSelected(position) ? context.getResources().getColor(R.color.blue)
+                        : context.getResources().getColor(R.color.white) );
+
+            } else {
                 imageButton.setVisibility(View.GONE);
             }
         }

@@ -23,8 +23,8 @@
                 app:titleTextColor="@color/white"
                 android:elevation="12dp"
                 android:background="@color/colorPrimary"
+                android:theme="@style/Jatt"
                 app:popupTheme="@style/Theme.AppCompat.Light.NoActionBar"
-                app:theme="@style/Jatt"
                 app:layout_scrollFlags="scroll|enterAlways"/>
 
         </android.support.design.widget.AppBarLayout>
