@@ -29,7 +29,7 @@
             android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
             android:layout_marginRight="9dp"
-            android:src="@drawable/news"
+            android:src="@drawable/ic_news"
             android:layout_marginLeft="7dp"/>
 
         <TextView

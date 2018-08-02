@@ -46,7 +46,7 @@
 
         <LinearLayout
             android:orientation="vertical"
-            android:background="@drawable/aqua"
+            android:background="@drawable/aqua_grad"
             android:id="@+id/screenLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">

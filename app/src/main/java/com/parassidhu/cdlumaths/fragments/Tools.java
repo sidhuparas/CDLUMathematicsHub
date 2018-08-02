@@ -102,7 +102,7 @@ public class Tools extends Fragment{
             oldItem.setName(tools[i]);
             switch (i){
                 case 0:
-                    oldItem.setImage_url(R.drawable.news);
+                    oldItem.setImage_url(R.drawable.ic_news);
                     break;
                 case 1:
                     oldItem.setImage_url(R.drawable.icon);
@@ -114,7 +114,7 @@ public class Tools extends Fragment{
                     oldItem.setImage_url(R.drawable.x2);
                     break;
                 case 4:
-                    oldItem.setImage_url(R.drawable.contri);
+                    oldItem.setImage_url(R.drawable.plus);
                     break;
             }
             android_version.add(oldItem);

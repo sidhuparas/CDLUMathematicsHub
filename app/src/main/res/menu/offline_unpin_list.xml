@@ -4,26 +4,26 @@
     <item
         android:id="@+id/Unpin"
         android:orderInCategory="100"
-        android:icon="@drawable/unpin"
+        android:icon="@drawable/menu_unpin"
         android:title="Unpin" />
     <item
         android:id="@+id/shar"
         android:orderInCategory="100"
-        android:icon="@drawable/ashare"
+        android:icon="@drawable/menu_share"
         android:title="Share" />
     <item
         android:id="@+id/addtohome"
         android:orderInCategory="100"
-        android:icon="@drawable/apin"
+        android:icon="@drawable/menu_pin"
         android:title="Add To Home Screen" />
     <item
         android:id="@+id/rename"
         android:orderInCategory="100"
-        android:icon="@drawable/rename"
+        android:icon="@drawable/menu_rename"
         android:title="Rename" />
     <item
         android:id="@+id/delete1"
         android:orderInCategory="100"
-        android:icon="@drawable/adele"
+        android:icon="@drawable/menu_delete"
         android:title="Delete" />
 </menu>

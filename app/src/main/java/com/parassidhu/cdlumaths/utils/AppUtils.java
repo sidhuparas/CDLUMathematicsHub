@@ -41,15 +41,16 @@ import com.yarolegovich.lovelydialog.LovelyStandardDialog;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class AppUtils {
 
-    public static String releaseNotes ="- Added Question Papers for 1st, 4th, 7th and 10th Semesters.\n" +
+    public static String releaseNotes = "- Added Question Papers for 1st, 4th, 7th and 10th Semesters.\n" +
             "- Added Rename option in Offline.\n" +
             "- Notifications can be expanded on Android 7.0+.\n" +
             "- Some visual change in TimeTable.";
 
-    public static void setOptVisibility(Menu menu, boolean sorted,boolean defaultview){
+    public static void setOptVisibility(Menu menu, boolean sorted, boolean defaultview) {
         MenuItem sort = menu.findItem(com.parassidhu.cdlumaths.R.id.sort);
         MenuItem defaultView = menu.findItem(com.parassidhu.cdlumaths.R.id.defaultView);
 
@@ -57,14 +58,15 @@ public class AppUtils {
         defaultView.setVisible(defaultview);
     }
 
-    public static boolean isLollipop(){
+    public static boolean isLollipop() {
         return Build.VERSION.SDK_INT >= 21;
     }
-    public static void setFastScrolling(RecyclerView rcl){
-        if(Build.VERSION.SDK_INT>=Build.VERSION_CODES.LOLLIPOP)
+
+    public static void setFastScrolling(RecyclerView rcl) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)
             rcl.setNestedScrollingEnabled(false);
         else
-            ViewCompat.setNestedScrollingEnabled(rcl,false);
+            ViewCompat.setNestedScrollingEnabled(rcl, false);
     }
 
     public static void openWebPage(AppCompatActivity app, String url) {
@@ -75,13 +77,13 @@ public class AppUtils {
         }
     }
 
-    public static void setFont(Context context, TextView textView, String fontName){
+    public static void setFont(Context context, TextView textView, String fontName) {
         AssetManager am = context.getApplicationContext().getAssets();
-        Typeface custom_font = Typeface.createFromAsset(am, "fonts/"+fontName);
+        Typeface custom_font = Typeface.createFromAsset(am, "fonts/" + fontName);
         textView.setTypeface(custom_font);
     }
 
-    public static void MsgBox(Context context, String title, String message){
+    public static void MsgBox(Context context, String title, String message) {
         new LovelyStandardDialog(context)
                 .setTopColorRes(com.parassidhu.cdlumaths.R.color.colorAccent)
                 .setTitle(title)
@@ -90,7 +92,7 @@ public class AppUtils {
                 .show();
     }
 
-    public static void permBox(Context context, String message, View.OnClickListener onClickListener){
+    public static void permBox(Context context, String message, View.OnClickListener onClickListener) {
         new LovelyStandardDialog(context)
                 .setTopColorRes(com.parassidhu.cdlumaths.R.color.colorAccent)
                 .setTitle("Permissions Required!")
@@ -99,7 +101,7 @@ public class AppUtils {
                 .show();
     }
 
-    public static void tipMsg(Context context, String message, int id){
+    public static void tipMsg(Context context, String message, int id) {
         new LovelyInfoDialog(context)
                 .setTopColorRes(com.parassidhu.cdlumaths.R.color.Orange)
                 .setTitle("Did you know?")
@@ -108,51 +110,51 @@ public class AppUtils {
                 .show();
     }
 
-    public static void startDownload(String filename, String url, Context context){
-        MyApp x =  (MyApp)context.getApplicationContext();
+    public static void startDownload(String filename, String url, Context context) {
+        MyApp x = (MyApp) context.getApplicationContext();
         x.getUrl(url);
         x.getFilename(filename);
         x.getID(getTimeStamp());
-        String newName = filename.substring(0,filename.lastIndexOf("."));
+        String newName = filename.substring(0, filename.lastIndexOf("."));
 
-        matchFileName(newName,context);
+        matchFileName(newName, context);
     }
 
-    public static void matchFileName(String filename, Context context){
-        String path = Environment.getExternalStorageDirectory().toString()+"/CDLU Mathematics Hub";
+    public static void matchFileName(String filename, Context context) {
+        String path = Environment.getExternalStorageDirectory().toString() + "/CDLU Mathematics Hub";
 
         File f = new File(path);
         File file[] = f.listFiles();
         ArrayList arrayFiles = new ArrayList<String>();
 
-        if (file != null){
+        if (file != null) {
             for (int i = 0; i < file.length; i++) {
                 String fileName = file[i].getName();
-                String newName = fileName.substring(0,fileName.lastIndexOf("."));
+                String newName = fileName.substring(0, fileName.lastIndexOf("."));
                 arrayFiles.add(newName);
             }
         }
 
         if (arrayFiles.contains(filename))
-            showAlertDialog(context,"Redownload?",
+            showAlertDialog(context, "Redownload?",
                     "It seems that you have already downloaded this file. Do you want to download it again?", filename);
         else {
-            Intent intent = new Intent(context,DownloadService.class);
+            Intent intent = new Intent(context, DownloadService.class);
             context.startService(intent);
         }
     }
 
-    public static void showAlertDialog(final Context context, String title, String msg, final String filename){
+    public static void showAlertDialog(final Context context, String title, String msg, final String filename) {
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
         builder.setTitle(title)
                 .setMessage(msg)
                 .setNeutralButton("Yes", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
-                        Intent intent = new Intent(context,DownloadService.class);
+                        Intent intent = new Intent(context, DownloadService.class);
                         context.startService(intent);
                     }
                 })
-                .setNegativeButton("No",null)
+                .setNegativeButton("No", null)
                 .setPositiveButton("Open File", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
@@ -163,36 +165,36 @@ public class AppUtils {
                 .show();
     }
 
-    public static int getTimeStamp(){
-        return (int)System.currentTimeMillis();
+    public static int getTimeStamp() {
+        return (int) System.currentTimeMillis();
     }
 
-    public static void ActionBarClr(int r, int g, int b, AppCompatActivity activity){
+    public static void ActionBarClr(int r, int g, int b, AppCompatActivity activity) {
         activity.getSupportActionBar().setBackgroundDrawable(
-                new ColorDrawable(Color.rgb(r,g,b)));
+                new ColorDrawable(Color.rgb(r, g, b)));
     }
 
-    public static void StatusBarClr(int r, int g, int b, AppCompatActivity activity){
+    public static void StatusBarClr(int r, int g, int b, AppCompatActivity activity) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             Window window = activity.getWindow();
             window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
             window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-            window.setStatusBarColor(Color.rgb(r,g,b));
-            window.setNavigationBarColor(Color.rgb(r,g,b));
+            window.setStatusBarColor(Color.rgb(r, g, b));
+            window.setNavigationBarColor(Color.rgb(r, g, b));
         }
     }
 
-    public static void renderTheme(AppCompatActivity activity){
-        int r,g,b,e,f,v;
-        r= Home.r;
-        g=Home.g;
-        b=Home.b;
-        e=Home.e;
-        f=Home.f;
-        v=Home.v;
+    public static void renderTheme(AppCompatActivity activity) {
+        int r, g, b, e, f, v;
+        r = Home.r;
+        g = Home.g;
+        b = Home.b;
+        e = Home.e;
+        f = Home.f;
+        v = Home.v;
 
-        ActionBarClr(r,g,b,activity);
-        StatusBarClr(e,f,v,activity);
+        ActionBarClr(r, g, b, activity);
+        StatusBarClr(e, f, v, activity);
     }
 
     private static boolean showAds(Context context) {
@@ -200,9 +202,9 @@ public class AppUtils {
         return getPrefs.getBoolean("showAd", true);
     }
 
-    public static void displayAds(Context context, final AdView adView){
-        if (showAds(context)){
-            MobileAds.initialize(context.getApplicationContext(),"ca-app-pub-6089158898128407/9919503008");
+    public static void displayAds(Context context, final AdView adView) {
+        if (showAds(context)) {
+            MobileAds.initialize(context.getApplicationContext(), "ca-app-pub-6089158898128407/9919503008");
             AdRequest adRequest = new AdRequest.Builder()
                     .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
                     .addTestDevice("73CC8EA0F398EEC21B718FF0F9EB507A")
@@ -214,6 +216,7 @@ public class AppUtils {
                     super.onAdFailedToLoad(i);
                     adView.setVisibility(View.GONE);
                 }
+
                 @Override
                 public void onAdLoaded() {
                     super.onAdLoaded();
@@ -227,7 +230,7 @@ public class AppUtils {
         }
     }
 
-    public static boolean checkPerm(Context context){
+    public static boolean checkPerm(Context context) {
         hasPermissions(context, android.Manifest.permission.WRITE_EXTERNAL_STORAGE);
         String[] PERMISSIONS = {android.Manifest.permission.WRITE_EXTERNAL_STORAGE};
         if (!hasPermissions(context, PERMISSIONS)) {
@@ -250,23 +253,22 @@ public class AppUtils {
         return true;
     }
 
-    public static void openFile(Context context,String filename){
-        File file = new File(Environment.getExternalStorageDirectory()+"/CDLU Mathematics Hub",
+    public static void openFile(Context context, String filename) {
+        File file = new File(Environment.getExternalStorageDirectory() + "/CDLU Mathematics Hub",
                 filename);
         Uri path;
-        if(Build.VERSION.SDK_INT>=Build.VERSION_CODES.N) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
             path = FileProvider.getUriForFile(context,
                     context.getApplicationContext().getPackageName() + ".provider", file);
-        }else {
+        } else {
             path = Uri.fromFile(file);
         }
-        Intent pdfOpenintent = new Intent(Intent.ACTION_VIEW,path);
+        Intent pdfOpenintent = new Intent(Intent.ACTION_VIEW, path);
         pdfOpenintent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
         pdfOpenintent.setDataAndType(path, "application/pdf");
         try {
             context.startActivity(pdfOpenintent);
-        }
-        catch (ActivityNotFoundException e) {
+        } catch (ActivityNotFoundException e) {
             Toast.makeText(context, "No PDF reader installed. Please download from Play Store.", Toast.LENGTH_SHORT).show();
         }
     }
@@ -347,5 +349,9 @@ public class AppUtils {
             }
         }
         return android_version;
+    }
+
+    public static ArrayList<String> prepareDataForQuePap(String[] subject_names) {
+        return new ArrayList<>(Arrays.asList(subject_names));
     }
 }

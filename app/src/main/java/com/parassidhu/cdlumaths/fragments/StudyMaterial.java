@@ -128,7 +128,7 @@ public class StudyMaterial extends Fragment {
         progressBar.setVisibility(View.GONE);
         suggestMaterial.setVisibility(View.GONE);
 
-        //This code enables the ability to don't show "What's new in Study Material" twice or more
+        //This code enables the ability to nav_support't show "What's new in Study Material" twice or ic_more
         String smData = sharedPreferences.getString("smtext", "Study Material is newly launched feature so not much content will be available for now. But we're adding new material very soon.");
         if (smData.equals(sharedPreferences.getString("smdataold", "")))
             smtext.setVisibility(View.GONE);
@@ -370,15 +370,15 @@ class StudyAdapter extends RecyclerView.Adapter<StudyAdapter.ViewHolder> {
         AppUtils.setFont(context, viewHolder.subject, "Raleway.ttf");
 
         if (i % 5 == 0)
-            viewHolder.itemView.setBackgroundResource(R.drawable.ngreen);
+            viewHolder.itemView.setBackgroundResource(R.drawable.grad_green_blue);
         else if (i % 5 == 1)
-            viewHolder.itemView.setBackgroundResource(R.drawable.nblue);
+            viewHolder.itemView.setBackgroundResource(R.drawable.grad_aqua);
         else if (i % 5 == 2)
-            viewHolder.itemView.setBackgroundResource(R.drawable.nred);
+            viewHolder.itemView.setBackgroundResource(R.drawable.grad_red);
         else if (i % 5 == 3)
-            viewHolder.itemView.setBackgroundResource(R.drawable.norange);
+            viewHolder.itemView.setBackgroundResource(R.drawable.grad_sun);
         else if (i % 5 == 4)
-            viewHolder.itemView.setBackgroundResource(R.drawable.npink);
+            viewHolder.itemView.setBackgroundResource(R.drawable.grad_pink_red);
     }
 
     @Override

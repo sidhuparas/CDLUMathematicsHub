@@ -174,20 +174,10 @@ public class sem4 extends AppCompatActivity {
         RecyclerView.LayoutManager layoutManager = new GridLayoutManager(getApplicationContext(),2);
         recyclerView.setLayoutManager(layoutManager);
 
-        ArrayList androidVersions = prepareData();
-        QueAdapter adapter = new QueAdapter(getApplicationContext(),androidVersions);
-        recyclerView.setAdapter(adapter);
-    }
+        QueAdapter adapter = new QueAdapter(getApplicationContext(),
+                AppUtils.prepareDataForQuePap(subject_names));
 
-    private ArrayList prepareData(){
-        ArrayList android_version = new ArrayList<>();
-        for(int i=0;i<subject_names.length;i++){
-            OldItem oldItem = new OldItem();
-            oldItem.setName(subject_names[i]);
-            oldItem.setImage_url(R.drawable.materialq);
-            android_version.add(oldItem);
-        }
-        return android_version;
+        recyclerView.setAdapter(adapter);
     }
 }
 

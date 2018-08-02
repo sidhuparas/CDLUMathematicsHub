@@ -15,7 +15,6 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.annotation.NonNull;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
@@ -23,12 +22,10 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
-import android.support.v4.view.MenuItemCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.ShareActionProvider;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.ContextMenu;
@@ -276,7 +273,7 @@ public class Home extends AppCompatActivity
                 .setMessage(message)
                 .setTitle("Notification")
                 .setCancelable(false)
-                .setIcon(R.drawable.ic_info_white_24dp)
+                .setIcon(R.drawable.ic_info)
                 .setTopColorRes(R.color.blue)
                 .show();
     }
@@ -294,7 +291,7 @@ public class Home extends AppCompatActivity
     public void MsgBox(String title, String msg, int id) {
         new LovelyInfoDialog(this)
                 .setTopColorRes(R.color.blue)
-                .setIcon(R.drawable.ic_info_white_24dp)
+                .setIcon(R.drawable.ic_info)
                 .setTitle(title)
                 .setMessage(msg)
                 .show();
@@ -303,7 +300,7 @@ public class Home extends AppCompatActivity
     public void welcomeReleaseNotes(String title, String msg, int id) {
         new LovelyInfoDialog(this)
                 .setTopColorRes(R.color.holo_red_dark)
-                .setIcon(R.drawable.ic_info_white_24dp)
+                .setIcon(R.drawable.ic_info)
                 .setNotShowAgainOptionEnabled(id)
                 .setNotShowAgainOptionChecked(true)
                 .setTitle(title)
@@ -314,7 +311,7 @@ public class Home extends AppCompatActivity
     public void UpdateDialog(String msg) {
         new LovelyStandardDialog(this)
                 .setTopColorRes(R.color.blue)
-                .setIcon(R.drawable.ic_info_white_24dp)
+                .setIcon(R.drawable.ic_info)
                 .setNegativeButton("Update Now", new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
@@ -552,7 +549,7 @@ public class Home extends AppCompatActivity
         } else if (id == R.id.Share) {
             Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
             sharingIntent.setType("text/plain");
-            String shareBody = "Hello! I'm using CDLU Mathematics Hub app to download question papers, syllabus and more. Get it from Play Store:" +
+            String shareBody = "Hello! I'm using CDLU Mathematics Hub app to download question papers, syllabus and ic_more. Get it from Play Store:" +
                     "" +
                     "" +
                     "https://play.google.com/store/apps/details?id=com.parassidhu.cdlumaths";
@@ -661,7 +658,7 @@ public class Home extends AppCompatActivity
                                 , Toast.LENGTH_SHORT).show();
                     }
                 })
-                .setIcon(R.drawable.theme)
+                .setIcon(R.drawable.ic_theme)
                 .setTopColor(Color.rgb(Home.r, Home.g, Home.b))
                 .show();
     }
@@ -683,7 +680,7 @@ public class Home extends AppCompatActivity
                         editor.apply();
                     }
                 })
-                .setIcon(R.drawable.defaultview)
+                .setIcon(R.drawable.default_view)
                 .setTopColorRes(R.color.colorPrimary)
                 .show();
     }
@@ -692,9 +689,9 @@ public class Home extends AppCompatActivity
         AppBarLayout appbar = findViewById(R.id.appbar);
 
         if (showOrNot)
-            fab.setVisibility(View.VISIBLE);
+            fab.show();
         else
-            fab.setVisibility(View.GONE);
+            fab.hide();
 
         if (AppUtils.isLollipop()) {
             appbar.setTranslationZ(translation);
@@ -703,7 +700,6 @@ public class Home extends AppCompatActivity
 
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
-    @NonNull
     public boolean onNavigationItemSelected(MenuItem item) {
         try {
             int id = item.getItemId();

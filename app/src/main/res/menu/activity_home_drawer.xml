@@ -8,31 +8,31 @@
                 android:checkableBehavior="single">
                 <item
                     android:id="@+id/home"
-                    android:icon="@drawable/hom"
+                    android:icon="@drawable/nav_home"
                     android:title="Question Papers" />
                 <item
                     android:id="@+id/offline"
-                    android:icon="@drawable/off"
+                    android:icon="@drawable/nav_offline"
                     android:title="Offline" />
                 <item
                     android:id="@+id/studymaterial"
-                    android:icon="@drawable/sm"
+                    android:icon="@drawable/nav_study_material"
                     android:title="Study Material" />
                 <item
                     android:id="@+id/notices"
-                    android:icon="@drawable/not"
+                    android:icon="@drawable/nav_notices"
                     android:title="Notices" />
                 <item
                     android:id="@+id/results"
-                    android:icon="@drawable/results"
+                    android:icon="@drawable/nav_results"
                     android:title="Results" />
                 <item
                     android:id="@+id/syll"
-                    android:icon="@drawable/syl"
+                    android:icon="@drawable/nav_syllabus"
                     android:title="Syllabus" />
                 <item
                     android:id="@+id/timeicon"
-                    android:icon="@drawable/timetable"
+                    android:icon="@drawable/nav_time_table"
                     android:title="Digital TimeTable" />
             </group>
         </menu>
@@ -46,15 +46,15 @@
 
                 <item
                     android:id="@+id/donate"
-                    android:icon="@drawable/don"
+                    android:icon="@drawable/nav_support"
                     android:title="Support" />
                 <item
                     android:id="@+id/Tools"
-                    android:icon="@drawable/tools"
+                    android:icon="@drawable/nav_extras"
                     android:title="Extras" />
                 <item
                     android:id="@+id/about"
-                    android:icon="@drawable/abo"
+                    android:icon="@drawable/nav_about"
                     android:title="About" />
             </group>
         </menu>

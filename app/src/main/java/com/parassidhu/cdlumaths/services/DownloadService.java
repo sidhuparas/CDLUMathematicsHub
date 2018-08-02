@@ -80,7 +80,7 @@ public class DownloadService extends Service {
                 notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
 
                 notificationBuilder = new Notification.Builder(getApplicationContext())
-                        .setSmallIcon(R.drawable.newnotif)
+                        .setSmallIcon(R.drawable.ic_notif)
                         .setContentTitle("Downloading")
                         .setContentText("Just a moment...")
                         .setOngoing(true)
@@ -99,7 +99,7 @@ public class DownloadService extends Service {
                 }
 
                 if (!AppUtils.isLollipop())
-                    notificationBuilder.setSmallIcon(R.drawable.ic_file_download_deep_orange_a400_18dp);
+                    notificationBuilder.setSmallIcon(R.drawable.ic_download);
 
                 notificationManager.notify(x.ID, notificationBuilder.build());
                 Log.i("Paras", "onHandleIntent: " + x.filename + x.url + "  " + x.ID);

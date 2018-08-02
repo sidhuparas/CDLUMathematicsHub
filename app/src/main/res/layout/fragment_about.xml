@@ -172,7 +172,7 @@
            <ImageView
                android:layout_width="100dp"
                android:layout_height="100dp"
-               android:src="@drawable/icon2"
+               android:src="@drawable/ic_di"
                android:layout_marginTop="20dp"
                android:layout_below="@id/seeall"
                android:id="@+id/di"/>

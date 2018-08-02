@@ -91,7 +91,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Suggest Study Material"
-                android:background="@drawable/nred"
+                android:background="@drawable/grad_red"
                 android:paddingLeft="10dp"
                 android:id="@+id/suggest"
                 android:paddingRight="10dp"

@@ -40,19 +40,19 @@ public class TimeTableAdapter extends RecyclerView.Adapter<TimeTableAdapter.View
 
         switch (i) {
             case 0:
-                viewHolder.itemView.setBackgroundResource(R.drawable.green);
+                viewHolder.itemView.setBackgroundResource(R.drawable.grad_dark_green);
                 break;
             case 1:
-                viewHolder.itemView.setBackgroundResource(R.drawable.blue);
+                viewHolder.itemView.setBackgroundResource(R.drawable.grad_blue);
                 break;
             case 2:
-                viewHolder.itemView.setBackgroundResource(R.drawable.nred);
+                viewHolder.itemView.setBackgroundResource(R.drawable.grad_red);
                 break;
             case 3:
-                viewHolder.itemView.setBackgroundResource(R.drawable.norange);
+                viewHolder.itemView.setBackgroundResource(R.drawable.grad_sun);
                 break;
             case 4:
-                viewHolder.itemView.setBackgroundResource(R.drawable.npink);
+                viewHolder.itemView.setBackgroundResource(R.drawable.grad_pink_red);
                 break;
         }
 

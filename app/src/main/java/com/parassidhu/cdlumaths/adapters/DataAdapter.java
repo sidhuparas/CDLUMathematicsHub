@@ -88,8 +88,6 @@ public class DataAdapter extends SelectableAdapter<DataAdapter.ViewHolder> {
                     }
                 });
 
-                //Experiment with Selected Overlay
-
                 itemView.setBackgroundColor(isSelected(position) ? context.getResources().getColor(R.color.blue)
                         : context.getResources().getColor(R.color.white) );
 
