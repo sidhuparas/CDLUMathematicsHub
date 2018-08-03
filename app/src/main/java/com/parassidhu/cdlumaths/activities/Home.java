@@ -45,6 +45,7 @@ import com.android.volley.toolbox.Volley;
 import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.InterstitialAd;
+import com.parassidhu.cdlumaths.BuildConfig;
 import com.parassidhu.cdlumaths.fragments.Notices;
 import com.parassidhu.cdlumaths.fragments.Offline;
 import com.parassidhu.cdlumaths.fragments.QuestionPapers;
@@ -59,6 +60,7 @@ import com.parassidhu.cdlumaths.fragments.About;
 import com.parassidhu.cdlumaths.services.DownloadService;
 import com.parassidhu.cdlumaths.utils.AppUtils;
 import com.parassidhu.cdlumaths.utils.DialogUtils;
+import com.parassidhu.cdlumaths.utils.PrefsUtils;
 import com.yarolegovich.lovelydialog.LovelyChoiceDialog;
 import com.yarolegovich.lovelydialog.LovelyInfoDialog;
 import com.yarolegovich.lovelydialog.LovelyStandardDialog;
@@ -266,7 +268,8 @@ public class Home extends AppCompatActivity
             String msg = intent.getStringExtra("text");
             if (!msg.isEmpty())
                 showNotifMessage(msg);
-        } catch (Exception e) { }
+        } catch (Exception e) {
+        }
     }
 
     private void showNotifMessage(String message) {
@@ -404,32 +407,27 @@ public class Home extends AppCompatActivity
     }
 
     public void showAd() {
-        try {
-            sharedPreferences = getSharedPreferences("ad", 0);
-            final SharedPreferences.Editor editor = sharedPreferences.edit();
-            int num = sharedPreferences.getInt("ad", 0);
-            if (num < 3) {
-                editor.putInt("ad", num + 1);
-                editor.apply();
-            } else {
-                mInterstitialAd = new InterstitialAd(Home.this);
-                mInterstitialAd.setAdUnitId("ca-app-pub-6089158898128407/8257639804");
+        PrefsUtils.initialize(this, "ad");
+        int num = PrefsUtils.getIntValue("ad", 0);
 
-                requestNewInterstitial();
-                mInterstitialAd.setAdListener(new AdListener() {
-                    @Override
-                    public void onAdLoaded() {
-                        super.onAdLoaded();
-                        if (mInterstitialAd.isLoaded()) {
-                            mInterstitialAd.show();
-                            editor.putInt("ad", 0);
-                            editor.apply();
-                        }
+        if (num < 3) {
+            PrefsUtils.saveOffline("ad", num + 1);
+        } else {
+            mInterstitialAd = new InterstitialAd(Home.this);
+            mInterstitialAd.setAdUnitId(BuildConfig.INTERSTITIAL_AD_KEY);
+
+            requestNewInterstitial();
+            mInterstitialAd.setAdListener(new AdListener() {
+                @Override
+                public void onAdLoaded() {
+                    super.onAdLoaded();
+                    if (mInterstitialAd.isLoaded()) {
+                        mInterstitialAd.show();
+                        PrefsUtils.saveOffline("ad", 0);
                     }
-                });
-                mInterstitialAd.show();
-            }
-        } catch (Exception ex) {
+                }
+            });
+            mInterstitialAd.show();
         }
     }
 

@@ -32,6 +32,7 @@ import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.MobileAds;
+import com.parassidhu.cdlumaths.BuildConfig;
 import com.parassidhu.cdlumaths.R;
 import com.parassidhu.cdlumaths.models.OldItem;
 import com.parassidhu.cdlumaths.services.DownloadService;
@@ -204,7 +205,7 @@ public class AppUtils {
 
     public static void displayAds(Context context, final AdView adView) {
         if (showAds(context)) {
-            MobileAds.initialize(context.getApplicationContext(), "ca-app-pub-6089158898128407/9919503008");
+            MobileAds.initialize(context.getApplicationContext(), BuildConfig.BANNER_AD_KEY);
             AdRequest adRequest = new AdRequest.Builder()
                     .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
                     .addTestDevice("73CC8EA0F398EEC21B718FF0F9EB507A")

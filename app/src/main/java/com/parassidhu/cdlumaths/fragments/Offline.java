@@ -603,7 +603,7 @@ public class Offline extends Fragment {
         public boolean onPrepareActionMode(ActionMode mode, Menu menu) {
             return false;
         }
-        //Constraint Layout challenge
+
         @Override
         public boolean onActionItemClicked(ActionMode mode, MenuItem item) {
             switch (item.getItemId()) {

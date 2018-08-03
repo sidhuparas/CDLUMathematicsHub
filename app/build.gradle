@@ -2,7 +2,7 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 28
-    buildToolsVersion '27.0.3'
+    buildToolsVersion '28.0.1'
     useLibrary 'org.apache.http.legacy'
 
     defaultConfig {
@@ -22,9 +22,15 @@ android {
         javaMaxHeapSize "20g"
     }
     buildTypes {
+        debug {
+            buildConfigField 'String', "BANNER_AD_KEY", CDLU_BANNER_AD
+            buildConfigField 'String', "INTERSTITIAL_AD_KEY", CDLU_INTERSTITIAL_AD
+        }
         release {
             minifyEnabled false
             proguardFiles 'proguard-rules.pro'
+            buildConfigField 'String', "BANNER_AD_KEY", CDLU_BANNER_AD
+            buildConfigField 'String', "INTERSTITIAL_AD_KEY", CDLU_INTERSTITIAL_AD
         }
     }
 }
