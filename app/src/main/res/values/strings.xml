@@ -39,4 +39,12 @@
     <string name="find_another">Find Another</string>
     <string name="desc_subject_code">Enter Subject Code</string>
     <string name="desc_suggest_study_material">Please provide suitable link and semester name here if you want to suggest Study Material!</string>
+
+    <!--Menu Strings-->
+    <string name="menu_pin">Pin To Top</string>
+    <string name="share">Share</string>
+    <string name="menu_add_to_home">Add To Home Screen</string>
+    <string name="menu_rename">Rename</string>
+    <string name="menu_delete">Delete</string>
+    <string name="menu_unpin">Unpin</string>
 </resources>

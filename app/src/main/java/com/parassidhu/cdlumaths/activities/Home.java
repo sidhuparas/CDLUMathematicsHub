@@ -550,7 +550,7 @@ public class Home extends AppCompatActivity
         } else if (id == R.id.Share) {
             Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
             sharingIntent.setType("text/plain");
-            String shareBody = "Hello! I'm using CDLU Mathematics Hub app to download question papers, syllabus and ic_more. Get it from Play Store:" +
+            String shareBody = "Hello! I'm using CDLU Mathematics Hub app to download question papers, syllabus and more. Get it from Play Store:" +
                     "" +
                     "" +
                     "https://play.google.com/store/apps/details?id=com.parassidhu.cdlumaths";

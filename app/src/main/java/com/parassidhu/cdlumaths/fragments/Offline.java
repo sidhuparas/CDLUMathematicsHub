@@ -51,6 +51,8 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.Iterator;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -70,6 +72,7 @@ public class Offline extends Fragment {
     private DataAdapter adapter;
     private SharedPreferences sharedPreferences;
     private ArrayList<String> names;
+    private ArrayList<OldItem> oldItems;
     private int chosenSortItem;
     private String one, two, three;
     private Boolean remove = true;
@@ -310,11 +313,7 @@ public class Offline extends Fragment {
                         @Override
                         public void run() {
                             if (remove) {
-                                File file = new File(root + "/CDLU Mathematics Hub/" +
-                                        itemText + ".pdf");
-                                if (file.exists()) {
-                                    file.delete();
-                                }
+                                actuallyDeleteFile(itemText);
                             } else {
                                 remove = true;
                             }
@@ -347,6 +346,15 @@ public class Offline extends Fragment {
                         }
                     }).show();
         } catch (Exception ex) {
+        }
+    }
+
+    // Delete file instantly without any Undo option
+    private void actuallyDeleteFile(String itemText) {
+        File file = new File(root + "/CDLU Mathematics Hub/" +
+                itemText + ".pdf");
+        if (file.exists()) {
+            file.delete();
         }
     }
 
@@ -413,7 +421,7 @@ public class Offline extends Fragment {
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
         rcl.setLayoutManager(layoutManager);
 
-        final ArrayList<OldItem> oldItems = new ArrayList<>(prepareData());
+        oldItems = new ArrayList<>(prepareData());
         adapter = new DataAdapter(getActivity(), oldItems, true, this);
         rcl.setAdapter(adapter);
 
@@ -587,7 +595,7 @@ public class Offline extends Fragment {
 
         @Override
         public boolean onCreateActionMode(ActionMode mode, Menu menu) {
-            mode.getMenuInflater().inflate(R.menu.offline_pin_list, menu);
+            mode.getMenuInflater().inflate(R.menu.menu_action_mode, menu);
             return true;
         }
 
@@ -595,13 +603,26 @@ public class Offline extends Fragment {
         public boolean onPrepareActionMode(ActionMode mode, Menu menu) {
             return false;
         }
-
+        //Constraint Layout challenge
         @Override
         public boolean onActionItemClicked(ActionMode mode, MenuItem item) {
             switch (item.getItemId()) {
-                case R.id.shar:
-                    // TODO: actually remove items
-                    Log.d(TAG, "menu_remove");
+                case R.id.delete:
+                    List<Integer> listOfSelectedItems = adapter.getSelectedItems();
+
+                    int numberOfDeletedFiles = 0;
+                    // Delete files and update arraylist
+                    for (Integer i:listOfSelectedItems){
+                        String name = oldItems.get(i - numberOfDeletedFiles).getName();
+                        actuallyDeleteFile(name);
+
+                        oldItems.remove(i - numberOfDeletedFiles);
+                        numberOfDeletedFiles++;
+                        Log.d(TAG, "onActionItemClicked: " + name);
+                    }
+
+                    adapter.notifyDataSetChanged();
+                    Toast.makeText(getActivity(), "Successfully deleted the files!", Toast.LENGTH_SHORT).show();
                     mode.finish();
                     return true;
 

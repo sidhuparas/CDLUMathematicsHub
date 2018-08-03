@@ -128,7 +128,7 @@ public class StudyMaterial extends Fragment {
         progressBar.setVisibility(View.GONE);
         suggestMaterial.setVisibility(View.GONE);
 
-        //This code enables the ability to nav_support't show "What's new in Study Material" twice or ic_more
+        //This code enables the ability to don't show "What's new in Study Material" twice or more
         String smData = sharedPreferences.getString("smtext", "Study Material is newly launched feature so not much content will be available for now. But we're adding new material very soon.");
         if (smData.equals(sharedPreferences.getString("smdataold", "")))
             smtext.setVisibility(View.GONE);

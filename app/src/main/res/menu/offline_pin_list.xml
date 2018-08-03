@@ -4,25 +4,25 @@
         android:id="@+id/PinTo"
         android:orderInCategory="100"
         android:icon="@drawable/ic_pin"
-        android:title="Pin To Top" />
+        android:title="@string/menu_pin" />
     <item
         android:id="@+id/shar"
         android:orderInCategory="100"
         android:icon="@drawable/menu_share"
-        android:title="Share" />
+        android:title="@string/share" />
     <item
         android:id="@+id/addtohome"
         android:orderInCategory="100"
         android:icon="@drawable/menu_pin"
-        android:title="Add To Home Screen" />
+        android:title="@string/menu_add_to_home" />
     <item
         android:id="@+id/rename"
         android:orderInCategory="100"
         android:icon="@drawable/menu_rename"
-        android:title="Rename" />
+        android:title="@string/menu_rename" />
     <item
         android:id="@+id/delete1"
         android:orderInCategory="100"
         android:icon="@drawable/menu_delete"
-        android:title="Delete" />
+        android:title="@string/menu_delete" />
 </menu>
