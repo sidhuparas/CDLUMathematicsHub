@@ -30,8 +30,8 @@ public class PrefsUtils {
         editor.apply();
     }
 
-    public static String getValue(String query){
-        return sharedPreferences.getString(query, "Connect to the internet to get content!");
+    public static String getValue(String query, String def){
+        return sharedPreferences.getString(query, def);
     }
 
     public static int getIntValue(String query, int def){

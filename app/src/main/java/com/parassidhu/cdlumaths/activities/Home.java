@@ -58,6 +58,7 @@ import com.parassidhu.cdlumaths.fragments.Tools;
 import com.parassidhu.cdlumaths.fragments.About;
 import com.parassidhu.cdlumaths.services.DownloadService;
 import com.parassidhu.cdlumaths.utils.AppUtils;
+import com.parassidhu.cdlumaths.utils.DialogUtils;
 import com.yarolegovich.lovelydialog.LovelyChoiceDialog;
 import com.yarolegovich.lovelydialog.LovelyInfoDialog;
 import com.yarolegovich.lovelydialog.LovelyStandardDialog;
@@ -86,7 +87,7 @@ public class Home extends AppCompatActivity
     String TAG = null; // For Fragment Transactions
     String TAGd = "HomeDrawer";
     private NavigationView navigationView;
-    private List<String> defaultList;
+    private List<String> defaultList = new ArrayList<>();
     private FloatingActionButton fab;
 
     public static int r, g, b, e, f, v;
@@ -583,84 +584,7 @@ public class Home extends AppCompatActivity
     }
 
     private void changeThemeOptions() {
-        defaultList = new ArrayList<>();
-        String[] list = {"Green", "Red", "Orange", "Blue", "Pink", "Dark Blue"};
-        defaultList.addAll(Arrays.asList(list));
-
-        new LovelyChoiceDialog(this)
-                .setTitle("Select Your Color")
-                .setItems(defaultList, new LovelyChoiceDialog.OnItemSelectedListener<String>() {
-                    @Override
-                    public void onItemSelected(int position, String item) {
-                        int a = 110, b = 110, c = 0, d = 0, e = 0, f = 0;
-                        switch (position) {
-                            case 0:
-                                a = 76;
-                                b = 175;
-                                c = 80;
-                                d = 56;
-                                e = 142;
-                                f = 60;
-                                break;
-                            case 1:
-                                a = 244;
-                                b = 67;
-                                c = 54;
-                                d = 211;
-                                e = 47;
-                                f = 47;
-                                break;
-                            case 2:
-                                a = 255;
-                                b = 152;
-                                c = 0;
-                                d = 245;
-                                e = 124;
-                                f = 0;
-                                break;
-                            case 3:
-                                a = 3;
-                                b = 169;
-                                c = 244;
-                                d = 2;
-                                e = 136;
-                                f = 209;
-                                break;
-                            case 4:
-                                //Pink
-                                a = 255;
-                                b = 128;
-                                c = 171;
-                                d = 201;
-                                e = 79;
-                                f = 124;
-                                break;
-                            case 5:
-                                //Dark Blue
-                                a = 1;
-                                b = 87;
-                                c = 155;
-                                d = 0;
-                                e = 47;
-                                f = 108;
-                                break;
-                        }
-                        ed = sp.edit();
-                        ed.putInt("r", a);
-                        ed.putInt("g", b);
-                        ed.putInt("b", c);
-                        ed.putInt("e", d);
-                        ed.putInt("f", e);
-                        ed.putInt("v", f);
-
-                        ed.apply();
-                        Toast.makeText(Home.this, "The changes will be applied once you restart the app!"
-                                , Toast.LENGTH_SHORT).show();
-                    }
-                })
-                .setIcon(R.drawable.ic_theme)
-                .setTopColor(Color.rgb(Home.r, Home.g, Home.b))
-                .show();
+        DialogUtils.showThemeDialog(this);
     }
 
     private void setDefaultView() {

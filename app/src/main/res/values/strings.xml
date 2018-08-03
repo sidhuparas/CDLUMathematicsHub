@@ -3,13 +3,16 @@
     <string name="adID">ca-app-pub-6089158898128407/9919503008</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <!--Links-->
     <string name="notices">http://downloadinformer.com/CDLU/4/notices</string>
     <string name="info">http://downloadinformer.com/CDLU/4/info</string>
     <string name="timetable">http://downloadinformer.com/CDLU/4/t2</string>
     <string name="timetable2">http://downloadinformer.com/CDLU/4/t1</string>
     <string name="downloads">http://downloadinformer.com/CDLU/downloads.php</string>
     <string name="study">http://downloadinformer.com/CDLU/studycount.php</string>
-    
+
+    <!--Study Material-->
     <string name="f1">http://downloadinformer.com/CDLU/StudyMaterial/51</string>
     <string name="f2">http://downloadinformer.com/CDLU/StudyMaterial/52</string>
     <string name="f3">http://downloadinformer.com/CDLU/StudyMaterial/53</string>
