@@ -47,4 +47,6 @@
     <string name="menu_rename">Rename</string>
     <string name="menu_delete">Delete</string>
     <string name="menu_unpin">Unpin</string>
+    <string name="sem_3">Semester 3 students, we have a wonderful software for you which will make it easy for you to code in HTML.</string>
+    <string name="live_html">Download Live Html</string>
 </resources>

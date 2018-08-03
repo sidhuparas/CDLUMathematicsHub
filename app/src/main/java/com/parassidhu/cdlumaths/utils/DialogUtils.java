@@ -1,22 +1,35 @@
 package com.parassidhu.cdlumaths.utils;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.graphics.Color;
 import android.os.Environment;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
+import android.support.v7.app.AlertDialog;
+import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.widget.Toast;
 
 import com.parassidhu.cdlumaths.R;
 import com.parassidhu.cdlumaths.activities.Home;
 import com.parassidhu.cdlumaths.adapters.DataAdapter;
+import com.parassidhu.cdlumaths.fragments.Offline;
 import com.parassidhu.cdlumaths.models.OldItem;
 import com.yarolegovich.lovelydialog.LovelyChoiceDialog;
+import com.yarolegovich.lovelydialog.LovelyInfoDialog;
+import com.yarolegovich.lovelydialog.LovelyStandardDialog;
 import com.yarolegovich.lovelydialog.LovelyTextInputDialog;
 
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+import static com.parassidhu.cdlumaths.fragments.Offline.OFFLINE_SORTING;
+
 public class DialogUtils {
+
+    public static int chosenSortItem;
 
     public static void showRenameDialog(final Context context, String name, final int position, final ArrayList<OldItem> list,
                                  final File file, final ArrayList<String> names, final DataAdapter adapter) {
@@ -124,4 +137,86 @@ public class DialogUtils {
                 .setTopColor(Color.rgb(Home.r, Home.g, Home.b))
                 .show();
     }
+
+    public static void showSortDialog(final Context context, final String[] sortItems,
+                                      final String TAG){
+        final AlertDialog.Builder builder = new AlertDialog.Builder(context)
+                .setTitle("Sort Offline Files")
+                .setSingleChoiceItems(sortItems, getPosition(context), new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        chosenSortItem = i;
+                    }
+                })
+                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        PrefsUtils.initialize(context, OFFLINE_SORTING);
+
+                        if (sortItems[chosenSortItem].equals("Name")) {
+                            PrefsUtils.saveOffline(OFFLINE_SORTING, 0);
+                        } else {
+                            PrefsUtils.saveOffline(OFFLINE_SORTING, 1);
+                        }
+
+                        try {
+                            if (TAG.equals("Offline")) {
+                                Fragment fragment = new Offline();
+                                FragmentTransaction ft = ((AppCompatActivity)context)
+                                        .getSupportFragmentManager().beginTransaction();
+                                ft.replace(R.id.content_frame, fragment, "Offline");
+                                ft.commit();
+                            }
+                        } catch (Exception ignored) { }
+                    }
+                })
+                .setNegativeButton("Cancel", null);
+
+        AlertDialog dialog = builder.create();
+        dialog.show();
+    }
+
+    public static int getPosition(Context context) {
+        PrefsUtils.initialize(context, OFFLINE_SORTING);
+        return PrefsUtils.getIntValue(OFFLINE_SORTING, 0);
+    }
+
+    /* Used to show any standard dialog with
+            TITLE and
+            MESSAGE */
+
+    public static void MsgBox(Context context, String title, String message) {
+        new LovelyStandardDialog(context)
+                .setTopColorRes(com.parassidhu.cdlumaths.R.color.colorAccent)
+                .setTitle(title)
+                .setPositiveButton("Ok", null)
+                .setMessage(message)
+                .show();
+    }
+
+    /* Used to show permission dialog
+       Accepts MESSAGE,
+               LISTENER */
+
+    public static void permBox(Context context, String message, View.OnClickListener onClickListener) {
+        new LovelyStandardDialog(context)
+                .setTopColorRes(com.parassidhu.cdlumaths.R.color.colorAccent)
+                .setTitle("Permissions Required!")
+                .setPositiveButton("Grant Permissions", onClickListener)
+                .setMessage(message)
+                .show();
+    }
+
+     /* Used to show tip about app features
+        Accepts MESSAGE only  */
+
+    public static void tipMsg(Context context, String message, int id) {
+        new LovelyInfoDialog(context)
+                .setTopColorRes(com.parassidhu.cdlumaths.R.color.Orange)
+                .setTitle("Did you know?")
+                .setNotShowAgainOptionEnabled(id)
+                .setMessage(message)
+                .show();
+    }
+
 }

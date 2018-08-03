@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.ShortcutInfo;
 import android.content.pm.ShortcutManager;
-import android.graphics.Color;
 import android.graphics.drawable.Icon;
 import android.net.Uri;
 import android.os.Build;
@@ -17,9 +16,7 @@ import android.os.Message;
 import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.FileProvider;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.view.ActionMode;
 import android.support.v7.widget.DividerItemDecoration;
@@ -37,7 +34,6 @@ import android.widget.Toast;
 
 import com.cocosw.bottomsheet.BottomSheet;
 import com.parassidhu.cdlumaths.R;
-import com.parassidhu.cdlumaths.activities.Home;
 import com.parassidhu.cdlumaths.adapters.DataAdapter;
 import com.parassidhu.cdlumaths.models.OldItem;
 import com.parassidhu.cdlumaths.models.Pair;
@@ -45,13 +41,11 @@ import com.parassidhu.cdlumaths.utils.AppUtils;
 import com.parassidhu.cdlumaths.utils.DialogUtils;
 import com.parassidhu.cdlumaths.utils.ItemClickSupport;
 import com.parassidhu.cdlumaths.utils.PrefsUtils;
-import com.yarolegovich.lovelydialog.LovelyChoiceDialog;
 
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
-import java.util.Iterator;
 import java.util.List;
 
 import butterknife.BindView;
@@ -276,7 +270,7 @@ public class Offline extends Fragment {
                             case R.id.delete1:
                                 deleteFile(oldItems, position, textView, v);
                                 break;
-                            case R.id.shar:
+                            case R.id.share:
 
                                 menuShare(textView);
                                 break;
@@ -456,7 +450,7 @@ public class Offline extends Fragment {
         sortBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                showDialog();
+                DialogUtils.showSortDialog(getActivity(), sortItems, getTag());
             }
         });
 
@@ -466,47 +460,6 @@ public class Offline extends Fragment {
                 DialogUtils.showThemeDialog(getActivity());
             }
         });
-    }
-
-    public int getPosition() {
-       PrefsUtils.initialize(getActivity(), OFFLINE_SORTING);
-        return PrefsUtils.getIntValue(OFFLINE_SORTING, 0);
-    }
-
-    public void showDialog() {
-        final AlertDialog.Builder builder = new AlertDialog.Builder(getActivity())
-                .setTitle("Sort Offline Files")
-                .setSingleChoiceItems(sortItems, getPosition(), new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        chosenSortItem = i;
-                    }
-                })
-                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        PrefsUtils.initialize(getActivity(), OFFLINE_SORTING);
-
-                        if (sortItems[chosenSortItem].equals("Name")) {
-                            PrefsUtils.saveOffline(OFFLINE_SORTING, 0);
-                        } else {
-                            PrefsUtils.saveOffline(OFFLINE_SORTING, 1);
-                        }
-
-                        try {
-                            if (getTag().equals("Offline")) {
-                                Fragment fragment = new Offline();
-                                FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
-                                ft.replace(R.id.content_frame, fragment, "Offline");
-                                ft.commit();
-                            }
-                        } catch (Exception ignored) { }
-                    }
-                })
-                .setNegativeButton("Cancel", null);
-
-        AlertDialog dialog = builder.create();
-        dialog.show();
     }
 
     private void addShortcutPreOreo(String path1) {

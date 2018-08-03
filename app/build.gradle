@@ -25,12 +25,16 @@ android {
         debug {
             buildConfigField 'String', "BANNER_AD_KEY", CDLU_BANNER_AD
             buildConfigField 'String', "INTERSTITIAL_AD_KEY", CDLU_INTERSTITIAL_AD
+            resValue 'string', "banner_ad_key", CDLU_BANNER_AD
+            resValue 'string', "interstitial_ad_key", CDLU_INTERSTITIAL_AD
         }
         release {
             minifyEnabled false
             proguardFiles 'proguard-rules.pro'
             buildConfigField 'String', "BANNER_AD_KEY", CDLU_BANNER_AD
             buildConfigField 'String', "INTERSTITIAL_AD_KEY", CDLU_INTERSTITIAL_AD
+            resValue 'string', "banner_ad_key", CDLU_BANNER_AD
+            resValue 'string', "interstitial_ad_key", CDLU_INTERSTITIAL_AD
         }
     }
 }

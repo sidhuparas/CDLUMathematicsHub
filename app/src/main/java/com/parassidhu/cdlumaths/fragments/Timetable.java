@@ -24,6 +24,7 @@ import com.parassidhu.cdlumaths.R;
 import com.parassidhu.cdlumaths.adapters.TimeTableAdapter;
 import com.parassidhu.cdlumaths.models.TTItem;
 import com.parassidhu.cdlumaths.utils.AppUtils;
+import com.parassidhu.cdlumaths.utils.DialogUtils;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -61,7 +62,7 @@ public class Timetable extends Fragment {
         setSpinnerListener();
         sharedPreferences = getActivity().getSharedPreferences("Values", Context.MODE_PRIVATE);
 
-        AppUtils.tipMsg(getActivity(), "You can set Timetable to launch at startup. Just tap the button above beside the three dots.", 2000);
+        DialogUtils.tipMsg(getActivity(), "You can set Timetable to launch at startup. Just tap the button above beside the three dots.", 2000);
         try {
             spinner.setSelectedIndex(calendar.get(Calendar.DAY_OF_WEEK) - 2);
             //ttSem.setSelectedIndex();

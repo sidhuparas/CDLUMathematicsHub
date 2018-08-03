@@ -94,6 +94,7 @@
             android:name=".activities.Home"
             android:label="CDLU Mathematics Hub"
             android:launchMode="singleTop"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

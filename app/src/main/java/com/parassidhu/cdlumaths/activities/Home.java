@@ -80,20 +80,20 @@ public class Home extends AppCompatActivity
 
     private Fragment fragment;
     private SharedPreferences sharedPreferences, sp;
-    private SharedPreferences.Editor editor, ed;
+    private SharedPreferences.Editor editor;
     private InterstitialAd mInterstitialAd;
-    int p;
-    private String[] code = {"Name", "Date Created"};
-    boolean doubleBackToExitPressedOnce = false;
-    boolean drawe = false;
-    String TAG = null; // For Fragment Transactions
-    String TAGd = "HomeDrawer";
     private NavigationView navigationView;
     private List<String> defaultList = new ArrayList<>();
     private FloatingActionButton fab;
 
+    private String TAG = null; // For Fragment Transactions
+    private String TAGd = "HomeDrawer";
+    private boolean doubleBackToExitPressedOnce = false;
+    private boolean drawe = false;
     public static int r, g, b, e, f, v;
     private boolean old = false;
+    private String[] sortItems = {"Name", "Date Created"};
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -349,50 +349,8 @@ public class Home extends AppCompatActivity
                 .show();
     }
 
-    public int getPosition() {
-        sharedPreferences = getSharedPreferences("offlinesorting", Context.MODE_PRIVATE);
-        return sharedPreferences.getInt("offlinesorting", 0);
-    }
-
     public String getTag() {
         return TAG;
-    }
-
-    public void showDialog() {
-        final AlertDialog.Builder b = new AlertDialog.Builder(this);
-        AlertDialog d;
-        b.setTitle("Sort Offline Files");
-        b.setSingleChoiceItems(code, getPosition(), new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                p = i;
-            }
-        });
-        b.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                sharedPreferences = getSharedPreferences("offlinesorting", Context.MODE_PRIVATE);
-                SharedPreferences.Editor editor = sharedPreferences.edit();
-                if (code[p].equals("Name")) {
-                    editor.putInt("offlinesorting", 0);
-                } else {
-                    editor.putInt("offlinesorting", 1);
-                }
-                editor.apply();
-                try {
-                    if (getTag().equals("Offline")) {
-                        fragment = new Offline();
-                        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-                        ft.replace(R.id.content_frame, fragment, "Offline");
-                        ft.commit();
-                    }
-                } catch (Exception e) {
-                }
-            }
-        });
-        b.setNegativeButton("Cancel", null);
-        d = b.create();
-        d.show();
     }
 
     public static boolean hasPermissions(Context context, String... permissions) {
@@ -543,7 +501,7 @@ public class Home extends AppCompatActivity
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         if (id == R.id.sort) {
-            showDialog();
+            DialogUtils.showSortDialog(this, sortItems, TAG);
             return true;
         } else if (id == R.id.Share) {
             Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);

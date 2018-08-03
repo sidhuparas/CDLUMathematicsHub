@@ -7,7 +7,7 @@
         android:icon="@drawable/menu_unpin"
         android:title="@string/menu_unpin" />
     <item
-        android:id="@+id/shar"
+        android:id="@+id/share"
         android:orderInCategory="100"
         android:icon="@drawable/menu_share"
         android:title="@string/share" />

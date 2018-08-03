@@ -20,6 +20,7 @@ import com.parassidhu.cdlumaths.activities.quadratic;
 import com.parassidhu.cdlumaths.adapters.DataAdapter;
 import com.parassidhu.cdlumaths.models.OldItem;
 import com.parassidhu.cdlumaths.utils.AppUtils;
+import com.parassidhu.cdlumaths.utils.DialogUtils;
 import com.parassidhu.cdlumaths.utils.ItemClickSupport;
 
 import java.util.ArrayList;
@@ -40,7 +41,7 @@ public class Tools extends Fragment{
     DataAdapter adapter;
 
     private void addShortcut() {
-        AppUtils.MsgBox(getActivity(),"Instructions","1. Download the latest Timetable from Notices\n2. Open Offline section\n" +
+        DialogUtils.MsgBox(getActivity(),"Instructions","1. Download the latest Timetable from Notices\n2. Open Offline section\n" +
                 "3. Tap and hold the " +
                 "downloaded Timetable\n4. Choose Add To Home Screen");
     }

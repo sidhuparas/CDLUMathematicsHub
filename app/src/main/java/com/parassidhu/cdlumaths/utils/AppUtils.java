@@ -30,6 +30,7 @@ import android.widget.Toast;
 
 import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdSize;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.MobileAds;
 import com.parassidhu.cdlumaths.BuildConfig;
@@ -82,33 +83,6 @@ public class AppUtils {
         AssetManager am = context.getApplicationContext().getAssets();
         Typeface custom_font = Typeface.createFromAsset(am, "fonts/" + fontName);
         textView.setTypeface(custom_font);
-    }
-
-    public static void MsgBox(Context context, String title, String message) {
-        new LovelyStandardDialog(context)
-                .setTopColorRes(com.parassidhu.cdlumaths.R.color.colorAccent)
-                .setTitle(title)
-                .setPositiveButton("Ok", null)
-                .setMessage(message)
-                .show();
-    }
-
-    public static void permBox(Context context, String message, View.OnClickListener onClickListener) {
-        new LovelyStandardDialog(context)
-                .setTopColorRes(com.parassidhu.cdlumaths.R.color.colorAccent)
-                .setTitle("Permissions Required!")
-                .setPositiveButton("Grant Permissions", onClickListener)
-                .setMessage(message)
-                .show();
-    }
-
-    public static void tipMsg(Context context, String message, int id) {
-        new LovelyInfoDialog(context)
-                .setTopColorRes(com.parassidhu.cdlumaths.R.color.Orange)
-                .setTitle("Did you know?")
-                .setNotShowAgainOptionEnabled(id)
-                .setMessage(message)
-                .show();
     }
 
     public static void startDownload(String filename, String url, Context context) {
@@ -208,9 +182,9 @@ public class AppUtils {
             MobileAds.initialize(context.getApplicationContext(), BuildConfig.BANNER_AD_KEY);
             AdRequest adRequest = new AdRequest.Builder()
                     .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
-                    .addTestDevice("73CC8EA0F398EEC21B718FF0F9EB507A")
-                    .addTestDevice("39C695F82AC6C82B1C9874FBBDCC2D46")
+                    .addTestDevice("0A8FC7FC744BC150F4A34C86227EDD41")
                     .build();
+
             adView.setAdListener(new AdListener() {
                 @Override
                 public void onAdFailedToLoad(int i) {
@@ -224,7 +198,6 @@ public class AppUtils {
                     adView.setVisibility(View.VISIBLE);
                 }
             });
-
             adView.loadAd(adRequest);
         } else {
             adView.setVisibility(View.GONE);
