@@ -1,139 +1,159 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/white"
     tools:context="com.parassidhu.cdlumaths.fragments.Summary">
-<android.support.v4.widget.NestedScrollView
-    android:layout_width="wrap_content"
-    android:layout_height="match_parent">
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent">
+
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/intro"
-        android:layout_marginTop="10dp"
-        android:textSize="16sp"
-        android:textColor="@color/black"
-        android:layout_marginLeft="15dp"
-        android:text="This feature shows you the result of a whole class or a specific range."/>
+            <TextView
+                android:id="@+id/intro"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="10dp"
+                android:text="@string/desc_summary"
+                android:textColor="@color/black"
+                android:textSize="16sp" />
 
-    <RadioButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="5-Years"
-        android:layout_below="@id/intro"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="6dp"
-        android:checked="true"
-        android:id="@+id/five"/>
+            <RadioButton
+                android:id="@+id/five"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/intro"
+                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="6dp"
+                android:checked="true"
+                android:text="@string/_5_years" />
 
-    <RadioButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="2-Years"
-        android:layout_marginTop="6dp"
-        android:layout_below="@id/intro"
-        android:layout_toRightOf="@id/five"
-        android:layout_marginLeft="40dp"
-        android:id="@+id/two"/>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/txtSem"
-        android:layout_marginTop="10dp"
-        android:textSize="16sp"
-        android:layout_below="@id/five"
-        android:paddingTop="10dp"
-        android:textColor="@color/black"
-        android:layout_marginLeft="15dp"
-        android:text="Semester:"/>
-    <com.jaredrummler.materialspinner.MaterialSpinner
-        android:id="@+id/spinner"
-        android:layout_width="120dp"
-        android:textSize="16sp"
-        android:elevation="3dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="10dp"
-        app:ms_text_color="@color/grey"
-        android:layout_toRightOf="@id/txtSem"
-        android:layout_below="@id/five"
-        android:layout_height="wrap_content" />
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/txtSem2"
-        android:layout_below="@id/txtSem"
-        android:layout_marginTop="15dp"
-        android:textSize="16sp"
-        android:textColor="@color/black"
-        android:textColorHint="@color/grey"
-        android:inputType="number"
-        android:layout_marginLeft="15dp"
-        android:hint="Starting Roll No.    " />
+            <RadioButton
+                android:id="@+id/two"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/intro"
+                android:layout_marginLeft="40dp"
+                android:layout_marginStart="40dp"
+                android:layout_marginTop="6dp"
+                android:layout_toEndOf="@id/five"
+                android:layout_toRightOf="@id/five"
+                android:text="@string/_2_years" />
 
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/txtSem3"
-        android:layout_below="@id/txtSem2"
-        android:layout_marginTop="10dp"
-        android:inputType="number"
-        android:textSize="16sp"
-        android:textColor="@color/black"
-        android:layout_marginLeft="15dp"
-        android:textColorHint="@color/grey"
-        android:hint="Final Roll No.          "/>
+            <TextView
+                android:id="@+id/txtSem"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/five"
+                android:layout_marginLeft="15dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="10dp"
+                android:paddingTop="10dp"
+                android:text="@string/semester"
+                android:textColor="@color/black"
+                android:textSize="16sp" />
 
-        <com.jaredrummler.materialspinner.MaterialSpinner
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/total"
-            android:layout_marginLeft="15dp"
-            android:layout_marginTop="10dp"
-            android:elevation="3dp"
-            android:layout_below="@id/txtSem3"/>
-        <EditText
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/code"
-            android:layout_below="@id/total"
-            android:layout_marginTop="10dp"
-            android:textSize="16sp"
-            android:textColor="@color/black"
-            android:visibility="gone"
-            android:layout_marginLeft="15dp"
-            android:textColorHint="@color/grey"
-            android:hint="@string/desc_subject_code"
-            android:layout_marginStart="15dp" />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/code"
-            android:layout_marginTop="10dp"
-            android:id="@+id/codehint"
-            android:layout_marginLeft="10dp"
-            android:text="For example,"/>
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="20dp"
-        android:background="@color/colorPrimary"
-        android:textColor="@color/white"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"
-        android:elevation="6dp"
-        android:translationZ="6dp"
-        android:layout_below="@id/txtSem3"
-        android:layout_toRightOf="@id/total"
-        android:text="Find Result"
-        android:id="@+id/show"/>
-</RelativeLayout>
-</android.support.v4.widget.NestedScrollView>
+            <com.jaredrummler.materialspinner.MaterialSpinner
+                android:id="@+id/spinner"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/five"
+                android:layout_marginLeft="20dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_toEndOf="@id/txtSem"
+                android:layout_toRightOf="@id/txtSem"
+                android:elevation="3dp"
+                android:textSize="16sp"
+                app:ms_text_color="@color/grey" />
+
+            <EditText
+                android:id="@+id/txtSem2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/txtSem"
+                android:layout_marginLeft="15dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="15dp"
+                android:hint="@string/hint_roll_no"
+                android:inputType="number"
+                android:textColor="@color/black"
+                android:textColorHint="@color/grey"
+                android:textSize="16sp" />
+
+            <EditText
+                android:id="@+id/txtSem3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/txtSem2"
+                android:layout_marginLeft="15dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="10dp"
+                android:hint="@string/hint_final_roll"
+                android:inputType="number"
+                android:textColor="@color/black"
+                android:textColorHint="@color/grey"
+                android:textSize="16sp" />
+
+            <com.jaredrummler.materialspinner.MaterialSpinner
+                android:id="@+id/total"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/txtSem3"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="10dp"
+                android:elevation="3dp" />
+
+            <EditText
+                android:id="@+id/code"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/total"
+                android:layout_marginLeft="15dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="10dp"
+                android:hint="@string/desc_subject_code"
+                android:textColor="@color/black"
+                android:textColorHint="@color/grey"
+                android:textSize="16sp"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/codehint"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/code"
+                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:text="@string/for_example" />
+
+            <Button
+                android:id="@+id/show"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/txtSem3"
+                android:layout_marginLeft="20dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_toEndOf="@id/total"
+                android:layout_toRightOf="@id/total"
+                android:background="@drawable/grad_red"
+                android:elevation="6dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:text="@string/find_result"
+                android:textColor="@color/white"
+                android:translationZ="6dp" />
+        </RelativeLayout>
+    </android.support.v4.widget.NestedScrollView>
 
 </RelativeLayout>

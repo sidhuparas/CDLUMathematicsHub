@@ -22,7 +22,7 @@ import java.util.ArrayList;
 public class sem7 extends AppCompatActivity {
 
     private final String subject_names[] = {
-            "Advanced Abstract Algebra",
+            "Abstract Algebra",
             "Real Analysis",
             "Mechanics",
             "Complex Analysis-I",

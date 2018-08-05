@@ -49,6 +49,14 @@ public class Syllabus extends Fragment {
         setHasOptionsMenu(true);
         setUpRVFor5Years();
         setUpRVFor2Years();
+        setThemeColor();
+    }
+
+    private void setThemeColor() {
+        choose2Years.setTextColor(AppUtils.getColor());
+        choose5Years.setTextColor(AppUtils.getColor());
+        downloadAll2Years.setBackgroundColor(AppUtils.getColor());
+        downloadAll5Years.setBackgroundColor(AppUtils.getColor());
     }
 
     private void setUpRVFor5Years(){

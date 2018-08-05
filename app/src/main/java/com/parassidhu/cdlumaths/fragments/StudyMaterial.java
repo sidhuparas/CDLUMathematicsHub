@@ -187,7 +187,9 @@ public class StudyMaterial extends Fragment {
     private void showInfo(final String title, String detail, final int pos) {
         BottomDialog.Builder bottomDialog = new BottomDialog.Builder(getActivity())
                 .setTitle(title)
-                .setContent(detail);
+                .setContent(detail)
+                .setPositiveBackgroundColor(AppUtils.getColor())
+                .setNegativeTextColor(AppUtils.getColor());
 
         switch (listItems.get(pos).getParam()){
             case "0":

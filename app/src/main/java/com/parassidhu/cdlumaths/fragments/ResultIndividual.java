@@ -41,6 +41,9 @@ public class ResultIndividual extends Fragment {
         
         setUp5YearsRV();
         setUp2YearsRV();
+
+        choose2Years.setTextColor(AppUtils.getColor());
+        choose5Years.setTextColor(AppUtils.getColor());
     }
     
     private void setUp5YearsRV(){

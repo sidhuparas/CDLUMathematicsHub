@@ -47,6 +47,19 @@
     <string name="menu_rename">Rename</string>
     <string name="menu_delete">Delete</string>
     <string name="menu_unpin">Unpin</string>
+
     <string name="sem_3">Semester 3 students, we have a wonderful software for you which will make it easy for you to code in HTML.</string>
     <string name="live_html">Download Live Html</string>
+    <string name="three_dots">⋮</string>
+    <string name="no_content">No content to show. Download files to get started.</string>
+    <string name="themes">Themes</string>
+    <string name="sort">Sort</string>
+    <string name="desc_summary">This feature shows you the result of a whole class or a specific range.</string>
+    <string name="_5_years">5-Years</string>
+    <string name="_2_years">2-Years</string>
+    <string name="semester">Semester:</string>
+    <string name="hint_roll_no">Starting Roll No.</string>
+    <string name="hint_final_roll">Final Roll No.</string>
+    <string name="for_example">For example,</string>
+    <string name="find_result">Find Result</string>
 </resources>

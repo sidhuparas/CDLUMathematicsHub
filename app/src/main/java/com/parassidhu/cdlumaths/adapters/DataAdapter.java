@@ -89,7 +89,7 @@ public class DataAdapter extends SelectableAdapter<DataAdapter.ViewHolder> {
                 });
 
                 itemView.setBackgroundColor(isSelected(position) ? context.getResources().getColor(R.color.blue)
-                        : context.getResources().getColor(R.color.white) );
+                        : Color.alpha(0) );
 
             } else {
                 imageButton.setVisibility(View.GONE);

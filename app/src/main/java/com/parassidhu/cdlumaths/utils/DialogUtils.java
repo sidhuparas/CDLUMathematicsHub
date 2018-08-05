@@ -194,6 +194,20 @@ public class DialogUtils {
                 .show();
     }
 
+    /* Used to show any standard dialog with
+            TITLE
+            MESSAGE and
+            ID */
+
+    public static void MsgBox(Context context, String title, String msg, int id) {
+        new LovelyInfoDialog(context)
+                .setTopColorRes(R.color.blue)
+                .setIcon(R.drawable.ic_info)
+                .setTitle(title)
+                .setMessage(msg)
+                .show();
+    }
+
     /* Used to show permission dialog
        Accepts MESSAGE,
                LISTENER */
@@ -216,6 +230,27 @@ public class DialogUtils {
                 .setTitle("Did you know?")
                 .setNotShowAgainOptionEnabled(id)
                 .setMessage(message)
+                .show();
+    }
+
+    public static void showNotifMessage(Context context, String message) {
+        new LovelyInfoDialog(context)
+                .setMessage(message)
+                .setTitle("Notification")
+                .setCancelable(false)
+                .setIcon(R.drawable.ic_info)
+                .setTopColorRes(R.color.blue)
+                .show();
+    }
+
+    public static void welcomeReleaseNotes(Context context, String title, String msg, int id) {
+        new LovelyInfoDialog(context)
+                .setTopColorRes(R.color.holo_red_dark)
+                .setIcon(R.drawable.ic_info)
+                .setNotShowAgainOptionEnabled(id)
+                .setNotShowAgainOptionChecked(true)
+                .setTitle(title)
+                .setMessage(msg)
                 .show();
     }
 

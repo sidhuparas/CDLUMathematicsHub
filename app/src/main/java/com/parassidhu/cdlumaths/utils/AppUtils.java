@@ -47,10 +47,13 @@ import java.util.Arrays;
 
 public class AppUtils {
 
-    public static String releaseNotes = "- Added Question Papers for 1st, 4th, 7th and 10th Semesters.\n" +
-            "- Added Rename option in Offline.\n" +
-            "- Notifications can be expanded on Android 7.0+.\n" +
-            "- Some visual change in TimeTable.";
+    public static String releaseNotes = "- Added Question Papers for 1st, 4th, 7th and 10th Semesters\n" +
+            "- Added Rename option in Offline\n" +
+            "- Notifications can be expanded on Android 7.0+\n" +
+            "- Some visual change in TimeTable\n" +
+            "- Under the hood performance improvements\n" +
+            "- New Design For Home Screen, Syllabus and Results\n" +
+            "- Press and hold offline items to bulk delete" ;
 
     public static void setOptVisibility(Menu menu, boolean sorted, boolean defaultview) {
         MenuItem sort = menu.findItem(com.parassidhu.cdlumaths.R.id.sort);
@@ -172,6 +175,17 @@ public class AppUtils {
         StatusBarClr(e, f, v, activity);
     }
 
+    public static int getColor(){
+        int r, g, b, e, f, v;
+        r = Home.r;
+        g = Home.g;
+        b = Home.b;
+        e = Home.e;
+        f = Home.f;
+        v = Home.v;
+
+        return Color.rgb(r,g,b);
+    }
     private static boolean showAds(Context context) {
         SharedPreferences getPrefs = PreferenceManager.getDefaultSharedPreferences(context);
         return getPrefs.getBoolean("showAd", true);

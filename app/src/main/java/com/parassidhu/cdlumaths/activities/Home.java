@@ -103,18 +103,18 @@ public class Home extends AppCompatActivity
         setSupportActionBar(toolbar);
         try {
             sp = getSharedPreferences("colors", MODE_PRIVATE);
-            r = (sp.getInt("r", 3));
-            g = (sp.getInt("g", 169));
-            b = (sp.getInt("b", 244));
-            e = (sp.getInt("e", 2));
-            f = (sp.getInt("f", 136));
-            v = (sp.getInt("v", 209));
+            r = (sp.getInt("r", 1));
+            g = (sp.getInt("g", 87));
+            b = (sp.getInt("b", 155));
+            e = (sp.getInt("e", 0));
+            f = (sp.getInt("f", 47));
+            v = (sp.getInt("v", 108));
 
             initializeView();
             ActionBarClr(r, g, b);
             StatusBarClr(e, f, v);
 
-            //showAd();
+            showAd();
 
             checkPerm();
 
@@ -130,7 +130,7 @@ public class Home extends AppCompatActivity
 
             setView();
             checkBack();
-            welcomeReleaseNotes("What's New In This Update?", AppUtils.releaseNotes, 111);
+            DialogUtils.welcomeReleaseNotes(this,"What's New In This Update?", AppUtils.releaseNotes, 111);
 
         } catch (Exception ex) {
             Toast.makeText(this, ex.getMessage(), Toast.LENGTH_LONG).show();
@@ -169,7 +169,7 @@ public class Home extends AppCompatActivity
             if (getIntent().getExtras() != null) {
                 String msg = getIntent().getStringExtra("text");
                 if (!msg.isEmpty())
-                    showNotifMessage(msg);
+                    DialogUtils.showNotifMessage(this, msg);
             }
         } catch (Exception e) {
         }
@@ -267,19 +267,9 @@ public class Home extends AppCompatActivity
         try {
             String msg = intent.getStringExtra("text");
             if (!msg.isEmpty())
-                showNotifMessage(msg);
+                DialogUtils.showNotifMessage(this ,msg);
         } catch (Exception e) {
         }
-    }
-
-    private void showNotifMessage(String message) {
-        new LovelyInfoDialog(this)
-                .setMessage(message)
-                .setTitle("Notification")
-                .setCancelable(false)
-                .setIcon(R.drawable.ic_info)
-                .setTopColorRes(R.color.blue)
-                .show();
     }
 
     private void scheduleHandler() {
@@ -290,26 +280,6 @@ public class Home extends AppCompatActivity
                 getValues();
             }
         }, 10000);
-    }
-
-    public void MsgBox(String title, String msg, int id) {
-        new LovelyInfoDialog(this)
-                .setTopColorRes(R.color.blue)
-                .setIcon(R.drawable.ic_info)
-                .setTitle(title)
-                .setMessage(msg)
-                .show();
-    }
-
-    public void welcomeReleaseNotes(String title, String msg, int id) {
-        new LovelyInfoDialog(this)
-                .setTopColorRes(R.color.holo_red_dark)
-                .setIcon(R.drawable.ic_info)
-                .setNotShowAgainOptionEnabled(id)
-                .setNotShowAgainOptionChecked(true)
-                .setTitle(title)
-                .setMessage(msg)
-                .show();
     }
 
     public void UpdateDialog(String msg) {
@@ -347,10 +317,6 @@ public class Home extends AppCompatActivity
                 .setCancelable(false)
                 .setMessage(msg)
                 .show();
-    }
-
-    public String getTag() {
-        return TAG;
     }
 
     public static boolean hasPermissions(Context context, String... permissions) {
@@ -531,7 +497,7 @@ public class Home extends AppCompatActivity
         } else if (id == R.id.defaultView) {
             setDefaultView();
         } else if (id == R.id.releasenotes) {
-            MsgBox("Release Notes", AppUtils.releaseNotes, 1001);
+            DialogUtils.MsgBox(this,"Release Notes", AppUtils.releaseNotes, 1001);
         } else if (id == R.id.theme) {
             changeThemeOptions();
         }
@@ -561,7 +527,7 @@ public class Home extends AppCompatActivity
                     }
                 })
                 .setIcon(R.drawable.default_view)
-                .setTopColorRes(R.color.colorPrimary)
+                .setTopColor(AppUtils.getColor())
                 .show();
     }
 

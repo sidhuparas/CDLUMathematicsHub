@@ -62,7 +62,8 @@ public class Timetable extends Fragment {
         setSpinnerListener();
         sharedPreferences = getActivity().getSharedPreferences("Values", Context.MODE_PRIVATE);
 
-        DialogUtils.tipMsg(getActivity(), "You can set Timetable to launch at startup. Just tap the button above beside the three dots.", 2000);
+        DialogUtils.tipMsg(getActivity(),
+                "You can set Timetable to launch at startup. Just tap the button above beside the three dots.", 2000);
         try {
             spinner.setSelectedIndex(calendar.get(Calendar.DAY_OF_WEEK) - 2);
             //ttSem.setSelectedIndex();
