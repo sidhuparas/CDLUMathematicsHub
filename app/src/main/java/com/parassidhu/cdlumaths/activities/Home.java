@@ -79,11 +79,8 @@ public class Home extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     private Fragment fragment;
-    private SharedPreferences sharedPreferences, sp;
-    private SharedPreferences.Editor editor;
     private InterstitialAd mInterstitialAd;
     private NavigationView navigationView;
-    private List<String> defaultList = new ArrayList<>();
     private FloatingActionButton fab;
 
     private String TAG = null; // For Fragment Transactions
@@ -102,13 +99,13 @@ public class Home extends AppCompatActivity
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         try {
-            sp = getSharedPreferences("colors", MODE_PRIVATE);
-            r = (sp.getInt("r", 1));
-            g = (sp.getInt("g", 87));
-            b = (sp.getInt("b", 155));
-            e = (sp.getInt("e", 0));
-            f = (sp.getInt("f", 47));
-            v = (sp.getInt("v", 108));
+            PrefsUtils.initialize(this, "colors");
+            r = PrefsUtils.getIntValue("r", 1);
+            g = PrefsUtils.getIntValue("g", 87);
+            b = PrefsUtils.getIntValue("b", 155);
+            e = PrefsUtils.getIntValue("e", 0);
+            f = PrefsUtils.getIntValue("f", 47);
+            v = PrefsUtils.getIntValue("v", 108);
 
             initializeView();
             ActionBarClr(r, g, b);
@@ -176,10 +173,9 @@ public class Home extends AppCompatActivity
     }
 
     private void setView() {
-        sharedPreferences = getSharedPreferences("Startup", MODE_PRIVATE);
-        int pos = sharedPreferences.getInt("pos", 0);
+        PrefsUtils.initialize(this, "Startup");
+        int pos = PrefsUtils.getIntValue("pos", 0);
         fragment = new QuestionPapers();
-        Log.d(TAGd, "setView: I am set");
 
         switch (pos) {
             case 0:
@@ -198,20 +194,19 @@ public class Home extends AppCompatActivity
     }
 
     private void checkForUpdates() {
-        sharedPreferences = getSharedPreferences("Values", MODE_PRIVATE);
-        String latversion = sharedPreferences.getString("version", giveVersion());
-        editor = sharedPreferences.edit();
-        int times = sharedPreferences.getInt("update", 0);
+        PrefsUtils.initialize(this, "Values");
+        String latestVersion = PrefsUtils.getValue("version", giveVersion());
+
+        int times = PrefsUtils.getIntValue("update", 0);
         if (times == 0) {
             String change = "New update comes with various new features and enhancements";
-            if (!latversion.equals(giveVersion()) && !latversion.equals("0"))
-                UpdateDialog(sharedPreferences.getString("whatsnew", change));
+            if (!latestVersion.equals(giveVersion()) && !latestVersion.equals("0"))
+                UpdateDialog(PrefsUtils.getValue("whatsnew", change));
         } else {
             if (times + 1 < 4)
-                editor.putInt("update", times + 1);
+                PrefsUtils.saveOffline("update", times + 1);
             else
-                editor.putInt("update", 0);
-            editor.apply();
+                PrefsUtils.saveOffline("update", 0);
         }
     }
 
@@ -229,23 +224,25 @@ public class Home extends AppCompatActivity
 
 
     private void getValues() {
-        sharedPreferences = getSharedPreferences("Values", MODE_PRIVATE);
-        final SharedPreferences.Editor editor = sharedPreferences.edit();
-
+        PrefsUtils.initialize(this, "Values");
         StringRequest stringRequest = new StringRequest(Request.Method.GET,
                 getResources().getString(R.string.info), new com.android.volley.Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 try {
                     JSONObject o = new JSONObject(response);
-                    editor.putString("ttenable", o.getString("tt"));
-                    editor.putString("version", o.getString("version"));
-                    editor.putString("whatsnew", o.getString("whatsnew"));
-                    editor.putString("ttmsg", o.getString("ttmsg"));
-                    editor.putString("t1", o.getString("t1"));
-                    editor.putString("t2", o.getString("t2"));
-                    editor.putString("smtext", o.getString("smtext"));
-                    editor.apply();
+                    PrefsUtils.saveOffline("ttenable", o.getString("tt"));
+                    PrefsUtils.saveOffline("version", o.getString("version"));
+                    PrefsUtils.saveOffline("whatsnew", o.getString("whatsnew"));
+                    PrefsUtils.saveOffline("ttmsg", o.getString("ttmsg"));
+
+                    PrefsUtils.saveOffline("t1", o.getString("t1"));
+                    PrefsUtils.saveOffline("t2", o.getString("t2"));
+                    PrefsUtils.saveOffline("t3", o.getString("t3"));
+                    PrefsUtils.saveOffline("t4", o.getString("t4"));
+                    PrefsUtils.saveOffline("t5", o.getString("t5"));
+
+                    PrefsUtils.saveOffline("smtext", o.getString("smtext"));
                     checkForUpdates();
                 } catch (Exception e) {
                     scheduleHandler();
@@ -298,19 +295,17 @@ public class Home extends AppCompatActivity
                             startActivity(goToMarket);
                         } catch (ActivityNotFoundException e) {
                             startActivity(new Intent(Intent.ACTION_VIEW,
-                                    Uri.parse("http://play.google.com/store/apps/details?id=" + getApplicationContext().getPackageName())));
+                                    Uri.parse("http://play.google.com/store/apps/details?id="
+                                            + getApplicationContext().getPackageName())));
                         }
                     }
                 })
                 .setPositiveButton("Not Now", new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        sharedPreferences = getSharedPreferences("Values", MODE_PRIVATE);
-                        editor = sharedPreferences.edit();
-
-                        int times = sharedPreferences.getInt("update", 0);
-                        editor.putInt("update", times + 1);
-                        editor.apply();
+                        PrefsUtils.initialize(Home.this, "Values");
+                        int times = PrefsUtils.getIntValue("update", 0);
+                        PrefsUtils.saveOffline("update", times + 1);
                     }
                 })
                 .setTitle("New Update Available!")
@@ -510,20 +505,17 @@ public class Home extends AppCompatActivity
     }
 
     private void setDefaultView() {
-        sharedPreferences = getSharedPreferences("Startup", MODE_PRIVATE);
-        final SharedPreferences.Editor editor = sharedPreferences.edit();
+        PrefsUtils.initialize(this, "Startup");
 
-        defaultList = new ArrayList<>();
         String[] list = {"Question Papers", "Offline", "Study Material", "Digital TimeTable"};
-        defaultList.addAll(Arrays.asList(list));
+        List<String> defaultList = new ArrayList<>(Arrays.asList(list));
 
         new LovelyChoiceDialog(this)
                 .setTitle("Choose Startup View")
                 .setItems(defaultList, new LovelyChoiceDialog.OnItemSelectedListener<String>() {
                     @Override
                     public void onItemSelected(int position, String item) {
-                        editor.putInt("pos", position);
-                        editor.apply();
+                        PrefsUtils.saveOffline("pos", position);
                     }
                 })
                 .setIcon(R.drawable.default_view)
