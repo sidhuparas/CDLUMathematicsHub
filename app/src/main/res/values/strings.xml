@@ -62,4 +62,5 @@
     <string name="hint_final_roll">Final Roll No.</string>
     <string name="for_example">For example,</string>
     <string name="find_result">Find Result</string>
+    <string name="timetable_disabled">TimeTable is disabled for now.  Please check back later</string>
 </resources>

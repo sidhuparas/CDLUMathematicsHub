@@ -25,6 +25,7 @@ import com.parassidhu.cdlumaths.adapters.TimeTableAdapter;
 import com.parassidhu.cdlumaths.models.TTItem;
 import com.parassidhu.cdlumaths.utils.AppUtils;
 import com.parassidhu.cdlumaths.utils.DialogUtils;
+import com.parassidhu.cdlumaths.utils.PrefsUtils;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -32,24 +33,31 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.Calendar;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 public class Timetable extends Fragment {
 
-    private MaterialSpinner spinner, ttSem;
+    @BindView(R.id.ttSpinner) MaterialSpinner spinner;
+    @BindView(R.id.ttSem) MaterialSpinner ttSem;
+    @BindView(R.id.ttList) RecyclerView ttList;
+    @BindView(R.id.disableText) TextView disableText;
+    @BindView(R.id.next) ImageView next;
+
     private Calendar calendar;
     private TimeTableAdapter adapter;
     private ArrayList<TTItem> listItems;
-    private RecyclerView ttList;
     private Handler ha;
     private Runnable ra;
     private SharedPreferences sharedPreferences;
     private SharedPreferences.Editor editor;
-    private TextView disableText;
-    private ImageView next;
     private int tt;
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_timetable, container, false);
+        View view = inflater.inflate(R.layout.fragment_timetable, container, false);
+        ButterKnife.bind(this, view);
+        return view;
     }
 
     public void onPrepareOptionsMenu(Menu menu) {
@@ -60,18 +68,17 @@ public class Timetable extends Fragment {
         super.onViewCreated(v, savedInstanceState);
         initViews();
         setSpinnerListener();
-        sharedPreferences = getActivity().getSharedPreferences("Values", Context.MODE_PRIVATE);
+        PrefsUtils.initialize(getActivity(), "Values");
 
         DialogUtils.tipMsg(getActivity(),
                 "You can set Timetable to launch at startup. Just tap the button above beside the three dots.", 2000);
         try {
             spinner.setSelectedIndex(calendar.get(Calendar.DAY_OF_WEEK) - 2);
-            //ttSem.setSelectedIndex();
         } catch (Exception e) {
             spinner.setSelectedIndex(0);
         }
 
-        int ttSemPos = sharedPreferences.getInt("sem",0);
+        int ttSemPos = PrefsUtils.getIntValue("sem",0);
         setupSemSpinner(ttSemPos);
 
         if (Integer.valueOf(clockHour()) > 14) {
@@ -145,10 +152,7 @@ public class Timetable extends Fragment {
 
     private void changeItem(Object item) {
         listItems.clear();
-        try {
-            ha.removeCallbacks(ra);
-        } catch (Exception e) {
-        }
+        removeHandler();
         getTimeTable();
         loadJSON(item.toString(),tt);
         String day = "";
@@ -176,20 +180,16 @@ public class Timetable extends Fragment {
 
     private void initViews() {
         calendar = Calendar.getInstance();
-        sharedPreferences = getActivity().getSharedPreferences("Values", Context.MODE_PRIVATE);
-
-        spinner = getActivity().findViewById(R.id.ttSpinner);
+        PrefsUtils.initialize(getActivity(), "Values");
         spinner.setItems("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday");
         listItems = new ArrayList<>();
         setHasOptionsMenu(true);
-        ttList = getActivity().findViewById(R.id.ttList);
-        next = getActivity().findViewById(R.id.next);
+
         ttList.setLayoutManager(new LinearLayoutManager(getActivity()));
         ttList.setFocusable(false);
-        disableText = getActivity().findViewById(R.id.disableText);
-        ttSem = getActivity().findViewById(R.id.ttSem);
         AppUtils.setFastScrolling(ttList);
         getActivity().setTitle("TimeTable");
+
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -201,8 +201,8 @@ public class Timetable extends Fragment {
             }
         });
 
-        ttSem.setItems(sharedPreferences.getString("t1","6th"),
-                sharedPreferences.getString("t2", "8th"));
+        ttSem.setItems(PrefsUtils.getValue("t1","6th"),
+                PrefsUtils.getValue("t2", "8th"));
     }
 
     //Return text for Toolbar
@@ -234,10 +234,7 @@ public class Timetable extends Fragment {
 
     public void onDestroy() {
         super.onDestroy();
-        try {
-            ha.removeCallbacks(ra);
-        } catch (Exception e) {
-        }
+        removeHandler();
     }
 
     //Check if Now, Next kind of Text would be shown
@@ -274,13 +271,12 @@ public class Timetable extends Fragment {
     private void adjustData() {
         try {
             calendar = Calendar.getInstance();
-            sharedPreferences = getActivity().getSharedPreferences("Values", Context.MODE_PRIVATE);
-            if (sharedPreferences.getString("ttenable", "1").equals("1")) {
+            PrefsUtils.initialize(getActivity(), "Values");
+
+            if (PrefsUtils.getValue("ttenable", "1").equals("1")) {
                 controlViews(0);
-                try {
-                    ha.removeCallbacks(ra);
-                } catch (Exception e) {
-                }
+                removeHandler();
+
                 if (isCurrent()) {
                     if (spinner.getText().toString().equals(getDay())) {
                         for (int i = 0; i < listItems.size(); i++) {
@@ -336,9 +332,15 @@ public class Timetable extends Fragment {
         }
     }
 
+    private void removeHandler() {
+        try {
+            ha.removeCallbacks(ra);
+        } catch (Exception e) { }
+    }
+
     // When TT is disabled from server, show this
     private String whyTTisDisabled(){
-        return sharedPreferences.getString("ttmsg","Developer Paras has messed up with something, I guess :(");
+        return PrefsUtils.getValue("ttmsg","Developer Paras has messed up with something, I guess :(");
     }
 
     //0 means TT is ENABLED, 1 means DISABLED
@@ -468,7 +470,7 @@ public class Timetable extends Fragment {
 
             RequestQueue requestQueue = Volley.newRequestQueue(getActivity());
             requestQueue.add(stringRequest);
-        } catch (Exception e) {
+        } catch (Exception ignored) {
         }
     }
 
