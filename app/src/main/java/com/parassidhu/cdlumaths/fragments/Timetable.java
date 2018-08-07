@@ -8,6 +8,7 @@ import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.View;
@@ -55,6 +56,7 @@ public class Timetable extends Fragment {
     private Runnable ra;
     private SharedPreferences sharedPreferences;
     private SharedPreferences.Editor editor;
+    private String TAG = "TimeTableLog";
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -79,8 +81,8 @@ public class Timetable extends Fragment {
         int ttSemPos = PrefsUtils.getIntValue("sem", 0);
         setupSemSpinner(ttSemPos);
 
-        // If time is above 2 PM
-        if (Integer.valueOf(clockHour()) > 14) {
+        // If time is above 3 PM
+        if (Integer.valueOf(clockHour()) > 15) {
             // If it's not Sunday
             if (calendar.get(Calendar.DAY_OF_WEEK) != Calendar.SUNDAY) {
                 int selectedIndex = ttDay.getSelectedIndex();
@@ -89,6 +91,7 @@ public class Timetable extends Fragment {
                 if (selectedIndex != ttDay.getItems().size() - 1) {
                     // Increment the selected index by one
                     ttDay.setSelectedIndex(selectedIndex + 1);
+                    selectedIndex = ttDay.getSelectedIndex();
                     changeItem(ttDay.getItems().get(selectedIndex));
                 } else {
                     // Set spinner to first item
@@ -100,7 +103,7 @@ public class Timetable extends Fragment {
                 changeItem(getDay());
             }
         } else {
-            // Time is below 2 PM
+            // Time is below 3 PM
             changeItem(getDay());
         }
     }
@@ -261,7 +264,7 @@ public class Timetable extends Fragment {
         String currentHour = String.valueOf(i);
         if (currentHour.equals("0"))
             currentHour = "12";
-        String time = "";
+        String time;
         if (currentHour.equals("12"))
             time = Integer.valueOf(currentHour) + ":00 - " + "01:00";
         else
@@ -276,7 +279,7 @@ public class Timetable extends Fragment {
 
     //Check if Now, Next kind of Text would be shown
     private boolean isCurrent() {
-        return ttDay.getText().toString().equals(getDay()) && Integer.valueOf(clockHour()) <= 14 &&
+        return ttDay.getText().toString().equals(getDay()) && Integer.valueOf(clockHour()) <= 15 &&
                 Integer.valueOf(clockHour()) >= 9 && calendar.get(Calendar.DAY_OF_WEEK) != Calendar.SUNDAY;
     }
 
@@ -327,6 +330,8 @@ public class Timetable extends Fragment {
                         String timeStr = currentItem.getTime().substring(0, actime);
                         if (timeStr.equals("2"))
                             timeStr = "14";
+                        else if (timeStr.equals("3"))
+                            timeStr = "15";
                         int time = Integer.valueOf(timeStr);
                         int clockTimeint = Integer.valueOf(clockHour());
                         if (clockTimeint > time) {
@@ -335,21 +340,7 @@ public class Timetable extends Fragment {
                         }
                     }
 
-                    switch (listItems.size()) {
-                        case 0:
-
-                            break;
-                        case 1:
-                            if (clockHour().equals("13"))
-                                listItems.get(0).setNow("Next");
-                            else
-                                listItems.get(0).setNow("Now");
-                            break;
-                        default:
-                            listItems.get(0).setNow("Now");
-                            listItems.get(1).setNow("Next");
-                            break;
-                    }
+                    setNowNextToFinalData();
                 }
 
                 if (ttList.getAdapter() == null) {
@@ -366,6 +357,28 @@ public class Timetable extends Fragment {
             }
         } catch (Exception e) {
         }
+    }
+
+    private void setNowNextToFinalData() {
+        /*switch (listItems.size()) {
+            case 0:
+
+                break;
+            case 1:
+                if (clockHour().equals("14"))
+                    listItems.get(0).setNow("Next");
+                else
+                    listItems.get(0).setNow("Now");
+                break;
+            default:
+                listItems.get(0).setNow("Now");
+                listItems.get(1).setNow("Next");
+                break;
+        }*/
+        try {
+            listItems.get(0).setNow("Now");
+            listItems.get(1).setNow("Next");
+        }catch (Exception e){};
     }
 
     private void removeHandler() {
@@ -424,11 +437,14 @@ public class Timetable extends Fragment {
         String day = ttDay.getText().toString();
 
         listItems.clear();
-        Toast.makeText(getActivity(), list.size() + " is", Toast.LENGTH_SHORT).show();
+        Log.d("Meee", "Items: " + list.size());
         for (int i = 0; i < list.size(); i++) {
             TTItem item = list.get(i);
+            String hour = getHour(currentHour(i));
             TTItem ttItem = new TTItem(item.getTeacherName(),
-                    item.getSubName(), "", getHour(currentHour(i)));
+                    item.getSubName(), "", hour);
+
+            Log.d("", "Items: " + hour);
             listItems.add(ttItem);
         }
 
@@ -480,8 +496,10 @@ public class Timetable extends Fragment {
                                 TTItem item = new TTItem(o.getString("teacher"), o.getString("sub"),
                                         "", getHour(currentHour(i)));
                                 list.add(item);
+                                Log.d("Meee", "onResponse: Added");
                             }
                         }
+                        Log.d("Meee", "onResponse: " + list.size());
                         setTimeTable(list);
                     } catch (Exception e) {
                     }

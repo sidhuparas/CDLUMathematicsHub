@@ -375,24 +375,8 @@ public class Home extends AppCompatActivity
         fab.setBackgroundTintList(ColorStateList.valueOf(Color.rgb(r, g, b)));
         navigationView.setItemIconTintList(null);
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
-
-        final CoordinatorLayout holder = findViewById(R.id.rootLayout);
-
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close){
-            @Override
-            public void onDrawerSlide(View drawerView, float slideOffset) {
-                float scaleFactor = 7f;
-                float slideX = drawerView.getWidth() * slideOffset;
-
-                holder.setTranslationX(slideX);
-                holder.setScaleX(1 - (slideOffset / scaleFactor));
-                holder.setScaleY(1 - (slideOffset / scaleFactor));
-
-                super.onDrawerSlide(drawerView, slideOffset);
-            }
-        };
-
+                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
 
         toggle.syncState();
