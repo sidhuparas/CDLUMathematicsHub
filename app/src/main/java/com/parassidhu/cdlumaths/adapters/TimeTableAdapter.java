@@ -14,12 +14,12 @@ import com.parassidhu.cdlumaths.utils.AppUtils;
 import java.util.ArrayList;
 
 public class TimeTableAdapter extends RecyclerView.Adapter<TimeTableAdapter.ViewHolder> {
-    private ArrayList<com.parassidhu.cdlumaths.models.TTItem> TTItem;
+    private ArrayList<TTItem> TTItem;
     private Context context;
 
-    public TimeTableAdapter(Context context,ArrayList<TTItem> android_versions) {
+    public TimeTableAdapter(Context context,ArrayList<TTItem> listItems) {
         this.context = context;
-        this.TTItem = android_versions;
+        this.TTItem = listItems;
     }
 
     @Override
@@ -30,6 +30,7 @@ public class TimeTableAdapter extends RecyclerView.Adapter<TimeTableAdapter.View
     @Override
     public void onBindViewHolder(final ViewHolder viewHolder, int i) {
         TTItem currentItem = TTItem.get(i);
+
         viewHolder.now.setText(currentItem.getNow());
         viewHolder.tttime.setText(currentItem.getTime());
         viewHolder.subName.setText(currentItem.getSubName());
@@ -53,6 +54,9 @@ public class TimeTableAdapter extends RecyclerView.Adapter<TimeTableAdapter.View
                 break;
             case 4:
                 viewHolder.itemView.setBackgroundResource(R.drawable.grad_pink_red);
+                break;
+            case 5:
+                viewHolder.itemView.setBackgroundResource(R.drawable.grad_green);
                 break;
         }
 

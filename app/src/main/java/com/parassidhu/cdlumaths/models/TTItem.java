@@ -1,8 +1,8 @@
 package com.parassidhu.cdlumaths.models;
 
 public class TTItem {
-    private String TeacherName;
-    private String SubName;
+    private String teacherName;
+    private String subName;
     private String now;
     private String time;
 
@@ -17,17 +17,17 @@ public class TTItem {
     }
 
     public TTItem(String teacherName, String subName, String now, String time) {
-        TeacherName = teacherName;
-        SubName = subName;
+        this.teacherName = teacherName;
+        this.subName = subName;
         this.now = now;
         this.time = time;
     }
 
     public String getTeacherName() {
-        return TeacherName;
+        return teacherName;
     }
 
     public String getSubName() {
-        return SubName;
+        return subName;
     }
 }

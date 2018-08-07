@@ -16,6 +16,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.design.widget.AppBarLayout;
+import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.ActivityCompat;
@@ -73,6 +74,7 @@ import java.util.List;
 
 import hotchemi.android.rate.AppRate;
 
+import static com.parassidhu.cdlumaths.R.id.findanother;
 import static com.parassidhu.cdlumaths.R.id.nav_view;
 
 public class Home extends AppCompatActivity
@@ -224,13 +226,13 @@ public class Home extends AppCompatActivity
 
 
     private void getValues() {
-        PrefsUtils.initialize(this, "Values");
         StringRequest stringRequest = new StringRequest(Request.Method.GET,
                 getResources().getString(R.string.info), new com.android.volley.Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 try {
                     JSONObject o = new JSONObject(response);
+                    PrefsUtils.initialize(Home.this, "Values");
                     PrefsUtils.saveOffline("ttenable", o.getString("tt"));
                     PrefsUtils.saveOffline("version", o.getString("version"));
                     PrefsUtils.saveOffline("whatsnew", o.getString("whatsnew"));
@@ -342,6 +344,7 @@ public class Home extends AppCompatActivity
                     super.onAdLoaded();
                     if (mInterstitialAd.isLoaded()) {
                         mInterstitialAd.show();
+                        PrefsUtils.initialize(Home.this, "ad");
                         PrefsUtils.saveOffline("ad", 0);
                     }
                 }
@@ -354,6 +357,7 @@ public class Home extends AppCompatActivity
         AdRequest adRequest = new AdRequest.Builder()
                 .addTestDevice("39C695F82AC6C82B1C9874FBBDCC2D46")
                 .addTestDevice("B9849F4A3D98550C1E14D76D816CD052")
+                .addTestDevice("0A8FC7FC744BC150F4A34C86227EDD41")
                 .build();
         mInterstitialAd.loadAd(adRequest);
     }
@@ -371,8 +375,24 @@ public class Home extends AppCompatActivity
         fab.setBackgroundTintList(ColorStateList.valueOf(Color.rgb(r, g, b)));
         navigationView.setItemIconTintList(null);
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
+
+        final CoordinatorLayout holder = findViewById(R.id.rootLayout);
+
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close){
+            @Override
+            public void onDrawerSlide(View drawerView, float slideOffset) {
+                float scaleFactor = 7f;
+                float slideX = drawerView.getWidth() * slideOffset;
+
+                holder.setTranslationX(slideX);
+                holder.setScaleX(1 - (slideOffset / scaleFactor));
+                holder.setScaleY(1 - (slideOffset / scaleFactor));
+
+                super.onDrawerSlide(drawerView, slideOffset);
+            }
+        };
+
         drawer.addDrawerListener(toggle);
 
         toggle.syncState();

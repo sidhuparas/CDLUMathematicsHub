@@ -6,7 +6,7 @@
     <!--Links-->
     <string name="notices">http://downloadinformer.com/CDLU/5/notices</string>
     <string name="info">http://downloadinformer.com/CDLU/5/info</string>
-    <string name="base_timetable">http://downloadinformer.com/CDLU/5/</string>
+    <string name="base_timetable">http://downloadinformer.com/CDLU/5/timetable/</string>
     <string name="downloads">http://downloadinformer.com/CDLU/downloads.php</string>
     <string name="study">http://downloadinformer.com/CDLU/studycount.php</string>
 
