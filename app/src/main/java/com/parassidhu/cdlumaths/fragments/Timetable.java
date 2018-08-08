@@ -31,8 +31,10 @@ import com.parassidhu.cdlumaths.utils.DialogUtils;
 import com.parassidhu.cdlumaths.utils.PrefsUtils;
 
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
@@ -54,8 +56,6 @@ public class Timetable extends Fragment {
     private ArrayList<TTItem> listItems = new ArrayList<>();
     private Handler ha;
     private Runnable ra;
-    private SharedPreferences sharedPreferences;
-    private SharedPreferences.Editor editor;
     private String TAG = "TimeTableLog";
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -110,7 +110,6 @@ public class Timetable extends Fragment {
 
     private void initViews() {
         calendar = Calendar.getInstance();
-        PrefsUtils.initialize(getActivity(), "Values");
         ttDay.setItems("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday");
         setHasOptionsMenu(true);
 
@@ -187,7 +186,19 @@ public class Timetable extends Fragment {
     private void changeItem(Object item) {
         listItems.clear();
         removeHandler();
-        //getTimeTable();
+
+        // SETUP OFFLINE DATA ONCE
+        ArrayList<TTItem> defaultTimeTableData = new ArrayList<>();
+        defaultTimeTableData.add(new TTItem("--", "--","", "--"));
+
+        try {
+            ArrayList<TTItem> dataFromPreferences = parseJSON(PrefsUtils.getValue(item.toString(), "")
+                    , item.toString());
+            setTimeTable(dataFromPreferences);
+        }catch (Exception e){
+
+        }
+
         loadJSON(item.toString());
         String day = "";
         // If it's not Sunday
@@ -313,7 +324,6 @@ public class Timetable extends Fragment {
     private void adjustData() {
         try {
             calendar = Calendar.getInstance();
-            PrefsUtils.initialize(getActivity(), "Values");
 
             //TimeTable is enabled from server side
             if (PrefsUtils.getValue("ttenable", "1").equals("1")) {
@@ -360,21 +370,6 @@ public class Timetable extends Fragment {
     }
 
     private void setNowNextToFinalData() {
-        /*switch (listItems.size()) {
-            case 0:
-
-                break;
-            case 1:
-                if (clockHour().equals("14"))
-                    listItems.get(0).setNow("Next");
-                else
-                    listItems.get(0).setNow("Now");
-                break;
-            default:
-                listItems.get(0).setNow("Now");
-                listItems.get(1).setNow("Next");
-                break;
-        }*/
         try {
             listItems.get(0).setNow("Now");
             listItems.get(1).setNow("Next");
@@ -451,6 +446,10 @@ public class Timetable extends Fragment {
         adjustData();
     }
 
+    private void saveOffline(List<TTItem> list,  String response, String day){
+        PrefsUtils.saveOffline(day, response);
+        setTimeTable(list);
+    }
     /*private void setTimeTable(ArrayList<TTItem> list) {
         String day = ttDay.getText().toString();
         sharedPreferences = getActivity().getSharedPreferences(day, Context.MODE_PRIVATE);
@@ -487,20 +486,9 @@ public class Timetable extends Fragment {
                 @Override
                 public void onResponse(String response) {
                     try {
-                        JSONObject jsonObject = new JSONObject(response);
-                        JSONArray jsonArray = jsonObject.getJSONArray(day);
-                        ArrayList<TTItem> list = new ArrayList<>();
-                        for (int i = 0; i < jsonArray.length(); i++) {
-                            JSONObject o = jsonArray.getJSONObject(i);
-                            if (!o.optString("teacher").isEmpty()) {
-                                TTItem item = new TTItem(o.getString("teacher"), o.getString("sub"),
-                                        "", getHour(currentHour(i)));
-                                list.add(item);
-                                Log.d("Meee", "onResponse: Added");
-                            }
-                        }
-                        Log.d("Meee", "onResponse: " + list.size());
-                        setTimeTable(list);
+                        ArrayList<TTItem> list = parseJSON(response, day);
+                        saveOffline(list, response, day);
+                        Toast.makeText(getActivity(), "Updated", Toast.LENGTH_SHORT).show();
                     } catch (Exception e) {
                     }
                 }
@@ -513,6 +501,22 @@ public class Timetable extends Fragment {
             requestQueue.add(stringRequest);
         } catch (Exception ignored) {
         }
+    }
+
+    @NonNull
+    private ArrayList<TTItem> parseJSON(String response, String day) throws JSONException {
+        JSONObject jsonObject = new JSONObject(response);
+        JSONArray jsonArray = jsonObject.getJSONArray(day);
+        ArrayList<TTItem> list = new ArrayList<>();
+        for (int i = 0; i < jsonArray.length(); i++) {
+            JSONObject o = jsonArray.getJSONObject(i);
+            if (!o.optString("teacher").isEmpty()) {
+                TTItem item = new TTItem(o.getString("teacher"), o.getString("sub"),
+                        "", getHour(currentHour(i)));
+                list.add(item);
+            }
+        }
+        return list;
     }
 
 }
