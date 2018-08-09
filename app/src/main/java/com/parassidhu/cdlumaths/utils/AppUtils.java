@@ -30,16 +30,13 @@ import android.widget.Toast;
 
 import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdSize;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.MobileAds;
 import com.parassidhu.cdlumaths.BuildConfig;
 import com.parassidhu.cdlumaths.R;
+import com.parassidhu.cdlumaths.activities.Home;
 import com.parassidhu.cdlumaths.models.OldItem;
 import com.parassidhu.cdlumaths.services.DownloadService;
-import com.parassidhu.cdlumaths.activities.Home;
-import com.yarolegovich.lovelydialog.LovelyInfoDialog;
-import com.yarolegovich.lovelydialog.LovelyStandardDialog;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -103,11 +100,11 @@ public class AppUtils {
 
         File f = new File(path);
         File file[] = f.listFiles();
-        ArrayList arrayFiles = new ArrayList<String>();
+        ArrayList<String> arrayFiles = new ArrayList<>();
 
         if (file != null) {
-            for (int i = 0; i < file.length; i++) {
-                String fileName = file[i].getName();
+            for (File aFile : file) {
+                String fileName = aFile.getName();
                 String newName = fileName.substring(0, fileName.lastIndexOf("."));
                 arrayFiles.add(newName);
             }

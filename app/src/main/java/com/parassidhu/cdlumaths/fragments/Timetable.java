@@ -1,14 +1,11 @@
 package com.parassidhu.cdlumaths.fragments;
 
-import android.content.Context;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.View;
@@ -34,7 +31,6 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
@@ -432,14 +428,12 @@ public class Timetable extends Fragment {
         String day = ttDay.getText().toString();
 
         listItems.clear();
-        Log.d("Meee", "Items: " + list.size());
         for (int i = 0; i < list.size(); i++) {
             TTItem item = list.get(i);
             String hour = getHour(currentHour(i));
             TTItem ttItem = new TTItem(item.getTeacherName(),
                     item.getSubName(), "", hour);
 
-            Log.d("", "Items: " + hour);
             listItems.add(ttItem);
         }
 

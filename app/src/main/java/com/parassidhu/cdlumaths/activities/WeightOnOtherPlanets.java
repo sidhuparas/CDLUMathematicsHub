@@ -59,8 +59,8 @@ public class WeightOnOtherPlanets extends AppCompatActivity {
                 return false;
             }
         });
-        ArrayList androidVersions;
-        androidVersions = new ArrayList<>(prepareData());
+        ArrayList<OldItem> androidVersions;
+        androidVersions = new ArrayList<OldItem>(prepareData());
         adapter = new WOOPAdapter(this,androidVersions);
         rcl.setAdapter(adapter);
         btn.setOnClickListener(new View.OnClickListener() {
@@ -102,8 +102,8 @@ public class WeightOnOtherPlanets extends AppCompatActivity {
                     neptune = Math.round(x * 14.07);
                     pluto = Math.round(x * 0.42);
                     final RecyclerView rcl = findViewById(R.id.card_rc);
-                    ArrayList androidVersions;
-                    androidVersions = new ArrayList<>(prepareDataforPlanets());
+                    ArrayList<OldItem> androidVersions;
+                    androidVersions = new ArrayList<OldItem>(prepareDataforPlanets());
                     adapter = new WOOPAdapter(getApplicationContext(), androidVersions);
                     rcl.setAdapter(adapter);
                 }
@@ -112,8 +112,8 @@ public class WeightOnOtherPlanets extends AppCompatActivity {
         start.run();
     }
 
-    private ArrayList prepareDataforPlanets(){
-        ArrayList android_version = new ArrayList<>();
+    private ArrayList<OldItem> prepareDataforPlanets(){
+        ArrayList<OldItem> android_version = new ArrayList<>();
         for(int i=0;i<planets.length;i++){
             OldItem oldItem = new OldItem();
             switch (i){
@@ -172,11 +172,11 @@ public class WeightOnOtherPlanets extends AppCompatActivity {
         return android_version;
     }
 
-    private ArrayList prepareData(){
-        ArrayList android_version = new ArrayList<>();
-        for(int i=0;i<planets.length;i++){
+    private ArrayList<OldItem> prepareData(){
+        ArrayList<OldItem> android_version = new ArrayList<OldItem>();
+        for (String planet : planets) {
             OldItem oldItem = new OldItem();
-            oldItem.setName(planets[i]);
+            oldItem.setName(planet);
             oldItem.setImage_url(R.mipmap.ic_launcher);
             android_version.add(oldItem);
         }

@@ -97,7 +97,7 @@ public class Tools extends Fragment{
     }
 
     private ArrayList<OldItem> prepareData(){
-        ArrayList<OldItem> android_version = new ArrayList<OldItem>();
+        ArrayList<OldItem> android_version = new ArrayList<>();
         for(int i=0;i<tools.length;i++){
             OldItem oldItem = new OldItem();
             oldItem.setName(tools[i]);
