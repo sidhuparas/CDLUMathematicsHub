@@ -3,9 +3,7 @@ package com.parassidhu.cdlumaths.activities;
 import android.Manifest;
 import android.content.ActivityNotFoundException;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.res.ColorStateList;
@@ -16,7 +14,6 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.design.widget.AppBarLayout;
-import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.ActivityCompat;
@@ -25,7 +22,6 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -43,27 +39,27 @@ import com.android.volley.RequestQueue;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.crashlytics.android.Crashlytics;
 import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.InterstitialAd;
 import com.parassidhu.cdlumaths.BuildConfig;
+import com.parassidhu.cdlumaths.R;
+import com.parassidhu.cdlumaths.fragments.About;
 import com.parassidhu.cdlumaths.fragments.Notices;
 import com.parassidhu.cdlumaths.fragments.Offline;
 import com.parassidhu.cdlumaths.fragments.QuestionPapers;
-import com.parassidhu.cdlumaths.R;
 import com.parassidhu.cdlumaths.fragments.Results;
 import com.parassidhu.cdlumaths.fragments.StudyMaterial;
 import com.parassidhu.cdlumaths.fragments.Support;
 import com.parassidhu.cdlumaths.fragments.Syllabus;
 import com.parassidhu.cdlumaths.fragments.Timetable;
 import com.parassidhu.cdlumaths.fragments.Tools;
-import com.parassidhu.cdlumaths.fragments.About;
 import com.parassidhu.cdlumaths.services.DownloadService;
 import com.parassidhu.cdlumaths.utils.AppUtils;
 import com.parassidhu.cdlumaths.utils.DialogUtils;
 import com.parassidhu.cdlumaths.utils.PrefsUtils;
 import com.yarolegovich.lovelydialog.LovelyChoiceDialog;
-import com.yarolegovich.lovelydialog.LovelyInfoDialog;
 import com.yarolegovich.lovelydialog.LovelyStandardDialog;
 
 import org.json.JSONObject;
@@ -73,8 +69,8 @@ import java.util.Arrays;
 import java.util.List;
 
 import hotchemi.android.rate.AppRate;
+import io.fabric.sdk.android.Fabric;
 
-import static com.parassidhu.cdlumaths.R.id.findanother;
 import static com.parassidhu.cdlumaths.R.id.nav_view;
 
 public class Home extends AppCompatActivity
@@ -100,6 +96,10 @@ public class Home extends AppCompatActivity
         setContentView(R.layout.activity_home);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        if (!BuildConfig.DEBUG)
+        Fabric.with(this, new Crashlytics());
+
         try {
             PrefsUtils.initialize(this, "colors");
             r = PrefsUtils.getIntValue("r", 1);
