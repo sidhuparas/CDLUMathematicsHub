@@ -374,6 +374,9 @@ public class Home extends AppCompatActivity
 
         fab.setBackgroundTintList(ColorStateList.valueOf(Color.rgb(r, g, b)));
         navigationView.setItemIconTintList(null);
+        //navigationView.setItemTextColor(ColorStateList.valueOf(AppUtils.getColor()));
+        //navigationView.setItemTextColor(ColorStateList.valueOf(getResources().getColor(R.color.white)));
+        navigationView.setBackground(getResources().getDrawable(R.drawable.nav_back));
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);

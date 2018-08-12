@@ -12,7 +12,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -52,7 +51,6 @@ public class Timetable extends Fragment {
     private ArrayList<TTItem> listItems = new ArrayList<>();
     private Handler ha;
     private Runnable ra;
-    private String TAG = "TimeTableLog";
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -74,8 +72,7 @@ public class Timetable extends Fragment {
         DialogUtils.tipMsg(getActivity(),
                 "You can set Timetable to launch at startup. Just tap the button above beside the three dots.", 2000);
 
-        int ttSemPos = PrefsUtils.getIntValue("sem", 0);
-        setupSemSpinner(ttSemPos);
+        setupSemSpinner();
 
         // If time is above 3 PM
         if (Integer.valueOf(clockHour()) > 15) {
@@ -135,9 +132,12 @@ public class Timetable extends Fragment {
 
     }
 
-    private void setupSemSpinner(int position) {
-        if (ttSem.getItems().size() > position) {
-            ttSem.setSelectedIndex(position);
+    // Sets position of Semester spinner
+    private void setupSemSpinner() {
+        int semPos = PrefsUtils.getIntValue("sem", 0);
+
+        if (ttSem.getItems().size() > semPos) {
+            ttSem.setSelectedIndex(semPos);
         }
     }
 
@@ -425,8 +425,6 @@ public class Timetable extends Fragment {
     }
 
     private void setTimeTable(List<TTItem> list) {
-        String day = ttDay.getText().toString();
-
         listItems.clear();
         for (int i = 0; i < list.size(); i++) {
             TTItem item = list.get(i);
@@ -444,34 +442,6 @@ public class Timetable extends Fragment {
         PrefsUtils.saveOffline(day, response);
         setTimeTable(list);
     }
-    /*private void setTimeTable(ArrayList<TTItem> list) {
-        String day = ttDay.getText().toString();
-        sharedPreferences = getActivity().getSharedPreferences(day, Context.MODE_PRIVATE);
-        editor = sharedPreferences.edit();
-
-        String[] t1 = {"t11", "t12", "t13", "t14", "t15"};
-        String[] s1 = {"s11", "s12", "s13", "s14", "s15"};
-
-        String[] t2 = {"t21", "t22", "t23", "t24", "t25"};
-        String[] s2 = {"s21", "s22", "s23", "s24", "s25"};
-
-        switch (ttSem.getSelectedIndex()) {
-            case 0:
-                for (int i = 0; i < 5; i++) {
-                    editor.putString(t1[i], list.get(i).getTeacherName());
-                    editor.putString(s1[i], list.get(i).getSubName());
-                }
-                break;
-            default:
-                for (int i = 0; i < 5; i++) {
-                    editor.putString(t2[i], list.get(i).getTeacherName());
-                    editor.putString(s2[i], list.get(i).getSubName());
-                }
-        }
-
-        editor.apply();
-        //getTimeTable();*/
-
 
     private void loadJSON(final String day) {
         try {
@@ -482,7 +452,6 @@ public class Timetable extends Fragment {
                     try {
                         ArrayList<TTItem> list = parseJSON(response, day);
                         saveOffline(list, response, day);
-                        Toast.makeText(getActivity(), "Updated", Toast.LENGTH_SHORT).show();
                     } catch (Exception e) {
                     }
                 }
