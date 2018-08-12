@@ -22,12 +22,11 @@ import java.util.ArrayList;
 public class tsem1 extends AppCompatActivity {
 
     private final String subject_names[] = {
-            "Advanced Abstract Algebra-I",
+            "Abstract Algebra",
             "Real Analysis",
             "Mechanics",
-            "Complex Analysis-I",
-            "Ordinary Differential Equations-I",
-            "Download All"
+            "Complex Analysis",
+            "Ordinary Differential Equations"
     };
 
     @Override
@@ -65,34 +64,35 @@ public class tsem1 extends AppCompatActivity {
 
     @Override
     public boolean onContextItemSelected(MenuItem item) {
-        MyApp m = (MyApp) getApplicationContext();
-        String add="CDLU/2year/sem1/2015/";
         switch (item.getItemId()) {
             case R.id.download:
-                switch (m.hitit1()) {
-                    case 0:
-                        AppUtils.startDownload("Advanced Abstract Algebra-I (Dec 15).pdf",add+"AAA-I.pdf",this);
-                        break;
-                    case 1:
-                        AppUtils.startDownload("Real Analysis (Dec 15).pdf",add+"Real%20Analysis.pdf",this);
-                        break;
-                    case 2:
-                        AppUtils.startDownload("Mechanics (Dec 15).pdf",add+"Mechanics.pdf",this);
-                        break;
-                    case 3:
-                        AppUtils.startDownload("Complex Analysis-I (Dec 15).pdf",add+"CA.pdf",this);
-                        break;
-                    case 4:
-                        AppUtils.startDownload("Ordinary Differential Equations-I (Dec 15).pdf",add+"ODE.pdf",this);
-                        break;
-                    case 5:
-                        AppUtils.startDownload("MSc Maths 2-Year 1st Sem (Dec 15).pdf",
-                                add+"Msc%20maths%202-year%201st%20sem.pdf",this);
-                        break;
-                }
+                downloadPaper("7");
                 return true;
             default:
                 return super.onContextItemSelected(item);
+        }
+    }
+
+    private void downloadPaper(String year) {
+        MyApp m = (MyApp) getApplicationContext();
+        String add= "CDLU/sem7/201".concat(year).concat("/");
+        String yr = year.concat(").pdf");
+        switch (m.hitit1()) {
+            case 0:
+                AppUtils.startDownload("Advanced Abstract Algebra-I (Dec 1".concat(yr),add+"AAA.pdf",this);
+                break;
+            case 1:
+                AppUtils.startDownload("Real Analysis (Dec 1".concat(yr),add+"RA.pdf",this);
+                break;
+            case 2:
+                AppUtils.startDownload("Mechanics (Dec 1".concat(yr),add+"M.pdf",this);
+                break;
+            case 3:
+                AppUtils.startDownload("Complex Analysis-I (Dec 1".concat(yr),add+"CA.pdf",this);
+                break;
+            case 4:
+                AppUtils.startDownload("Ordinary Differential Equations-I (Dec 1".concat(yr),add+"ODE.pdf",this);
+                break;
         }
     }
 

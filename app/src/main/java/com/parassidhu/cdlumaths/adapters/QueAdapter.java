@@ -27,7 +27,7 @@ public class QueAdapter extends RecyclerView.Adapter<QueAdapter.ViewHolder> {
     }
 
     public int getRandomColor(int a){
-        int colors[] = {R.drawable.grad_red,R.drawable.grad_blue};
+        int colors[] = {R.drawable.grad_aqua,R.drawable.grad_orange};
         return colors[a];
     }
 

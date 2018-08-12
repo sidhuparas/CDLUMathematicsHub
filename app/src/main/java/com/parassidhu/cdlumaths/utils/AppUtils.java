@@ -44,7 +44,7 @@ import java.util.Arrays;
 
 public class AppUtils {
 
-    public static String releaseNotes = "- Added Question Papers for 1st, 4th, 7th and 10th Semesters\n" +
+    public static String releaseNotes = "- Added Question Papers for 1st, 4th, 7th, 8th and 10th Semesters\n" +
             "- Added Rename option in Offline\n" +
             "- Notifications can be expanded on Android 7.0+\n" +
             "- Some visual change in TimeTable\n" +

@@ -129,7 +129,7 @@ public class Home extends AppCompatActivity
 
             setView();
             checkBack();
-            DialogUtils.welcomeReleaseNotes(this,"What's New In This Update?", AppUtils.releaseNotes, 111);
+            DialogUtils.welcomeReleaseNotes(this,"What's New In This Update?", AppUtils.releaseNotes, 1111);
 
         } catch (Exception ex) {
             Toast.makeText(this, ex.getMessage(), Toast.LENGTH_LONG).show();
@@ -373,7 +373,7 @@ public class Home extends AppCompatActivity
         });
 
         fab.setBackgroundTintList(ColorStateList.valueOf(Color.rgb(r, g, b)));
-        navigationView.setItemIconTintList(null);
+        //navigationView.setItemIconTintList(null);
         //navigationView.setItemTextColor(ColorStateList.valueOf(AppUtils.getColor()));
         //navigationView.setItemTextColor(ColorStateList.valueOf(getResources().getColor(R.color.white)));
         navigationView.setBackground(getResources().getDrawable(R.drawable.nav_back));

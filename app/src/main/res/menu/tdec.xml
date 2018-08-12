@@ -5,6 +5,6 @@
     <item
         android:id="@+id/download"
         android:orderInCategory="100"
-        android:title="Save Offline (Dec 2015)"
+        android:title="Save Offline (Dec 2017)"
         app:showAsAction="never"/>
 </menu>

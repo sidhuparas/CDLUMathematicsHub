@@ -22,12 +22,12 @@ import java.util.ArrayList;
 public class sem8 extends AppCompatActivity {
 
     private final String subject_names[] = {
-            "Advanced Abstract Algebra-II",
+            "Advanced Abstract Algebra",
             "Measure and Integration Theory",
-            "Computer Programming",
-            "Complex Analysis-II",
-            "Ordinary Differential Equations-II",
-            "Download All"
+            "Mechanics of Solids",
+            "System Of Differential Equations",
+            "Computer Programming in Fortran 90 & 95",
+            "Methods of Applied Mathematics"
     };
  
     @Override
@@ -66,33 +66,33 @@ public class sem8 extends AppCompatActivity {
     @Override
     public boolean onContextItemSelected(MenuItem item) {
         MyApp m = (MyApp) getApplicationContext();
-        String add="CDLU/sem8/2016/";
+        String add="CDLU/sem8/2018/";
         switch (item.getItemId()) {
             case R.id.download:
                 switch (m.getit8()) {
                     case 0:
-                        AppUtils.startDownload("Advanced Abstract Algebra-II (May 16).pdf",
-                                add+"AAA2%28May16%29.pdf",this);
+                        AppUtils.startDownload("Advanced Abstract Algebra (May 18).pdf",
+                                add+"AAA.pdf",this);
                         break;
                     case 1:
-                        AppUtils.startDownload("Measure and Integration Theory (May 16).pdf",
-                                add+"MaIT%28May16%29.pdf",this);
+                        AppUtils.startDownload("Measure and Integration Theory (May 18).pdf",
+                                add+"MaIT.pdf",this);
                         break;
                     case 2:
-                        AppUtils.startDownload("Computer Programming (May 16).pdf",
-                                add+"CP%28May16%29.pdf",this);
+                        AppUtils.startDownload("Mechanics of Solids (May 18).pdf",
+                                add+"MoS.pdf",this);
                         break;
                     case 3:
-                        AppUtils.startDownload("Complex Analysis-II (May 16).pdf",
-                                add+"CA2%28May16%29.pdf",this);
+                        AppUtils.startDownload("System of Differential Equations (May 18).pdf",
+                                add+"SoDE.pdf",this);
                         break;
                     case 4:
-                        AppUtils.startDownload("Ordinary Differential Equations-II (May 16).pdf",
-                                add+"ODE2%28May16%29.pdf",this);
+                        AppUtils.startDownload("Computer Programming in FORTRAN 90 & 95 (May 18).pdf",
+                                add+"CPiF.pdf",this);
                         break;
                     case 5:
-                        AppUtils.startDownload("MSc Maths 5-Year 8th Sem (May 16).pdf",
-                                add+"MSc%20Maths%208th%20Sem%20%28May%2016%29.pdf",this);
+                        AppUtils.startDownload("Methods of Applied Mathematics (May 18).pdf",
+                                add+"MoAM.pdf",this);
                         break;
                 }
                 return true;

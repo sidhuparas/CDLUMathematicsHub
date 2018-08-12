@@ -25,7 +25,7 @@ public class sem7 extends AppCompatActivity {
             "Abstract Algebra",
             "Real Analysis",
             "Mechanics",
-            "Complex Analysis-I",
+            "Complex Analysis",
             "Ordinary Differential Equations",
             "Download All"
     };
@@ -96,7 +96,7 @@ public class sem7 extends AppCompatActivity {
                         add+"M.pdf",this);
                 break;
             case 3:
-                AppUtils.startDownload("Complex Analysis-I (Dec 1".concat(yr),
+                AppUtils.startDownload("Complex Analysis (Dec 1".concat(yr),
                         add+"CA.pdf",this);
                 break;
             case 4:
@@ -113,29 +113,30 @@ public class sem7 extends AppCompatActivity {
     private void downloadOldPaper(String year){
         MyApp m = (MyApp) getApplicationContext();
         String add= "CDLU/sem7/201".concat(year).concat("/");
+        String yr = year.concat(").pdf");
         switch (m.getit7()) {
             case 0:
-                AppUtils.startDownload("Advanced Abstract Algebra (Dec 1".concat(").pdf"),
+                AppUtils.startDownload("Advanced Abstract Algebra (Dec 1".concat(yr),
                         add+"1AAA%28Dec15%29.pdf",this);
                 break;
             case 1:
-                AppUtils.startDownload("Real Analysis 5 (Dec 1".concat(").pdf"),
+                AppUtils.startDownload("Real Analysis 5 (Dec 1".concat(yr),
                         add+"2RA5%28Dec15%29.pdf",this);
                 break;
             case 2:
-                AppUtils.startDownload("Mechanics (Dec 1".concat(").pdf"),
+                AppUtils.startDownload("Mechanics (Dec 1".concat(yr),
                         add+"3Mech%28Dec15%29.pdf",this);
                 break;
             case 3:
-                AppUtils.startDownload("Complex Analysis-I (Dec 1".concat(").pdf"),
+                AppUtils.startDownload("Complex Analysis-I (Dec 1".concat(yr),
                         add+"4CA1%28Dec15%29.pdf",this);
                 break;
             case 4:
-                AppUtils.startDownload("Ordinary Differential Equations (Dec 1".concat(").pdf"),
+                AppUtils.startDownload("Ordinary Differential Equations (Dec 1".concat(yr),
                         add+"5ODE5%28Dec15%29.pdf",this);
                 break;
             case 5:
-                AppUtils.startDownload("Complete Sem 7th (Dec 1".concat(").pdf"),
+                AppUtils.startDownload("Complete Sem 7th (Dec 1".concat(yr),
                         add+"Complete%20Sem%207%20%28Dec15%29.pdf",this);
                 break;
         }

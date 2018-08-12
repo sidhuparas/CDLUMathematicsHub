@@ -22,12 +22,12 @@ import java.util.ArrayList;
 public class tsem2 extends AppCompatActivity {
 
     private final String subject_names[] = {
-            "Advanced Abstract Algebra-II",
+            "Advanced Abstract Algebra",
             "Measure and Integration Theory",
-            "Computer Programming",
-            "Complex Analysis-II",
-            "Ordinary Differential Equations-II",
-            "Download All"
+            "Mechanics of Solids",
+            "System Of Differential Equations",
+            "Computer Programming in Fortran 90 & 95",
+            "Methods of Applied Mathematics"
     };
 
     @Override
@@ -64,60 +64,44 @@ public class tsem2 extends AppCompatActivity {
 
     @Override
     public boolean onContextItemSelected(MenuItem item) {
-        MyApp m = (MyApp) getApplicationContext();
-        String add="CDLU/2year/sem2/2015/";
-        String add2="CDLU/2year/sem2/2016/";
         switch (item.getItemId()) {
             case R.id.download:
-                switch (m.hitit2()) {
-                    case 0:
-                        AppUtils.startDownload("Advanced Abstract Algebra-II (May 15).pdf",add+"AAA-II.pdf",this);
-                        break;
-                    case 1:
-                        AppUtils.startDownload("Measure and Integration Theory (May 15).pdf",add+"MaIT.pdf",this);
-                        break;
-                    case 2:
-                        AppUtils.startDownload("Computer Programming (May 15).pdf",add+"Computer%20Programming.pdf",this);
-                        break;
-                    case 3:
-                        AppUtils.startDownload("Complex Analysis-II (May 15).pdf",add+"Complex%20Analyis-II.pdf",this);
-                        break;
-                    case 4:
-                        AppUtils.startDownload("Ordinary Differential Equations-II (May 15).pdf",add+"ODE-II.pdf",this);
-                        break;
-                    case 5:
-                        AppUtils.startDownload("MSc Maths 2-Year 2nd Sem (May 15).pdf",
-                                add+"MSc%20maths%202-year%202nd%20sem%20%2815%29.pdf",this);
-                        break;
-                }
-                return true;
-
-            case R.id.download2:
-                switch (m.hitit2()) {
-                    case 0:
-                        AppUtils.startDownload("Advanced Abstract Algebra-II (May 16).pdf",add2+"AAA-II.pdf",this);
-                        break;
-                    case 1:
-                        AppUtils.startDownload("Measure and Integration Theory (May 16).pdf",add2+"MaIT.pdf",this);
-                        break;
-                    case 2:
-                        AppUtils.startDownload("Computer Programming (May 16).pdf",add2+"CP.pdf",this);
-                        break;
-                    case 3:
-                        AppUtils.startDownload("Complex Analysis-II (May 16).pdf",add2+"CA.pdf",this);
-                        break;
-                    case 4:
-                        AppUtils.startDownload("Ordinary Differential Equations-II (May 16).pdf",
-                                add2+"ODE-II.pdf",this);
-                        break;
-                    case 5:
-                        AppUtils.startDownload("MSc Maths 2-Year 2nd Sem (May 16).pdf",
-                                add2+"MSc%20maths%202-year%202nd%20sem.pdf",this);
-                        break;
-                }
+                downloadPaper("8");
                 return true;
             default:
                 return super.onContextItemSelected(item);
+        }
+    }
+
+    private void downloadPaper(String year) {
+        MyApp m = (MyApp) getApplicationContext();
+        String add2="CDLU/2year/sem2/201".concat(year).concat("/");
+        String yr = year.concat(").pdf");
+        switch (m.hitit2()) {
+            case 0:
+                AppUtils.startDownload("Advanced Abstract Algebra-II (May 1".concat(yr),
+                        add2+"AAA.pdf",this);
+                break;
+            case 1:
+                AppUtils.startDownload("Measure and Integration Theory (May 1".concat(yr),
+                        add2+"MaIT.pdf",this);
+                break;
+            case 2:
+                AppUtils.startDownload("Mechanics of Solids (May 1".concat(yr),
+                        add2+"MoS.pdf",this);
+                break;
+            case 3:
+                AppUtils.startDownload("System Of Differential Equations (May 1".concat(yr),
+                        add2+"SoDE.pdf",this);
+                break;
+            case 4:
+                AppUtils.startDownload("Computer Programming in Fortran 90 & 95 (May 1".concat(yr),
+                        add2+"CPiF.pdf",this);
+                break;
+            case 5:
+                AppUtils.startDownload("Methods of Applied Mathematics (May 1".concat(yr),
+                        add2+"MoAM.pdf",this);
+                break;
         }
     }
 
