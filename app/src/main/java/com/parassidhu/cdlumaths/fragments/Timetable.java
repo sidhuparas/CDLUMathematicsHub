@@ -6,6 +6,7 @@ import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.View;
@@ -185,13 +186,13 @@ public class Timetable extends Fragment {
 
         // SETUP OFFLINE DATA ONCE
         ArrayList<TTItem> defaultTimeTableData = new ArrayList<>();
-        defaultTimeTableData.add(new TTItem("--", "--","", "--"));
+        defaultTimeTableData.add(new TTItem("--", "--", "", "--"));
 
         try {
             ArrayList<TTItem> dataFromPreferences = parseJSON(PrefsUtils.getValue(item.toString(), "")
                     , item.toString());
             setTimeTable(dataFromPreferences);
-        }catch (Exception e){
+        } catch (Exception e) {
 
         }
 
@@ -286,7 +287,27 @@ public class Timetable extends Fragment {
 
     //Check if Now, Next kind of Text would be shown
     private boolean isCurrent() {
-        return ttDay.getText().toString().equals(getDay()) && Integer.valueOf(clockHour()) <= 15 &&
+      /*  int time;
+        if (listItems.size() > 0) {
+            time = Integer.valueOf(listItems.get(listItems.size() - 1).getTime()) + 1;
+            if (time == 2)
+                time = 14;
+            else if (time == 3)
+                time = 15;
+        } else
+            time = 15;*/
+        TTItem currentItem = listItems.get(listItems.size()-1);
+
+        int actime = currentItem.getTime().indexOf(":");
+        String timeStr = currentItem.getTime().substring(0, actime);
+        if (timeStr.equals("2"))
+            timeStr = "14";
+        else if (timeStr.equals("3"))
+            timeStr = "15";
+        int time = Integer.valueOf(timeStr);
+
+        return ttDay.getText().toString().equals(getDay()) &&
+                Integer.valueOf(clockHour()) <= time &&
                 Integer.valueOf(clockHour()) >= 9 && calendar.get(Calendar.DAY_OF_WEEK) != Calendar.SUNDAY;
     }
 
@@ -328,7 +349,6 @@ public class Timetable extends Fragment {
 
                 // If to show Now, Next kind of things
                 if (isCurrent()) {
-
                     for (int i = 0; i < listItems.size(); i++) {
                         TTItem currentItem = listItems.get(i);
 
@@ -340,6 +360,8 @@ public class Timetable extends Fragment {
                             timeStr = "15";
                         int time = Integer.valueOf(timeStr);
                         int clockTimeint = Integer.valueOf(clockHour());
+
+                        Log.d("TT", "Time: " + timeStr);
                         if (clockTimeint > time) {
                             listItems.remove(i);
                             i--;
@@ -369,7 +391,9 @@ public class Timetable extends Fragment {
         try {
             listItems.get(0).setNow("Now");
             listItems.get(1).setNow("Next");
-        }catch (Exception e){};
+        } catch (Exception e) {
+        }
+        ;
     }
 
     private void removeHandler() {
@@ -438,7 +462,7 @@ public class Timetable extends Fragment {
         adjustData();
     }
 
-    private void saveOffline(List<TTItem> list,  String response, String day){
+    private void saveOffline(List<TTItem> list, String response, String day) {
         PrefsUtils.saveOffline(day, response);
         setTimeTable(list);
     }
@@ -457,7 +481,8 @@ public class Timetable extends Fragment {
                 }
             }, new com.android.volley.Response.ErrorListener() {
                 @Override
-                public void onErrorResponse(VolleyError error) { }
+                public void onErrorResponse(VolleyError error) {
+                }
             });
 
             RequestQueue requestQueue = Volley.newRequestQueue(getActivity());

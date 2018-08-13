@@ -75,23 +75,28 @@ public class tsem1 extends AppCompatActivity {
 
     private void downloadPaper(String year) {
         MyApp m = (MyApp) getApplicationContext();
-        String add= "CDLU/sem7/201".concat(year).concat("/");
+        String add= "CDLU/2year/sem1/201".concat(year).concat("/");
         String yr = year.concat(").pdf");
         switch (m.hitit1()) {
             case 0:
-                AppUtils.startDownload("Advanced Abstract Algebra-I (Dec 1".concat(yr),add+"AAA.pdf",this);
+                AppUtils.startDownload("Abstract Algebra (Dec 1".concat(yr),
+                        add+"AA.pdf",this);
                 break;
             case 1:
-                AppUtils.startDownload("Real Analysis (Dec 1".concat(yr),add+"RA.pdf",this);
+                AppUtils.startDownload("Real Analysis (Dec 1".concat(yr),
+                        add+"RA.pdf",this);
                 break;
             case 2:
-                AppUtils.startDownload("Mechanics (Dec 1".concat(yr),add+"M.pdf",this);
+                AppUtils.startDownload("Mechanics (Dec 1".concat(yr),
+                        add+"M.pdf",this);
                 break;
             case 3:
-                AppUtils.startDownload("Complex Analysis-I (Dec 1".concat(yr),add+"CA.pdf",this);
+                AppUtils.startDownload("Complex Analysis (Dec 1".concat(yr),
+                        add+"CA.pdf",this);
                 break;
             case 4:
-                AppUtils.startDownload("Ordinary Differential Equations-I (Dec 1".concat(yr),add+"ODE.pdf",this);
+                AppUtils.startDownload("Ordinary Differential Equations (Dec 1".concat(yr),
+                        add+"ODE.pdf",this);
                 break;
         }
     }

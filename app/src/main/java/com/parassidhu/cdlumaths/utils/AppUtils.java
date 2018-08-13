@@ -45,11 +45,12 @@ import java.util.Arrays;
 public class AppUtils {
 
     public static String releaseNotes = "- Added Question Papers for 1st, 4th, 7th, 8th and 10th Semesters\n" +
+            "- New Design For Home Screen, Syllabus and Results\n" +
+            "- Added TimeTable for complete 5-Year course" +
             "- Added Rename option in Offline\n" +
             "- Notifications can be expanded on Android 7.0+\n" +
             "- Some visual change in TimeTable\n" +
             "- Under the hood performance improvements\n" +
-            "- New Design For Home Screen, Syllabus and Results\n" +
             "- Press and hold offline items to bulk delete" ;
 
     public static void setOptVisibility(Menu menu, boolean sorted, boolean defaultview) {

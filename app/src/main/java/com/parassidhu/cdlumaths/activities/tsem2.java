@@ -79,7 +79,7 @@ public class tsem2 extends AppCompatActivity {
         String yr = year.concat(").pdf");
         switch (m.hitit2()) {
             case 0:
-                AppUtils.startDownload("Advanced Abstract Algebra-II (May 1".concat(yr),
+                AppUtils.startDownload("Advanced Abstract Algebra (May 1".concat(yr),
                         add2+"AAA.pdf",this);
                 break;
             case 1:
