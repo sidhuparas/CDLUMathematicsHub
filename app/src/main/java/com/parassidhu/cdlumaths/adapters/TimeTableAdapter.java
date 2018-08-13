@@ -36,24 +36,24 @@ public class TimeTableAdapter extends RecyclerView.Adapter<TimeTableAdapter.View
         viewHolder.subName.setText(currentItem.getSubName());
         viewHolder.teacherName.setText(currentItem.getTeacherName());
 
-        AppUtils.setFont(context,viewHolder.subName,"graduate.ttf");
-        AppUtils.setFont(context,viewHolder.teacherName,"graduate.ttf");
+        AppUtils.setFont(context,viewHolder.subName,"proximanovaregular.ttf");
+        AppUtils.setFont(context,viewHolder.teacherName,"proximanovaregular.ttf");
 
         switch (i) {
             case 0:
-                viewHolder.itemView.setBackgroundResource(R.drawable.grad_dark_green);
+                viewHolder.itemView.setBackgroundResource(R.drawable.grad_sun);
                 break;
             case 1:
-                viewHolder.itemView.setBackgroundResource(R.drawable.grad_blue);
+                viewHolder.itemView.setBackgroundResource(R.drawable.grad_pink_red);
                 break;
             case 2:
                 viewHolder.itemView.setBackgroundResource(R.drawable.grad_red);
                 break;
             case 3:
-                viewHolder.itemView.setBackgroundResource(R.drawable.grad_sun);
+                viewHolder.itemView.setBackgroundResource(R.drawable.grad_dark_green);
                 break;
             case 4:
-                viewHolder.itemView.setBackgroundResource(R.drawable.grad_pink_red);
+                viewHolder.itemView.setBackgroundResource(R.drawable.grad_blue);
                 break;
             case 5:
                 viewHolder.itemView.setBackgroundResource(R.drawable.grad_green);
