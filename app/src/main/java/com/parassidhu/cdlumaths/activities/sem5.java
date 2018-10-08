@@ -27,20 +27,19 @@ public class sem5 extends AppCompatActivity {
             "Numerical Methods",
             "Methods of Applied Mathematics",
             "Computer Networks and Data Communication",
-            "Object-Oriented Programming With C++",
-            "Download All"
+            "Object-Oriented Programming With C++"
     };
-    
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sem5);
         setupView();
         initViews();
-        
+
         AppUtils.renderTheme(this);
         AdView adView = this.findViewById(R.id.adView);
-        AppUtils.displayAds(this,adView);
+        AppUtils.displayAds(this, adView);
 
         final RecyclerView rcl = findViewById(R.id.card_recycler_view);
         ItemClickSupport.addTo(rcl).setOnItemClickListener(new ItemClickSupport.OnItemClickListener() {
@@ -51,7 +50,8 @@ public class sem5 extends AppCompatActivity {
                     m.getClickSem5(position);
                     registerForContextMenu(rcl.findFocus());
                     openContextMenu(v);
-                }catch (Exception ex){}
+                } catch (Exception ex) {
+                }
             }
         });
     }
@@ -61,15 +61,14 @@ public class sem5 extends AppCompatActivity {
                                     ContextMenu.ContextMenuInfo menuInfo) {
         super.onCreateContextMenu(menu, v, menuInfo);
         MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.sem5,menu);
+        inflater.inflate(R.menu.sem5, menu);
     }
 
     @Override
     public boolean onContextItemSelected(MenuItem item) {
         MyApp m = (MyApp) getApplicationContext();
-        String add="CDLU/sem5/2015/";
-        String n = "CDLU/sem5/2016/";
-        int timeStamp = (int)System.currentTimeMillis();
+        String add = "CDLU/sem5/2015/";
+        int timeStamp = (int) System.currentTimeMillis();
         switch (item.getItemId()) {
             case R.id.download:
                 switch (m.getit5()) {
@@ -103,34 +102,44 @@ public class sem5 extends AppCompatActivity {
                         break;
                 }
                 return true;
+
             case R.id.download2:
-                
-                switch (m.getit5()) {
-                    case 0:
-                        AppUtils.startDownload("Real Analysis (Dec 16).pdf", n + "RA.pdf", this);
-                        break;
-                    case 1:
-                        AppUtils.startDownload("Groups and Rings (Dec 16).pdf", n + "GR.pdf", this);
-                        break;
-                    case 2:
-                        AppUtils.startDownload("Numerical Methods (Dec 16).pdf", n + "NM.pdf", this);
-                        break;
-                    case 3:
-                        AppUtils.startDownload("Methods of Applied Mathematics (Dec 16).pdf", n + "MAM.pdf", this);
-                        break;
-                    case 4:
-                        AppUtils.startDownload("Computer Networks and Data Communication (Dec 16).pdf", n + "CNDC.pdf", this);
-                        break;
-                    case 5:
-                        AppUtils.startDownload("Object-Oriented Programming With C++ (Dec 16).pdf", n + "OOPC.pdf", this);
-                        break;
-                    case 6:
-                        AppUtils.startDownload("MSc Maths 5-Year 5th Sem (Dec 16).pdf", n + "ALL.pdf", this);
-                        break;
-                }
+                downloadQuestionPapers(m, "6"); //2016
+                return true;
+
+            case R.id.download3:
+                downloadQuestionPapers(m, "7");
                 return true;
             default:
                 return super.onContextItemSelected(item);
+        }
+    }
+
+    private void downloadQuestionPapers(MyApp m, String year) {
+        String path = "CDLU/sem5/201" + year + "/";
+
+        switch (m.getit5()) {
+            case 0:
+                AppUtils.startDownload("Real Analysis (Dec 1"+ year + ").pdf", path + "RA.pdf", this);
+                break;
+            case 1:
+                AppUtils.startDownload("Groups and Rings (Dec 1"+ year + ").pdf", path + "GR.pdf", this);
+                break;
+            case 2:
+                AppUtils.startDownload("Numerical Methods (Dec 1"+ year + ").pdf", path + "NM.pdf", this);
+                break;
+            case 3:
+                AppUtils.startDownload("Methods of Applied Mathematics (Dec 1"+ year + ").pdf", path + "MAM.pdf", this);
+                break;
+            case 4:
+                AppUtils.startDownload("Computer Networks and Data Communication (Dec 1"+ year + ").pdf", path + "CNDC.pdf", this);
+                break;
+            case 5:
+                AppUtils.startDownload("Object-Oriented Programming With C++ (Dec 1"+ year + ").pdf", path + "OOPC.pdf", this);
+                break;
+            case 6:
+                AppUtils.startDownload("MSc Maths 5-Year 5th Sem (Dec 1"+ year + ").pdf", path + "ALL.pdf", this);
+                break;
         }
     }
 
@@ -140,11 +149,11 @@ public class sem5 extends AppCompatActivity {
         acb.setDisplayHomeAsUpEnabled(true);
         acb.setTitle("Choose Subject");
     }
-    
-    private void initViews(){
+
+    private void initViews() {
         RecyclerView recyclerView = findViewById(R.id.card_recycler_view);
         recyclerView.setHasFixedSize(true);
-        RecyclerView.LayoutManager layoutManager = new GridLayoutManager(getApplicationContext(),2);
+        RecyclerView.LayoutManager layoutManager = new GridLayoutManager(getApplicationContext(), 2);
         recyclerView.setLayoutManager(layoutManager);
 
         QueAdapter adapter = new QueAdapter(getApplicationContext(),
