@@ -73,8 +73,6 @@ public class StudyMaterial extends Fragment {
     private SharedPreferences.Editor editor;
     private TextView smtext;
 
-    private LinearLayout suggestMaterial;
-    private Button suggest;
 
     public void onPrepareOptionsMenu(Menu menu) {
         AppUtils.setOptVisibility(menu, false, true);
@@ -107,8 +105,6 @@ public class StudyMaterial extends Fragment {
         progressBar = getActivity().findViewById(R.id.progressBar);
         smtext = getActivity().findViewById(R.id.welcome);
         editor = sharedPreferences.edit();
-        suggestMaterial = getActivity().findViewById(R.id.suggestMaterial);
-        suggest = getActivity().findViewById(R.id.suggest);
 
         //Set spinner items
         course.setItems("5-Years", "2-Years");
@@ -126,7 +122,6 @@ public class StudyMaterial extends Fragment {
         });
 
         progressBar.setVisibility(View.GONE);
-        suggestMaterial.setVisibility(View.GONE);
 
         //This code enables the ability to don't show "What's new in Study Material" twice or more
         String smData = sharedPreferences.getString("smtext", "Study Material is newly launched feature so not much content will be available for now. But we're adding new material very soon.");
@@ -137,14 +132,6 @@ public class StudyMaterial extends Fragment {
             editor.putString("smdataold", smData);
             editor.apply();
         }
-
-        suggest.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(getActivity(),Feedback.class);
-                startActivity(i);
-            }
-        });
     }
 
     private void updateList(int position) {
@@ -248,7 +235,6 @@ public class StudyMaterial extends Fragment {
         try {
             progressBar.setVisibility(View.VISIBLE);
             rcl.setVisibility(View.GONE);
-            suggestMaterial.setVisibility(View.GONE);
 
             StringRequest stringRequest = new StringRequest(Request.Method.GET,
                     URL, new com.android.volley.Response.Listener<String>() {
@@ -271,7 +257,6 @@ public class StudyMaterial extends Fragment {
 
                         progressBar.setVisibility(View.GONE);
                         rcl.setVisibility(View.VISIBLE);
-                        suggestMaterial.setVisibility(View.VISIBLE);
                     } catch (Exception e) {
                         try {
                             progressBar.setVisibility(View.GONE);

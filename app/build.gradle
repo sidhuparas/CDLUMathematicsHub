@@ -8,8 +8,8 @@ android {
         applicationId "com.parassidhu.cdlumaths"
         minSdkVersion 16
         targetSdkVersion 28
-        versionCode 500
-        versionName "5.0"
+        versionCode 510
+        versionName "5.1"
         multiDexEnabled true
     }
     signingConfigs {
@@ -19,6 +19,10 @@ android {
     }
     dexOptions {
         javaMaxHeapSize "20g"
+    }
+    lintOptions {
+        checkReleaseBuilds false
+        abortOnError false
     }
     buildTypes {
         debug {

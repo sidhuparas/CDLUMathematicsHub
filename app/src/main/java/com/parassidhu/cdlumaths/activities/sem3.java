@@ -30,8 +30,7 @@ public class sem3 extends AppCompatActivity {
             "Probability Distributions",
             "Structured System Analysis and Design",
             "Internet And Web Designing",
-            "Hindi",
-            "Download All"
+            "Hindi"
     };
 
     @Override
@@ -114,42 +113,48 @@ public class sem3 extends AppCompatActivity {
                 }
                 return true;
             case R.id.download2:
-                
-                switch (m.getit3()) {
-                    case 0:
-                        AppUtils.startDownload("Advanced Calculus (Dec 16).pdf",n+"AC.pdf",this);
-                        break;
-                    case 1:
-                        AppUtils.startDownload("Partial Differential Equations (Dec 16).pdf",n+"PDE.pdf",this);
-                        break;
-                    case 2:
-                        AppUtils.startDownload("Statics (Dec 16).pdf",n+"S.pdf",this);
-                        break;
-                    case 3:
-                        AppUtils.startDownload("Differential Geometry (Dec 16).pdf",n+"DG.pdf",this);
-                        break;
-                    case 4:
-                        AppUtils.startDownload("Probability Distributions (Dec 16).pdf",n+"PD.pdf",this);
-                        break;
-                    case 5:
-                        AppUtils.startDownload("Structured System Analysis and Design (Dec 16).pdf",n+"SSAD.pdf",this);
-                        break;
-                    case 6:
-                        AppUtils.startDownload("Internet And Web Designing (Dec 16).pdf",n+"IWD.pdf",this);
-                        break;
-                    case 7:
-                        AppUtils.startDownload("Hindi-I (Dec 16).pdf",n+"H.pdf",this);
-                        break;
-                    case 8:
-                        AppUtils.startDownload("Complete Sem 3 (Dec 16).pdf",n+"ALL.pdf",this);
-                        break;
-                }
+                downloadQuestionPapers("6");
+                return true;
+            case R.id.download3:
+                downloadQuestionPapers("7");
                 return true;
             default:
                 return super.onContextItemSelected(item);
         }
     }
-    
+
+    private void downloadQuestionPapers(String y) {
+        MyApp m = (MyApp)getApplicationContext();
+        String URL = "CDLU/sem3/201" + y + "/";
+
+        switch (m.getit3()) {
+            case 0:
+                AppUtils.startDownload("Advanced Calculus (Dec 1" + y + ").pdf",URL+"AC.pdf",this);
+                break;
+            case 1:
+                AppUtils.startDownload("Partial Differential Equations (Dec 1" + y + ").pdf",URL+"PDE.pdf",this);
+                break;
+            case 2:
+                AppUtils.startDownload("Statics (Dec 1" + y + ").pdf",URL+"S.pdf",this);
+                break;
+            case 3:
+                AppUtils.startDownload("Differential Geometry (Dec 1" + y + ").pdf",URL+"DG.pdf",this);
+                break;
+            case 4:
+                AppUtils.startDownload("Probability Distributions (Dec 1" + y + ").pdf",URL+"PD.pdf",this);
+                break;
+            case 5:
+                AppUtils.startDownload("Structured System Analysis and Design (Dec 1" + y + ").pdf",URL+"SSAD.pdf",this);
+                break;
+            case 6:
+                AppUtils.startDownload("Internet And Web Designing (Dec 1" + y + ").pdf",URL+"IWD.pdf",this);
+                break;
+            case 7:
+                AppUtils.startDownload("Hindi-I (Dec 1" + y + ").pdf",URL+"H.pdf",this);
+                break;
+        }
+    }
+
     public void setupView() {
         android.support.v7.app.ActionBar acb = getSupportActionBar();
         acb.setHomeButtonEnabled(true);

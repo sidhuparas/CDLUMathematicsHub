@@ -60,5 +60,12 @@
     <string name="hint_final_roll">Final Roll No.</string>
     <string name="for_example">For example,</string>
     <string name="find_result">Find Result</string>
-    <string name="timetable_disabled">TimeTable is disabled for now.  Please check back later</string>
+    <string name="timetable_disabled">TimeTable is disabled for now. Please check back later</string>
+    <string name="credits">Special Thanks to:\n
+        Anmol Kamboj\n
+        Akash Chabbra\n
+        Bhavuk Sardana\n
+        Kripal Dhull\n \n
+
+        SPECIALLY FOR 3RD SEMESTER STUDENTS:</string>
 </resources>

@@ -118,7 +118,7 @@
                android:layout_height="wrap_content"
                android:layout_below="@id/sir"
                android:layout_centerHorizontal="true"
-               android:text="SPECIALLY FOR 3RD SEMESTER STUDENTS:"
+               android:text="@string/credits"
                android:layout_marginTop="10dp"
                android:textColor="@color/black"
                android:layout_marginBottom="5dp"
