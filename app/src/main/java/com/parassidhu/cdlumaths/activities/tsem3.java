@@ -49,7 +49,7 @@ public class tsem3 extends AppCompatActivity {
                 try {
                     MyApp m = (MyApp) getApplicationContext();
                     m.getHitSem3(position);
-                    registerForContextMenu(rcl.findFocus());
+                    registerForContextMenu(recyclerView);
                     openContextMenu(v);
                 }catch (Exception ex){}
             }

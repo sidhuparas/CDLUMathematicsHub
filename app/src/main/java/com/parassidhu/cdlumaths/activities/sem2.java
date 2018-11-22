@@ -50,7 +50,7 @@ public class sem2 extends AppCompatActivity {
                 try {
                     MyApp m = (MyApp) getApplicationContext();
                     m.getClickSem2(position);
-                    registerForContextMenu(rcl.findFocus());
+                    registerForContextMenu(recyclerView);
                     openContextMenu(v);
                 }catch (Exception ex){}
             }

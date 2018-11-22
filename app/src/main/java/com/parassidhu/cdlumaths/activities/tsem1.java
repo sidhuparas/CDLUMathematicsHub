@@ -47,7 +47,7 @@ public class tsem1 extends AppCompatActivity {
                 try {
                     MyApp m = (MyApp) getApplicationContext();
                     m.getHitSem1(position);
-                    registerForContextMenu(rcl.findFocus());
+                    registerForContextMenu(recyclerView);
                     openContextMenu(v);
                 }catch (Exception ex){}
             }
