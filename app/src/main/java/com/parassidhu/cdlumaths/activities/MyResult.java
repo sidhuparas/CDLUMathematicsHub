@@ -273,7 +273,13 @@ public class MyResult extends AppCompatActivity {
         public String doInBackground(String... urls) {
             String lala = BuildConfig.FLAVOR;
             ServiceHandler sh = new ServiceHandler();
-            MyResult.this.Resultstr = sh.makeServiceCall(MyResult.this.url, 1);
+
+            try {
+                MyResult.this.Resultstr = sh.makeServiceCall(MyResult.this.url, 1);
+            }catch (Exception e) {
+                return "";
+            }
+
             if(Resultstr!=null){
                 if (MyResult.this.Resultstr.equalsIgnoreCase("[]")) {
                     return "blank";
