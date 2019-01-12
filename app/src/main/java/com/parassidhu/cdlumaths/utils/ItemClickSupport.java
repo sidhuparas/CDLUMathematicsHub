@@ -1,7 +1,7 @@
 package com.parassidhu.cdlumaths.utils;
 
 
-import android.support.v7.widget.RecyclerView;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.View;
 
 import com.parassidhu.cdlumaths.R;

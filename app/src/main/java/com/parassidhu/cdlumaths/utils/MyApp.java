@@ -1,6 +1,6 @@
 package com.parassidhu.cdlumaths.utils;
 
-import android.support.multidex.MultiDexApplication;
+import androidx.multidex.MultiDexApplication;
 
 public class MyApp extends MultiDexApplication {
     public boolean done;

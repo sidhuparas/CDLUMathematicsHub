@@ -1,9 +1,9 @@
 package com.parassidhu.cdlumaths.activities;
 
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.ContextMenu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -12,12 +12,9 @@ import android.view.View;
 import com.google.android.gms.ads.AdView;
 import com.parassidhu.cdlumaths.R;
 import com.parassidhu.cdlumaths.adapters.QueAdapter;
-import com.parassidhu.cdlumaths.models.OldItem;
 import com.parassidhu.cdlumaths.utils.AppUtils;
 import com.parassidhu.cdlumaths.utils.ItemClickSupport;
 import com.parassidhu.cdlumaths.utils.MyApp;
-
-import java.util.ArrayList;
 
 public class sem6 extends AppCompatActivity {
 
@@ -142,7 +139,7 @@ public class sem6 extends AppCompatActivity {
     }
 
     public void setupView() {
-        android.support.v7.app.ActionBar acb = getSupportActionBar();
+        androidx.appcompat.app.ActionBar acb = getSupportActionBar();
         acb.setHomeButtonEnabled(true);
         acb.setDisplayHomeAsUpEnabled(true);
         acb.setTitle("Choose Subject");

@@ -2,8 +2,8 @@ package com.parassidhu.cdlumaths.adapters;
 
 import android.content.Context;
 import android.graphics.Color;
-import android.support.annotation.NonNull;
-import android.support.v7.widget.RecyclerView;
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,7 +14,6 @@ import com.parassidhu.cdlumaths.R;
 import com.parassidhu.cdlumaths.models.OldItem;
 import com.parassidhu.cdlumaths.fragments.Offline;
 import com.parassidhu.cdlumaths.utils.AppUtils;
-import com.parassidhu.cdlumaths.utils.AnimationUtil;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;

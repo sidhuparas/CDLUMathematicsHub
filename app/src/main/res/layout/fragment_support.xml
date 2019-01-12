@@ -8,7 +8,7 @@
     android:paddingRight="16dp"
     tools:context="com.parassidhu.cdlumaths.fragments.Support">
 
-    <android.support.v4.widget.NestedScrollView
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scrollbars="none">
@@ -86,5 +86,5 @@
                 android:textSize="18sp" />
 
         </RelativeLayout>
-    </android.support.v4.widget.NestedScrollView>
+    </androidx.core.widget.NestedScrollView>
 </RelativeLayout>

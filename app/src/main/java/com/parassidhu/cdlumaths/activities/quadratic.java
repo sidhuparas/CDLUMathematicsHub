@@ -1,7 +1,7 @@
 package com.parassidhu.cdlumaths.activities;
 
-import android.support.design.widget.Snackbar;
-import android.support.v7.app.AppCompatActivity;
+import com.google.android.material.snackbar.Snackbar;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Html;
 import android.view.KeyEvent;
@@ -19,7 +19,7 @@ public class quadratic extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quadratic);
-        android.support.v7.app.ActionBar acb = getSupportActionBar();
+        androidx.appcompat.app.ActionBar acb = getSupportActionBar();
         acb.setHomeButtonEnabled(true);
         acb.setDisplayHomeAsUpEnabled(true);
         acb.setTitle("Quadratic Equation Solver");

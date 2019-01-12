@@ -6,7 +6,7 @@
     android:background="@color/white"
     tools:context="com.parassidhu.cdlumaths.fragments.Summary">
 
-    <android.support.v4.widget.NestedScrollView
+    <androidx.core.widget.NestedScrollView
         android:layout_width="wrap_content"
         android:layout_height="match_parent">
 
@@ -154,6 +154,6 @@
                 android:textColor="@color/white"
                 android:translationZ="6dp" />
         </RelativeLayout>
-    </android.support.v4.widget.NestedScrollView>
+    </androidx.core.widget.NestedScrollView>
 
 </RelativeLayout>

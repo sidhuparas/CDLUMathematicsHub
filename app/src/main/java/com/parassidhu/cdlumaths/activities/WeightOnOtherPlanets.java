@@ -2,9 +2,9 @@ package com.parassidhu.cdlumaths.activities;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
@@ -48,7 +48,7 @@ public class WeightOnOtherPlanets extends AppCompatActivity {
         EditText editText = findViewById(R.id.editText);
         editText.clearFocus();
         final Button btn = findViewById(R.id.buttoncal);
-        android.support.v7.app.ActionBar acb = getSupportActionBar();
+        androidx.appcompat.app.ActionBar acb = getSupportActionBar();
         acb.setTitle("Weight On Other Planets");
         editText.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override

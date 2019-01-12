@@ -8,7 +8,7 @@
     android:paddingRight="16dp"
     tools:context="com.parassidhu.cdlumaths.fragments.Timetable">
 
-    <android.support.v4.widget.NestedScrollView
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -75,7 +75,7 @@
                     android:textSize="16sp" />
             </FrameLayout>
 
-            <android.support.v7.widget.RecyclerView
+            <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/ttList"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -94,6 +94,6 @@
                 android:textSize="20sp"
                 android:visibility="gone" />
         </RelativeLayout>
-    </android.support.v4.widget.NestedScrollView>
+    </androidx.core.widget.NestedScrollView>
 
 </RelativeLayout>
