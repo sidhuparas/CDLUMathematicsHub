@@ -1,9 +1,12 @@
 package com.parassidhu.cdlumaths.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
+
 import android.os.Bundle;
+
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
 import android.view.ContextMenu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -20,11 +23,10 @@ public class sem9 extends AppCompatActivity {
 
     private final String subject_names[] = {
             "Topology",
-            "Advanced Mathematical Methods",
-            "Mechanics of Solids-I",
+            "Fluid Mechanics",
             "Integral Equations",
-            "Operations Research",
-            "Download All"
+            "Mathematical Statistics",
+            "Advanced Mechanics Of Solids"
     };
 
     @Override
@@ -47,7 +49,8 @@ public class sem9 extends AppCompatActivity {
                     m.getClickSem9(position);
                     registerForContextMenu(recyclerView);
                     openContextMenu(v);
-                }catch (Exception ex){}
+                } catch (Exception ex) {
+                }
             }
         });
     }
@@ -57,68 +60,48 @@ public class sem9 extends AppCompatActivity {
                                     ContextMenu.ContextMenuInfo menuInfo) {
         super.onCreateContextMenu(menu, v, menuInfo);
         MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.sem9,menu);
+        inflater.inflate(R.menu.sem9, menu);
     }
 
     @Override
     public boolean onContextItemSelected(MenuItem item) {
         MyApp m = (MyApp) getApplicationContext();
-        String add="CDLU/sem9/2015/";
-        String a ="CDLU/sem9/2016/";
+        String add = "CDLU/sem9/2015/";
+        String a = "CDLU/sem9/2016/";
         switch (item.getItemId()) {
             case R.id.download:    //December 2015
-                switch (m.getit9()) {
-                    case 0:
-                        AppUtils.startDownload("Topology (Dec 15).pdf",
-                                add+"To%28Dec15%29.pdf",this);
-                        break;
-                    case 1:
-                        AppUtils.startDownload("Advanced Mathematical Methods (Dec 15).pdf",
-                                add+"AMM%28Dec15%29.pdf",this);
-                        break;
-                    case 2:
-                        AppUtils.startDownload("Mechanics of Solids-I (Dec 15).pdf",
-                                add+"MoS1%28Dec15%29.pdf",this);
-                        break;
-                    case 3:
-                        AppUtils.startDownload("Integral Equations (Dec 15).pdf",
-                                add+"IE%28Dec15%29.pdf",this);
-                        break;
-                    case 4:
-                        AppUtils.startDownload("Operations Research (Dec 15).pdf",
-                                add+"OR%28Dec15%29.pdf",this);
-                        break;
-                    case 5:
-                        AppUtils.startDownload("MSc Maths 5-Year Sem 9th (Dec 15).pdf",
-                                add+"Complete%20Sem%209%20%28Dec%2015%29.pdf",this);
-                        break;
-                }
-                return true;
-            case R.id.download2:
-                switch (m.getit9()) {
-                    case 0:
-                        AppUtils.startDownload("Topology (Dec 16).pdf",a+"T.pdf",this);
-                        break;
-                    case 1:
-                        AppUtils.startDownload("Advanced Mathematical Methods (Dec 16).pdf",a+"AMM.pdf",this);
-                        break;
-                    case 2:
-                        AppUtils.startDownload("Mechanics of Solids-I (Dec 16).pdf",a+"MS.pdf",this);
-                        break;
-                    case 3:
-                        AppUtils.startDownload("Integral Equations (Dec 16).pdf",a+"IE.pdf",this);
-                        break;
-                    case 4:
-                        AppUtils.startDownload("Operations Research (Dec 16).pdf",a+"OR.pdf",this);
-                        break;
-                    case 5:
-                        AppUtils.startDownload("MSc Maths 5-Year Sem 9th (Dec 16).pdf",a+"ALL.pdf",this);
-                        break;
-                }
-                
+                downloadPaper("8");
                 return true;
             default:
                 return super.onContextItemSelected(item);
+        }
+    }
+
+    private void downloadPaper(String year) {
+        MyApp m = (MyApp) getApplicationContext();
+        String add = "CDLU/sem9/201".concat(year).concat("/");
+        String yr = year.concat(").pdf");
+        switch (m.getit9()) {
+            case 0:
+                AppUtils.startDownload("Topology (Dec 1".concat(yr),
+                        add + "T.pdf", this);
+                break;
+            case 1:
+                AppUtils.startDownload("Fluid Mechanics (Dec 1".concat(yr),
+                        add + "FM.pdf", this);
+                break;
+            case 2:
+                AppUtils.startDownload("Integral Equations (Dec 1".concat(yr),
+                        add + "IE.pdf", this);
+                break;
+            case 3:
+                AppUtils.startDownload("Mathematical Statistics (Dec 1".concat(yr),
+                        add + "MS.pdf", this);
+                break;
+            case 4:
+                AppUtils.startDownload("Advanced Mechanics Of Solids (Dec 1".concat(yr),
+                        add + "AMoS.pdf", this);
+                break;
         }
     }
 
@@ -129,10 +112,10 @@ public class sem9 extends AppCompatActivity {
         acb.setTitle("Choose Subject");
     }
 
-    private void initViews(){
+    private void initViews() {
         RecyclerView recyclerView = findViewById(R.id.card_recycler_view);
         recyclerView.setHasFixedSize(true);
-        RecyclerView.LayoutManager layoutManager = new GridLayoutManager(getApplicationContext(),2);
+        RecyclerView.LayoutManager layoutManager = new GridLayoutManager(getApplicationContext(), 2);
         recyclerView.setLayoutManager(layoutManager);
 
         QueAdapter adapter = new QueAdapter(getApplicationContext(),
