@@ -89,7 +89,7 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 }
 apply plugin: 'com.google.gms.google-services'
-apply plugin: 'io.fabric'
+//apply plugin: 'io.fabric'
 repositories {
     mavenCentral()
 }

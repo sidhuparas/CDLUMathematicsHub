@@ -138,7 +138,7 @@ public class Offline extends Fragment {
 
             Arrays.sort(pairs);
             for (int i = 0; i < file.length; i++) {
-                file[i] = pairs[i].f;
+                file[i] = pairs[i].getF();
                 String fileName = file[i].getName();
 
                 String newName = fileName.substring(0, fileName.lastIndexOf("."));

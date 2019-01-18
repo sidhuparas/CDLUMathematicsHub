@@ -145,7 +145,7 @@ public class SummaryResult extends AppCompatActivity {
                 int progress =pro * 100 / total;
                 if(progress>97){
                     Intent i = new Intent(SummaryResult.this,MyResult.class);
-                    i.putExtra("rollno",enquiry.get(position).getRollno());
+                    i.putExtra("rollno",enquiry.get(position).getRollNo());
                     i.putExtra("sem",sem);
                     i.putExtra("code",code);
                     i.putExtra("activity","sum");
