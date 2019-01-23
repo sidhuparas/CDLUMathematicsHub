@@ -6,7 +6,7 @@
     android:layout_height="wrap_content">
 
     <TextView
-        android:id="@+id/choose5Years"
+        android:id="@+id/choose_5Years"
         style="@style/HomeText"
         android:text="@string/fyear"
         app:layout_constraintEnd_toEndOf="parent"
@@ -14,10 +14,10 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/fiveYearsRV"
+        android:id="@+id/five_years_rv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/choose5Years"
+        android:layout_below="@id/choose_5Years"
         android:layout_marginEnd="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
@@ -26,10 +26,10 @@
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/choose5Years" />
+        app:layout_constraintTop_toBottomOf="@+id/choose_5Years" />
 
     <TextView
-        android:id="@+id/choose2Years"
+        android:id="@+id/choose_2Years"
         style="@style/HomeText"
         android:layout_marginEnd="8dp"
         android:layout_marginLeft="8dp"
@@ -40,10 +40,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/fiveYearsRV" />
+        app:layout_constraintTop_toBottomOf="@+id/five_years_rv" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/twoYearsRV"
+        android:id="@+id/two_years_rv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
@@ -53,6 +53,6 @@
         android:layout_marginTop="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/choose2Years" />
+        app:layout_constraintTop_toBottomOf="@+id/choose_2Years" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

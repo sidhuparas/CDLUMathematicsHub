@@ -20,10 +20,10 @@ import butterknife.ButterKnife;
 
 public class ResultIndividual extends Fragment {
 
-    @BindView(R.id.choose5Years) TextView choose5Years;
-    @BindView(R.id.fiveYearsRV) RecyclerView rcl5Years;
-    @BindView(R.id.choose2Years) TextView choose2Years;
-    @BindView(R.id.twoYearsRV) RecyclerView rcl2Years;
+    @BindView(R.id.choose_5Years) TextView choose5Years;
+    @BindView(R.id.five_years_rv) RecyclerView rcl5Years;
+    @BindView(R.id.choose_2Years) TextView choose2Years;
+    @BindView(R.id.two_years_rv) RecyclerView rcl2Years;
 
     private HomeAdapter adapter;
     public ResultIndividual() {}
