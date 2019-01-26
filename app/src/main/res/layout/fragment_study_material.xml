@@ -1,9 +1,10 @@
 <androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_margin="10dp"
+    android:padding="10dp"
+    android:background="@drawable/activity_back"
     android:fillViewport="true"
     tools:context="com.parassidhu.cdlumaths.fragments.StudyMaterial">
 
@@ -13,49 +14,49 @@
         android:focusableInTouchMode="true">
 
         <TextView
+            android:id="@+id/welcome"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/blue"
-            android:padding="10dp"
             android:layout_marginBottom="10dp"
-            android:id="@+id/welcome"
-            android:textSize="16sp"
+            android:background="@color/blue"
             android:elevation="3dp"
-            android:translationZ="3dp"
+            android:padding="10dp"
+            android:text="@string/study_material_placeholder"
             android:textColor="@color/white"
-            android:text="@string/study_material_placeholder">
+            android:textSize="16sp"
+            android:translationZ="3dp">
 
         </TextView>
 
         <LinearLayout
+            android:id="@+id/spinnerLayout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/welcome"
-            android:layout_centerHorizontal="true"
-            android:id="@+id/spinnerLayout">
+            android:layout_centerHorizontal="true">
 
             <com.jaredrummler.materialspinner.MaterialSpinner
                 android:id="@+id/course"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
+                android:layout_marginBottom="10dp"
                 android:elevation="5dp"
                 android:fontFamily="sans-serif-semilight"
                 android:textSize="17sp"
                 android:translationZ="5dp"
                 app:ms_arrow_tint="@color/white"
                 app:ms_background_color="@color/Orange"
-                app:ms_text_color="@color/white"
-                android:layout_marginBottom="10dp"/>
+                app:ms_text_color="@color/white" />
 
             <com.jaredrummler.materialspinner.MaterialSpinner
                 android:id="@+id/sem"
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
-                android:elevation="5dp"
-                android:fontFamily="sans-serif-semilight"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="10dp"
+                android:elevation="5dp"
+                android:fontFamily="sans-serif-semilight"
                 android:textSize="17sp"
                 android:translationZ="5dp"
                 app:ms_arrow_tint="@color/white"
@@ -64,32 +65,30 @@
         </LinearLayout>
 
         <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/materialList"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/spinnerLayout"
-            android:descendantFocusability="blocksDescendants"
-            android:id="@+id/materialList">
+            android:descendantFocusability="blocksDescendants">
 
         </androidx.recyclerview.widget.RecyclerView>
 
 
-        <fr.castorflex.android.circularprogressbar.CircularProgressBar
-            xmlns:android="http://schemas.android.com/apk/res/android"
+        <fr.castorflex.android.circularprogressbar.CircularProgressBar xmlns:android="http://schemas.android.com/apk/res/android"
             xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/progressBar"
             android:layout_width="80dp"
             android:layout_height="80dp"
-            android:indeterminate="true"
-            android:id="@+id/progressBar"
-            app:cpb_color="#FFee44"
             android:layout_centerInParent="true"
-            app:cpb_colors="@array/mycolors"
-            app:cpb_rotation_speed="1.5"
-            app:cpb_sweep_speed="1.5"
-            app:cpb_stroke_width="4dp"
-            app:cpb_min_sweep_angle="10"
+            android:indeterminate="true"
             android:visibility="visible"
+            app:cpb_color="#FFee44"
+            app:cpb_colors="@array/mycolors"
             app:cpb_max_sweep_angle="300"
-            />
+            app:cpb_min_sweep_angle="10"
+            app:cpb_rotation_speed="1.5"
+            app:cpb_stroke_width="4dp"
+            app:cpb_sweep_speed="1.5" />
     </RelativeLayout>
 
 </androidx.core.widget.NestedScrollView>

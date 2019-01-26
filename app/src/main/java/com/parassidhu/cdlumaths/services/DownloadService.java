@@ -256,8 +256,6 @@ public class DownloadService extends Service {
         output.close();
         bis.close();
 
-        //TODO: Modify and test it
-
         if (!BuildConfig.DEBUG)
         increaseDownloads();
     }

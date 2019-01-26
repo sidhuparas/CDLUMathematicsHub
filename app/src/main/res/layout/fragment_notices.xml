@@ -6,6 +6,7 @@
     android:paddingLeft="10dp"
     android:paddingRight="10dp"
     android:paddingTop="16dp"
+    android:background="@drawable/activity_back"
     tools:context="com.parassidhu.cdlumaths.fragments.Notices">
 
         <androidx.swiperefreshlayout.widget.SwipeRefreshLayout

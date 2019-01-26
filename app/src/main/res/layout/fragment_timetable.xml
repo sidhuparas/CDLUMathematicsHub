@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     android:paddingLeft="16dp"
     android:paddingRight="16dp"
+    android:background="@drawable/activity_back"
     tools:context="com.parassidhu.cdlumaths.fragments.Timetable">
 
     <androidx.core.widget.NestedScrollView
