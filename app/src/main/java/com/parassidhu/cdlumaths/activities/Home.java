@@ -265,12 +265,7 @@ public class Home extends AppCompatActivity
 
     private void scheduleHandler() {
         Handler h = new Handler();
-        h.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                getValues();
-            }
-        }, 10000);
+        h.postDelayed(() -> getValues(), 10000);
     }
 
     public void UpdateDialog(String msg) {

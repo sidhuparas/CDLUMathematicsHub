@@ -229,6 +229,7 @@ public class Timetable extends Fragment {
 
     // Returns list of valid (Odd/Even) semesters for setting in Spinner
     private List<String> getSemesters() {
+        PrefsUtils.initialize(getActivity(), "Values");
         String[] semesters = {
                 PrefsUtils.getValue("t1", "1st"),
                 PrefsUtils.getValue("t2", "3rd"),
@@ -236,7 +237,7 @@ public class Timetable extends Fragment {
                 PrefsUtils.getValue("t4", "7th"),
                 PrefsUtils.getValue("t5", "9th")
         };
-
+        Log.d("Sem", "getSemesters: " + semesters[4]);
         return Arrays.asList(semesters);
     }
 
