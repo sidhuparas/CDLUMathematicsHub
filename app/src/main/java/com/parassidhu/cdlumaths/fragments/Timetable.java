@@ -2,10 +2,12 @@ package com.parassidhu.cdlumaths.fragments;
 
 import android.os.Bundle;
 import android.os.Handler;
+
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -227,11 +229,13 @@ public class Timetable extends Fragment {
 
     // Returns list of valid (Odd/Even) semesters for setting in Spinner
     private List<String> getSemesters() {
-        String[] semesters = {PrefsUtils.getValue("t1", "1st"),
+        String[] semesters = {
+                PrefsUtils.getValue("t1", "1st"),
                 PrefsUtils.getValue("t2", "3rd"),
                 PrefsUtils.getValue("t3", "5th"),
                 PrefsUtils.getValue("t4", "7th"),
-                PrefsUtils.getValue("t5", "9th")};
+                PrefsUtils.getValue("t5", "9th")
+        };
 
         return Arrays.asList(semesters);
     }
@@ -296,7 +300,7 @@ public class Timetable extends Fragment {
                 time = 15;
         } else
             time = 15;*/
-        TTItem currentItem = listItems.get(listItems.size()-1);
+        TTItem currentItem = listItems.get(listItems.size() - 1);
 
         int actime = currentItem.getTime().indexOf(":");
         String timeStr = currentItem.getTime().substring(0, actime);

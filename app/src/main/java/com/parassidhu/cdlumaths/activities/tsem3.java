@@ -1,9 +1,12 @@
 package com.parassidhu.cdlumaths.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
+
 import android.os.Bundle;
+
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
 import android.view.ContextMenu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -20,12 +23,10 @@ public class tsem3 extends AppCompatActivity {
 
     private final String subject_names[] = {
             "Topology",
+            "Fluid Mechanics",
             "Integral Equations",
-            "Mechanics Of Solids-I",
             "Mathematical Statistics",
-            "Advanced Discrete Mathematics",
-            "Ordinary Differential Equations",
-            "Download All"
+            "Advanced Mechanics Of Solids"
     };
 
     @Override
@@ -37,7 +38,7 @@ public class tsem3 extends AppCompatActivity {
 
         AppUtils.renderTheme(this);
         final AdView adView = this.findViewById(R.id.adView);
-        AppUtils.displayAds(this,adView);
+        AppUtils.displayAds(this, adView);
 
         final RecyclerView rcl = findViewById(R.id.card_recycler_view);
         ItemClickSupport.addTo(rcl).setOnItemClickListener(new ItemClickSupport.OnItemClickListener() {
@@ -48,7 +49,8 @@ public class tsem3 extends AppCompatActivity {
                     m.getHitSem3(position);
                     registerForContextMenu(recyclerView);
                     openContextMenu(v);
-                }catch (Exception ex){}
+                } catch (Exception ex) {
+                }
             }
         });
     }
@@ -58,42 +60,45 @@ public class tsem3 extends AppCompatActivity {
                                     ContextMenu.ContextMenuInfo menuInfo) {
         super.onCreateContextMenu(menu, v, menuInfo);
         MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.tdec,menu);
+        inflater.inflate(R.menu.tsem3, menu);
     }
 
     @Override
     public boolean onContextItemSelected(MenuItem item) {
-        MyApp m = (MyApp) getApplicationContext();
-        String add="CDLU/2year/sem3/2015/";
         switch (item.getItemId()) {
             case R.id.download:
-                switch (m.hitit3()) {
-                    case 0:
-                        AppUtils.startDownload("Topology (Dec 15).pdf",add+"Topology.pdf",this);
-                        break;
-                    case 1:
-                        AppUtils.startDownload("Integral Equations (Dec 15).pdf",add+"Integral%20Equations.pdf",this);
-                        break;
-                    case 2:
-                        AppUtils.startDownload("Mechanics Of Solids-I (Dec 15).pdf",add+"Mechanics%20of%20Solids-I.pdf",this);
-                        break;
-                    case 3:
-                        AppUtils.startDownload("Mathematical Statistics (Dec 15).pdf",add+"Mathematical%20Statistics.pdf",this);
-                        break;
-                    case 4:
-                        AppUtils.startDownload("Advanced Discrete Mathematics (Dec 15).pdf",add+"Advanced%20Discrete%20Maths.pdf",this);
-                        break;
-                    case 5:
-                        AppUtils.startDownload("Ordinary Differential Equations (Dec 15).pdf",add+"ODE.pdf",this);
-                        break;
-                    case 6:
-                        AppUtils.startDownload("MSc Maths 2-Year 3rd Sem (Dec 15).pdf",
-                                add+"msc%20maths%202%20years%203rd%20sem%2012%202015.pdf",this);
-                        break;
-                }
+                downloadPaper("8");
                 return true;
             default:
                 return super.onContextItemSelected(item);
+        }
+    }
+
+    private void downloadPaper(String year) {
+        MyApp m = (MyApp) getApplicationContext();
+        String add = "CDLU/2year/sem3/201".concat(year).concat("/");
+        String yr = year.concat(").pdf");
+        switch (m.hitit3()) {
+            case 0:
+                AppUtils.startDownload("Topology 2Y (Dec 1".concat(yr),
+                        add + "T.pdf", this);
+                break;
+            case 1:
+                AppUtils.startDownload("Fluid Mechanics 2Y (Dec 1".concat(yr),
+                        add + "FM.pdf", this);
+                break;
+            case 2:
+                AppUtils.startDownload("Integral Equations 2Y (Dec 1".concat(yr),
+                        add + "IE.pdf", this);
+                break;
+            case 3:
+                AppUtils.startDownload("Mathematical Statistics 2Y (Dec 1".concat(yr),
+                        add + "MS.pdf", this);
+                break;
+            case 4:
+                AppUtils.startDownload("Advanced Mechanics Of Solids 2Y (Dec 1".concat(yr),
+                        add + "AMoS.pdf", this);
+                break;
         }
     }
 
@@ -104,10 +109,10 @@ public class tsem3 extends AppCompatActivity {
         acb.setTitle("Choose Subject");
     }
 
-    private void initViews(){
+    private void initViews() {
         RecyclerView recyclerView = findViewById(R.id.card_recycler_view);
         recyclerView.setHasFixedSize(true);
-        RecyclerView.LayoutManager layoutManager = new GridLayoutManager(getApplicationContext(),2);
+        RecyclerView.LayoutManager layoutManager = new GridLayoutManager(getApplicationContext(), 2);
         recyclerView.setLayoutManager(layoutManager);
 
         QueAdapter adapter = new QueAdapter(getApplicationContext(),

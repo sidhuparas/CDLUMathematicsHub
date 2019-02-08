@@ -7,17 +7,15 @@ import android.view.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
-import com.google.android.gms.tasks.OnCompleteListener
-import com.google.android.gms.tasks.Task
 import com.google.firebase.FirebaseApp
 import com.google.firebase.remoteconfig.FirebaseRemoteConfig
-import kotlinx.android.synthetic.main.fragment_question_papers.*
 import com.parassidhu.cdlumaths.R
 import com.parassidhu.cdlumaths.activities.*
 import com.parassidhu.cdlumaths.adapters.HomeAdapter
 import com.parassidhu.cdlumaths.utils.AppUtils
 import com.parassidhu.cdlumaths.utils.ItemClickSupport
 import kotlinx.android.synthetic.main.course_list.*
+import kotlinx.android.synthetic.main.fragment_question_papers.*
 
 class QuestionPapers : Fragment() {
 

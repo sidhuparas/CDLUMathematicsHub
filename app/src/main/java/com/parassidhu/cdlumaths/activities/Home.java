@@ -227,35 +227,27 @@ public class Home extends AppCompatActivity
 
     private void getValues() {
         StringRequest stringRequest = new StringRequest(Request.Method.GET,
-                getResources().getString(R.string.info), new com.android.volley.Response.Listener<String>() {
-            @Override
-            public void onResponse(String response) {
-                try {
-                    JSONObject o = new JSONObject(response);
-                    PrefsUtils.initialize(Home.this, "Values");
-                    PrefsUtils.saveOffline("ttenable", o.getString("tt"));
-                    PrefsUtils.saveOffline("version", o.getString("version"));
-                    PrefsUtils.saveOffline("whatsnew", o.getString("whatsnew"));
-                    PrefsUtils.saveOffline("ttmsg", o.getString("ttmsg"));
+                getResources().getString(R.string.info), response -> {
+                    try {
+                        JSONObject o = new JSONObject(response);
+                        PrefsUtils.initialize(Home.this, "Values");
+                        PrefsUtils.saveOffline("ttenable", o.getString("tt"));
+                        PrefsUtils.saveOffline("version", o.getString("version"));
+                        PrefsUtils.saveOffline("whatsnew", o.getString("whatsnew"));
+                        PrefsUtils.saveOffline("ttmsg", o.getString("ttmsg"));
 
-                    PrefsUtils.saveOffline("t1", o.getString("t1"));
-                    PrefsUtils.saveOffline("t2", o.getString("t2"));
-                    PrefsUtils.saveOffline("t3", o.getString("t3"));
-                    PrefsUtils.saveOffline("t4", o.getString("t4"));
-                    PrefsUtils.saveOffline("t5", o.getString("t5"));
+                        PrefsUtils.saveOffline("t1", o.getString("t1"));
+                        PrefsUtils.saveOffline("t2", o.getString("t2"));
+                        PrefsUtils.saveOffline("t3", o.getString("t3"));
+                        PrefsUtils.saveOffline("t4", o.getString("t4"));
+                        PrefsUtils.saveOffline("t5", o.getString("t5"));
 
-                    PrefsUtils.saveOffline("smtext", o.getString("smtext"));
-                    checkForUpdates();
-                } catch (Exception e) {
-                    scheduleHandler();
-                }
-            }
-        }, new com.android.volley.Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                scheduleHandler();
-            }
-        });
+                        PrefsUtils.saveOffline("smtext", o.getString("smtext"));
+                        checkForUpdates();
+                    } catch (Exception e) {
+                        scheduleHandler();
+                    }
+                }, error -> scheduleHandler());
 
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         requestQueue.add(stringRequest);

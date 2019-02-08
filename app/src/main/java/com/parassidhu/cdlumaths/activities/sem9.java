@@ -41,16 +41,13 @@ public class sem9 extends AppCompatActivity {
         AppUtils.displayAds(this, adView);
 
         final RecyclerView rcl = findViewById(R.id.card_recycler_view);
-        ItemClickSupport.addTo(rcl).setOnItemClickListener(new ItemClickSupport.OnItemClickListener() {
-            @Override
-            public void onItemClicked(RecyclerView recyclerView, int position, View v) {
-                try {
-                    MyApp m = (MyApp) getApplicationContext();
-                    m.getClickSem9(position);
-                    registerForContextMenu(recyclerView);
-                    openContextMenu(v);
-                } catch (Exception ex) {
-                }
+        ItemClickSupport.addTo(rcl).setOnItemClickListener((recyclerView, position, v) -> {
+            try {
+                MyApp m = (MyApp) getApplicationContext();
+                m.getClickSem9(position);
+                registerForContextMenu(recyclerView);
+                openContextMenu(v);
+            } catch (Exception ex) {
             }
         });
     }
