@@ -10,8 +10,8 @@ android {
         applicationId "com.parassidhu.cdlumaths"
         minSdkVersion 16
         targetSdkVersion 28
-        versionCode 520
-        versionName "5.2"
+        versionCode 550
+        versionName "5.5"
         multiDexEnabled true
     }
     androidExtensions {
@@ -55,7 +55,7 @@ dependencies {
     testImplementation 'junit:junit:4.12'
 
     // Google
-    implementation 'androidx.appcompat:appcompat:1.1.0-alpha01'
+    implementation 'androidx.appcompat:appcompat:1.1.0-alpha02'
     implementation 'com.google.android.material:material:1.1.0-alpha02'
     implementation 'androidx.recyclerview:recyclerview:1.1.0-alpha01'
     implementation 'androidx.cardview:cardview:1.0.0'
@@ -94,7 +94,7 @@ dependencies {
 }
 
 apply plugin: 'com.google.gms.google-services'
-//apply plugin: 'io.fabric'
+apply plugin: 'io.fabric'
 
 repositories {
     mavenCentral()

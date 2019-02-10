@@ -44,15 +44,9 @@ import java.util.Arrays;
 
 public class AppUtils {
 
-    public static String releaseNotes = "- Added Question Papers for 1st, 4th, 7th, 8th and 10th Semesters\n" +
-            "- New Design For Home Screen, Syllabus and Results\n" +
-            "- Added TimeTable for complete 5-Year course\n" +
-            "- Two new Theme Options: Pink and Dark Blue\n" +
-            "- Added Rename option in Offline\n" +
-            "- Notifications can be expanded on Android 7.0+\n" +
-            "- Some visual changes in TimeTable\n" +
-            "- Under the hood performance improvements\n" +
-            "- Press and hold offline items to bulk delete" ;
+    public static String releaseNotes = "- Added Question Papers for M.Sc. 5.9 and 2.3\n" +
+            "- Fixed TimeTable Semester Selection bug\n" +
+            "- Added Welcome Page Message\n" ;
 
     public static void setOptVisibility(Menu menu, boolean sorted, boolean defaultview) {
         MenuItem sort = menu.findItem(com.parassidhu.cdlumaths.R.id.sort);
