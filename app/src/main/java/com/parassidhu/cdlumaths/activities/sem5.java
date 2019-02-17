@@ -98,14 +98,16 @@ public class sem5 extends AppCompatActivity {
                                 add + "MSc%20Maths%205-Year%205th%20Sem.pdf", this);
                         break;
                 }
-                return true;
 
             case R.id.download2:
                 downloadQuestionPapers(m, "6"); //2016
-                return true;
 
             case R.id.download3:
                 downloadQuestionPapers(m, "7");
+
+            case R.id.download4:
+                downloadQuestionPapers(m, "8");
+
                 return true;
             default:
                 return super.onContextItemSelected(item);
