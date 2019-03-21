@@ -63,7 +63,7 @@ class QuestionPapers : Fragment() {
     }
 
     private fun fetchDeveloperMessage(){
-        FirebaseApp.initializeApp(activity)
+        FirebaseApp.initializeApp(requireActivity())
         val remoteConfig = FirebaseRemoteConfig.getInstance()
 
         val defaultValues = mapOf(
