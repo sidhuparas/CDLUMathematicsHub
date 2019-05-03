@@ -62,7 +62,7 @@ class QuestionPapers : Fragment() {
         setHasOptionsMenu(true)
     }
 
-    private fun fetchDeveloperMessage(){
+    private fun fetchDeveloperMessage() {
         FirebaseApp.initializeApp(requireActivity())
         val remoteConfig = FirebaseRemoteConfig.getInstance()
 
@@ -73,9 +73,11 @@ class QuestionPapers : Fragment() {
         remoteConfig.setDefaults(defaultValues)
 
         remoteConfig.fetch().addOnCompleteListener((activity as AppCompatActivity)) { task ->
-            if (task.isSuccessful){
+            if (task.isSuccessful) {
                 remoteConfig.activateFetched()
-                dev_msg.text = remoteConfig.getString("dev_msg")
+                dev_msg?.text = remoteConfig.getString("dev_msg")
+            } else {
+                dev_msg?.text = "Error Loading...";
             }
         }
     }

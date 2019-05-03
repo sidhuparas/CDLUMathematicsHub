@@ -10,8 +10,8 @@ android {
         applicationId "com.parassidhu.cdlumaths"
         minSdkVersion 16
         targetSdkVersion 28
-        versionCode 550
-        versionName "5.5"
+        versionCode 560
+        versionName "5.6"
         multiDexEnabled true
     }
     androidExtensions {
