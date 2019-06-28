@@ -13,4 +13,10 @@
         android:orderInCategory="100"
         android:title="Save Offline (May 2017)"
         app:showAsAction="never"/>
+
+    <item
+        android:id="@+id/may18"
+        android:orderInCategory="100"
+        android:title="Save Offline (May 2018)"
+        app:showAsAction="never"/>
 </menu>
