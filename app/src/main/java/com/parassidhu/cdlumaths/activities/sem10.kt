@@ -20,9 +20,9 @@ class sem10 : AppCompatActivity() {
     private val subject_names = arrayOf(
             "Functional Analysis",
             "Partial Differential Equations",
-            "Mechanics of Solids-II",
-            "Boundary Value Problem",
-            "Mathematical Aspect of Seismology"
+            "Mathematical Aspect of Seismology",
+            "Operations Research",
+            "Boundary Value Problems"
     )
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -46,8 +46,8 @@ class sem10 : AppCompatActivity() {
         }
     }
 
-    override fun onCreateContextMenu(menu: ContextMenu, v: View,
-                                     menuInfo: ContextMenu.ContextMenuInfo) {
+    override fun onCreateContextMenu(menu: ContextMenu?, v: View?,
+                                     menuInfo: ContextMenu.ContextMenuInfo?) {
         super.onCreateContextMenu(menu, v, menuInfo)
         val inflater = menuInflater
         inflater.inflate(R.menu.sem10, menu)
@@ -60,31 +60,12 @@ class sem10 : AppCompatActivity() {
                 "CDLU/sem10/2017/",
                 "CDLU/sem10/2019/"
         )
-        when (item.itemId) {
-            R.id.download -> {
-                when (m.getit10()) {
-                    0 -> AppUtils.startDownload("Functional Analysis (May 16).pdf",
-                            add[0] + "FA%28May16%29.pdf", this)
-                    1 -> AppUtils.startDownload("Partial Differential Equations-10 (May 16).pdf",
-                            add[0] + "PDE%28May16%29.pdf", this)
-                    2 -> AppUtils.startDownload("Mechanics of Solids-II (May 16).pdf",
-                            add[0] + "MoS%28May16%29.pdf", this)
-                    3 -> AppUtils.startDownload("Boundary Value Problem (May 16).pdf",
-                            add[0] + "BVP%28May16%29.pdf", this)
-                    4 -> AppUtils.startDownload("Mathematical Aspect of Seismology (May 16).pdf",
-                            add[0] + "MaOS%28May16%29.pdf", this)
-                }
-                return true
-            }
-            R.id.may17 -> {
-                downloadPaper(add[1], "7")
-                return true
-            }
+        return when (item.itemId) {
             R.id.may19 -> {
                 downloadPaper(add[2], "9")
-                return true
+                true
             }
-            else -> return super.onContextItemSelected(item)
+            else -> super.onContextItemSelected(item)
         }
     }
 
@@ -95,20 +76,20 @@ class sem10 : AppCompatActivity() {
                     URL + "FA.pdf", this)
             1 -> AppUtils.startDownload("Partial Differential Equations-10 (May 1$year).pdf",
                     URL + "PDE.pdf", this)
-            2 -> AppUtils.startDownload("Mechanics of Solids-II (May 1$year).pdf",
-                    URL + "MoS.pdf", this)
-            3 -> AppUtils.startDownload("Boundary Value Problem (May 1$year).pdf",
-                    URL + "BVP.pdf", this)
-            4 -> AppUtils.startDownload("Mathematical Aspect of Seismology (May 1$year).pdf",
+            2 -> AppUtils.startDownload("Mathematical Aspect of Seismology (May 1$year).pdf",
                     URL + "MaOS.pdf", this)
+            3 -> AppUtils.startDownload("Operations Research (May 1$year).pdf",
+                    URL + "OR.pdf", this)
+            4 -> AppUtils.startDownload("Boundary Value Problems (May 1$year).pdf",
+                    URL + "BVP.pdf", this)
         }
     }
 
     fun setupView() {
         val acb = supportActionBar
-        acb!!.setHomeButtonEnabled(true)
-        acb.setDisplayHomeAsUpEnabled(true)
-        acb.title = "Choose Subject"
+        acb?.setHomeButtonEnabled(true)
+        acb?.setDisplayHomeAsUpEnabled(true)
+        acb?.title = "Choose Subject"
     }
 
     private fun initViews() {

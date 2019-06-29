@@ -2,10 +2,10 @@ package com.parassidhu.cdlumaths.activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import android.view.ContextMenu
-import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
 
@@ -15,12 +15,20 @@ import com.parassidhu.cdlumaths.adapters.QueAdapter
 import com.parassidhu.cdlumaths.utils.ItemClickSupport
 import com.parassidhu.cdlumaths.utils.MyApp
 import com.parassidhu.cdlumaths.utils.AppUtils
-
-import java.net.URL
+import kotlinx.android.synthetic.main.activity_sem4.*
 
 class sem4 : AppCompatActivity() {
 
-    private val subject_names = arrayOf("Sequences and Series", "Special Functions and Integral Transforms", "Numerical Analysis", "Hydrostatics", "Elementary Inference", "Operating Systems", "Data Structures Using C", "Hindi")
+    private val subject_names = arrayOf(
+            "Sequences and Series",
+            "Special Functions and Integral Transforms",
+            "Numerical Analysis",
+            "Hydrostatics",
+            "Elementary Inference",
+            "Operating Systems",
+            "Data Structures Using C",
+            "Hindi"
+    )
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,22 +40,25 @@ class sem4 : AppCompatActivity() {
         val adView = this.findViewById<AdView>(R.id.adView)
         AppUtils.displayAds(this, adView)
 
-        val rcl = findViewById<RecyclerView>(R.id.card_recycler_view)
-        ItemClickSupport.addTo(rcl).setOnItemClickListener { recyclerView, position, v ->
+        val rcl = card_recycler_view_sem4
+
+        ItemClickSupport.addTo(card_recycler_view_sem4).setOnItemClickListener { recyclerView, position, v ->
             try {
-                val m = applicationContext as MyApp
-                m.getClickSem4(position)
+                val m = applicationContext as MyApp?
+                m?.getClickSem4(position)
                 registerForContextMenu(recyclerView)
                 openContextMenu(v)
             } catch (ex: Exception) {
+                Log.d("Reg",ex.message + ex.stackTrace.get(0) +ex.localizedMessage)
             }
         }
     }
 
-    override fun onCreateContextMenu(menu: ContextMenu, v: View,
-                                     menuInfo: ContextMenu.ContextMenuInfo) {
+    override fun onCreateContextMenu(menu: ContextMenu?, v: View?,
+                                     menuInfo: ContextMenu.ContextMenuInfo?) {
         super.onCreateContextMenu(menu, v, menuInfo)
         val inflater = menuInflater
+        Log.d("Menu","Loaded")
         inflater.inflate(R.menu.sem4, menu)
     }
 
@@ -121,7 +132,7 @@ class sem4 : AppCompatActivity() {
     }
 
     private fun initViews() {
-        val recyclerView = findViewById<RecyclerView>(R.id.card_recycler_view)
+        val recyclerView = findViewById<RecyclerView>(R.id.card_recycler_view_sem4)
         recyclerView.setHasFixedSize(true)
         val layoutManager = GridLayoutManager(applicationContext, 2)
         recyclerView.layoutManager = layoutManager
