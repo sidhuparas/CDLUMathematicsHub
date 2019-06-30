@@ -44,9 +44,8 @@ import java.util.Arrays;
 
 public class AppUtils {
 
-    public static String releaseNotes = "- Added Question Papers for M.Sc. 5.9 and 2.3\n" +
-            "- Fixed TimeTable Semester Selection bug\n" +
-            "- Added Welcome Page Message\n" ;
+    public static String releaseNotes = "- Added Question Papers for M.Sc. 5.3, 5.4, 5.9, 5.10\n" +
+            "- Updated for new session\n" ;
 
     public static void setOptVisibility(Menu menu, boolean sorted, boolean defaultview) {
         MenuItem sort = menu.findItem(com.parassidhu.cdlumaths.R.id.sort);
