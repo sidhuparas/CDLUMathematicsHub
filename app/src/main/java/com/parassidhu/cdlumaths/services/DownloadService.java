@@ -273,7 +273,7 @@ public class DownloadService extends Service {
     }
 
     private void sendIntent(Download download, int id) {
-        Intent intent = new Intent(sem1.MESSAGE_PROGRESS);
+        Intent intent = new Intent(sem1.Companion.getMESSAGE_PROGRESS());
         intent.putExtra("download", download);
         LocalBroadcastManager.getInstance(DownloadService.this).sendBroadcast(intent);
     }

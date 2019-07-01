@@ -74,10 +74,12 @@ class QuestionPapers : Fragment() {
 
         remoteConfig.fetch().addOnCompleteListener((activity as AppCompatActivity)) { task ->
             if (task.isSuccessful) {
-                remoteConfig.activateFetched()
-                dev_msg?.text = remoteConfig.getString("dev_msg")
+                remoteConfig.activate()
+                if (dev_msg!=null)
+                    dev_msg.text = remoteConfig.getString("dev_msg")
             } else {
-                dev_msg?.text = "Error Loading...";
+                if (dev_msg!=null)
+                    dev_msg.text = "Error Loading...";
             }
         }
     }

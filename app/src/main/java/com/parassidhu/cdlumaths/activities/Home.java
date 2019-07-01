@@ -486,7 +486,7 @@ public class Home extends AppCompatActivity
         } else if (id == R.id.defaultView) {
             setDefaultView();
         } else if (id == R.id.releasenotes) {
-            DialogUtils.MsgBox(this,"Release Notes", AppUtils.releaseNotes, 1001);
+            DialogUtils.MsgBox(this,"Release Notes", AppUtils.releaseNotes, 1002);
         } else if (id == R.id.theme) {
             changeThemeOptions();
         }
