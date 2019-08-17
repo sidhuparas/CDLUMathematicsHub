@@ -23,17 +23,9 @@
                     android:icon="@drawable/nav_notices"
                     android:title="Notices" />
                 <item
-                    android:id="@+id/results"
-                    android:icon="@drawable/nav_results"
-                    android:title="Results" />
-                <item
                     android:id="@+id/syll"
                     android:icon="@drawable/nav_syllabus"
                     android:title="Syllabus" />
-                <item
-                    android:id="@+id/timeicon"
-                    android:icon="@drawable/nav_time_table"
-                    android:title="Digital TimeTable" />
             </group>
         </menu>
     </item>

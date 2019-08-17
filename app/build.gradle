@@ -10,8 +10,8 @@ android {
         applicationId "com.parassidhu.cdlumaths"
         minSdkVersion 16
         targetSdkVersion 28
-        versionCode 560
-        versionName "5.6"
+        versionCode 600
+        versionName "6.0"
         multiDexEnabled true
     }
     androidExtensions {
@@ -55,16 +55,16 @@ dependencies {
     testImplementation 'junit:junit:4.12'
 
     // Google
-    implementation 'androidx.appcompat:appcompat:1.1.0-beta01'
-    implementation 'com.google.android.material:material:1.1.0-alpha07'
-    implementation 'androidx.recyclerview:recyclerview:1.1.0-alpha06'
+    implementation 'androidx.appcompat:appcompat:1.1.0-rc01'
+    implementation 'com.google.android.material:material:1.1.0-alpha09'
+    implementation 'androidx.recyclerview:recyclerview:1.1.0-beta02'
     implementation 'androidx.cardview:cardview:1.0.0'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     implementation 'androidx.multidex:multidex:2.0.1'
     implementation "androidx.exifinterface:exifinterface:1.0.0"
-    implementation 'com.google.android.gms:play-services-ads:17.2.1'
+    implementation 'com.google.android.gms:play-services-ads:18.1.1'
     implementation "androidx.browser:browser:1.0.0"
-    implementation 'androidx.constraintlayout:constraintlayout:2.0.0-beta1'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.0-beta2'
     implementation 'com.android.support:recyclerview-selection:28.0.0'
 
     implementation 'com.squareup.retrofit2:retrofit:2.4.0'
@@ -80,11 +80,11 @@ dependencies {
     implementation 'com.github.castorflex.smoothprogressbar:library-circular:1.1.0'
 
     // Firebase
-    implementation 'com.google.firebase:firebase-core:16.0.9'
-    implementation 'com.google.firebase:firebase-storage:17.0.0'
+    implementation 'com.google.firebase:firebase-core:17.0.1'
+    implementation 'com.google.firebase:firebase-storage:18.1.1'
     implementation 'com.google.firebase:firebase-crash:16.2.1'
-    implementation 'com.google.firebase:firebase-messaging:18.0.0'
-    implementation 'com.google.firebase:firebase-config:17.0.0'
+    implementation 'com.google.firebase:firebase-messaging:19.0.1'
+    implementation 'com.google.firebase:firebase-config:18.0.0'
 
     // ButterKnife
     implementation 'com.jakewharton:butterknife:10.0.0'

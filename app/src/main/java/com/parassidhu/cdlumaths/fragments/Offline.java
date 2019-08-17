@@ -484,11 +484,11 @@ public class Offline extends Fragment {
 
     private void addShortcutInOreo(String pdfName) {
         File file = new File(APP_FOLDER, pdfName + ".pdf");
-
+        Log.d("DataPath", file.getPath());
         try {
             Intent pdfIntent = new Intent(Intent.ACTION_VIEW);
             pdfIntent.setDataAndType(Uri.fromFile(file), "application/pdf");
-
+            Log.d("DataPath", Uri.fromFile(file).toString());
             if (Build.VERSION.SDK_INT > 25) {
                 ShortcutManager shortcutManager;
                 shortcutManager = getActivity().getSystemService(ShortcutManager.class);
@@ -499,6 +499,7 @@ public class Offline extends Fragment {
                         .setIcon(Icon.createWithResource(getActivity(), R.drawable.pdf))
                         .setIntent(pdfIntent)
                         .build();
+                Log.d("DataPath", pdfName);
 
                 shortcutManager.requestPinShortcut(shortcut, null);
             }

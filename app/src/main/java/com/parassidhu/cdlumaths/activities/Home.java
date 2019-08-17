@@ -189,9 +189,7 @@ public class Home extends AppCompatActivity
             case 2:
                 chooseDrawerItem(0, 2);
                 break;
-            case 3:
-                chooseDrawerItem(0, 6);
-                break;
+                default: chooseDrawerItem(0,0);
         }
     }
 
@@ -223,7 +221,6 @@ public class Home extends AppCompatActivity
         }
         return "0";
     }
-
 
     private void getValues() {
         StringRequest stringRequest = new StringRequest(Request.Method.GET,
@@ -265,37 +262,31 @@ public class Home extends AppCompatActivity
 
     private void scheduleHandler() {
         Handler h = new Handler();
-        h.postDelayed(() -> getValues(), 10000);
+        h.postDelayed(this::getValues, 10000);
     }
 
     public void UpdateDialog(String msg) {
         new LovelyStandardDialog(this)
                 .setTopColorRes(R.color.blue)
                 .setIcon(R.drawable.ic_info)
-                .setNegativeButton("Update Now", new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        Uri uri = Uri.parse("market://details?id=" + getApplicationContext().getPackageName());
-                        Intent goToMarket = new Intent(Intent.ACTION_VIEW, uri);
-                        goToMarket.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY |
-                                Intent.FLAG_ACTIVITY_NEW_DOCUMENT |
-                                Intent.FLAG_ACTIVITY_MULTIPLE_TASK);
-                        try {
-                            startActivity(goToMarket);
-                        } catch (ActivityNotFoundException e) {
-                            startActivity(new Intent(Intent.ACTION_VIEW,
-                                    Uri.parse("http://play.google.com/store/apps/details?id="
-                                            + getApplicationContext().getPackageName())));
-                        }
+                .setNegativeButton("Update Now", view -> {
+                    Uri uri = Uri.parse("market://details?id=" + getApplicationContext().getPackageName());
+                    Intent goToMarket = new Intent(Intent.ACTION_VIEW, uri);
+                    goToMarket.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY |
+                            Intent.FLAG_ACTIVITY_NEW_DOCUMENT |
+                            Intent.FLAG_ACTIVITY_MULTIPLE_TASK);
+                    try {
+                        startActivity(goToMarket);
+                    } catch (ActivityNotFoundException e) {
+                        startActivity(new Intent(Intent.ACTION_VIEW,
+                                Uri.parse("http://play.google.com/store/apps/details?id="
+                                        + getApplicationContext().getPackageName())));
                     }
                 })
-                .setPositiveButton("Not Now", new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        PrefsUtils.initialize(Home.this, "Values");
-                        int times = PrefsUtils.getIntValue("update", 0);
-                        PrefsUtils.saveOffline("update", times + 1);
-                    }
+                .setPositiveButton("Not Now", view -> {
+                    PrefsUtils.initialize(Home.this, "Values");
+                    int times = PrefsUtils.getIntValue("update", 0);
+                    PrefsUtils.saveOffline("update", times + 1);
                 })
                 .setTitle("New Update Available!")
                 .setCancelable(false)
@@ -352,12 +343,8 @@ public class Home extends AppCompatActivity
     private void setUpNavDrawer(Toolbar toolbar) {
         navigationView = findViewById(nav_view);
         FloatingActionButton fab = findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                onNavigationItemSelected(navigationView.getMenu().getItem(0).getSubMenu().getItem(1));
-            }
-        });
+        fab.setOnClickListener(view ->
+                onNavigationItemSelected(navigationView.getMenu().getItem(0).getSubMenu().getItem(1)));
 
         fab.setBackgroundTintList(ColorStateList.valueOf(Color.rgb(r, g, b)));
         //navigationView.setItemIconTintList(null);
@@ -413,13 +400,9 @@ public class Home extends AppCompatActivity
                     this.doubleBackToExitPressedOnce = true;
                     this.drawe = true;
                     Toast.makeText(this, "Please click BACK again to exit", Toast.LENGTH_SHORT).show();
-                    new Handler().postDelayed(new Runnable() {
-
-                        @Override
-                        public void run() {
-                            doubleBackToExitPressedOnce = false;
-                            drawe = false;
-                        }
+                    new Handler().postDelayed(() -> {
+                        doubleBackToExitPressedOnce = false;
+                        drawe = false;
                     }, 2000);
                 }
             }
@@ -501,17 +484,12 @@ public class Home extends AppCompatActivity
     private void setDefaultView() {
         PrefsUtils.initialize(this, "Startup");
 
-        String[] list = {"Question Papers", "Offline", "Study Material", "Digital TimeTable"};
+        String[] list = {"Question Papers", "Offline", "Study Material"};
         List<String> defaultList = new ArrayList<>(Arrays.asList(list));
 
         new LovelyChoiceDialog(this)
                 .setTitle("Choose Startup View")
-                .setItems(defaultList, new LovelyChoiceDialog.OnItemSelectedListener<String>() {
-                    @Override
-                    public void onItemSelected(int position, String item) {
-                        PrefsUtils.saveOffline("pos", position);
-                    }
-                })
+                .setItems(defaultList, (position, item) -> PrefsUtils.saveOffline("pos", position))
                 .setIcon(R.drawable.default_view)
                 .setTopColor(AppUtils.getColor())
                 .show();
@@ -544,10 +522,6 @@ public class Home extends AppCompatActivity
                 TAG = "Offline";
                 fragment = new Offline();
                 setNavProps(false, 4);
-            } else if (id == R.id.results && fragment != getSupportFragmentManager().findFragmentByTag("Results")) {
-                TAG = "Results";
-                fragment = new Results();
-                setNavProps(false, 0);
             } else if (id == R.id.syll && fragment != getSupportFragmentManager().findFragmentByTag("Syllabus")) {
                 TAG = "Syllabus";
                 fragment = new Syllabus();
@@ -567,10 +541,6 @@ public class Home extends AppCompatActivity
             } else if (id == R.id.donate && fragment != getSupportFragmentManager().findFragmentByTag("Donate")) {
                 TAG = "Donate";
                 fragment = new Support();
-                setNavProps(false, 4);
-            } else if (id == R.id.timeicon && fragment != getSupportFragmentManager().findFragmentByTag("Timetable")) {
-                TAG = "Timetable";
-                fragment = new Timetable();
                 setNavProps(false, 4);
             } else if (id == R.id.studymaterial && fragment != getSupportFragmentManager().findFragmentByTag("Study Material")) {
                 TAG = "Study Material";
