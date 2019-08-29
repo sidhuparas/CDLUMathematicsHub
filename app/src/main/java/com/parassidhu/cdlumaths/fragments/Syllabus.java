@@ -67,12 +67,7 @@ public class Syllabus extends Fragment {
         adapter = new HomeAdapter(getActivity(), AppUtils.prepareDataFor5Years());
         rcl5Years.setAdapter(adapter);
 
-        ItemClickSupport.addTo(rcl5Years).setOnItemClickListener(new ItemClickSupport.OnItemClickListener() {
-            @Override
-            public void onItemClicked(RecyclerView recyclerView, int position, View v) {
-                    SyllabusUtils.downloadSyllabus(getActivity(),String.valueOf(position+1));
-            }
-        });
+        ItemClickSupport.addTo(rcl5Years).setOnItemClickListener((recyclerView, position, v) -> SyllabusUtils.downloadSyllabus(getActivity(),String.valueOf(position+1)));
     }
 
     private void setUpRVFor2Years(){
@@ -95,26 +90,16 @@ public class Syllabus extends Fragment {
     public void onDownloadAllClick(){
         final String add="CDLU/syllabus/5year/";
 
-        askForConfirmation(new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                AppUtils.startDownload("MSc Maths 5-Year.pdf",
-                        add+"M.Sc.%20Math%20(5%20years).pdf",getActivity());
-            }
-        });
+        askForConfirmation((dialog, which) -> AppUtils.startDownload("MSc Maths 5-Year.pdf",
+                add+"M.Sc.%20Math%20(5%20years).pdf",getActivity()));
     }
 
     @OnClick(R.id.DownloadAll2Years)
     public void onDownloadAll2Click(){
         final String add="CDLU/syllabus/2year/";
 
-        askForConfirmation(new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                AppUtils.startDownload("MSc Maths 2-Year.pdf",
-                        add+"MSc%20Maths%202-Year.pdf",getActivity());
-            }
-        });
+        askForConfirmation((dialog, which) -> AppUtils.startDownload("MSc Maths 2-Year.pdf",
+                add+"MSc%20Maths%202-Year.pdf",getActivity()));
     }
 
     // For full syllabus downloads of 5-Years and 2-Years
@@ -123,11 +108,8 @@ public class Syllabus extends Fragment {
         alert.setTitle("Start Download?")
                 .setMessage("Do you want to download the full syllabus?")
                 .setPositiveButton("Yes", yes)
-                .setNegativeButton("No", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
+                .setNegativeButton("No", (dialog, which) -> {
 
-                    }
                 }).show();
     }
 

@@ -56,15 +56,12 @@ public class Support extends Fragment {
     public void onViewCreated(View v, Bundle savedInstanceState){
         setHasOptionsMenu(true);
         paytm2= getActivity().findViewById(R.id.paytm2);
-        paytm2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(getActivity(), "Please wait while we load an ad...", Toast.LENGTH_SHORT).show();
-                mInterstitialAd = new InterstitialAd(getActivity());
-                mInterstitialAd.setAdUnitId("ca-app-pub-6089158898128407/8257639804");
-                requestNewInterstitial();
-                mInterstitialAd.show();
-            }
+        paytm2.setOnClickListener(view -> {
+            Toast.makeText(getActivity(), "Please wait while we load an ad...", Toast.LENGTH_SHORT).show();
+            mInterstitialAd = new InterstitialAd(getActivity());
+            mInterstitialAd.setAdUnitId("ca-app-pub-6089158898128407/8257639804");
+            requestNewInterstitial();
+            mInterstitialAd.show();
         });
     }
 }

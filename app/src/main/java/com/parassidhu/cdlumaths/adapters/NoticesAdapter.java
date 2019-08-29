@@ -1,6 +1,7 @@
 package com.parassidhu.cdlumaths.adapters;
 
 import androidx.recyclerview.widget.RecyclerView;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,8 +22,8 @@ public class NoticesAdapter extends RecyclerView.Adapter<NoticesAdapter.ViewHold
 
     public NoticesAdapter(ArrayList<ListItem> androidList, RecyclerView rcl, Notices fragment) {
         mAndroidList = androidList;
-        recyclerView=rcl;
-        frag=fragment;
+        recyclerView = rcl;
+        frag = fragment;
     }
 
     @Override
@@ -34,13 +35,11 @@ public class NoticesAdapter extends RecyclerView.Adapter<NoticesAdapter.ViewHold
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
         holder.mTvName.setText(mAndroidList.get(position).getSubName());
-        ItemClickSupport.addTo(recyclerView).setOnItemClickListener(new ItemClickSupport.OnItemClickListener() {
-            @Override
-            public void onItemClicked(RecyclerView recyclerView, int position, View v) {
-                try{
-                frag.loadNotice(mAndroidList.get(position).getContent(),mAndroidList.get(position).getSubName()+".pdf",
-                        mAndroidList.get(position).getParam());
-                }catch (Exception e){}
+        ItemClickSupport.addTo(recyclerView).setOnItemClickListener((recyclerView, position1, v) -> {
+            try {
+                frag.loadNotice(mAndroidList.get(position1).getContent(), mAndroidList.get(position1).getSubName() + ".pdf",
+                        mAndroidList.get(position1).getParam());
+            } catch (Exception e) {
             }
         });
     }
@@ -50,9 +49,10 @@ public class NoticesAdapter extends RecyclerView.Adapter<NoticesAdapter.ViewHold
         return mAndroidList.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder{
+    public class ViewHolder extends RecyclerView.ViewHolder {
 
         private TextView mTvName;
+
         public ViewHolder(View view) {
             super(view);
             mTvName = view.findViewById(R.id.tv_name);

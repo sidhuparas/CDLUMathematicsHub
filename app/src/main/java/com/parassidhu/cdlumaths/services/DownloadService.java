@@ -16,10 +16,12 @@ import android.os.IBinder;
 import android.os.Looper;
 import android.os.Message;
 import android.os.Process;
+
 import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
 import androidx.core.content.FileProvider;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
+
 import android.util.Log;
 import android.webkit.MimeTypeMap;
 import android.widget.Toast;
@@ -73,6 +75,7 @@ public class DownloadService extends Service {
         public ServiceHandler(Looper looper) {
             super(looper);
         }
+
         @Override
         public void handleMessage(Message msg) {
             try {
@@ -86,13 +89,13 @@ public class DownloadService extends Service {
                         .setOngoing(true)
                         .setAutoCancel(true);
 
-                if (Build.VERSION.SDK_INT>=26) {
+                if (Build.VERSION.SDK_INT >= 26) {
                     NotificationChannel notificationChannel = new NotificationChannel("download"
                             , "Download Service", NotificationManager.IMPORTANCE_LOW);
                     notificationChannel.enableLights(false);
                     notificationChannel.enableVibration(false);
                     notificationBuilder.setColorized(true);
-                    notificationBuilder.setColor(ContextCompat.getColor(DownloadService.this,R.color.blue));
+                    notificationBuilder.setColor(ContextCompat.getColor(DownloadService.this, R.color.blue));
 
                     notificationManager.createNotificationChannel(notificationChannel);
                     notificationBuilder.setChannelId("download");
@@ -104,7 +107,8 @@ public class DownloadService extends Service {
                 notificationManager.notify(x.ID, notificationBuilder.build());
                 Log.i("Paras", "onHandleIntent: " + x.filename + x.url + "  " + x.ID);
                 initDownload(x.filename, x.url, x.ID);
-            }catch (Exception ex){}
+            } catch (Exception ex) {
+            }
         }
     }
 
@@ -116,7 +120,7 @@ public class DownloadService extends Service {
         thread.start();
         mServiceLooper = thread.getLooper();
         mServiceHandler = new ServiceHandler(mServiceLooper);
-        MyApp x = (MyApp)getApplicationContext();
+        MyApp x = (MyApp) getApplicationContext();
         Message msg = mServiceHandler.obtainMessage();
         msg.arg1 = startId;
         mServiceHandler.sendMessage(msg);
@@ -137,37 +141,37 @@ public class DownloadService extends Service {
         handler.post(new Runnable() {
             @Override
             public void run() {
-                if(AppUtils.checkPerm(DownloadService.this))
+                if (AppUtils.checkPerm(DownloadService.this))
                     starting();
             }
         });
 
-      //  OkHttpClient.Builder okHttpClient = new OkHttpClient.Builder()
-      //          .readTimeout(10, TimeUnit.SECONDS)
-      //          .connectTimeout(10,TimeUnit.SECONDS)
-      //          .retryOnConnectionFailure(true)
-      //          .writeTimeout(10,TimeUnit.SECONDS);
+        //  OkHttpClient.Builder okHttpClient = new OkHttpClient.Builder()
+        //          .readTimeout(10, TimeUnit.SECONDS)
+        //          .connectTimeout(10,TimeUnit.SECONDS)
+        //          .retryOnConnectionFailure(true)
+        //          .writeTimeout(10,TimeUnit.SECONDS);
 //
-      //  okHttpClient.addNetworkInterceptor(new Interceptor() {
-      //      @Override
-      //      public okhttp3.Response intercept(Chain chain) throws IOException {
-      //          //okhttp3.Request original = chain.request();
-      //          try {
-      //              okhttp3.Response original = chain.proceed(chain.request());
-      //              okhttp3.Response.Builder builder = original.newBuilder();
+        //  okHttpClient.addNetworkInterceptor(new Interceptor() {
+        //      @Override
+        //      public okhttp3.Response intercept(Chain chain) throws IOException {
+        //          //okhttp3.Request original = chain.request();
+        //          try {
+        //              okhttp3.Response original = chain.proceed(chain.request());
+        //              okhttp3.Response.Builder builder = original.newBuilder();
 //
-      //              okhttp3.Response.Builder requestBuilder = original.newBuilder()
-      //                      .addHeader("Connection", "keep-alive")
-      //                      .header("User-Agent", "downloader");
+        //              okhttp3.Response.Builder requestBuilder = original.newBuilder()
+        //                      .addHeader("Connection", "keep-alive")
+        //                      .header("User-Agent", "downloader");
 //
-      //              okhttp3.Response request = requestBuilder.build();
+        //              okhttp3.Response request = requestBuilder.build();
 //
-      //              return request;
-      //          }catch (Exception e){
-      //              return chain.proceed(chain.request());
-      //          }
-      //      }
-      //  });
+        //              return request;
+        //          }catch (Exception e){
+        //              return chain.proceed(chain.request());
+        //          }
+        //      }
+        //  });
 
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("http://www.downloadinformer.com/")
@@ -178,39 +182,42 @@ public class DownloadService extends Service {
         Call<ResponseBody> request = retrofitInterface.downloadFile(url);
 
         try {
-            downloadFile(request.execute().body(),filename,id);
+            downloadFile(request.execute().body(), filename, id);
         } catch (Exception e) {
-            Toast.makeText(getApplicationContext(),"Error: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), "Error: " + e.getMessage(), Toast.LENGTH_SHORT).show();
             String error = "There's some issue with Internet Connection. Please try again";
             notificationBuilder.setContentTitle("Download Failed!")
-                        .setProgress(0,0,false)
-                        .setContentText(error)
-                        .setStyle(new Notification.BigTextStyle().bigText(error))
-                        .setOngoing(false);
+                    .setProgress(0, 0, false)
+                    .setContentText(error)
+                    .setStyle(new Notification.BigTextStyle().bigText(error))
+                    .setOngoing(false);
 
             notificationManager.notify(id, notificationBuilder.build());
         }
     }
 
-    private void increaseDownloads(){
+    private void increaseDownloads() {
         try {
             StringRequest stringRequest = new StringRequest(Request.Method.GET,
                     getResources().getString(R.string.downloads),
                     new Response.Listener<String>() {
                         @Override
-                        public void onResponse(String response) {}
+                        public void onResponse(String response) {
+                        }
                     }, new Response.ErrorListener() {
                 @Override
-                public void onErrorResponse(VolleyError error) {}
+                public void onErrorResponse(VolleyError error) {
+                }
             });
 
             RequestQueue requestQueue = Volley.newRequestQueue(this);
             requestQueue.add(stringRequest);
-        }catch (Exception e){}
+        } catch (Exception e) {
+        }
     }
 
     @Streaming
-    private void downloadFile(ResponseBody body, String filename,int id) throws IOException {
+    private void downloadFile(ResponseBody body, String filename, int id) throws IOException {
         int count;
         byte data[] = new byte[1024 * 4];
         long fileSize = body.contentLength();
@@ -218,7 +225,9 @@ public class DownloadService extends Service {
         File mediaStorageDir = new File(
                 Environment.getExternalStorageDirectory(), "/CDLU Mathematics Hub");
 
-        try{mediaStorageDir.mkdirs();}catch (Exception e){}
+        try {
+            mediaStorageDir.mkdirs();
+        } catch (Exception e) { }
 
         File outputFile = new File(Environment.getExternalStorageDirectory() +
                 File.separator + "CDLU Mathematics Hub", filename);
@@ -244,31 +253,31 @@ public class DownloadService extends Service {
             if (currentTime > 1000 * timeCount) {
                 download.setCurrentFileSize((int) current);
                 download.setProgress(progress);
-                sendNotification(download,id,filename);
+                sendNotification(download, id, filename);
                 timeCount++;
             }
 
             output.write(data, 0, count);
         }
 
-        onDownloadComplete(filename,id);
+        onDownloadComplete(filename, id);
         output.flush();
         output.close();
         bis.close();
 
         if (!BuildConfig.DEBUG)
-        increaseDownloads();
+            increaseDownloads();
     }
 
-    private void sendNotification(Download download, int id,String filename) {
-        sendIntent(download,id);
+    private void sendNotification(Download download, int id, String filename) {
+        sendIntent(download, id);
 
         String progress = "Downloading " + download.getCurrentFileSize() + "/" + totalFileSize + " KB";
 
         notificationBuilder.setProgress(100, download.getProgress(), false)
-                            .setContentTitle(filename)
-                            .setContentText(progress)
-                            .setStyle(new Notification.BigTextStyle().bigText(progress));
+                .setContentTitle(filename)
+                .setContentText(progress)
+                .setStyle(new Notification.BigTextStyle().bigText(progress));
         notificationManager.notify(id, notificationBuilder.build());
     }
 
@@ -278,28 +287,28 @@ public class DownloadService extends Service {
         LocalBroadcastManager.getInstance(DownloadService.this).sendBroadcast(intent);
     }
 
-    private void onDownloadComplete(String filename,int id) {
+    private void onDownloadComplete(String filename, int id) {
         try {
 
             Download download = new Download();
             download.setProgress(100);
-            sendIntent(download,id);
+            sendIntent(download, id);
 
             notificationManager.cancel(id);
             notificationBuilder.setProgress(0, 0, false)
-                                .setContentText("Tap to open")
-                                .setOngoing(false)
-                                .setStyle(new Notification.BigTextStyle().bigText("File Downloaded"));
+                    .setContentText("Tap to open")
+                    .setOngoing(false)
+                    .setStyle(new Notification.BigTextStyle().bigText("File Downloaded"));
 
             notificationManager.notify(id, notificationBuilder.build());
 
-            String path1 =Environment.getExternalStorageDirectory() +
+            String path1 = Environment.getExternalStorageDirectory() +
                     File.separator + "CDLU Mathematics Hub" + "/" + filename;
 
             File file = new File(path1);
             Uri sharePath;
 
-            if(Build.VERSION.SDK_INT>=Build.VERSION_CODES.N)
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N)
                 sharePath = FileProvider.getUriForFile(this,
                         getApplicationContext().getPackageName() + ".provider", file);
             else sharePath = Uri.fromFile(file);
@@ -308,11 +317,11 @@ public class DownloadService extends Service {
                     (MimeTypeMap.getFileExtensionFromUrl(path1));
 
             Intent intent = new Intent(android.content.Intent.ACTION_VIEW)
-                        .setType(mimeType)
-                        .setDataAndType(sharePath, mimeType)
-                        .addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+                    .setType(mimeType)
+                    .setDataAndType(sharePath, mimeType)
+                    .addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
 
-            PendingIntent pIntent = PendingIntent.getActivity(this,(int) System.currentTimeMillis(),
+            PendingIntent pIntent = PendingIntent.getActivity(this, (int) System.currentTimeMillis(),
                     intent, 0);
 
             notificationBuilder
@@ -325,6 +334,7 @@ public class DownloadService extends Service {
 
             notificationManager.notify(id, notificationBuilder.build());
 
-        }catch (Exception ex){}
+        } catch (Exception ex) {
+        }
     }
 }
