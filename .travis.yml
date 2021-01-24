@@ -16,6 +16,9 @@ licenses:
 before_install:
     - 'yes | sdkmanager "platforms;android-28"'
     - 'chmod +x ./gradlew'
+dependencies:
+      pre:
+        - source environmentSetup.sh && copyEnvVarsToGradleProperties
 script:
     - 'echo "Starting build!"'
     - './gradlew build'
