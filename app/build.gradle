@@ -34,6 +34,9 @@ android {
         abortOnError false
     }
     buildTypes {
+        def CDLU_BANNER_AD = (hasProperty('CDLU_BANNER_AD') ? CDLU_BANNER_AD : System.getenv('CDLU_BANNER_AD')).toString()
+        def CDLU_INTERSTITIAL_AD = (hasProperty('CDLU_INTERSTITIAL_AD') ? CDLU_INTERSTITIAL_AD : System.getenv('CDLU_INTERSTITIAL_AD')).toString()
+
         debug {
             buildConfigField 'String', "BANNER_AD_KEY", CDLU_BANNER_AD
             buildConfigField 'String', "INTERSTITIAL_AD_KEY", CDLU_INTERSTITIAL_AD
