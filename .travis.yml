@@ -18,6 +18,7 @@ before_install:
 - yes | sdkmanager "platforms;android-28"
 - chmod +x ./gradlew
 script:
+- "./gradlew clean"
 - echo "Starting build!"
 - "bash ./gradlew build"
 before_cache:
