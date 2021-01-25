@@ -1,5 +1,4 @@
 language: android
-dist: trusty
 sudo: required
 jdk: oraclejdk8
 android:
@@ -18,12 +17,9 @@ before_install:
   -in app/google-services.json.enc -out app/google-services.json -d
 - yes | sdkmanager "platforms;android-28"
 - chmod +x ./gradlew
-dependencies:
-  pre:
-  - source environmentSetup.sh && copyEnvVarsToGradleProperties
 script:
 - echo "Starting build!"
-- "./gradlew build"
+- "bash ./gradlew build"
 before_cache:
 - rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
 - rm -fr $HOME/.gradle/caches/*/plugin-resolution/
